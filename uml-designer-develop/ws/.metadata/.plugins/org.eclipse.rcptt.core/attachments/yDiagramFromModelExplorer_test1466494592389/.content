@@ -1,0 +1,19 @@
+// In Test project create a new package hierarchy diagram: "NewModel Package Hierarchy"
+with [get-view "Model Explorer" | get-tree] {
+    select "test/model.uml/<Model> NewModel" | double-click
+    select "test/model.uml/<Model> NewModel" | get-menu "New Representation/NewModel Package Hierarchy" | click
+}
+
+with [get-window "New Representation"] {
+    with [get-editbox -after [get-label "Representation name:"]] {
+        set-text "test NewModel Package Hierarchy"
+    }
+    get-button OK | click
+}
+// Check diagram
+get-editor "test NewModel Package Hierarchy" | get-diagram -index 1 | get-edit-part 
+    -name "test NewModel Package Hierarchy"
+// Check model
+get-editor "test NewModel Package Hierarchy" | get-diagram -index 1 | get-edit-part 
+    -name "test NewModel Package Hierarchy" | get-property "getModel().getElement().getName()" 
+    | equals "test NewModel Package Hierarchy" | verify-true

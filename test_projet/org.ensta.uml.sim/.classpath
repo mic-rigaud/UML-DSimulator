@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="META-INF/lib/plug-core-0.0.1.jar"/>
+	<classpathentry kind="lib" path="META-INF/lib/plug-simulation-ui-0.0.1.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/org.obeonetwork.dsl.uml2.design"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/org.obeonetwork.dsl.uml2.design.tests"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/org.obeonetwork.dsl.uml2.design.ui.tests"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/org.obeonetwork.dsl.uml2.discovery"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/org.obeonetwork.dsl.uml2.migration"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/org.obeonetwork.dsl.uml2.navigator"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/org.obeonetwork.dsl.uml2.properties"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/org.obeonetwork.dsl.uml2.usage"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/org.obeonetwork.gmf.runtime.diagram.ui.extension"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

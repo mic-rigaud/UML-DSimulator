@@ -1,0 +1,15 @@
+// Create a Class diagram from a clas in current clas diagram
+with [get-editor "test Class Diagram" | get-diagram -index 1] {
+    with [get-edit-part -name "test Class Diagram" | get-edit-part -name Package1 | get-edit-part 
+        -className DNodeContainerViewNodeContainerCompartmentEditPart | get-edit-part -name Class1 | get-edit-part 
+        -className DNodeListViewNodeListCompartmentEditPart] {
+        mouse-move 83 54 button3 -height 71 -width 116
+        mouse-press 83 54 button3 -height 71 -width 116
+        mouse-release 83 54 button3 2097152 -height 71 -width 116
+    }
+    get-menu "New/Class diagram" | click
+}
+get-window "New Representation" | get-button OK | click
+
+// Check new diagram is opened
+get-editor "Class1 Class Diagram" | get-diagram -index 1 | get-edit-part -name "Class1 Class Diagram" 

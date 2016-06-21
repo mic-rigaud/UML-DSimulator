@@ -1,0 +1,182 @@
+//Reconnect target to a class (not generic)
+with [get-editor "test Class Diagram"] {
+    with [get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+        with [get-edit-part -name "Class1 <T>" | get-target-connection 0] {
+            with [get-figure 3] {
+                mouse-move 1 4 button1 -height 8 -width 6
+                mouse-press 1 4 button1 -height 8 -width 6
+                mouse-release 2 5 button1 524288 -height 10 -width 8
+            }
+            with [get-handle SiriusConnectionEndPointHandle -index 1] {
+                mouse-move 3 1 button1 -height 7 -width 7
+                mouse-press 3 1 button1 -height 7 -width 7
+            }
+        }
+        with[get-edit-part -name "Class3" | get-edit-part -className DNodeListViewNodeListCompartment2EditPart]{
+        mouse-drag 1 1 button1 524288 -height 848 -width 951
+        mouse-release 1 1 button1 524288 -height 848 -width 951}
+    }
+}
+// Check diagram
+with [get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram" | get-edit-part 
+    -name "Class3 <T>" | get-target-connection 0] {
+    get-property "element.sourceNode.name" | equals Class2 | verify-true
+    get-property "element.targetNode.name" | equals "Class3 <T>" | verify-true
+}
+
+// Reconnect target to an interface
+with [get-editor "test Class Diagram"] {
+    with [get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+        with [get-edit-part -name "Class3 <T>" | get-target-connection 0] {
+            mouse-move 123 36 button1 -height 164 -width 157
+            mouse-press 123 36 button1 -height 164 -width 157
+            mouse-release 125 38 button1 524288 -height 168 -width 161
+            with [get-handle SiriusConnectionEndPointHandle -index 1] {
+                mouse-move 6 4 button1 -height 7 -width 7
+                mouse-press 6 4 button1 -height 7 -width 7
+            }
+        }
+        with[get-edit-part -name "Interface1" | get-edit-part -className DNodeListViewNodeListCompartment2EditPart]{
+            mouse-drag 1 1 button1 524288 -height 848 -width 951
+            mouse-release 1 1 button1 524288 -height 848 -width 951
+        }
+    }
+}
+// Check diagram
+with [get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram" | get-edit-part 
+    -name "Interface1 <T>" | get-target-connection 0] {
+    get-property "element.sourceNode.name" | equals Class2 | verify-true
+    get-property "element.targetNode.name" | equals "Interface1 <T>" | verify-true
+}
+
+// Reconnect target to an Enumeration
+with [get-editor "test Class Diagram"] {
+    with [get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {     
+        with [get-edit-part -name "Interface1 <T>" | get-target-connection 0] {
+            mouse-move 68 124 button1 -height 174 -width 244
+            mouse-press 68 124 button1 -height 174 -width 244
+            mouse-release 70 126 button1 524288 -height 178 -width 248
+        }
+       with [get-edit-part -name "Interface1 <T>" | get-target-connection 0 
+            | get-handle SiriusConnectionEndPointHandle -index 1] {
+            mouse-move 3 4 button1 -height 7 -width 7
+            mouse-press 3 4 button1 -height 7 -width 7
+        }
+       with[get-edit-part -name "Enumeration1" | get-edit-part -className DNodeListViewNodeListCompartment2EditPart]{
+            mouse-drag 1 1 button1 524288 -height 848 -width 951
+            mouse-release 1 1 button1 524288 -height 848 -width 951
+        }
+    }
+}
+// Check diagram
+with [get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram" | get-edit-part 
+    -name "Enumeration1 <T>" | get-target-connection 0] {
+    get-property "element.sourceNode.name" | equals Class2 | verify-true
+    get-property "element.targetNode.name" | equals "Enumeration1 <T>" | verify-true
+}
+//Reconnect target to a Primitivetype
+with [get-editor "test Class Diagram"] {
+    with [get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+         with [get-edit-part -name "Enumeration1 <T>"] {
+            with [get-target-connection 0] {
+                mouse-move 169 86 button1 -height 152 -width 384
+                mouse-press 169 86 button1 -height 152 -width 384
+                mouse-release 171 87 button1 524288 -height 155 -width 388
+            }
+            with [get-target-connection 0 | get-handle SiriusConnectionEndPointHandle -index 1] {
+                mouse-move 5 4 button1 -height 7 -width 7
+                mouse-press 5 4 button1 -height 7 -width 7
+            }
+        }
+        with[get-edit-part -name "PrimitiveType1" | get-edit-part -className DNodeListViewNodeListCompartment2EditPart]{
+            mouse-drag 1 1 button1 524288 -height 848 -width 951
+            mouse-release 1 1 button1 524288 -height 848 -width 951
+        }
+    }
+}
+// Check diagram
+with [get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram" | get-edit-part 
+    -name "PrimitiveType1 <T>" | get-target-connection 0] {
+    get-property "element.sourceNode.name" | equals Class2 | verify-true
+    get-property "element.targetNode.name" | equals "PrimitiveType1 <T>" | verify-true
+}
+//Reconnect target to a Datattype
+with [get-editor "test Class Diagram"] {
+    with [get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+        with [get-edit-part -name "PrimitiveType1 <T>" | get-target-connection 0] {
+            mouse-move 317 30 button1 -height 48 -width 384
+            mouse-press 317 30 button1 -height 48 -width 384
+            mouse-release 319 31 button1 524288 -height 50 -width 388
+        }
+        with [get-edit-part -name "PrimitiveType1 <T>" | get-target-connection 0 
+            | get-handle SiriusConnectionEndPointHandle -index 1] {
+            mouse-move 2 3 button1 -height 7 -width 7
+            mouse-press 2 3 button1 -height 7 -width 7
+        }
+        with[get-edit-part -name "DataType1" | get-edit-part -className DNodeListViewNodeListCompartment2EditPart]{
+            mouse-drag 1 1 button1 524288 -height 848 -width 951
+            mouse-release 1 1 button1 524288 -height 848 -width 951
+        }
+    }
+}
+// Check Diagram
+with [get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram" | get-edit-part 
+    -name "DataType1 <T>" | get-target-connection 0] {
+    get-property "element.sourceNode.name" | equals Class2 | verify-true
+    get-property "element.targetNode.name" | equals "DataType1 <T>" | verify-true
+}
+
+// Try to reconnect target to a package
+with [get-editor "test Class Diagram" | get-diagram -index 1] {
+    with [get-edit-part -name "test Class Diagram"] {
+        with [get-edit-part -name "DataType1 <T>" | get-target-connection 0] {
+            mouse-move 238 68 button1 -height 115 -width 390
+            mouse-press 238 68 button1 -height 115 -width 390
+            mouse-move 239 70 -mask 524288 -height 118 -width 394
+        }
+    }
+    with [get-edit-part -name "test Class Diagram"] {
+        with [get-edit-part -name "DataType1 <T>" | get-target-connection 0 
+        | get-handle SiriusConnectionEndPointHandle -index 1] {
+            mouse-move 2 2 button1 -height 7 -width 7
+            mouse-press 2 2 button1 -height 7 -width 7
+        }
+        with[get-edit-part -name "Package1"]{
+            mouse-drag 1 1 button1 524288 -height 848 -width 951
+            mouse-release 1 1 button1 524288 -height 848 -width 951
+        }
+    }
+}
+// Check diagram target is not reconnected
+with [get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram" | get-edit-part 
+    -name "DataType1 <T>" | get-target-connection 0] {
+    get-property "element.sourceNode.name" | equals Class2 | verify-true
+    get-property "element.targetNode.name" | equals "DataType1 <T>" | verify-true
+}
+// Reconnect source
+with [get-editor "test Class Diagram"] {
+    with [get-diagram -index 1] {
+        key-type ESC
+        with [get-edit-part -name "test Class Diagram"] {
+            with [get-edit-part -name "DataType1 <T>" | get-target-connection 0] {
+                mouse-move 93 35 button1 -height 137 -width 384
+                mouse-press 93 35 button1 -height 137 -width 384
+                mouse-release 95 37 button1 524288 -height 140 -width 388
+            }
+            with [get-edit-part -name "DataType1 <T>" | get-target-connection 0 
+                | get-handle SiriusConnectionEndPointHandle] {
+                mouse-move 3 6 button1 -height 7 -width 7
+                mouse-press 3 6 button1 -height 7 -width 7
+            }
+            with[get-edit-part -name "Class1 <T>"]{
+                mouse-drag 1 1 button1 524288 -height 848 -width 951
+                mouse-release 1 1 button1 524288 -height 848 -width 951
+            }
+        }
+    }
+}
+with [get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram" | get-edit-part 
+    -name "DataType1 <T>" | get-target-connection 0] {
+    get-property "element.sourceNode.name" | equals "Class1 <T>" | verify-true
+    get-property "element.targetNode.name" | equals "DataType1 <T>" | verify-true
+}

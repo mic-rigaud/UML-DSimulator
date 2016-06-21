@@ -1,0 +1,85 @@
+// Create Link
+with [get-editor "NewModel Deployment Diagram"] {
+    with [get-palette | get-palette-entry Link] {
+        mouse-move 43 7 button1 -height 23 -width 214
+        mouse-press 43 7 button1 -height 23 -width 214
+        mouse-release 43 7 button1 524288 -height 23 -width 214
+    }
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Deployment Diagram"] {
+        with [get-edit-part -name Node1 | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+            mouse-move 42 18 button1 -height 40 -width 58
+            mouse-press 42 18 button1 -height 40 -width 58
+            mouse-release 42 18 button1 524288 -height 40 -width 58
+        }
+        mouse-move 74 142 -height 524 -width 713
+        with [get-edit-part -name Device1 | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+            mouse-move 31 22 button1 -height 40 -width 67
+            mouse-press 31 22 button1 -height 40 -width 67
+        }
+    }
+}
+
+// Check Diagram
+get-editor "NewModel Deployment Diagram" | get-diagram -index 1 | get-edit-part -name "NewModel Deployment Diagram" 
+    | get-edit-part -name Device1 | get-target-connection 0 | get-property "getFigure().isVisible()" | equals true 
+    | verify-true
+
+with [get-editor "NewModel Deployment Diagram" | get-diagram -index 1 | get-edit-part 
+    -name "NewModel Deployment Diagram"] {
+    get-property "getFigure().getChildren().size()" | equals 2 | verify-true
+    get-property "getConnections().size()" | equals 1 | verify-true
+}
+with [get-editor "NewModel Deployment Diagram" | get-diagram -index 1 | get-edit-part 
+    -name "NewModel Deployment Diagram" | get-edit-part -name Device1 | get-target-connection 0] {
+    get-property "element.ownedStyle.customFeatures" | equals "[]" | verify-true
+    get-property "element.ownedStyle.lineStyle" | equals solid | verify-true
+    get-property "element.ownedStyle.sourceArrow" | equals NoDecoration | verify-true
+    get-property "element.ownedStyle.targetArrow" | equals NoDecoration | verify-true
+    get-property "element.ownedStyle.foldingStyle" | equals NONE | verify-true
+    get-property "element.ownedStyle.size" | equals 1 | verify-true
+    get-property "element.ownedStyle.routingStyle" | equals manhattan | verify-true
+    //get-property "element.ownedStyle.beginLabelStyle" | equals null | verify-true
+    //get-property "element.ownedStyle.endLabelStyle" | equals null | verify-true
+    get-property "element.ownedStyle.centered" | equals None | verify-true
+}
+// Check Model
+with [get-editor "NewModel Deployment Diagram" | get-diagram -index 1 | get-edit-part 
+    -name "NewModel Deployment Diagram"] {
+    get-property "element.ownedDiagramElements.DEdge[2].name" | equals "" | verify-true
+    get-property "element.ownedDiagramElements.DEdge[2].sourceNode.name" | equals Node1 | verify-true
+    get-property "element.ownedDiagramElements.DEdge[2].targetNode.name" | equals Device1 | verify-true
+}
+
+// Direct Edit Link Label
+with [get-editor "NewModel Deployment Diagram"] {
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Deployment Diagram"] {
+        with [get-edit-part -name Device1 | get-target-connection 0] {
+           mouse-move 29 35 button1 -height 96 -width 44
+            mouse-press 29 35 button1 -height 96 -width 44
+            mouse-release 29 35 button1 524288 -height 96 -width 44
+            activate-direct-edit
+            get-edit-part -className "" | activate-direct-edit
+        }
+    }
+        with [get-editbox] {
+        set-text Link1
+        key-type Enter
+    }
+    with [get-diagram -index 1] {
+        commit-direct-edit
+        key-type Enter
+        get-edit-part -name "NewModel Deployment Diagram" | mouse-move 13 236 -height 524 -width 721
+    }
+}
+
+// Check label is visible
+get-editor "NewModel Deployment Diagram" | get-diagram -index 1 | get-edit-part -name "NewModel Deployment Diagram" 
+    | get-edit-part -name Device1 | get-target-connection 0 | get-edit-part -className "" 
+    | get-property "getFigure().getText()" | equals Link1 | verify-true
+// Check Diagram
+with [get-editor "NewModel Deployment Diagram" | get-diagram -index 1 | get-edit-part 
+    -name "NewModel Deployment Diagram"] {
+    get-property "getFigure().getChildren().size()" | equals 2 | verify-true
+    get-property "getConnections().size()" | equals 1 | verify-true
+}

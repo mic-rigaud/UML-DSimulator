@@ -1,0 +1,15 @@
+// Delete a redefined between component1 port1 and component2 port1
+with [get-editor "NewModel Component Diagram"] {
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Component Diagram"] {
+        with [get-edit-part -name Component2 | get-edit-part -name port1 | get-target-connection 0] {
+            mouse-move 78 17 button1 -height 35 -width 114
+            mouse-press 78 17 button1 -height 35 -width 114
+            mouse-release 78 17 button1 524288 -height 35 -width 114
+        }
+    }
+    get-button "Delete from Model" | click
+}
+// Check diagram
+get-editor "NewModel Component Diagram" | get-diagram -index 1 | get-edit-part -name "NewModel Component Diagram" 
+    | get-edit-part -name Component2 | get-edit-part -name port1 | Verify-error{ get-target-connection 0 }
+    

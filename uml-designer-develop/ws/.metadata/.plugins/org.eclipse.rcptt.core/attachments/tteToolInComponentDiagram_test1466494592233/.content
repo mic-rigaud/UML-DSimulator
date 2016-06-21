@@ -1,0 +1,44 @@
+//Create new componenet realization between  Component1 and Component2
+with [get-editor "NewModel Component Diagram"] {
+    with [get-palette | get-palette-entry "Component Realization"] {
+            mouse-move 132 12 button1 -height 23 -width 270
+            mouse-press 132 12 button1 -height 23 -width 270
+            mouse-release 132 12 button1 524288 -height 23 -width 270
+    }
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Component Diagram"] {
+        with [get-edit-part -name Component1 | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+            mouse-move 82 42 button1 -height 98 -width 118
+            mouse-press 82 42 button1 -height 98 -width 118
+            mouse-release 82 42 button1 524288 -height 98 -width 118
+        }
+        with [get-edit-part -name Component2 | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+            mouse-move 18 51 button1 -height 98 -width 118
+            mouse-press 18 51 button1 -height 98 -width 118
+            mouse-release 18 51 button1 524288 
+            -height 98 -width 118
+        }
+    }
+}
+// Check Diagram
+with [get-editor "NewModel Component Diagram" | get-diagram -index 1 | get-edit-part -name "NewModel Component Diagram" 
+    | get-edit-part -name Component2 | get-target-connection 0] {
+    get-property "element.ownedStyle.customFeatures" | equals "[]" | verify-true
+    get-property "element.ownedStyle.lineStyle" | equals dash | verify-true
+    get-property "element.ownedStyle.sourceArrow" | equals NoDecoration | verify-true
+    get-property "element.ownedStyle.targetArrow" | equals InputClosedArrow | verify-true
+    get-property "element.ownedStyle.foldingStyle" | equals NONE | verify-true
+    get-property "element.ownedStyle.size" | equals 1 | verify-true
+    get-property "element.ownedStyle.routingStyle" | equals straight | verify-true
+    //get-property "element.ownedStyle.beginLabelStyle" | equals null | verify-true
+    //get-property "element.ownedStyle.endLabelStyle" | equals null | verify-true
+    get-property "element.ownedStyle.centered" | equals None | verify-true
+    get-property "getFigure().isVisible()" | equals true | verify-true
+}
+// Check model
+with [get-editor "NewModel Component Diagram" | get-diagram -index 1 | get-edit-part -name "NewModel Component Diagram" 
+    | get-edit-part -name Component2 | get-target-connection 0] {
+    get-property "source.element.name" | equals Component1 | verify-true
+    get-property "target.element.name" | equals Component2 | verify-true
+}

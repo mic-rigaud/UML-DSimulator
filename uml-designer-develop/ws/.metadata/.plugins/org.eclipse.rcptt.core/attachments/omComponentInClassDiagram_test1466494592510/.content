@@ -1,0 +1,14 @@
+// Open a Class diagram from a component
+with [get-editor "NewModel Class Diagram" | get-diagram -index 1] {
+    with [get-edit-part -name "NewModel Class Diagram"] {
+        with [get-edit-part -name Component1 | get-edit-part -className DNodeListViewNodeListCompartment2EditPart] {
+            mouse-move 81 28 button3 -height 71 -width 116
+            mouse-press 81 28 button3 -height 71 -width 116
+            mouse-release 81 28 button3 2097152 -height 71 -width 116
+        }
+    }
+    get-menu "Open/Open Component1 Class Diagram" | click
+}
+// Check the class diagram is opened
+get-editor "Component1 Class Diagram" | get-diagram -index 1 | get-edit-part -name "Component1 Class Diagram" 
+    | get-property visible | equals true | verify-true

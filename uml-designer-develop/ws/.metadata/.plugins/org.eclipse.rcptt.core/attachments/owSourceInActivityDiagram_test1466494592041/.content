@@ -1,0 +1,33 @@
+with [get-editor "NewModel Activity Diagram"] {
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Activity Diagram"] {
+        with [get-edit-part -name NewModel | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+            with [get-edit-part -name "Decision1" | get-target-connection 0 | get-handle SiriusConnectionEndPointHandle] {
+                mouse-move 4 1 button1 -height 7 -width 7
+                mouse-press 4 1 button1 -height 7 -width 7
+            }
+        }
+       with [get-edit-part -name NewModel 
+        | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart |
+        get-edit-part -name "OpaqueAction2\r\n"
+            + "\r\n"
+            + "// TODO body of OpaqueAction2" | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartment2EditPart]{
+            mouse-drag 1 1 button1 524288 -height 524 -width 793
+            mouse-release 1 1 button1 524288 -height 524 -width 793
+        }
+    }
+}
+
+//Check Diagram
+get-editor "NewModel Activity Diagram" | get-diagram -index 1 | get-edit-part -name "NewModel Activity Diagram" 
+    | get-edit-part -name NewModel | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart 
+    | get-edit-part -name "Decision1" | get-target-connection 0 | get-property "getFigure().isVisible()" | equals true 
+    | verify-true
+//Check Model
+with [get-editor "NewModel Activity Diagram" | get-diagram -index 1 | get-edit-part -name "NewModel Activity Diagram" 
+    | get-edit-part -name NewModel | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart 
+    | get-edit-part -name "Decision1" | get-target-connection 0] {
+    get-property "element.target.target.name" | equals Decision1 | verify-true
+    get-property "element.target.source.name" | equals OpaqueAction2 | verify-true
+}

@@ -1,0 +1,7 @@
+package org.ensta.uml.sim.handlers;
+
+import plug.core.Observateur;
+
+public class PluginUI extends Observateur {
+
+}

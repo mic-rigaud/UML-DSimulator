@@ -1,0 +1,59 @@
+// Show containment relationships by unactivating the filter Containment
+with [get-editor "Package Containment"] {
+    get-diagram -index 1 | get-edit-part -name "Package Containment" | mouse-move 91 0 -height 848 -width 963
+    get-button Filters | click -arrow
+}
+get-menu Containment | click
+// Check diagram
+get-editor "Package Containment" | get-diagram -index 1 | get-edit-part -name "Package Containment" | mouse-move 7 40 
+    -height 848 -width 963
+with [get-editor "Package Containment" | get-diagram -index 1 | get-edit-part -name "Package Containment"] {
+    with [get-edit-part -name "Travel Agency"] {
+        get-target-connection 0 | get-property "getFigure().isVisible()" | equals true | verify-true
+        get-target-connection 1 | get-property "getFigure().isVisible()" | equals true | verify-true
+        get-target-connection 2 | get-property "getFigure().isVisible()" | equals true | verify-true
+        get-target-connection 3 | get-property "getFigure().isVisible()" | equals true | verify-true
+        get-target-connection 4 | get-property "getFigure().isVisible()" | equals true | verify-true
+     }
+    get-edit-part -name Behaviours | get-target-connection 1 | get-property "getFigure().isVisible()" | equals true 
+        | verify-true
+    get-edit-part -name "Web Agent" | get-target-connection 1 | get-property "getFigure().isVisible()" | equals true 
+        | verify-true
+    with [get-edit-part -name Components] {
+        get-target-connection 0 | get-property "getFigure().isVisible()" | equals true | verify-true
+        get-target-connection 1 | get-property "getFigure().isVisible()" | equals true | verify-true
+        get-target-connection 2 | get-property "getFigure().isVisible()" | equals true | verify-true
+        get-target-connection 3 | get-property "getFigure().isVisible()" | equals true | verify-true
+        get-target-connection 4 | get-property "getFigure().isVisible()" | equals true | verify-true
+        get-target-connection 5 | get-property "getFigure().isVisible()" | equals true | verify-true
+        get-target-connection 6 | get-property "getFigure().isVisible()" | equals true | verify-true
+    }
+}
+// Hide containment relationships by activating the filter Containment
+get-editor "Package Containment" | get-button Filters | click -arrow
+get-menu Containment | click
+get-editor "Package Containment" | get-diagram -index 1 | get-edit-part -name "Package Containment" | get-edit-part 
+    -name "Travel Agency" | mouse-move 125 2 -height 138 -width 143
+// Check diagram
+with [get-editor "Package Containment" | get-diagram -index 1 | get-edit-part -name "Package Containment"] {
+    with [get-edit-part -name "Travel Agency"] {
+        get-target-connection 0 | get-property "getFigure().isVisible()" | equals false | verify-true
+        get-target-connection 1 | get-property "getFigure().isVisible()" | equals false | verify-true
+        get-target-connection 2 | get-property "getFigure().isVisible()" | equals false | verify-true
+        get-target-connection 3 | get-property "getFigure().isVisible()" | equals false | verify-true
+        get-target-connection 4 | get-property "getFigure().isVisible()" | equals false | verify-true
+     }
+    get-edit-part -name Behaviours | get-target-connection 1 | get-property "getFigure().isVisible()" | equals false 
+        | verify-true
+    get-edit-part -name "Web Agent" | get-target-connection 1 | get-property "getFigure().isVisible()" | equals false 
+        | verify-true
+    with [get-edit-part -name Components] {
+        get-target-connection 0 | get-property "getFigure().isVisible()" | equals false | verify-true
+        get-target-connection 1 | get-property "getFigure().isVisible()" | equals false | verify-true
+        get-target-connection 2 | get-property "getFigure().isVisible()" | equals false | verify-true
+        get-target-connection 3 | get-property "getFigure().isVisible()" | equals false | verify-true
+        get-target-connection 4 | get-property "getFigure().isVisible()" | equals false | verify-true
+        get-target-connection 5 | get-property "getFigure().isVisible()" | equals false | verify-true
+        get-target-connection 6 | get-property "getFigure().isVisible()" | equals false | verify-true
+    }
+}

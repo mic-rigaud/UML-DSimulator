@@ -1,0 +1,1225 @@
+
+tuml-interpreter/src/abcd/expression/parser/ABCDExpressionParser.java,487
+package abcd.expression.parser;abcd.expression.parser1,0
+public class ABCDExpressionParser extends CompositeParser {ABCDExpressionParser19,730
+	Map<String, Object> env;env20,790
+	protected void initialize() {initialize23,828
+	public <T> T eval(String input, Map<String, Object> env) {eval28,884
+	void abcd() {abcd33,1001
+	Object parseIdentifier(String ident) {parseIdentifier69,2897
+	private void other() {other73,2966
+	private Parser token(Object input) {token80,3141
+
+plug-simulation-ui/src/plug/simulation/ui/SimulationResources.java,5189
+package plug.simulation.ui;plug.simulation.ui1,0
+public class SimulationResources {SimulationResources5,52
+	static Class<SimulationResources> clazz 		= SimulationResources.class;clazz6,87
+	static final String resourcePath 				= clazz.getPackage().getName().replace('.', '/') + "/icones/";resourcePath7,159
+	static ClassLoader loader 						= clazz.getClassLoader();loader8,260
+	public static final ImageIcon loadIcon 			= new ImageIcon(loader.getResource(resourcePath + "newfolder_wiz.gif"));loadIcon9,319
+	public static final ImageIcon saveIcon 			= new ImageIcon(loader.getResource(resourcePath + "save_edit.gif"));saveIcon10,435
+	public static final ImageIcon saveAsIcon 		= new ImageIcon(loader.getResource(resourcePath + "saveas_edit.gif"));saveAsIcon11,547
+	public static final ImageIcon prefIcon 			= new ImageIcon(loader.getResource(resourcePath + "debugtt_obj.gif"));prefIcon12,662
+	public static final ImageIcon exportIcon 		= new ImageIcon(loader.getResource(resourcePath + "export_wiz.gif"));exportIcon13,776
+	public static final ImageIcon exitIcon 			= new ImageIcon(loader.getResource(resourcePath + "progress_stop.gif"));exitIcon14,890
+	public static final ImageIcon traceIcon			= new ImageIcon(loader.getResource(resourcePath + "datasheet.gif"));traceIcon15,1006
+	public static final ImageIcon observerIconO 	= new ImageIcon(loader.getResource(resourcePath + "sections_open.gif"));observerIconO16,1118
+	public static final ImageIcon observerIconH 	= new ImageIcon(loader.getResource(resourcePath + "sections_close.gif"));observerIconH17,1237
+	public static final ImageIcon clearIcon			= new ImageIcon(loader.getResource(resourcePath + "clear.gif"));clearIcon18,1357
+	public static final ImageIcon simulationIcon 	= new ImageIcon(loader.getResource(resourcePath + "index.jpg"));simulationIcon20,1466
+	public static final ImageIcon consoleIcon 		= new ImageIcon(loader.getResource(resourcePath + "console_view.gif"));consoleIcon21,1578
+	public static final ImageIcon graphIcon			= new ImageIcon(loader.getResource(resourcePath + "test.png"));graphIcon22,1695
+	public static final ImageIcon export_co			= new ImageIcon(loader.getResource(resourcePath + "export_co.gif"));export_co25,1805
+	public static final ImageIcon observerIcon 		= new ImageIcon(loader.getResource(resourcePath + "sections.gif"));observerIcon26,1917
+	public static final ImageIcon restartIcon 		= new ImageIcon(loader.getResource(resourcePath + "reset.gif"));restartIcon29,2033
+	public static final ImageIcon previousIcon 		= new ImageIcon(loader.getResource(resourcePath + "nav_backward.gif"));previousIcon30,2143
+	public static final ImageIcon nextIcon			= new ImageIcon(loader.getResource(resourcePath + "forward_nav.gif"));nextIcon31,2261
+	public static final ImageIcon nextRandomIcon 	= new ImageIcon(loader.getResource(resourcePath + "random.png"));nextRandomIcon32,2374
+	public static final ImageIcon startIcon 		= new ImageIcon(loader.getResource(resourcePath + "start_task.gif"));startIcon33,2487
+	public static final ImageIcon pauseIcon			= new ImageIcon(loader.getResource(resourcePath + "suspend_co.gif"));pauseIcon34,2600
+	public static final ImageIcon stopIcon			= new ImageIcon(loader.getResource(resourcePath + "progress_stop.gif"));stopIcon35,2713
+	public static final ImageIcon trace 			= new ImageIcon(loader.getResource(resourcePath + "datasheet.gif"));trace37,2830
+	public static final ImageIcon configIcon 		= new ImageIcon(loader.getResource(resourcePath + "tree_mode.gif"));configIcon39,2940
+	public static final ImageIcon componentIcon 	= new ImageIcon(loader.getResource(resourcePath + "th_vertical.gif"));componentIcon40,3053
+	public static final ImageIcon processIcon 		= new ImageIcon(loader.getResource(resourcePath + "thread_obj.gif"));processIcon41,3170
+	public static final ImageIcon contextIcon 		= new ImageIcon(loader.getResource(resourcePath + "history_list.gif"));contextIcon42,3285
+	public static final ImageIcon assertIcon 		= new ImageIcon(loader.getResource(resourcePath + "conflict_stat.gif"));assertIcon43,3402
+	public static final ImageIcon clockIcon 		= new ImageIcon(loader.getResource(resourcePath + "config_obj.gif"));clockIcon44,3519
+	public static final ImageIcon channelsIcon 		= new ImageIcon(loader.getResource(resourcePath + "call_hierarchy.gif"));channelsIcon45,3632
+	public static final ImageIcon chanLeafIcon 		= new ImageIcon(loader.getResource(resourcePath + "call_hierarchy2.gif"));chanLeafIcon46,3752
+	public static final ImageIcon stateIcon 		= new ImageIcon(loader.getResource(resourcePath + "icon_state.gif"));stateIcon47,3873
+	public static final ImageIcon peersIcon 		= new ImageIcon(loader.getResource(resourcePath + "icon_assoc.png"));peersIcon48,3986
+	public static final ImageIcon eventpoolIcon 	= new ImageIcon(loader.getResource(resourcePath + "queue.png"));eventpoolIcon49,4099
+	public static final ImageIcon variablesIcon 	= new ImageIcon(loader.getResource(resourcePath + "variables.png"));variablesIcon50,4210
+	public static final ImageIcon localVarIcon	 	= new ImageIcon(loader.getResource(resourcePath + "member_local.png"));localVarIcon51,4325
+
+plug-simulation-ui/src/plug/simulation/ui/SimulationModel.java,412
+package plug.simulation.ui;plug.simulation.ui1,0
+public class SimulationModel {SimulationModel16,454
+    File modelFile;modelFile17,485
+    Simulator simulator;simulator18,505
+    ISelectionPolicy policy;policy19,530
+    public SimulationModel(){}SimulationModel21,561
+    public SimulationModel(ISelectionPolicy policy) {SimulationModel23,594
+    void loadModel(File modelFile) {loadModel27,679
+
+plug-simulation-ui/src/plug/simulation/ui/PlugSimulationControler.java,1456
+package plug.simulation.ui;plug.simulation.ui1,0
+public class PlugSimulationControler {PlugSimulationControler25,787
+    PlugSimulatorUI ui; // contient la frameui26,826
+    JFileChooser chooser = new JFileChooser();;chooser27,871
+    SimulationModel model;model28,919
+    Random random = new Random();random29,946
+    Map<String, ImageIcon> configurationIcons = new HashMap<String, ImageIcon>() {{configurationIcons31,982
+    public PlugSimulationControler(PlugSimulatorUI ui) {PlugSimulationControler40,1423
+    public void openModelAction(ActionEvent e) {openModelAction100,3854
+    FireFunction fireFunction = (sourceConfiguration, fireableT) -> {fireFunction108,4051
+    void updateTransitionList(Collection<IFireableTransition> fireables) {updateTransitionList114,4311
+    void load(File file) {load134,5168
+    public void restartAction(ActionEvent e) {restartAction149,5677
+    public void stepBackAction(ActionEvent e) {stepBackAction157,5845
+    public void stepForwardAction(ActionEvent e) {stepForwardAction162,5939
+    public void stepRandomlyAction(ActionEvent e) {stepRandomlyAction177,6558
+    FileFilter modelFileFilter() {modelFileFilter190,7147
+class ActionTuple {ActionTuple212,7498
+    String action;action213,7518
+    IConfiguration newState;newState214,7537
+    public ActionTuple(String action, IConfiguration newState) {ActionTuple216,7568
+    public String toString() {toString222,7705
+
+plug-simulation-ui/src/plug/simulation/ui/PlugSimulatorUI.java,2684
+package plug.simulation.ui;plug.simulation.ui1,0
+public class PlugSimulatorUI extends JFrame {PlugSimulatorUI15,370
+    private static final long serialVersionUID = -4464231883790020378L;serialVersionUID17,417
+    private final Action openAction = new OpenModelAction();openAction18,489
+    private final Action restartAction = new RestartAction();restartAction19,550
+    private final Action stepBackAction = new StepBackAction();stepBackAction20,612
+    private final Action stepForwardAction = new StepForwardAction();stepForwardAction21,676
+    private final Action stepRandomlyAction = new StepRandomlyAction();stepRandomlyAction22,746
+    JTree configurationTree;configurationTree23,818
+    JList<IFireableTransition> fireableTransitionList;fireableTransitionList24,847
+    JTree fireableTransitionDetails;fireableTransitionDetails25,902
+    JTextPane rawConfigurationPane;rawConfigurationPane26,939
+    public PlugSimulationControler controler;controler28,976
+    public static void main(String[] args) {main32,1069
+    public Class exists(String className)exists47,1389
+    public PlugSimulatorUI() {PlugSimulatorUI60,1613
+    private class OpenModelAction extends AbstractAction {OpenModelAction168,5694
+	private static final long serialVersionUID = -4313693435533751414L;serialVersionUID169,5753
+	public OpenModelAction() {OpenModelAction170,5822
+	public void actionPerformed(ActionEvent e) {actionPerformed176,6154
+    private class RestartAction extends AbstractAction {RestartAction181,6290
+	private static final long serialVersionUID = -400426420761086007L;serialVersionUID182,6347
+	public RestartAction() {RestartAction183,6415
+	public void actionPerformed(ActionEvent e) {actionPerformed188,6652
+    private class StepBackAction extends AbstractAction {StepBackAction193,6786
+	private static final long serialVersionUID = 5780771875196063363L;serialVersionUID194,6844
+	public StepBackAction() {StepBackAction195,6912
+	public void actionPerformed(ActionEvent e) {actionPerformed200,7141
+    private class StepForwardAction extends AbstractAction {StepForwardAction205,7276
+	private static final long serialVersionUID = -4106989437444376190L;serialVersionUID206,7337
+	public StepForwardAction() {StepForwardAction207,7406
+	public void actionPerformed(ActionEvent e) {actionPerformed211,7526
+    private class StepRandomlyAction extends AbstractAction {StepRandomlyAction216,7664
+	private static final long serialVersionUID = -6250168255685392607L;serialVersionUID217,7726
+	public StepRandomlyAction() {StepRandomlyAction218,7795
+	public void actionPerformed(ActionEvent e) {actionPerformed222,7918
+
+plug-utils/src/plug/utils/CartesianProduct.java,190
+package plug.utils;plug.utils1,0
+public class CartesianProduct {CartesianProduct9,116
+   	public static <T> List<List<T>> cartesianProduct(List<List<T>> lists) {cartesianProduct10,148
+
+plug-utils/src/plug/utils/hash/UniversalHashedInt.java,447
+package plug.utils.hash;plug.utils.hash1,0
+public class UniversalHashedInt {UniversalHashedInt3,26
+	int value;value4,60
+	public static int a, b;a5,72
+	public static int a, b;b5,72
+	public static int p;p6,97
+	public static int m;m7,119
+	public UniversalHashedInt(int value) {UniversalHashedInt9,143
+	public boolean equals(Object b) {equals14,221
+	public int hashCode() {hashCode21,382
+	public String toString(){toString26,459
+
+plug-build/xtend/main/tuml/interpreter/parsercombinator/ParserCombinator.java,14938
+package tuml.interpreter.parsercombinator;tuml.interpreter.parsercombinator1,0
+public class ParserCombinator {ParserCombinator25,934
+  public static class Result {Result27,974
+    private final boolean success;success28,1005
+    private final ParserCombinator.ParserState state;state30,1045
+    public Result(final boolean success, final ParserCombinator.List<Object> stack, final String rest, final ParserCombinator.ParserState longestFailure) {Result32,1104
+    public Result(final boolean success, final ParserCombinator.ParserState state) {Result36,1355
+    public boolean getFailure() {getFailure41,1507
+    public ParserCombinator.List<Object> getStack() {getStack45,1582
+    public String getRest() {getRest49,1678
+    public ParserCombinator.ParserState getLongestFailure() {getLongestFailure53,1749
+    public ParserCombinator.ParserState stateWithStack(final ParserCombinator.List<Object> st) {stateWithStack57,1862
+    public int hashCode() {hashCode65,2185
+    public boolean equals(final Object obj) {equals75,2464
+    public String toString() {toString95,3008
+    public boolean isSuccess() {isSuccess103,3212
+    public ParserCombinator.ParserState getState() {getState108,3293
+  public static class ParserState {ParserState114,3392
+    private final ParserCombinator.List<Object> stack;stack115,3428
+    private final String rest;rest117,3488
+    private final ParserCombinator.ParserState longestFailure;longestFailure119,3524
+    public ParserCombinator.ParserState withRest(final String rest) {withRest121,3592
+    public ParserCombinator.ParserState withLongestFailureOf(final ParserCombinator.ParserState other) {withLongestFailureOf125,3759
+    public ParserCombinator.Result fail() {fail129,3967
+    public ParserState(final ParserCombinator.List<Object> stack, final String rest, final ParserCombinator.ParserState longestFailure) {ParserState151,4824
+    public int hashCode() {hashCode160,5106
+    public boolean equals(final Object obj) {equals171,5505
+    public String toString() {toString199,6350
+    public ParserCombinator.List<Object> getStack() {getStack208,6600
+    public String getRest() {getRest213,6700
+    public ParserCombinator.ParserState getLongestFailure() {getLongestFailure218,6775
+  public static abstract class Parser<T extends Object> {Parser223,6884
+    public ParserCombinator.Parser<T> or(final ParserCombinator.Parser<T> o) {or224,6942
+    public ParserCombinator.Parser<T> then(final ParserCombinator.Parser<T> o) {then228,7088
+    public ParserCombinator.Parser<T> mult(final int lower, final int upper) {mult232,7238
+    public ParserCombinator.Parser<T> mult(final int lower, final int upper, final ParserCombinator.Parser<T> separator) {mult236,7410
+    public ParserCombinator.Parser<T> multSet(final int lower, final int upper) {multSet240,7631
+    public ParserCombinator.Parser<T> multSet(final int lower, final int upper, final ParserCombinator.Parser<T> separator) {multSet244,7805
+    public abstract ParserCombinator.Result parseTrimmed(final ParserCombinator.ParserState state);parseTrimmed248,8028
+    public ParserCombinator.Result parseInternal(final ParserCombinator.ParserState state) {parseInternal250,8133
+    public String ignore(final String s) {ignore256,8400
+    public T parse(final String cs) {parse260,8503
+    public ParserCombinator.CreatingParser<T> create(final Class<? extends T> c, final Object... args) {create299,10229
+    public ParserCombinator.NodeCreatingParser<T> create(final String typeName, final String... argNames) {create303,10407
+  public static class GenericNode {GenericNode309,10619
+    private final String typeName;typeName310,10655
+    private final Collection<Pair<String, Object>> slots;slots312,10695
+    public GenericNode(final String typeName, final Collection<Pair<String, Object>> slots) {GenericNode314,10758
+    public int hashCode() {hashCode322,10960
+    public boolean equals(final Object obj) {equals332,11266
+    public String toString() {toString355,11930
+    public String getTypeName() {getTypeName363,12136
+    public Collection<Pair<String, Object>> getSlots() {getSlots368,12219
+  public static class NodeCreatingParser<T extends Object> extends ParserCombinator.Parser<T> {NodeCreatingParser374,12322
+    private final ParserCombinator.Parser<T> wrapped;wrapped375,12418
+    private final String typeName;typeName377,12477
+    private final String[] argNames;argNames379,12517
+    public ParserCombinator.Result parseTrimmed(final ParserCombinator.ParserState state) {parseTrimmed382,12573
+    public NodeCreatingParser(final ParserCombinator.Parser<T> wrapped, final String typeName, final String[] argNames) {NodeCreatingParser416,14170
+    public int hashCode() {hashCode425,14436
+    public boolean equals(final Object obj) {equals436,14845
+    public String toString() {toString464,15722
+    public ParserCombinator.Parser<T> getWrapped() {getWrapped472,15886
+    public String getTypeName() {getTypeName477,15987
+    public String[] getArgNames() {getArgNames482,16070
+  public static class CreatingParser<T extends Object> extends ParserCombinator.Parser<T> {CreatingParser488,16155
+    private final Class<? extends T> type;type489,16247
+    private final ParserCombinator.Parser<T> wrappedParser;wrappedParser491,16295
+    public ParserCombinator.Result parseTrimmed(final ParserCombinator.ParserState state) {parseTrimmed494,16374
+    public String toString() {toString553,18996
+    public CreatingParser(final Class<? extends T> type, final ParserCombinator.Parser<T> wrappedParser) {CreatingParser564,19362
+    public int hashCode() {hashCode572,19585
+    public boolean equals(final Object obj) {equals582,19899
+    public Class<? extends T> getType() {getType604,20577
+    public ParserCombinator.Parser<T> getWrappedParser() {getWrappedParser609,20664
+  public static class WrappingParser<T extends Object> extends ParserCombinator.Parser<T> {WrappingParser614,20769
+    private ParserCombinator.Parser<T> wrappedParser;wrappedParser615,20861
+    public ParserCombinator.Result parseTrimmed(final ParserCombinator.ParserState state) {parseTrimmed618,20934
+    public ParserCombinator.Parser<T> set(final ParserCombinator.Parser<T> wrappedParser) {set622,21091
+    public String toString() {toString627,21257
+  public static class OrParser<T extends Object> extends ParserCombinator.Parser<T> {OrParser633,21335
+    private final ParserCombinator.Parser<T> left;left634,21421
+    private final ParserCombinator.Parser<T> right;right636,21477
+    public ParserCombinator.Result parseTrimmed(final ParserCombinator.ParserState state) {parseTrimmed639,21548
+    public String toString() {toString652,22049
+    public OrParser(final ParserCombinator.Parser<T> left, final ParserCombinator.Parser<T> right) {OrParser662,22352
+    public int hashCode() {hashCode670,22553
+    public boolean equals(final Object obj) {equals680,22851
+    public ParserCombinator.Parser<T> getLeft() {getLeft702,23485
+    public ParserCombinator.Parser<T> getRight() {getRight707,23580
+  public static class ThenParser<T extends Object> extends ParserCombinator.Parser<T> {ThenParser713,23677
+    private final ParserCombinator.Parser<T> left;left714,23765
+    private final ParserCombinator.Parser<T> right;right716,23821
+    public ParserCombinator.Result parseTrimmed(final ParserCombinator.ParserState state) {parseTrimmed719,23892
+    public String toString() {toString740,24626
+    public ThenParser(final ParserCombinator.Parser<T> left, final ParserCombinator.Parser<T> right) {ThenParser750,24927
+    public int hashCode() {hashCode758,25130
+    public boolean equals(final Object obj) {equals768,25428
+    public ParserCombinator.Parser<T> getLeft() {getLeft790,26066
+    public ParserCombinator.Parser<T> getRight() {getRight795,26161
+  public static class DroppingParser<T extends Object> extends ParserCombinator.Parser<T> {DroppingParser801,26258
+    private final ParserCombinator.Parser<T> wrapped;wrapped802,26350
+    public ParserCombinator.Result parseTrimmed(final ParserCombinator.ParserState state) {parseTrimmed805,26423
+    public DroppingParser(final ParserCombinator.Parser<T> wrapped) {DroppingParser821,27042
+    public int hashCode() {hashCode828,27192
+    public boolean equals(final Object obj) {equals837,27413
+    public String toString() {toString855,27924
+    public ParserCombinator.Parser<T> getWrapped() {getWrapped863,28088
+  public static class MultParser<T extends Object> extends ParserCombinator.Parser<T> {MultParser869,28189
+    private final ParserCombinator.Parser<T> left;left870,28277
+    private final int lower;lower872,28333
+    private final int upper;upper874,28367
+    private final boolean elemsAsSet;elemsAsSet876,28401
+    private final ParserCombinator.Parser<T> separator;separator878,28444
+    public ParserCombinator.Result parseTrimmed(final ParserCombinator.ParserState state) {parseTrimmed881,28519
+    public String toString() {toString953,31533
+    public MultParser(final ParserCombinator.Parser<T> left, final int lower, final int upper, final boolean elemsAsSet, final ParserCombinator.Parser<T> separator) {MultParser980,32241
+    public int hashCode() {hashCode991,32604
+    public boolean equals(final Object obj) {equals1004,33063
+    public ParserCombinator.Parser<T> getLeft() {getLeft1032,33904
+    public int getLower() {getLower1037,33999
+    public int getUpper() {getUpper1042,34073
+    public boolean isElemsAsSet() {isElemsAsSet1047,34147
+    public ParserCombinator.Parser<T> getSeparator() {getSeparator1052,34234
+  public static class SymbolParser<T extends Object> extends ParserCombinator.Parser<T> {SymbolParser1058,34339
+    private final String symbol;symbol1059,34429
+    private final boolean ignored;ignored1061,34467
+    public ParserCombinator.Result parseTrimmed(final ParserCombinator.ParserState state) {parseTrimmed1064,34521
+    public String toString() {toString1089,35537
+    public SymbolParser(final String symbol, final boolean ignored) {SymbolParser1104,35962
+    public int hashCode() {hashCode1112,36140
+    public boolean equals(final Object obj) {equals1122,36421
+    public String getSymbol() {getSymbol1141,36973
+    public boolean isIgnored() {isIgnored1146,37052
+  public static class TerminalParser<T extends Object> extends ParserCombinator.Parser<T> {TerminalParser1151,37125
+    private final Pattern pattern;pattern1152,37217
+    public TerminalParser(final String regex) {TerminalParser1154,37257
+    public ParserCombinator.Result parseTrimmed(final ParserCombinator.ParserState state) {parseTrimmed1164,37586
+    public String toString() {toString1184,38405
+  public static abstract class List<T extends Object> {List1194,38687
+    public abstract T getHead();getHead1195,38743
+    public abstract ParserCombinator.List<T> getTail();getTail1197,38781
+    public abstract int getLength();getLength1199,38842
+    public ParserCombinator.List<T> push(final T e) {push1201,38884
+  public static class Cons<T extends Object> extends ParserCombinator.List<T> {Cons1207,39011
+    private final T head;head1208,39091
+    private final ParserCombinator.List<T> tail;tail1210,39122
+    private final int length;length1212,39176
+    public Cons(final T head) {Cons1214,39211
+    public Cons(final T head, final ParserCombinator.List<T> tail) {Cons1218,39299
+    public String toString() {toString1227,39539
+    public int hashCode() {hashCode1252,40215
+    public boolean equals(final Object obj) {equals1263,40556
+    public T getHead() {getHead1287,41239
+    public ParserCombinator.List<T> getTail() {getTail1292,41309
+    public int getLength() {getLength1297,41402
+  public static class Nil<T extends Object> extends ParserCombinator.List<T> {Nil1302,41470
+    public T getHead() {getHead1304,41563
+    public ParserCombinator.List<T> getTail() {getTail1309,41662
+    public String toString() {toString1314,41784
+    public int getLength() {getLength1319,41859
+  public static class Node {Node1325,41925
+    private final Object left;left1326,41954
+    private final Object right;right1328,41990
+    public Node(final Object left, final Object right) {Node1330,42027
+    public int hashCode() {hashCode1338,42184
+    public boolean equals(final Object obj) {equals1348,42482
+    public String toString() {toString1371,43116
+    public Object getLeft() {getLeft1379,43314
+    public Object getRight() {getRight1384,43389
+  public static void main(final String[] args) {main1389,43458
+  public static void testGrammar(final String grammar, final String... programs) {testGrammar1395,43630
+  public static void testGrammars() {testGrammars1402,44052
+  public static void testSimpleGrammars() {testSimpleGrammars1408,44219
+  private final static String km3Grammar = "\r\n\t\tmetamodel := package*# {Metamodel(packages)};\r\n\t\tpackage := \"package\"! ident \"{\"! classifier*# \"}\"! {Package(name,classifiers)};\r\n\t\tclassifier := class | dataType;\r\n\t\tclass := \"class\"! ident (\"extends\"! ident)?# \"{\"! structuralFeature*# \"}\"! {Class(name,supertype,structuralFeatures)};\r\n\t\tstructuralFeature := attribute | reference;\r\n\t\tattribute := \"attribute\"! ident multiplicity \":\"! ident \";\"! {Attribute(name,multiplicity,typeName)};\r\n\t\treference := \"reference\"! ident multiplicity \"container\"?# \":\"! ident (\"oppositeOf\"! ident)?# \";\"! {Reference(name,multiplicity,isContainer,typeName,opposite)};\r\n\t\tmultiplicity := (\"[\"! (\"*\"! {AnyNumber()} | int \"-\"! int {Bounded(lower, upper)}) \"]\"!)?# \"ordered\"?# \"unique\"?# {Multiplicity(number,isOrdered,isUnique)};\r\n\t\tdataType := \"dataType\"! ident \";\"! {DataType(name)};\r\n\t\tint := /([0-9]+)/;\r\n\t\tident := /([A-Za-z_]\\w*)/;\r\n\t";km3Grammar1436,45211
+  public static void testKM3Grammar() {testKM3Grammar1438,46230
+  public static void testMetaGrammar() {testMetaGrammar1444,47788
+  public static Object simpleTests() {simpleTests1449,48801
+  public static Object testABCDExpression() {testABCDExpression1513,51765
+  public static Object testParser(final ParserCombinator.Parser<?> parser, final String program) {testParser1564,53676
+  public static ParserCombinator.Parser<Object> symb(final String s) {symb1582,54369
+  public static ParserCombinator.Parser<Object> isymb(final String s) {isymb1586,54511
+  public static ParserCombinator.Parser<Object> terminal(final String regex) {terminal1590,54653
+  private final static ParserCombinator.List<Object> nil_ = ((ParserCombinator.List<Object>) new ParserCombinator.Nil<Object>());nil_1594,54802
+  public static <T extends Object> ParserCombinator.List<T> nil() {nil1596,54935
+
+plug-build/xtend/main/tuml/interpreter/parsercombinator/GrammarLanguage.java,7983
+package tuml.interpreter.parsercombinator;tuml.interpreter.parsercombinator1,0
+public class GrammarLanguage extends ParserCombinator {GrammarLanguage21,770
+  public static abstract class GrammarNode {GrammarNode23,834
+    public int hashCode() {hashCode26,903
+    public boolean equals(final Object obj) {equals34,1037
+    public String toString() {toString47,1365
+  public static class Grammar extends GrammarLanguage.GrammarNode {Grammar54,1497
+    private final Set<GrammarLanguage.ProductionRule> productionRules;productionRules55,1565
+    public ParserCombinator.WrappingParser<Object> eval() {eval57,1641
+    public Grammar(final Set<GrammarLanguage.ProductionRule> productionRules) {Grammar90,3762
+    public int hashCode() {hashCode97,3938
+    public boolean equals(final Object obj) {equals106,4190
+    public String toString() {toString126,4763
+    public Set<GrammarLanguage.ProductionRule> getProductionRules() {getProductionRules134,4927
+  public static class ProductionRule extends GrammarLanguage.GrammarNode {ProductionRule140,5053
+    private final String name;name141,5128
+    private final GrammarLanguage.Expression body;body143,5164
+    public ProductionRule(final String name, final GrammarLanguage.Expression body) {ProductionRule145,5220
+    public int hashCode() {hashCode153,5404
+    public boolean equals(final Object obj) {equals163,5715
+    public String toString() {toString188,6415
+    public String getName() {getName196,6579
+    public GrammarLanguage.Expression getBody() {getBody201,6654
+  public static abstract class Expression extends GrammarLanguage.GrammarNode {Expression207,6749
+    public abstract ParserCombinator.Parser<Object> eval(final Map<String, ? extends ParserCombinator.Parser<Object>> rules);eval208,6829
+    public int hashCode() {hashCode212,6984
+    public boolean equals(final Object obj) {equals220,7133
+    public String toString() {toString235,7511
+  public static class Symbol extends GrammarLanguage.Expression {Symbol244,7675
+    private final String value;value245,7741
+    public ParserCombinator.Parser<Object> eval(final Map<String, ? extends ParserCombinator.Parser<Object>> rules) {eval248,7792
+    public Symbol(final String value) {Symbol252,7996
+    public int hashCode() {hashCode259,8112
+    public boolean equals(final Object obj) {equals268,8344
+    public String toString() {toString288,8875
+    public String getValue() {getValue296,9039
+  public static class Terminal extends GrammarLanguage.Expression {Terminal302,9116
+    private final String value;value303,9184
+    public ParserCombinator.Parser<Object> eval(final Map<String, ? extends ParserCombinator.Parser<Object>> rules) {eval306,9235
+    public Terminal(final String value) {Terminal310,9434
+    public int hashCode() {hashCode317,9552
+    public boolean equals(final Object obj) {equals326,9784
+    public String toString() {toString346,10319
+    public String getValue() {getValue354,10483
+  public static class RuleCall extends GrammarLanguage.Expression {RuleCall360,10560
+    private final String ruleName;ruleName361,10628
+    public ParserCombinator.Parser<Object> eval(final Map<String, ? extends ParserCombinator.Parser<Object>> rules) {eval364,10682
+    public RuleCall(final String ruleName) {RuleCall381,11376
+    public int hashCode() {hashCode388,11503
+    public boolean equals(final Object obj) {equals397,11741
+    public String toString() {toString417,12288
+    public String getRuleName() {getRuleName425,12452
+  public static class Alternative extends GrammarLanguage.Expression {Alternative431,12535
+    private final GrammarLanguage.Expression left;left432,12606
+    private final GrammarLanguage.Expression right;right434,12662
+    public ParserCombinator.Parser<Object> eval(final Map<String, ? extends ParserCombinator.Parser<Object>> rules) {eval437,12733
+    public Alternative(final GrammarLanguage.Expression left, final GrammarLanguage.Expression right) {Alternative443,13071
+    public int hashCode() {hashCode451,13275
+    public boolean equals(final Object obj) {equals461,13588
+    public String toString() {toString486,14286
+    public GrammarLanguage.Expression getLeft() {getLeft494,14450
+    public GrammarLanguage.Expression getRight() {getRight499,14545
+  public static class Sequence extends GrammarLanguage.Expression {Sequence505,14642
+    private final GrammarLanguage.Expression left;left506,14710
+    private final GrammarLanguage.Expression right;right508,14766
+    public ParserCombinator.Parser<Object> eval(final Map<String, ? extends ParserCombinator.Parser<Object>> rules) {eval511,14837
+    public Sequence(final GrammarLanguage.Expression left, final GrammarLanguage.Expression right) {Sequence517,15177
+    public int hashCode() {hashCode525,15378
+    public boolean equals(final Object obj) {equals535,15691
+    public String toString() {toString560,16383
+    public GrammarLanguage.Expression getLeft() {getLeft568,16547
+    public GrammarLanguage.Expression getRight() {getRight573,16642
+  public static class Repetition extends GrammarLanguage.Expression {Repetition579,16739
+    private final GrammarLanguage.Expression expression;expression580,16809
+    private final String op;op582,16871
+    private final Collection<String> asSet;asSet584,16905
+    private final Collection<GrammarLanguage.Expression> separator;separator586,16954
+    public ParserCombinator.Parser<Object> eval(final Map<String, ? extends ParserCombinator.Parser<Object>> rules) {eval589,17041
+    public Repetition(final GrammarLanguage.Expression expression, final String op, final Collection<String> asSet, final Collection<GrammarLanguage.Expression> separator) {Repetition645,19495
+    public int hashCode() {hashCode655,19835
+    public boolean equals(final Object obj) {equals667,20328
+    public String toString() {toString702,21374
+    public GrammarLanguage.Expression getExpression() {getExpression710,21538
+    public String getOp() {getOp715,21645
+    public Collection<String> getAsSet() {getAsSet720,21716
+    public Collection<GrammarLanguage.Expression> getSeparator() {getSeparator725,21805
+  public static class Drop extends GrammarLanguage.Expression {Drop731,21922
+    private final GrammarLanguage.Expression expression;expression732,21986
+    public ParserCombinator.Parser<Object> eval(final Map<String, ? extends ParserCombinator.Parser<Object>> rules) {eval735,22062
+    public Drop(final GrammarLanguage.Expression expression) {Drop740,22331
+    public int hashCode() {hashCode747,22480
+    public boolean equals(final Object obj) {equals756,22722
+    public String toString() {toString776,23269
+    public GrammarLanguage.Expression getExpression() {getExpression784,23433
+  public static class Creation extends GrammarLanguage.Expression {Creation790,23540
+    private final GrammarLanguage.Expression expression;expression791,23608
+    private final String nodeType;nodeType793,23670
+    private final Set<String> argumentNames;argumentNames795,23710
+    public ParserCombinator.Parser<Object> eval(final Map<String, ? extends ParserCombinator.Parser<Object>> rules) {eval798,23774
+    public Creation(final GrammarLanguage.Expression expression, final String nodeType, final Set<String> argumentNames) {Creation803,24133
+    public int hashCode() {hashCode812,24416
+    public boolean equals(final Object obj) {equals823,24846
+    public String toString() {toString853,25767
+    public GrammarLanguage.Expression getExpression() {getExpression861,25931
+    public String getNodeType() {getNodeType866,26038
+    public Set<String> getArgumentNames() {getArgumentNames871,26121
+  private static ParserCombinator.Parser<GrammarLanguage.Grammar> parser;parser876,26211
+  public static ParserCombinator.Parser<GrammarLanguage.Grammar> getParser() {getParser878,26288
+
+plug-build/xtend/main/tuml/interpreter/parsercombinator/ABCDExpressionLanguage.java,3297
+package tuml.interpreter.parsercombinator;tuml.interpreter.parsercombinator1,0
+public class ABCDExpressionLanguage extends ParserCombinator {ABCDExpressionLanguage12,400
+  public static abstract class Exp {Exp13,463
+    public abstract Object eval(final Function<String, Object> env);eval14,500
+  public static class True extends ABCDExpressionLanguage.Exp {True17,576
+    public String toString() {toString19,654
+    public Object eval(final Function<String, Object> env) {eval24,731
+  public static class False extends ABCDExpressionLanguage.Exp {False29,841
+    public String toString() {toString31,920
+    public Object eval(final Function<String, Object> env) {eval36,998
+  public static class Var extends ABCDExpressionLanguage.Exp {Var42,1117
+    private final String name;name43,1180
+    public String toString() {toString46,1230
+    public Object eval(final Function<String, Object> env) {eval51,1310
+    public Var(final String name) {Var55,1417
+    public int hashCode() {hashCode62,1527
+    public boolean equals(final Object obj) {equals71,1742
+    public String getName() {getName88,2211
+  public static class Int extends ABCDExpressionLanguage.Exp {Int94,2286
+    private final int value;value95,2349
+    public String toString() {toString98,2397
+    public Int(final String value) {Int102,2488
+    public Object eval(final Function<String, Object> env) {eval108,2627
+    public int hashCode() {hashCode114,2765
+    public boolean equals(final Object obj) {equals123,2943
+    public int getValue() {getValue137,3314
+  public static class UnaryExp extends ABCDExpressionLanguage.Exp {UnaryExp143,3388
+    private final String op;op144,3456
+    private final ABCDExpressionLanguage.Exp operand;operand146,3490
+    public Object eval(final Function<String, Object> env) {eval149,3563
+    public UnaryExp(final String op, final ABCDExpressionLanguage.Exp operand) {UnaryExp183,4686
+    public int hashCode() {hashCode191,4867
+    public boolean equals(final Object obj) {equals201,5165
+    public String toString() {toString224,5819
+    public String getOp() {getOp232,5983
+    public ABCDExpressionLanguage.Exp getOperand() {getOperand237,6054
+  public static class BinaryExp extends ABCDExpressionLanguage.Exp {BinaryExp243,6155
+    private final ABCDExpressionLanguage.Exp left;left244,6224
+    private final String op;op246,6280
+    private final ABCDExpressionLanguage.Exp right;right248,6314
+    public Object eval(final Function<String, Object> env) {eval251,6385
+    public BinaryExp(final ABCDExpressionLanguage.Exp left, final String op, final ABCDExpressionLanguage.Exp right) {BinaryExp348,9884
+    public int hashCode() {hashCode357,10123
+    public boolean equals(final Object obj) {equals368,10498
+    public String toString() {toString396,11303
+    public ABCDExpressionLanguage.Exp getLeft() {getLeft404,11467
+    public String getOp() {getOp409,11562
+    public ABCDExpressionLanguage.Exp getRight() {getRight414,11633
+  public static ParserCombinator.Parser<Object> kw(final String s) {kw419,11722
+  private static ParserCombinator.Parser<ABCDExpressionLanguage.Exp> expressionParser;expressionParser427,12002
+  public static Object getParser() {getParser429,12092
+
+plug-build/xtend/main/tuml/interpreter/Environment.java,1225
+package tuml.interpreter;tuml.interpreter1,0
+public class Environment {Environment26,902
+  public final boolean outputPlantUML = false;outputPlantUML27,929
+  public final boolean outputPlantUMLStates = (this.outputPlantUML && false);outputPlantUMLStates29,979
+  private final Resource r;r31,1060
+  private final List<Signal> signalsCache = new ArrayList<Signal>();signalsCache33,1091
+  private final Map<Signal, Integer> signal2idCache = new HashMap<Signal, Integer>();signal2idCache35,1163
+  public List<Signal> signals() {signals37,1252
+  public Signal getSignal(final String name) {getSignal53,1807
+  public Map<Signal, Integer> signal2id() {signal2id65,2231
+  public Environment(final Resource r) {Environment95,3632
+  public int hashCode() {hashCode102,3729
+  public boolean equals(final Object obj) {equals115,4254
+  public String toString() {toString147,5183
+  public boolean getOutputPlantUML() {getOutputPlantUML158,5535
+  public boolean getOutputPlantUMLStates() {getOutputPlantUMLStates163,5621
+  public Resource getR() {getR168,5719
+  public List<Signal> getSignalsCache() {getSignalsCache173,5780
+  public Map<Signal, Integer> getSignal2idCache() {getSignal2idCache178,5867
+
+plug-build/xtend/main/tuml/interpreter/Main.java,628
+package tuml.interpreter;tuml.interpreter1,0
+public class Main {Main44,1655
+  private static void init() {init45,1675
+  public static void main(final String[] args) {main70,3199
+  public static Composite testSUS(final Environment env, final Composite sus) {testSUS123,5495
+  public static Composite testControleur(final Environment env, final Composite sus, final ActiveObject ao) {testControleur214,9568
+  public static CharSequence prettyName(final Pair<ActiveObject, Transition> t) {prettyName267,12385
+  private static void addPlugin(final Map<String, String> pluginToURL, final Class c) {addPlugin285,13023
+
+plug-build/xtend/main/tuml/interpreter/IAbstractVisitor.java,292
+package tuml.interpreter;tuml.interpreter1,0
+public interface IAbstractVisitor<T extends Object> {IAbstractVisitor7,126
+  public abstract T visitActiveObject(final ActiveObject node);visitActiveObject8,180
+  public abstract T visitComposite(final Composite node);visitComposite10,247
+
+plug-build/xtend/main/tuml/interpreter/Composite.java,1378
+package tuml.interpreter;tuml.interpreter1,0
+public class Composite {Composite32,1117
+  private final Environment env;env33,1142
+  private final org.eclipse.uml2.uml.Class c;c36,1219
+  private final HashMap<String, ActiveObject> parts = new HashMap<String, ActiveObject>();parts38,1268
+  public Composite(final Environment env, final org.eclipse.uml2.uml.Class c) {Composite40,1362
+  public Environment getEnvironment() {getEnvironment97,3882
+  public List<Pair<ActiveObject, Transition>> fireableTransitions() {fireableTransitions101,3950
+  public ActiveObject getPart(final String partName) {getPart114,4735
+  public Collection<ActiveObject> getParts() {getParts118,4834
+  public String toString() {toString123,4932
+  public static boolean isProcess(final Type c) {isProcess141,5631
+  public static boolean isComponent(final Element e) {isComponent151,5920
+  public static boolean isProcessInstance(final Property p) {isProcessInstance163,6332
+  public Integer getBufferSize() {getBufferSize185,6922
+  public Buffer encode(final ByteBuffer buffer) {encode197,7453
+  public Buffer decode(final ByteBuffer buffer) {decode213,7922
+  public ByteBuffer getCurrentState() {getCurrentState229,8391
+  public <T extends Object> T accept(final IAbstractVisitor<T> visitor) {accept236,8601
+  public org.eclipse.uml2.uml.Class getC() {getC241,8731
+
+plug-build/xtend/main/tuml/interpreter/ActiveObject.java,3025
+package tuml.interpreter;tuml.interpreter1,0
+public class ActiveObject {ActiveObject56,2124
+  private final Environment env;env57,2152
+  private final org.eclipse.uml2.uml.Class type;type59,2188
+  private final String name;name61,2240
+  private final List<Vertex> states;states63,2272
+  private final Map<Vertex, Integer> state2int;state2int65,2312
+  private final Map<Integer, Vertex> int2state;int2state67,2363
+  private Queue<Signal> eventPool = new ArrayDeque<Signal>();eventPool70,2455
+  private State currentState;currentState73,2561
+  public static int maxEventPoolSize = 10;maxEventPoolSize75,2594
+  private final HashMap<String, ActiveObject> peers = new HashMap<String, ActiveObject>();peers78,2681
+  private final HashMap<String, Object> localVars = new HashMap<String, Object>();localVars81,2816
+  private final HashSet<Signal> vocabulary = new HashSet<Signal>();vocabulary83,2902
+  public ActiveObject(final Environment env, final org.eclipse.uml2.uml.Class type, final String name) {ActiveObject85,2973
+  public ActiveObject addPeer(final String name, final ActiveObject peer) {addPeer204,8541
+  public String getName() {getName231,9588
+  public boolean queue(final Signal s) {queue235,9645
+  private final UMLFactory umlFactory = UMLFactory.eINSTANCE;umlFactory239,9727
+  public Transition createIgnoringTransition(final Set<Signal> ignoredTriggers) {createIgnoringTransition241,9792
+  public Set<Pair<ActiveObject, Transition>> fireableTransitions() {fireableTransitions269,10977
+  private final Pattern sendPattern = Pattern.compile("^send (\\S+) to (\\S+)$");sendPattern358,14965
+  private final String identRegex = "([A-Za-z_]\\w*)";identRegex360,15050
+  private final Pattern identPattern = new Function0<Pattern>() {identPattern362,15108
+  private final Pattern assignPattern = new Function0<Pattern>() {assignPattern373,15488
+  public void executeEffect(final Transition t) {executeEffect384,15877
+  public String guard(final Transition t) {guard487,20416
+  public String condition(final Transition t) {condition503,20925
+  private final ABCDExpressionParser abcd = new ABCDExpressionParser();abcd532,21838
+  public boolean eval(final String condition) {eval534,21913
+  public String fire(final Transition t) {fire540,22132
+  public CharSequence toShortString() {toShortString628,25637
+  public String toString() {toString638,25913
+  public int getIntBufferSize() {getIntBufferSize669,27071
+  public int getBufferSize() {getBufferSize676,27257
+  public void encode(final ByteBuffer buffer) {encode681,27378
+  public void decode(final ByteBuffer buffer) {decode721,28705
+  public <T extends Object> T accept(final IAbstractVisitor<T> visitor) {accept762,30168
+  public Queue<Signal> getEventPool() {getEventPool767,30301
+  public State getCurrentState() {getCurrentState772,30383
+  public HashMap<String, ActiveObject> getPeers() {getPeers777,30463
+  public HashMap<String, Object> getLocalVars() {getLocalVars782,30553
+
+plug-build/scripts/tuml-interpreter.bat,1871
+set DIRNAME=%~dp0DIRNAME11,356
+if "%DIRNAME%" == "" set DIRNAME=.DIRNAME12,375
+set APP_BASE_NAME=%~n0APP_BASE_NAME13,411
+set APP_HOME=%DIRNAME%..APP_HOME14,435
+set DEFAULT_JVM_OPTS=DEFAULT_JVM_OPTS17,588
+set JAVA_EXE=java.exeJAVA_EXE22,683
+:findJavaFromJavaHomefindJavaFromJavaHome34,1004
+set JAVA_HOME=%JAVA_HOME:"=%JAVA_HOME35,1027
+set JAVA_EXE=%JAVA_HOME%/bin/java.exeJAVA_EXE36,1057
+:initinit48,1344
+:win9xME_argswin9xME_args54,1503
+set CMD_LINE_ARGS=CMD_LINE_ARGS56,1558
+set _SKIP=2_SKIP57,1578
+:win9xME_args_slurpwin9xME_args_slurp59,1593
+set CMD_LINE_ARGS=%*CMD_LINE_ARGS62,1647
+:4NT_args4NT_args65,1685
+set CMD_LINE_ARGS=%$CMD_LINE_ARGS67,1752
+:executeexecute69,1776
+set CLASSPATH=%APP_HOME%\lib\tuml-interpreter-0.0.1.jar;%APP_HOME%\lib\org.eclipse.emf.common-2.11.0-v20150123-0347.jar;%APP_HOME%\lib\org.eclipse.emf.ecore-2.11.0-v20150123-0347.jar;%APP_HOME%\lib\org.eclipse.emf.ecore.xmi-2.11.0-v20150123-0347.jar;%APP_HOME%\lib\org.eclipse.emf.mapping.ecore2xml-2.8.0-v20150123-0452.jar;%APP_HOME%\lib\org.eclipse.uml2.common-2.0.1.v20150202-0947.jar;%APP_HOME%\lib\org.eclipse.uml2.types-2.0.0.v20150202-0947.jar;%APP_HOME%\lib\org.eclipse.uml2.uml-5.0.2.v20150202-0947.jar;%APP_HOME%\lib\org.eclipse.uml2.uml.profile.standard-1.0.0.v20150202-0947.jar;%APP_HOME%\lib\org.eclipse.uml2.uml.resources-5.0.2.v20150202-0947.jar;%APP_HOME%\lib\org.eclipse.xtend.lib-2.9.0.jar;%APP_HOME%\lib\java-petitparser-2.0.0.jar;%APP_HOME%\lib\org.eclipse.xtext.xbase.lib-2.9.0.jar;%APP_HOME%\lib\org.eclipse.xtend.lib.macro-2.9.0.jar;%APP_HOME%\lib\petitparser-core-2.0.0.jar;%APP_HOME%\lib\petitparser-json-2.0.0.jar;%APP_HOME%\lib\petitparser-smalltalk-2.0.0.jar;%APP_HOME%\lib\petitparser-xml-2.0.0.jar;%APP_HOME%\lib\guava-14.0.1.jarCLASSPATH72,1817
+:endend77,3046
+:failfail81,3153
+:mainEndmainEnd87,3360
+:omegaomega90,3406
+
+plug-build/scripts/tuml-interpreter,92
+warn ( ) {warn36,930
+die ( ) {die40,958
+function splitJvmOpts() {splitJvmOpts158,5799
+
+plug-build/scripts/plug-simulation-ui,92
+warn ( ) {warn36,936
+die ( ) {die40,964
+function splitJvmOpts() {splitJvmOpts158,6209
+
+plug-build/scripts/plug-simulation-ui.bat,2284
+set DIRNAME=%~dp0DIRNAME11,358
+if "%DIRNAME%" == "" set DIRNAME=.DIRNAME12,377
+set APP_BASE_NAME=%~n0APP_BASE_NAME13,413
+set APP_HOME=%DIRNAME%..APP_HOME14,437
+set DEFAULT_JVM_OPTS=DEFAULT_JVM_OPTS17,592
+set JAVA_EXE=java.exeJAVA_EXE22,687
+:findJavaFromJavaHomefindJavaFromJavaHome34,1008
+set JAVA_HOME=%JAVA_HOME:"=%JAVA_HOME35,1031
+set JAVA_EXE=%JAVA_HOME%/bin/java.exeJAVA_EXE36,1061
+:initinit48,1348
+:win9xME_argswin9xME_args54,1507
+set CMD_LINE_ARGS=CMD_LINE_ARGS56,1562
+set _SKIP=2_SKIP57,1582
+:win9xME_args_slurpwin9xME_args_slurp59,1597
+set CMD_LINE_ARGS=%*CMD_LINE_ARGS62,1651
+:4NT_args4NT_args65,1689
+set CMD_LINE_ARGS=%$CMD_LINE_ARGS67,1756
+:executeexecute69,1780
+set CLASSPATH=%APP_HOME%\lib\plug-simulation-ui-0.0.1.jar;%APP_HOME%\lib\plug-core-0.0.1.jar;%APP_HOME%\lib\plug-runtime-ltuml-0.0.1.jar;%APP_HOME%\lib\plug-utils-0.0.1.jar;%APP_HOME%\lib\org.eclipse.emf.common-2.11.0-v20150123-0347.jar;%APP_HOME%\lib\org.eclipse.emf.ecore-2.11.0-v20150123-0347.jar;%APP_HOME%\lib\org.eclipse.emf.ecore.xmi-2.11.0-v20150123-0347.jar;%APP_HOME%\lib\org.eclipse.emf.mapping.ecore2xml-2.8.0-v20150123-0452.jar;%APP_HOME%\lib\org.eclipse.uml2.common-2.0.1.v20150202-0947.jar;%APP_HOME%\lib\org.eclipse.uml2.types-2.0.0.v20150202-0947.jar;%APP_HOME%\lib\org.eclipse.uml2.uml-5.0.2.v20150202-0947.jar;%APP_HOME%\lib\org.eclipse.uml2.uml.profile.standard-1.0.0.v20150202-0947.jar;%APP_HOME%\lib\org.eclipse.uml2.uml.resources-5.0.2.v20150202-0947.jar;%APP_HOME%\lib\org.eclipse.xtend.standalone-2.4.3.jar;%APP_HOME%\lib\tuml-interpreter-0.0.1.jar;%APP_HOME%\lib\guava-15.0-rc1.jar;%APP_HOME%\lib\guice-3.0.jar;%APP_HOME%\lib\log4j-1.2.15.jar;%APP_HOME%\lib\java-petitparser-2.0.0.jar;%APP_HOME%\lib\javax.inject-1.jar;%APP_HOME%\lib\aopalliance-1.0.jar;%APP_HOME%\lib\cglib-2.2.1-v20090111.jar;%APP_HOME%\lib\petitparser-core-2.0.0.jar;%APP_HOME%\lib\petitparser-json-2.0.0.jar;%APP_HOME%\lib\petitparser-smalltalk-2.0.0.jar;%APP_HOME%\lib\petitparser-xml-2.0.0.jar;%APP_HOME%\lib\asm-3.1.jar;%APP_HOME%\lib\org.eclipse.xtend.lib-2.9.0.jar;%APP_HOME%\lib\org.eclipse.xtend.lib.macro-2.9.0.jar;%APP_HOME%\lib\org.eclipse.xtext.xbase.lib-2.9.0.jarCLASSPATH72,1821
+:endend77,3480
+:failfail81,3587
+:mainEndmainEnd87,3798
+:omegaomega90,3844
+
+plug-build/install/tuml-interpreter/bin/tuml-interpreter.bat,1871
+set DIRNAME=%~dp0DIRNAME11,356
+if "%DIRNAME%" == "" set DIRNAME=.DIRNAME12,375
+set APP_BASE_NAME=%~n0APP_BASE_NAME13,411
+set APP_HOME=%DIRNAME%..APP_HOME14,435
+set DEFAULT_JVM_OPTS=DEFAULT_JVM_OPTS17,588
+set JAVA_EXE=java.exeJAVA_EXE22,683
+:findJavaFromJavaHomefindJavaFromJavaHome34,1004
+set JAVA_HOME=%JAVA_HOME:"=%JAVA_HOME35,1027
+set JAVA_EXE=%JAVA_HOME%/bin/java.exeJAVA_EXE36,1057
+:initinit48,1344
+:win9xME_argswin9xME_args54,1503
+set CMD_LINE_ARGS=CMD_LINE_ARGS56,1558
+set _SKIP=2_SKIP57,1578
+:win9xME_args_slurpwin9xME_args_slurp59,1593
+set CMD_LINE_ARGS=%*CMD_LINE_ARGS62,1647
+:4NT_args4NT_args65,1685
+set CMD_LINE_ARGS=%$CMD_LINE_ARGS67,1752
+:executeexecute69,1776
+set CLASSPATH=%APP_HOME%\lib\tuml-interpreter-0.0.1.jar;%APP_HOME%\lib\org.eclipse.emf.common-2.11.0-v20150123-0347.jar;%APP_HOME%\lib\org.eclipse.emf.ecore-2.11.0-v20150123-0347.jar;%APP_HOME%\lib\org.eclipse.emf.ecore.xmi-2.11.0-v20150123-0347.jar;%APP_HOME%\lib\org.eclipse.emf.mapping.ecore2xml-2.8.0-v20150123-0452.jar;%APP_HOME%\lib\org.eclipse.uml2.common-2.0.1.v20150202-0947.jar;%APP_HOME%\lib\org.eclipse.uml2.types-2.0.0.v20150202-0947.jar;%APP_HOME%\lib\org.eclipse.uml2.uml-5.0.2.v20150202-0947.jar;%APP_HOME%\lib\org.eclipse.uml2.uml.profile.standard-1.0.0.v20150202-0947.jar;%APP_HOME%\lib\org.eclipse.uml2.uml.resources-5.0.2.v20150202-0947.jar;%APP_HOME%\lib\org.eclipse.xtend.lib-2.9.0.jar;%APP_HOME%\lib\java-petitparser-2.0.0.jar;%APP_HOME%\lib\org.eclipse.xtext.xbase.lib-2.9.0.jar;%APP_HOME%\lib\org.eclipse.xtend.lib.macro-2.9.0.jar;%APP_HOME%\lib\petitparser-core-2.0.0.jar;%APP_HOME%\lib\petitparser-json-2.0.0.jar;%APP_HOME%\lib\petitparser-smalltalk-2.0.0.jar;%APP_HOME%\lib\petitparser-xml-2.0.0.jar;%APP_HOME%\lib\guava-14.0.1.jarCLASSPATH72,1817
+:endend77,3046
+:failfail81,3153
+:mainEndmainEnd87,3360
+:omegaomega90,3406
+
+plug-build/install/tuml-interpreter/bin/tuml-interpreter,92
+warn ( ) {warn36,930
+die ( ) {die40,958
+function splitJvmOpts() {splitJvmOpts158,5799
+
+plug-build/install/tuml-interpreter/bin/plug-simulation-ui,92
+warn ( ) {warn36,936
+die ( ) {die40,964
+function splitJvmOpts() {splitJvmOpts158,6209
+
+plug-build/install/tuml-interpreter/bin/plug-simulation-ui.bat,2284
+set DIRNAME=%~dp0DIRNAME11,358
+if "%DIRNAME%" == "" set DIRNAME=.DIRNAME12,377
+set APP_BASE_NAME=%~n0APP_BASE_NAME13,413
+set APP_HOME=%DIRNAME%..APP_HOME14,437
+set DEFAULT_JVM_OPTS=DEFAULT_JVM_OPTS17,592
+set JAVA_EXE=java.exeJAVA_EXE22,687
+:findJavaFromJavaHomefindJavaFromJavaHome34,1008
+set JAVA_HOME=%JAVA_HOME:"=%JAVA_HOME35,1031
+set JAVA_EXE=%JAVA_HOME%/bin/java.exeJAVA_EXE36,1061
+:initinit48,1348
+:win9xME_argswin9xME_args54,1507
+set CMD_LINE_ARGS=CMD_LINE_ARGS56,1562
+set _SKIP=2_SKIP57,1582
+:win9xME_args_slurpwin9xME_args_slurp59,1597
+set CMD_LINE_ARGS=%*CMD_LINE_ARGS62,1651
+:4NT_args4NT_args65,1689
+set CMD_LINE_ARGS=%$CMD_LINE_ARGS67,1756
+:executeexecute69,1780
+set CLASSPATH=%APP_HOME%\lib\plug-simulation-ui-0.0.1.jar;%APP_HOME%\lib\plug-core-0.0.1.jar;%APP_HOME%\lib\plug-runtime-ltuml-0.0.1.jar;%APP_HOME%\lib\plug-utils-0.0.1.jar;%APP_HOME%\lib\org.eclipse.emf.common-2.11.0-v20150123-0347.jar;%APP_HOME%\lib\org.eclipse.emf.ecore-2.11.0-v20150123-0347.jar;%APP_HOME%\lib\org.eclipse.emf.ecore.xmi-2.11.0-v20150123-0347.jar;%APP_HOME%\lib\org.eclipse.emf.mapping.ecore2xml-2.8.0-v20150123-0452.jar;%APP_HOME%\lib\org.eclipse.uml2.common-2.0.1.v20150202-0947.jar;%APP_HOME%\lib\org.eclipse.uml2.types-2.0.0.v20150202-0947.jar;%APP_HOME%\lib\org.eclipse.uml2.uml-5.0.2.v20150202-0947.jar;%APP_HOME%\lib\org.eclipse.uml2.uml.profile.standard-1.0.0.v20150202-0947.jar;%APP_HOME%\lib\org.eclipse.uml2.uml.resources-5.0.2.v20150202-0947.jar;%APP_HOME%\lib\org.eclipse.xtend.standalone-2.4.3.jar;%APP_HOME%\lib\tuml-interpreter-0.0.1.jar;%APP_HOME%\lib\guava-15.0-rc1.jar;%APP_HOME%\lib\guice-3.0.jar;%APP_HOME%\lib\log4j-1.2.15.jar;%APP_HOME%\lib\java-petitparser-2.0.0.jar;%APP_HOME%\lib\javax.inject-1.jar;%APP_HOME%\lib\aopalliance-1.0.jar;%APP_HOME%\lib\cglib-2.2.1-v20090111.jar;%APP_HOME%\lib\petitparser-core-2.0.0.jar;%APP_HOME%\lib\petitparser-json-2.0.0.jar;%APP_HOME%\lib\petitparser-smalltalk-2.0.0.jar;%APP_HOME%\lib\petitparser-xml-2.0.0.jar;%APP_HOME%\lib\asm-3.1.jar;%APP_HOME%\lib\org.eclipse.xtend.lib-2.9.0.jar;%APP_HOME%\lib\org.eclipse.xtend.lib.macro-2.9.0.jar;%APP_HOME%\lib\org.eclipse.xtext.xbase.lib-2.9.0.jarCLASSPATH72,1821
+:endend77,3480
+:failfail81,3587
+:mainEndmainEnd87,3798
+:omegaomega90,3844
+
+plug-build/install/plug-simulation-ui/bin/tuml-interpreter.bat,1871
+set DIRNAME=%~dp0DIRNAME11,356
+if "%DIRNAME%" == "" set DIRNAME=.DIRNAME12,375
+set APP_BASE_NAME=%~n0APP_BASE_NAME13,411
+set APP_HOME=%DIRNAME%..APP_HOME14,435
+set DEFAULT_JVM_OPTS=DEFAULT_JVM_OPTS17,588
+set JAVA_EXE=java.exeJAVA_EXE22,683
+:findJavaFromJavaHomefindJavaFromJavaHome34,1004
+set JAVA_HOME=%JAVA_HOME:"=%JAVA_HOME35,1027
+set JAVA_EXE=%JAVA_HOME%/bin/java.exeJAVA_EXE36,1057
+:initinit48,1344
+:win9xME_argswin9xME_args54,1503
+set CMD_LINE_ARGS=CMD_LINE_ARGS56,1558
+set _SKIP=2_SKIP57,1578
+:win9xME_args_slurpwin9xME_args_slurp59,1593
+set CMD_LINE_ARGS=%*CMD_LINE_ARGS62,1647
+:4NT_args4NT_args65,1685
+set CMD_LINE_ARGS=%$CMD_LINE_ARGS67,1752
+:executeexecute69,1776
+set CLASSPATH=%APP_HOME%\lib\tuml-interpreter-0.0.1.jar;%APP_HOME%\lib\org.eclipse.emf.common-2.11.0-v20150123-0347.jar;%APP_HOME%\lib\org.eclipse.emf.ecore-2.11.0-v20150123-0347.jar;%APP_HOME%\lib\org.eclipse.emf.ecore.xmi-2.11.0-v20150123-0347.jar;%APP_HOME%\lib\org.eclipse.emf.mapping.ecore2xml-2.8.0-v20150123-0452.jar;%APP_HOME%\lib\org.eclipse.uml2.common-2.0.1.v20150202-0947.jar;%APP_HOME%\lib\org.eclipse.uml2.types-2.0.0.v20150202-0947.jar;%APP_HOME%\lib\org.eclipse.uml2.uml-5.0.2.v20150202-0947.jar;%APP_HOME%\lib\org.eclipse.uml2.uml.profile.standard-1.0.0.v20150202-0947.jar;%APP_HOME%\lib\org.eclipse.uml2.uml.resources-5.0.2.v20150202-0947.jar;%APP_HOME%\lib\org.eclipse.xtend.lib-2.9.0.jar;%APP_HOME%\lib\java-petitparser-2.0.0.jar;%APP_HOME%\lib\org.eclipse.xtext.xbase.lib-2.9.0.jar;%APP_HOME%\lib\org.eclipse.xtend.lib.macro-2.9.0.jar;%APP_HOME%\lib\petitparser-core-2.0.0.jar;%APP_HOME%\lib\petitparser-json-2.0.0.jar;%APP_HOME%\lib\petitparser-smalltalk-2.0.0.jar;%APP_HOME%\lib\petitparser-xml-2.0.0.jar;%APP_HOME%\lib\guava-14.0.1.jarCLASSPATH72,1817
+:endend77,3046
+:failfail81,3153
+:mainEndmainEnd87,3360
+:omegaomega90,3406
+
+plug-build/install/plug-simulation-ui/bin/tuml-interpreter,92
+warn ( ) {warn36,930
+die ( ) {die40,958
+function splitJvmOpts() {splitJvmOpts158,5799
+
+plug-build/install/plug-simulation-ui/bin/plug-simulation-ui,92
+warn ( ) {warn36,936
+die ( ) {die40,964
+function splitJvmOpts() {splitJvmOpts158,6209
+
+plug-build/install/plug-simulation-ui/bin/plug-simulation-ui.bat,2284
+set DIRNAME=%~dp0DIRNAME11,358
+if "%DIRNAME%" == "" set DIRNAME=.DIRNAME12,377
+set APP_BASE_NAME=%~n0APP_BASE_NAME13,413
+set APP_HOME=%DIRNAME%..APP_HOME14,437
+set DEFAULT_JVM_OPTS=DEFAULT_JVM_OPTS17,592
+set JAVA_EXE=java.exeJAVA_EXE22,687
+:findJavaFromJavaHomefindJavaFromJavaHome34,1008
+set JAVA_HOME=%JAVA_HOME:"=%JAVA_HOME35,1031
+set JAVA_EXE=%JAVA_HOME%/bin/java.exeJAVA_EXE36,1061
+:initinit48,1348
+:win9xME_argswin9xME_args54,1507
+set CMD_LINE_ARGS=CMD_LINE_ARGS56,1562
+set _SKIP=2_SKIP57,1582
+:win9xME_args_slurpwin9xME_args_slurp59,1597
+set CMD_LINE_ARGS=%*CMD_LINE_ARGS62,1651
+:4NT_args4NT_args65,1689
+set CMD_LINE_ARGS=%$CMD_LINE_ARGS67,1756
+:executeexecute69,1780
+set CLASSPATH=%APP_HOME%\lib\plug-simulation-ui-0.0.1.jar;%APP_HOME%\lib\plug-core-0.0.1.jar;%APP_HOME%\lib\plug-runtime-ltuml-0.0.1.jar;%APP_HOME%\lib\plug-utils-0.0.1.jar;%APP_HOME%\lib\org.eclipse.emf.common-2.11.0-v20150123-0347.jar;%APP_HOME%\lib\org.eclipse.emf.ecore-2.11.0-v20150123-0347.jar;%APP_HOME%\lib\org.eclipse.emf.ecore.xmi-2.11.0-v20150123-0347.jar;%APP_HOME%\lib\org.eclipse.emf.mapping.ecore2xml-2.8.0-v20150123-0452.jar;%APP_HOME%\lib\org.eclipse.uml2.common-2.0.1.v20150202-0947.jar;%APP_HOME%\lib\org.eclipse.uml2.types-2.0.0.v20150202-0947.jar;%APP_HOME%\lib\org.eclipse.uml2.uml-5.0.2.v20150202-0947.jar;%APP_HOME%\lib\org.eclipse.uml2.uml.profile.standard-1.0.0.v20150202-0947.jar;%APP_HOME%\lib\org.eclipse.uml2.uml.resources-5.0.2.v20150202-0947.jar;%APP_HOME%\lib\org.eclipse.xtend.standalone-2.4.3.jar;%APP_HOME%\lib\tuml-interpreter-0.0.1.jar;%APP_HOME%\lib\guava-15.0-rc1.jar;%APP_HOME%\lib\guice-3.0.jar;%APP_HOME%\lib\log4j-1.2.15.jar;%APP_HOME%\lib\java-petitparser-2.0.0.jar;%APP_HOME%\lib\javax.inject-1.jar;%APP_HOME%\lib\aopalliance-1.0.jar;%APP_HOME%\lib\cglib-2.2.1-v20090111.jar;%APP_HOME%\lib\petitparser-core-2.0.0.jar;%APP_HOME%\lib\petitparser-json-2.0.0.jar;%APP_HOME%\lib\petitparser-smalltalk-2.0.0.jar;%APP_HOME%\lib\petitparser-xml-2.0.0.jar;%APP_HOME%\lib\asm-3.1.jar;%APP_HOME%\lib\org.eclipse.xtend.lib-2.9.0.jar;%APP_HOME%\lib\org.eclipse.xtend.lib.macro-2.9.0.jar;%APP_HOME%\lib\org.eclipse.xtext.xbase.lib-2.9.0.jarCLASSPATH72,1821
+:endend77,3480
+:failfail81,3587
+:mainEndmainEnd87,3798
+:omegaomega90,3844
+
+plug-build/reports/tests-plug-runtime-ltuml/packages/plug.languages.tuml.html,0
+
+plug-build/reports/tests-plug-runtime-ltuml/js/report.js,1115
+    var tabs = {};tabs4,50
+    function changeElementClass(element, classValue) {changeElementClass6,70
+    function getClassAttribute(element) {getClassAttribute14,322
+    function addClass(element, classValue) {addClass22,551
+    function removeClass(element, classValue) {removeClass26,687
+    function initTabs() {initTabs30,831
+    function getCheckBox() {getCheckBox43,1171
+    function getLabelForCheckBox() {getLabelForCheckBox47,1271
+    function findCodeBlocks() {findCodeBlocks51,1389
+    function forAllCodeBlocks(operation) {forAllCodeBlocks62,1741
+    function toggleLineWrapping() {toggleLineWrapping70,1948
+    function initControls() {initControls80,2172
+    function switchTab() {switchTab92,2485
+    function select(i) {select105,2753
+    function deselectAll() {deselectAll121,3209
+    function findTabs(container) {findTabs141,3865
+    function findHeaders(container) {findHeaders145,3966
+    function findTitles(tabs) {findTitles150,4135
+    function findChildElements(container, name, targetClass) {findChildElements169,4597
+    }window.onload186,5111
+
+plug-build/reports/tests-plug-runtime-ltuml/classes/plug.languages.tuml.TUMLRuntimeTests.html,49
+<a name="testSNCFCas1"></a>testSNCFCas176,1551
+
+plug-build/reports/tests-plug-runtime-ltuml/index.html,0
+
+plug-devel/gradlew.bat,867
+set DEFAULT_JVM_OPTS=DEFAULT_JVM_OPTS12,461
+set DIRNAME=%~dp0DIRNAME14,486
+if "%DIRNAME%" == "" set DIRNAME=.DIRNAME15,505
+set APP_BASE_NAME=%~n0APP_BASE_NAME16,541
+set APP_HOME=%DIRNAME%APP_HOME17,565
+set JAVA_EXE=java.exeJAVA_EXE22,661
+:findJavaFromJavaHomefindJavaFromJavaHome34,982
+set JAVA_HOME=%JAVA_HOME:"=%JAVA_HOME35,1005
+set JAVA_EXE=%JAVA_HOME%/bin/java.exeJAVA_EXE36,1035
+:initinit48,1322
+:win9xME_argswin9xME_args54,1481
+set CMD_LINE_ARGS=CMD_LINE_ARGS56,1536
+set _SKIP=2_SKIP57,1556
+:win9xME_args_slurpwin9xME_args_slurp59,1571
+set CMD_LINE_ARGS=%*CMD_LINE_ARGS62,1625
+:4NT_args4NT_args65,1663
+set CMD_LINE_ARGS=%$CMD_LINE_ARGS67,1730
+:executeexecute69,1754
+set CLASSPATH=%APP_HOME%\gradle\wrapper\gradle-wrapper.jarCLASSPATH72,1795
+:endend77,2056
+:failfail81,2163
+:mainEndmainEnd87,2350
+:omegaomega90,2396
+
+plug-devel/gradlew,92
+warn ( ) {warn18,489
+die ( ) {die22,517
+function splitJvmOpts() {splitJvmOpts154,4699
+
+plug-core/src/plug/transitions/CountingTransitionManager.java,269
+package plug.transitions;plug.transitions1,0
+public class CountingTransitionManager implements ITransitionManager {CountingTransitionManager6,100
+	long size = 0;size7,171
+	public void add(IFiredTransition transition) {add9,198
+	public long size() {size13,270
+
+plug-core/src/plug/transitions/SimpleFireableTransition.java,572
+package plug.transitions;plug.transitions1,0
+public class SimpleFireableTransition implements IFireableTransition {SimpleFireableTransition8,134
+	Object action;action9,205
+	FireFunction function;function10,221
+	public Function<Object, String> toString = null;toString11,245
+	public Object getAction() {getAction14,308
+	public void setAction(Object action) {setAction19,374
+	public FireFunction getFireFunction() {getFireFunction24,453
+	public void setFireFunction(FireFunction function) {setFireFunction29,528
+	public String toString() {toString34,626
+
+plug-core/src/plug/transitions/ParentTransitionManager.java,298
+package plug.transitions;plug.transitions1,0
+public class ParentTransitionManager implements ITransitionManager {ParentTransitionManager9,156
+	Map<IConfiguration, IConfiguration> parent;parent10,225
+	public void add(IFiredTransition transition) {add12,281
+	public long size() {size16,405
+
+plug-core/src/plug/transitions/MockTransitionManager.java,234
+package plug.transitions;plug.transitions1,0
+public class MockTransitionManager implements ITransitionManager {MockTransitionManager6,100
+	public void add(IFiredTransition transition) {add9,179
+	public long size() {size14,267
+
+plug-core/src/plug/transitions/FiredTransition.java,713
+package plug.transitions;plug.transitions1,0
+public class FiredTransition implements IFiredTransition {FiredTransition7,134
+	IConfiguration source;source8,193
+	IConfiguration target;target9,217
+	IFireableTransition fired;fired10,241
+	public FiredTransition(IConfiguration source, IConfiguration target, IFireableTransition fired) {FiredTransition12,271
+	public IConfiguration getSource() {getSource19,456
+	public IFireableTransition getFired() {getFired24,525
+	public IConfiguration getTarget() {getTarget29,597
+	public void setSource(IConfiguration c) {setSource34,666
+	public void setFired(IFireableTransition f) {setFired39,738
+	public void setTarget(IConfiguration c) {setTarget44,813
+
+plug-core/src/plug/transitions/FullTransitionManager.java,397
+package plug.transitions;plug.transitions1,0
+public class FullTransitionManager implements ITransitionManager {FullTransitionManager12,233
+	Map<IConfiguration, List<IConfiguration>> adjacencyList = new HashMap<IConfiguration, List<IConfiguration>>();adjacencyList13,300
+	long size = 0;size14,412
+	public void add(IFiredTransition transition) {add17,441
+	public long size() {size31,792
+
+plug-core/src/plug/core/IFiredTransition.java,383
+package plug.core;plug.core1,0
+public interface IFiredTransition {IFiredTransition3,20
+	IConfiguration getSource();getSource4,56
+	void setSource(IConfiguration c);setSource5,85
+	IFireableTransition getFired();getFired6,120
+	void setFired(IFireableTransition f);setFired7,153
+	IConfiguration getTarget();getTarget8,192
+	void setTarget(IConfiguration c);setTarget9,221
+
+plug-core/src/plug/core/AbstractExplorer.java,1112
+package plug.core;plug.core1,0
+public abstract class AbstractExplorer {AbstractExplorer7,73
+	public IStateSpaceManager<IConfiguration> stateSpaceManager;stateSpaceManager8,114
+	public ITransitionManager transitionManager;transitionManager9,176
+	public IPropertyVerifier propertyVerifier;propertyVerifier10,222
+	public abstract ILanguageRuntime getRuntime();getRuntime12,267
+	public abstract void setRuntime(ILanguageRuntime runtime);setRuntime13,315
+	public void initializeExploration() {initializeExploration15,376
+	public void explore() {explore24,707
+	public abstract boolean atEnd();atEnd34,842
+	public void explorationStep() {explorationStep35,876
+	public abstract IConfiguration nextConfiguration();nextConfiguration40,1065
+	public void process(IConfiguration source, Collection<IFireableTransition> fireable) {process42,1120
+	public void explorationFinished() {explorationFinished60,1651
+	public Collection<IFireableTransition> getFireableTransitions(IConfiguration source) {getFireableTransitions64,1765
+	public abstract void schedule(IConfiguration conf);schedule68,1912
+
+plug-core/src/plug/core/IPropertyVerifier.java,298
+package plug.core;plug.core1,0
+public interface IPropertyVerifier {IPropertyVerifier3,20
+	IConfiguration initialConfiguration(IConfiguration initial);initialConfiguration4,57
+	void verify(IFiredTransition transition);verify5,119
+	void deadlock(IConfiguration configuration);deadlock6,162
+
+plug-core/src/plug/core/ILanguageRuntime.java,276
+package plug.core;plug.core1,0
+public interface ILanguageRuntime {ILanguageRuntime6,72
+	Set<IConfiguration> initialConfigurations();initialConfigurations11,321
+	Collection<IFireableTransition> getFireableTransitions(IConfiguration source);getFireableTransitions21,877
+
+plug-core/src/plug/core/IStateSpaceManager.java,365
+package plug.core;plug.core1,0
+public interface IStateSpaceManager<T extends IConfiguration> {IStateSpaceManager6,44
+	boolean addIfAbsent(T configuration);addIfAbsent12,382
+	long size();size16,480
+	Set<T> initialConfigurations();initialConfigurations21,547
+	void addInitialConfiguration(T conf);addInitialConfiguration23,582
+	void reset();reset26,652
+
+plug-core/src/plug/core/IConfiguration.java,208
+package plug.core;plug.core1,0
+public interface IConfiguration {IConfiguration4,21
+	IConfiguration createCopy();createCopy5,55
+	int hashCode();hashCode6,85
+	boolean equals(Object other);equals7,102
+
+plug-core/src/plug/core/IConcurrentRuntime.java,162
+package plug.core;plug.core1,0
+public interface IConcurrentRuntime extends ILanguageRuntime {IConcurrentRuntime6,63
+    IConcurrentRuntime copy();copy8,127
+
+plug-core/src/plug/core/FireFunction.java,172
+package plug.core;plug.core1,0
+public interface FireFunction {FireFunction6,51
+	Collection<IFiredTransition> apply(IConfiguration c, IFireableTransition v);apply7,83
+
+plug-core/src/plug/core/ITransitionManager.java,171
+package plug.core;plug.core1,0
+public interface ITransitionManager {ITransitionManager4,21
+	void add(IFiredTransition transition);add8,172
+	long size();size10,213
+
+plug-core/src/plug/core/IFireableTransition.java,385
+package plug.core;plug.core1,0
+public interface IFireableTransition {IFireableTransition5,50
+	Object getAction();getAction6,89
+	void setAction(Object action);setAction7,110
+	FireFunction getFireFunction();getFireFunction9,144
+	void setFireFunction(FireFunction function);setFireFunction10,177
+	default Collection<IFiredTransition> fire(IConfiguration source) {fire12,225
+
+plug-core/src/plug/core/IPredicate.java,146
+package plug.core;plug.core1,0
+public interface IPredicate {IPredicate3,20
+	boolean evaluateIn(IConfiguration configuration);evaluateIn4,50
+
+plug-core/src/plug/explorer/DFSExplorer.java,617
+package plug.explorer;plug.explorer1,0
+public class DFSExplorer extends AbstractExplorer {DFSExplorer12,196
+    ILanguageRuntime runtime;runtime13,248
+    Stack<IConfiguration> toSee = new Stack<IConfiguration>();toSee14,278
+    public ILanguageRuntime getRuntime() {getRuntime17,356
+    public void setRuntime(ILanguageRuntime runtime) {setRuntime22,444
+    public void initializeExploration() {initializeExploration27,552
+    public boolean atEnd() {atEnd33,719
+    public IConfiguration nextConfiguration() {nextConfiguration38,801
+    public void schedule(IConfiguration conf) {schedule43,898
+
+plug-core/src/plug/explorer/ConcurrentBFSExplorer.java,2591
+package plug.explorer;plug.explorer1,0
+public class ConcurrentBFSExplorer extends AbstractExplorer {ConcurrentBFSExplorer10,149
+	public IConcurrentRuntime runtime;runtime12,212
+	SharedState shared;shared13,248
+	public short nbThreads;nbThreads14,269
+	public ConcurrentBFSExplorer(short nbThreads) {ConcurrentBFSExplorer16,296
+	public ILanguageRuntime getRuntime() {getRuntime22,429
+	public void setRuntime(ILanguageRuntime runtime) {setRuntime27,502
+	public void initializeExploration() {initializeExploration37,829
+	public boolean atEnd() {atEnd45,1098
+	public void explorationStep() {explorationStep50,1161
+	public IConfiguration nextConfiguration() { return null;}nextConfiguration62,1484
+	public void schedule(IConfiguration conf) {}schedule65,1555
+class IdleSet {IdleSet67,1603
+	public BitSet set;set68,1619
+	private int size;size69,1639
+	public IdleSet(int size) {IdleSet70,1658
+	public synchronized void set(int myId) {set74,1735
+	public synchronized void waitUntilFull() {waitUntilFull81,1855
+class SharedState {SharedState93,2075
+	public ITransitionManager transitionManager;transitionManager94,2095
+	public Queue toSee[][][];toSee96,2172
+	public boolean done = false;done97,2199
+	public IdleSet idle;idle98,2229
+	public short t = 0;t99,2251
+	public short N;N100,2272
+	public IStateSpaceManager stateSpaceManager;stateSpaceManager101,2289
+	public Random random = new Random();random102,2335
+	public SharedState(short nbThreads) {SharedState105,2377
+	public synchronized void waitEndRound(int myT) {waitEndRound119,2700
+	public synchronized void whenAllIdle() {whenAllIdle130,2917
+	public synchronized void waitTheEnd() {waitTheEnd150,3282
+class ExplorerThread extends AbstractExplorer implements Runnable {ExplorerThread162,3479
+	SharedState shared;shared163,3547
+	short myT;myT164,3568
+	short myId;myId165,3580
+	short currentQ;currentQ166,3593
+	ILanguageRuntime runtime;runtime168,3611
+	public ExplorerThread(SharedState shared, short id, ILanguageRuntime langR, IPropertyVerifier propertyVerifier) {ExplorerThread170,3640
+	public void run() {run180,3982
+	public ILanguageRuntime getRuntime() {getRuntime201,4390
+	public void setRuntime(ILanguageRuntime runtime) {setRuntime206,4463
+	public void initializeExploration() {}initializeExploration211,4556
+	public void explorationFinished() {}explorationFinished213,4607
+	public boolean atEnd() {atEnd216,4658
+	public IConfiguration nextConfiguration() {nextConfiguration221,4758
+	public void schedule(IConfiguration conf) {schedule227,4926
+
+plug-core/src/plug/explorer/BFSExplorer.java,598
+package plug.explorer;plug.explorer1,0
+public class BFSExplorer extends AbstractExplorer {BFSExplorer10,182
+	ILanguageRuntime runtime;runtime12,235
+	Queue<IConfiguration> toSee = new LinkedList<IConfiguration>();toSee13,262
+	public ILanguageRuntime getRuntime() {getRuntime16,339
+	public void setRuntime(ILanguageRuntime runtime) {setRuntime21,412
+	public void initializeExploration() {initializeExploration26,505
+	public boolean atEnd() {atEnd32,651
+	public IConfiguration nextConfiguration() {nextConfiguration37,719
+	public void schedule(IConfiguration conf) {schedule42,805
+
+plug-core/src/plug/verifiers/MockPropertyVerifier.java,369
+package plug.verifiers;plug.verifiers1,0
+public class MockPropertyVerifier implements IPropertyVerifier {MockPropertyVerifier7,130
+	public IConfiguration initialConfiguration(IConfiguration initial) {initialConfiguration10,207
+	public void verify(IFiredTransition transition) {verify15,310
+	public void deadlock(IConfiguration configuration) {}deadlock20,412
+
+plug-core/src/plug/verifiers/DeadlockVerifier.java,431
+package plug.verifiers;plug.verifiers1,0
+public class DeadlockVerifier implements IPropertyVerifier {DeadlockVerifier11,235
+    public boolean deadlockFree = true;deadlockFree12,296
+    public IConfiguration initialConfiguration(IConfiguration initial) {initialConfiguration14,350
+    public void verify(IFiredTransition transition) {}verify19,468
+    public void deadlock(IConfiguration configuration) {deadlock22,538
+
+plug-core/src/plug/verifiers/CompositeVerifier.java,527
+package plug.verifiers;plug.verifiers1,0
+public class CompositeVerifier implements IPropertyVerifier {CompositeVerifier10,182
+	List<IPropertyVerifier> verifiers = new ArrayList<IPropertyVerifier>();verifiers11,244
+	public void addVerifier(IPropertyVerifier verifier) {addVerifier13,319
+	public IConfiguration initialConfiguration(IConfiguration initial) {initialConfiguration18,417
+	public void verify(IFiredTransition transition) {verify27,676
+	public void deadlock(IConfiguration configuration) {deadlock34,817
+
+plug-core/src/plug/verifiers/PredicateVerifier.java,676
+package plug.verifiers;plug.verifiers1,0
+public class PredicateVerifier implements IPropertyVerifier {PredicateVerifier12,239
+	public List<IPredicate> predicates;predicates13,301
+	public Map<IPredicate, IConfiguration> violations = new IdentityHashMap<>();violations14,338
+	public IConfiguration initialConfiguration(IConfiguration initial) {initialConfiguration17,429
+	public void verify(IFiredTransition transition) {verify27,646
+	private void verify(IConfiguration configuration) {verify31,735
+	private boolean verify(IPredicate predicate, IConfiguration configuration) {verify40,1014
+	public void deadlock(IConfiguration configuration) {}deadlock45,1153
+
+plug-core/src/plug/verifiers/RegisteringDeadlockVerifier.java,306
+package plug.verifiers;plug.verifiers1,0
+public class RegisteringDeadlockVerifier extends DeadlockVerifier {RegisteringDeadlockVerifier12,213
+    public Set<IConfiguration> deadlockStates = new HashSet<>();deadlockStates13,281
+    public void deadlock(IConfiguration configuration) {deadlock16,361
+
+plug-core/src/plug/statespace/TracingStateSpaceManager.java,678
+package plug.statespace;plug.statespace1,0
+public class TracingStateSpaceManager<T extends IConfiguration> implements IStateSpaceManager<T> {TracingStateSpaceManager11,198
+	public Set<T> initialConfigurations = new HashSet<T>();initialConfigurations12,297
+	public Set<T> storageBackend;storageBackend13,354
+	public boolean addIfAbsent(T configuration) {addIfAbsent16,397
+	public long size() {size21,503
+	public void setStorageBackend(Map<T, Boolean> map) {setStorageBackend25,562
+	public Set<T> initialConfigurations() {initialConfigurations30,682
+	public void addInitialConfiguration(T conf) {addInitialConfiguration35,770
+	public void reset() {reset41,888
+
+plug-core/src/plug/statespace/MockStateSpaceManager.java,463
+package plug.statespace;plug.statespace1,0
+public class MockStateSpaceManager implements IStateSpaceManager {MockStateSpaceManager8,120
+	public boolean addIfAbsent(IConfiguration configuration) {addIfAbsent11,199
+	public long size() {size18,433
+	public Set<IConfiguration> initialConfigurations() {initialConfigurations23,482
+	public void addInitialConfiguration(IConfiguration conf) {addInitialConfiguration28,566
+	public void reset() {reset32,641
+
+plug-core/src/plug/statespace/CountingStateSpaceManager.java,498
+package plug.statespace;plug.statespace1,0
+public class CountingStateSpaceManager implements IStateSpaceManager {CountingStateSpaceManager8,120
+	long size = 0;size9,191
+	public boolean addIfAbsent(IConfiguration configuration) {addIfAbsent12,220
+	public long size() {size18,320
+	public Set<IConfiguration> initialConfigurations() {initialConfigurations23,372
+	public void addInitialConfiguration(IConfiguration conf) {addInitialConfiguration29,493
+	public void reset() {reset33,568
+
+plug-core/src/plug/simulation/Simulator.java,1090
+package plug.simulation;plug.simulation1,0
+public class Simulator extends AbstractExplorer {Simulator11,206
+	ILanguageRuntime runtime;runtime12,256
+	Queue<IConfiguration> toSee;toSee14,372
+	private ISelectionPolicy policy;policy15,402
+	public ILanguageRuntime getRuntime() {getRuntime18,449
+	public void setRuntime(ILanguageRuntime runtime) {setRuntime23,522
+	public ISelectionPolicy getPolicy() {getPolicy27,605
+	public void setPolicy(ISelectionPolicy policy) {setPolicy31,665
+	public void initializeExploration() {initializeExploration36,755
+	public boolean atEnd() {atEnd46,1090
+	public IConfiguration nextConfiguration() {nextConfiguration51,1157
+	public void schedule(IConfiguration conf) {schedule57,1272
+	public void explorationStep() {explorationStep62,1351
+	public void fire(IFireableTransition transition) {fire69,1628
+	public void process(IConfiguration source, Collection<IFireableTransition> fireable) {process75,1789
+	public IConfiguration currentState() {currentState89,2306
+	public void addState(IConfiguration newState) {addState93,2373
+
+plug-core/src/plug/simulation/selection/ISelectionPolicy.java,403
+package plug.simulation.selection;plug.simulation.selection1,0
+public interface ISelectionPolicy {ISelectionPolicy7,96
+    void initializePolicy();initializePolicy8,132
+    int chooseTargetIndex(Collection<? extends IFireableTransition> targets);chooseTargetIndex9,161
+default Collection<IFireableTransition> selectTarget(Collection<? extends IFireableTransition> targets) {selectTarget12,242
+
+plug-core/src/plug/simulation/selection/FirstSelectionPolicy.java,322
+package plug.simulation.selection;plug.simulation.selection1,0
+public class FirstSelectionPolicy implements ISelectionPolicy {FirstSelectionPolicy7,105
+	public void initializePolicy() {initializePolicy10,181
+	public int chooseTargetIndex(Collection<? extends IFireableTransition> targets) {chooseTargetIndex15,248
+
+plug-core/src/plug/simulation/selection/RandomSelectionPolicy.java,364
+package plug.simulation.selection;plug.simulation.selection1,0
+public class RandomSelectionPolicy implements ISelectionPolicy {RandomSelectionPolicy8,130
+	private Random mRandom;mRandom10,196
+	public void initializePolicy() {initializePolicy13,234
+	public int chooseTargetIndex(Collection<? extends IFireableTransition> targets) {chooseTargetIndex18,310
+
+plug-runtime-ltuml/tests/src/plug/languages/tuml/TUMLRuntimeTests.java,1072
+package plug.languages.tuml;plug.languages.tuml1,0
+public class TUMLRuntimeTests {TUMLRuntimeTests23,549
+	public void testProducerConsumerDefer() {testProducerConsumerDefer27,623
+	public void testProducerConsumerNoDefer() throws IOException, InstantiationException, IllegalAccessException {testProducerConsumerNoDefer34,951
+	public void testPingPong0_tuml() {testPingPong0_tuml41,1317
+	public void testPingPong0() {testPingPong047,1487
+	public void testSimulateSNCFCas1() {testSimulateSNCFCas153,1647
+    public void testSNCFCas1()  {testSNCFCas161,1910
+    public AbstractExplorer simulate(ILanguageRuntime runtime, int expectedStateCount, int expectedTransitionCount) {simulate68,2171
+    public AbstractExplorer explore(ILanguageRuntime runtime, int expectedStateCount, int expectedTransitionCount) {explore81,2737
+    public AbstractExplorer createExecutionController(java.lang.Class<? extends AbstractExplorer> executionController, ILanguageRuntime runtime, int expectedStateCount, int expectedTransitionCount) {createExecutionController91,3232
+
+plug-runtime-ltuml/src/plug/languages/tuml/TUMLConfiguration.java,376
+package plug.languages.tuml;plug.languages.tuml1,0
+public class TUMLConfiguration implements IConfiguration {TUMLConfiguration11,161
+    ByteBuffer state;state12,220
+    public IConfiguration createCopy() {createCopy15,261
+    public int hashCode() {hashCode25,531
+    public boolean equals(Object obj) {equals30,618
+    public String toString() {toString39,868
+
+plug-runtime-ltuml/src/plug/languages/tuml/TUMLRuntime.java,977
+package plug.languages.tuml;plug.languages.tuml1,0
+public class TUMLRuntime implements ILanguageRuntime {TUMLRuntime22,637
+    public Composite instance;instance23,692
+    public void setInstance(Composite instance) {setInstance25,728
+    public boolean initializeRuntime() {initializeRuntime29,819
+    public Set<IConfiguration> initialConfigurations() {initialConfigurations34,902
+    public List<IFireableTransition> getFireableTransitions(IConfiguration configuration) {getFireableTransitions42,1204
+    Function<Object, String> toStringActionFunction = (action) -> {toStringActionFunction61,2136
+    FireFunction fireFunction = (sourceConfiguration, fireableT) -> {fireFunction70,2521
+	public String toStringConfiguration(IConfiguration value) {toStringConfiguration85,3135
+	public Object getTreeModel(IConfiguration value) {getTreeModel91,3321
+	public Object getTreeModel(IConfiguration value, IFireableTransition transition) {getTreeModel97,3531
+
+plug-runtime-ltuml/src/plug/languages/tuml/TUMLLoader.java,694
+package plug.languages.tuml;plug.languages.tuml1,0
+public class TUMLLoader {TUMLLoader24,845
+    public static  String class_name = "SUS";//StateMachine_ping";//"SUS";//StateMachine_ping")) {class_name26,876
+    public static ILanguageRuntime loadModel(File modelFile, boolean isEventPoolBounded) {loadModel28,980
+    public static ILanguageRuntime loadModel(String modelFilePath, boolean isEventPoolBounded) {loadModel31,1145
+    public static void environmentHack(String modelFile, TUMLRuntime runtime) {environmentHack71,2228
+    private static void init() {init92,3023
+    private static void addPlugin(Map<String, String> pluginToURL, java.lang.Class c) {addPlugin108,4012
+
+plug-runtime-ltuml/src/plug/simulation/ui/tuml/ConfigurationTreeGenerator.java,350
+package plug.simulation.ui.tuml;plug.simulation.ui.tuml1,0
+public class ConfigurationTreeGenerator implements IAbstractVisitor<MutableTreeNode> {ConfigurationTreeGenerator11,262
+	public MutableTreeNode visitActiveObject(ActiveObject node) {visitActiveObject14,361
+	public MutableTreeNode visitComposite(Composite node) {visitComposite40,1168
+
+plug-runtime-ltuml/src/plug/simulation/ui/tuml/TransitionTreeGenerator.java,231
+package plug.simulation.ui.tuml;plug.simulation.ui.tuml1,0
+public class TransitionTreeGenerator {TransitionTreeGenerator13,361
+	public static TreeNode generateTree(Pair<ActiveObject, Transition> fireable) {generateTree15,401
+
+plug-runtime-ltuml/src/plug/simulation/ui/tuml/TUMLTreeRenderer.java,285
+package plug.simulation.ui.tuml;plug.simulation.ui.tuml1,0
+public class TUMLTreeRenderer extends DefaultTreeCellRenderer {TUMLTreeRenderer15,364
+	public Map<String, ImageIcon> icons;icons16,428
+    public Component getreeCellRendererComponent(getreeCellRendererComponent17,466

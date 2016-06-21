@@ -1,0 +1,24 @@
+get-eclipse-window | key-type ESC
+
+// Direct edit qualifier
+with [get-editor "test Class Diagram"] {
+    with [get-diagram -index 1] {
+        with [get-edit-part -name "test Class Diagram" | get-edit-part -name Class1 | get-edit-part 
+        -name " qualifier1" | get-edit-part -className SquareEditPart] {
+            mouse-move 61 3 button1 -height 20 -width 80
+            mouse-press 61 3 button1 -height 20 -width 80
+            mouse-release 61 3 button1 524288 -height 20 -width 80
+        }
+        key-type F2
+    }
+    with [get-editbox] {
+        set-text "qualifier1:Class2 , qualifier2:Class2"
+    }
+    with [get-diagram -index 1] {
+        commit-direct-edit
+    }
+}
+// check diagram
+with [get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+    get-edit-part -name Class1 | get-edit-part -name " qualifier1 : Class2\r\n" + " qualifier2 : Class2"
+}

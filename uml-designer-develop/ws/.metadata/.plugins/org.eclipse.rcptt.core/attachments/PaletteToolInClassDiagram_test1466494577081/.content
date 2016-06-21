@@ -1,0 +1,23 @@
+// Create new property in Class1 with palette tool
+with [get-editor "test Class Diagram"] {
+    with [get-palette] {
+        get-palette-entry Literal | mouse-move 142 3 -height 23 -width 152
+        get-palette-entry Operation | mouse-move 92 1 -height 23 -width 152
+        with [get-palette-entry Property] {
+            mouse-press 75 12 button1 -height 23 -width 152
+            mouse-release 75 12 button1 524288 -height 23 -width 152
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+        with [get-edit-part -name Class1 | get-edit-part -className DNodeListViewNodeListCompartment2EditPart] {
+            mouse-move 80 17 button1 -height 71 -width 116
+            mouse-press 80 17 button1 -height 71 -width 116
+            mouse-release 80 17 button1 524288 -height 71 -width 116
+        }
+    }
+}
+
+// Check property is created in Class1 in diagram editor
+get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram" | get-edit-part 
+    -name Class1 | get-edit-part -className DNodeListViewNodeListCompartment2EditPart | get-edit-part 
+    -name "property1 :  [0..1]" | get-property "getEditText()" | equals "property1 :  [0..1]" | verify-true

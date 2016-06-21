@@ -1,0 +1,35 @@
+// Open "Test Class Diagram" class diagram to test containers
+// Open "Test Class Diagram Edges" class diagram to test connections
+
+// Verify number of elements in Diagram
+// Check number of containers
+get-editor "Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "Test Class Diagram" 
+    | get-property childrenCount | equals 23 | verify-true
+// Check number of connections
+get-editor "Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "Test Class Diagram" 
+    | get-property "getConnections().size()" | equals 10 | verify-true
+
+// Verify number of second level elements
+// Verify "New package 1" packageable elements number
+get-editor "Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "Test Class Diagram" 
+    | get-edit-part -name "New package 1" | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart 
+    | get-property childrenCount | equals 6 | verify-true
+// Verify "Default Enumeration" enum literal elements number
+get-editor "Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "Test Class Diagram" 
+    | get-edit-part -name "Default Enumeration" | get-edit-part -className DNodeListViewNodeListCompartment2EditPart 
+    | get-property childrenCount | equals 1 | verify-true
+// Verify features elements number
+get-editor "Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "Test Class Diagram" | get-edit-part 
+    -name DefaultClass | get-edit-part -className DNodeListViewNodeListCompartment2EditPart 
+    | get-property childrenCount | equals 7 | verify-true
+with [get-editor "Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "Test Class Diagram"] {
+    mouse-move 36 299 -height 776 -width 843
+    mouse-move 0 155 -height 776 -width 843
+}
+
+
+// Verify number of elements in Diagram
+//Verify the number of relations
+with [get-editor "Test Class Diagram Edges" | get-diagram -index 1 | get-edit-part -name "Test Class Diagram Edges"] {
+    get-property childrenCount | equals 15 | verify-true
+}

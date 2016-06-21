@@ -1,0 +1,13 @@
+// Create new Profile diagram in travel agency Project
+with [get-view "Model Explorer" | get-tree] {
+    select "TravelAgency/representations.aird/Extend" | double-click
+    select "TravelAgency/agency.uml/<Model> Travel Agency" | get-menu "New Representation/Profile Diagram" | click
+}
+get-window "New Representation" | get-button OK | click
+
+// Check diagram exist
+get-editor "Travel Agency Profile Diagram" | get-diagram -index 1 | get-edit-part -name "Travel Agency Profile Diagram" 
+
+// Check model
+get-editor "Travel Agency Profile Diagram" | get-diagram -index 1 | get-edit-part -name "Travel Agency Profile Diagram" 
+    | get-property "element.name" | equals "Travel Agency Profile Diagram" | verify-true

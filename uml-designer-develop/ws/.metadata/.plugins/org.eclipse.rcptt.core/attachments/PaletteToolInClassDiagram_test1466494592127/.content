@@ -1,0 +1,29 @@
+// Create new semantic element using palette tool : Primitive type
+with [get-editor "test Class Diagram"] {
+    maximize
+}
+with [get-editor "test Class Diagram"] {
+    with [get-palette] {
+        get-palette-entry Enumeration | mouse-move 9 22 -height 23 -width 152
+        with [get-palette-entry DataTypes] {
+            mouse-move 8 11 button1 -height 23 -width 152
+            mouse-press 8 11 button1 -height 23 -width 152
+            mouse-release 8 11 button1 524288 -height 23 -width 152
+        }
+        with [get-palette-entry DataType] {
+            mouse-move 43 11 button1 -height 23 -width 152
+            mouse-press 43 11 button1 -height 23 -width 152
+            mouse-release 43 11 button1 524288 -height 23 -width 152
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+        mouse-move 576 223 button1 -height 562 -width 950
+        mouse-press 576 223 button1 -height 562 -width 950
+        mouse-release 576 223 button1 524288 -height 562 -width 950
+    }
+}
+
+// Verify Graphical element is created
+get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram" | get-edit-part 
+    -name DataType1 | get-edit-part -className DNodeListNameEditPart | get-property "getEditText()" | equals DataType1 
+    | verify-true

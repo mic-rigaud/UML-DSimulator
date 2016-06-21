@@ -1,0 +1,74 @@
+// Create new package
+with [get-editor "Package Containment"] {
+    with [get-palette] {
+        with [get-palette-entry Package] {
+            mouse-press 44 8 button1 -height 24 -width 125
+            mouse-release 44 8 button1 524288 -height 24 -width 125
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "Package Containment"] {
+        mouse-press 750 494 button1 -height 763 -width 963
+        mouse-move 750 495 -mask 524288 -height 763 -width 963
+        mouse-drag 915 755 button1 524288 -height 763 -width 963
+        mouse-release 915 755 button1 524288 -height 763 -width 963
+    }
+}
+
+// Use Move tool
+with [get-editor "Package Containment"] {
+    with [get-palette] {
+        with [get-palette-entry Move] {
+            mouse-press 53 6 button1 -height 24 -width 125
+            mouse-release 54 7 button1 524288 -height 24 -width 125
+        mouse-move 54 9 -height 24 -width 125
+      mouse-hover 54 9 -height 24 -width 125
+        }
+    }
+// Select Package
+    with [get-diagram -index 1 | get-edit-part -name "Package Containment" | get-edit-part -name Package7 
+        | get-edit-part -className DNodeListViewNodeListCompartment2EditPart] {
+      mouse-move 78 143 button1 -height 232 -width 162
+        mouse-press 78 143 button1 -height 232 -width 162
+        mouse-release 78 143 button1 524288 -height 232 -width 162
+    }
+}
+// Select elements to move
+with [get-window "Selection Wizard"] {
+    get-tree | select "<Model> Travel Agency/<Package> Components/<Component> Web Agent/<Component> Agency App"
+    get-button Add | click
+    get-tree | select "<Model> Travel Agency/<Package> Components/<Component> Agency  Offers/<Class> Catalog"
+    get-button Add | click
+    get-tree | select "<Model> Travel Agency/<Package> Interfaces/<Interface> auth"
+    get-button Add | click
+    get-tree | select "<Model> Travel Agency/<Package> Behaviours/<Package> Actors/<Actor> Customer"
+    get-button Add | click
+    get-tree | select "<Model> Travel Agency/<Package> Interfaces/<Interface> Travels"
+    get-button Add | click
+    get-tree | select "<Model> Travel Agency/<Package> Components"
+    get-button Add | click
+    get-button Finish | click
+}
+
+// Check model
+with [get-editor "Package Containment" | get-diagram -index 1 | get-edit-part -name "Package Containment" 
+    | get-edit-part -name Package7 | get-edit-part -className DNodeListViewNodeListCompartment2EditPart] {
+    get-property "element.target.name" | equals Package7 | verify-true
+    get-property "element.target.ownedMember.Component[0].name" | equals "Agency App" | verify-true
+    get-property "element.target.ownedMember.Class[1].name" | equals Catalog | verify-true
+    get-property "element.target.ownedMember.Interface[2].name" | equals auth | verify-true
+    get-property "element.target.ownedMember.Actor[3].name" | equals Customer | verify-true
+    get-property "element.target.ownedMember.Interface[4].name" | equals Travels | verify-true
+    get-property "element.target.ownedMember.Package[5].name" | equals Components | verify-true
+}
+//verify Package components appear in diagram and was moved from travel agency under package7
+get-editor "Package Containment" | get-diagram -index 1 | get-edit-part -name "Package Containment" | get-edit-part 
+    -name Components | get-edit-part -className DNodeListViewNodeListCompartment2EditPart 
+    | get-property "element.target.name" | equals Components | verify-true
+with [get-editor "Package Containment" | get-diagram -index 1 | get-edit-part -name "Package Containment"] {
+    get-property "element.target.ownedElement.Package[1].name" | equals Interfaces | verify-true
+    get-property "element.target.ownedElement.Package[2].name" | equals Deployment | verify-true
+    get-property "element.target.ownedElement.Package[3].name" | equals Relations | verify-true
+    get-property "element.target.ownedElement.Package[4].name" | equals Behaviours | verify-true
+    get-property "element.target.ownedElement.Package[5].name" | equals Instances | verify-true
+    get-property "element.target.ownedElement.Package[6].name" | equals Package7 | verify-true
+}

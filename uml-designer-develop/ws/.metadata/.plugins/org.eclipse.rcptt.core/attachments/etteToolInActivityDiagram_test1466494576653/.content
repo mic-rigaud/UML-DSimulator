@@ -1,0 +1,34 @@
+// Create Call Behavior Action
+with [get-editor "NewModel Activity Diagram"] {
+    with [get-palette] {
+       with [get-palette-entry Action] {
+            mouse-move 9 10 button1 -height 23 -width 214
+            mouse-press 9 10 button1 -height 23 -width 214
+            mouse-release 9 10 button1 524288 -height 23 -width 214
+       }
+        with [get-palette-entry "Call Behavior Action"] {
+            mouse-move 57 10 button1 -height 23 -width 214
+            mouse-press 57 10 button1 -height 23 -width 214
+            mouse-release 57 10 button1 524288 -height 23 -width 214
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Activity Diagram" | get-edit-part 
+        -name "NewModel" | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+        mouse-move 151 106 button1 -height 322 -width 542
+        mouse-press 151 106 button1 -height 322 -width 542
+        mouse-release 151 106 button1 524288 -height 322 -width 542
+    }
+}
+with [get-window "New Call Behavior Action"] {
+    get-tree | select "<Model> NewModel/<Activity> NewModel"
+    get-button Finish | click
+}
+
+// Check diagram
+with [get-editor "NewModel Activity Diagram" | get-diagram -index 1 | get-edit-part 
+    -name "NewModel Activity Diagram" | get-edit-part -name "NewModel" | get-edit-part 
+    -className DNodeContainerViewNodeContainerCompartmentEditPart | get-edit-part -name "NewModel" 
+    | get-edit-part -className DNodeContainerViewNodeContainerCompartment2EditPart | get-figure "1/0"] {
+    get-property "isVisible()" | equals true | verify-true
+}
+// Check model

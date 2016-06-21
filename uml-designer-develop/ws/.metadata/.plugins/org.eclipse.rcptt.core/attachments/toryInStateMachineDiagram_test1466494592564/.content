@@ -1,0 +1,55 @@
+// Create new Shallow history node in Region1 
+with [get-editor "NewModel State Machine Diagram"] {
+    with [get-palette | get-palette-entry "Shallow History"] {
+        mouse-move 38 4 button1 -height 23 -width 134
+        mouse-press 38 4 button1 -height 23 -width 134
+        mouse-release 38 4 button1 524288 -height 23 -width 134
+    }
+    with [get-diagram -index 1 | get-edit-part -name "NewModel State Machine Diagram" | get-edit-part -name NewModel 
+        | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+        with [get-edit-part -name Region1 | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartment2EditPart] {
+            mouse-move 37 54 button1 -height 481 -width 571
+            mouse-press 37 54 button1 -height 481 -width 571
+            mouse-release 37 54 button1 524288 -height 481 -width 571
+        }
+    }
+}
+
+// Check Diagram
+with [get-editor "NewModel State Machine Diagram" | get-diagram -index 1 | get-edit-part 
+    -name "NewModel State Machine Diagram" | get-edit-part -name NewModel | get-edit-part 
+    -className DNodeContainerViewNodeContainerCompartmentEditPart | get-edit-part -name Region1 | get-edit-part 
+    -className DNodeContainerViewNodeContainerCompartment2EditPart | get-edit-part -name ShallowHistory1 
+    | get-edit-part -className WorkspaceImageEditPart] {
+    get-property "getFigure().isVisible()" | equals true | verify-true
+}
+// Check model
+with [get-editor "NewModel State Machine Diagram" | get-diagram -index 1 | get-edit-part 
+    -name "NewModel State Machine Diagram" | get-edit-part -name NewModel | get-edit-part 
+    -className DNodeContainerViewNodeContainerCompartmentEditPart | get-edit-part -name Region1 | get-edit-part 
+    -className DNodeContainerViewNodeContainerCompartment2EditPart | get-edit-part -name ShallowHistory1 
+    | get-edit-part -className WorkspaceImageEditPart] {
+    get-property "getModel().getDiagram().getElement().getNodes().DNodeSpec[0].getName()" | equals ShallowHistory1 
+        | verify-true
+    get-property "getModel().getDiagram().getElement().getNodes().DNodeSpec[0].getTarget().getKind().getName()" 
+        | equals shallowHistory | verify-true
+    get-property "getModel().getDiagram().getElement().getNodes().DNodeSpec[0].getTarget().getContainer().getName()" 
+        | equals Region1 | verify-true
+    get-property "getModel().getDiagram().getElement().getNodes().DNodeSpec[0].getTarget().getName()" 
+        | equals ShallowHistory1 | verify-true
+}
+
+// Try to create Shallow history node outside of state machine (invalid action)
+with [get-editor "NewModel State Machine Diagram"] {
+    with [get-palette | get-palette-entry "Shallow History"] {
+        mouse-move 31 18 button1 -height 23 -width 134
+        mouse-press 31 18 button1 -height 23 -width 134
+        mouse-release 31 18 button1 524288 -height 23 -width 134
+    }
+    with [get-diagram -index 1 | get-edit-part -name "NewModel State Machine Diagram"] {
+        mouse-move 823 168 button1 -height 524 -width 824
+        mouse-press 823 168 button1 -height 524 -width 824
+        mouse-release 823 168 button1 524288 -height 524 -width 824
+    }
+}

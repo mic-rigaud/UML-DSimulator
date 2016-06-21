@@ -1,0 +1,36 @@
+// Add exisiting actor with palette tool Exisitng Elements / Actor
+with [get-editor "Test Sequence Diagram"] {
+    with [get-palette | get-palette-entry Actor] {
+        mouse-move 19 6 button1 -height 23 -width 134
+        mouse-press 19 6 button1 -height 23 -width 134
+        mouse-release 19 6 button1 524288 -height 23 -width 134
+    }
+    with [get-diagram -index 1 | get-edit-part -name "Test Sequence Diagram"] {
+        mouse-move 193 87 button1 -height 500 -width 793
+        mouse-press 193 87 button1 -height 500 -width 793
+        mouse-release 193 87 button1 524288 -height 500 -width 793
+    }
+}
+with [get-window "Selection Wizard"] {
+    get-tree | select "<Model> Travel Agency/<Package> Behaviours/<Package> Actors/<Actor> Customer"
+    get-button Finish | click
+}
+
+// Check element appear in diagram
+with [get-editor "Test Sequence Diagram" | get-diagram -index 1 | get-edit-part -name "Test Sequence Diagram" 
+    | get-edit-part -name "Customer : Customer [1]"] {
+    with [get-edit-part -className SquareEditPart | get-figure "0/0"] {
+        get-property "getText()" | equals "Customer : Customer [1]" | verify-true
+        get-property "getText()" | equals "Customer : Customer [1]" | verify-true
+    }
+    get-edit-part -name Customer | get-edit-part -className SquareEditPart | get-figure "0/0" 
+        | get-property "isVisible()" | equals true | verify-true
+}
+
+// Check diagram to verify only lifeline is added
+with [get-editor "Test Sequence Diagram" | get-diagram -index 1 | get-edit-part -name "Test Sequence Diagram"] {
+    get-property "getConnections().size()" | equals 0 | verify-true
+    get-property "getChildren().InstanceRoleEditPart[0].getModel().getElement().getName()" 
+        | equals "Customer : Customer [1]" | verify-true
+    get-property "getChildren().size()" | equals 1 | verify-true
+}

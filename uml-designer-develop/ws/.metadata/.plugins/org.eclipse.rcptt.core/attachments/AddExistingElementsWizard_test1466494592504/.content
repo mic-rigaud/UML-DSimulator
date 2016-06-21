@@ -1,0 +1,106 @@
+// Open class diagram
+get-view "Model Explorer" | get-tree 
+    | select "AllMappings/representations.aird/Design/Class Diagram/Test Class Diagram" | double-click
+
+// Click on add tool in the palette and select a package
+with [get-editor "Test Class Diagram"] {
+    with [get-palette] {
+        get-palette-entry Pin | mouse-move 16 16 -height 19 -width 19
+        with [get-palette-entry Add] {
+            mouse-move 57 22 -height 24 -width 125
+            mouse-move 46 9 button1 -height 24 -width 125
+            mouse-press 46 9 button1 -height 24 -width 125
+            mouse-release 46 9 button1 524288 -height 24 -width 125
+        }
+    }
+    
+    with [get-diagram -index 1 | get-edit-part -name "Test Class Diagram"] {
+        mouse-move 680 232 -height 776 -width 843
+        mouse-move 531 469 -height 776 -width 843
+        with [get-edit-part -name "New package 1" | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+            mouse-move 486 8 button1 -height 186 -width 616
+            mouse-press 486 8 button1 -height 186 -width 616
+            mouse-release 486 8 button1 524288 -height 186 -width 616
+        }
+    }
+}
+// Add existing dialog opened
+// Only children elements visible in the tree viewer
+with [get-window "Add existing elements" | get-tree] {
+    get-item "<Model> Test" | get-property "getText()" | equals "<Model> Test" | verify-true
+    get-item "<Model> Test" | get-property "getItems().TreeItem[0].getText()" | equals "<Package> New package 1" 
+        | verify-true
+}
+
+// Select only undisplayed elements
+get-window "Add existing elements" | get-combo -after [get-label Show] | select "only undisplayed elements"
+with [get-window "Add existing elements" | get-tree] {
+    get-item "<Model> Test" | get-property "getText()" | equals "<Model> Test" | verify-true
+    get-item "<Model> Test" | get-property "getItems().TreeItem[0].getText()" | equals "<Package> New package 3" 
+        | verify-true
+    get-item "<Model> Test" | get-property "getItems().TreeItem[4].getText()" | equals "<Package> New package 1" 
+        | verify-true
+    get-item "<Model> Test/<Package> New package 1" | get-property "getItems().TreeItem[1].getText()" | equals "<Enumeration> AbstractEnumerationFromOtherPackage" 
+        | verify-true
+}
+
+// Select all elements
+get-window "Add existing elements" | get-combo -after [get-label Show] | select "all elements"
+with [get-window "Add existing elements" | get-tree] {
+    get-item "<Model> Test" | get-property "getText()" | equals "<Model> Test" | verify-true
+    get-item "<Model> Test" | get-property "getItems().TreeItem[0].getText()" | equals "<Package> New package 3" 
+        | verify-true
+    get-item "<Model> Test" | get-property "getItems().TreeItem[4].getText()" | equals "<Package> New package 1" 
+        | verify-true
+    get-item "<Model> Test/<Package> New package 1" | get-property "getItems().TreeItem[1].getText()" | equals "<Class> Class From Other Package" 
+        | verify-true
+}
+
+// Check all
+get-window "Add existing elements" | get-button "Check All" | click
+with [get-window "Add existing elements" | get-tree] {
+    get-item "<Model> Test/<Package> New package 6" | get-property checked | equals true | verify-true
+    get-item "<Model> Test/<Package> New package 4" | get-property checked | equals true | verify-true
+}
+
+// Uncheck all
+get-window "Add existing elements" | get-button "Uncheck All" | click
+with [get-window "Add existing elements" | get-tree] {
+    get-item "<Model> Test/<Package> New package 6" | get-property checked | equals false | verify-true
+    get-item "<Model> Test/<Package> New package 4" | get-property checked | equals false | verify-true
+}
+
+// Collapse all
+get-window "Add existing elements" | get-button "Collapse All" | click
+get-window "Add existing elements" | get-tree | get-item "<Model> Test" | get-property "getExpanded()" | equals false 
+    | verify-true    
+
+// Expand all
+get-window "Add existing elements" | get-button "Expand All" | click
+get-window "Add existing elements" | get-tree | get-item "<Model> Test" | get-property "getExpanded()" | equals true 
+    | verify-true
+    
+// Check that already displayed element are grayed in the tree viewer
+with [get-window "Add existing elements" | get-tree] {
+    get-item "<Model> Test/<Package> New package 1" | get-property "getGrayed()" | equals true | verify-true
+    get-item "<Model> Test/<Package> New package 6" | get-property "getGrayed()" | equals false | verify-true
+}
+
+// Check filter by type
+with [get-window "Add existing elements" | get-group "Filter elements by name" | get-editbox 
+    -after [get-label "? = any character, * = any String"]] {
+    set-text "<Class>"
+}
+get-window "Add existing elements" | get-tree 
+    | get-item "<Model> Test/<Package> New package 1" 
+    | get-property "getItems().length" | equals 3 | verify-true
+
+// Check filter by name
+with [get-window "Add existing elements" | get-group "Filter elements by name" | get-editbox 
+    -after [get-label "? = any character, * = any String"]] {
+    set-text "*Class1"
+}
+get-window "Add existing elements" | get-tree 
+    | get-item "<Model> Test/<Package> New package 1" 
+    | get-property "getItems().length" | equals 1 | verify-true

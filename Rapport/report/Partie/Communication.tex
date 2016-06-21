@@ -1,0 +1,85 @@
+
+\chapter{Communication inter process}
+
+\section{Type of communication conceivable}
+
+A lot of type of communication inter process were suggested to create a discussion enter the plugin and the simulator. But we will present only the most consistent.
+
+The communication is the part the most important of this project, because that will implement the interface between the two software.
+
+\subsection{Socket}
+
+\begin{tabular}{|p{0.45\textwidth}||p{0.45\textwidth}|}
+\hline
+  \textbf{Advantages}&\textbf{Drawback}\\
+\hline
+Work with every simulator type (python, java, ...) & communication synchronous\\
+\hline
+\end{tabular}
+
+\subsection{File}
+
+\begin{tabular}{|p{0.45\textwidth}||p{0.45\textwidth}|}
+\hline
+  \textbf{Advantages}&\textbf{Drawback}\\
+\hline
+Problem when two software want to change the same file at the same moment& Communication asynchronous\\
+\hline
+\end{tabular}
+
+\subsection{Named pipe}
+
+\begin{tabular}{|p{0.45\textwidth}||p{0.45\textwidth}|}
+\hline
+  \textbf{Advantages}&\textbf{Drawback}\\
+\hline
+It is possible to use the Simulator outside the graphical modeling tool & \\
+\hline
+\end{tabular}
+
+
+\subsection{Shared Memory}
+
+\begin{tabular}{|p{0.45\textwidth}||p{0.45\textwidth}|}
+\hline
+  \textbf{Advantages}&\textbf{Drawback}\\
+\hline
+It is possible to use the Simulator outside the graphical modeling tool & \\
+\hline
+\end{tabular}
+
+
+\subsection{Thread}
+
+\begin{tabular}{|p{0.45\textwidth}||p{0.45\textwidth}|}
+\hline
+  \textbf{Advantages}&\textbf{Drawback}\\
+\hline
+&Need to recode the simulator \\
+\hline
+\end{tabular}
+
+
+\subsection{Our solution}
+
+The solution was not in this list of common way to communicate inter process. In fact, we use the \textit{Runtime} class which is in the java library.~\\
+
+
+\begin{tabular}{|p{0.45\textwidth}||p{0.45\textwidth}|}
+\hline
+  \textbf{Advantages}&\textbf{Drawback}\\
+\hline
+It is possible to use the Simulator outside the graphical modeling tool & \\
+\hline
+Work with every type of simulator& \\
+\hline
+\end{tabular}
+
+
+
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "../rapport_de_base"
+%%% End: 

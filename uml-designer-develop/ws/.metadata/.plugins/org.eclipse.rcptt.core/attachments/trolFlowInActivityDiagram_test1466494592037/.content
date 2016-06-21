@@ -1,0 +1,32 @@
+// direct Edit ControlFlow
+with [get-editor "NewModel Activity Diagram"] {
+    with [get-diagram -index 1] {
+        with [get-edit-part -name "NewModel Activity Diagram" | get-edit-part -name NewModel | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+            with [get-edit-part -name "" | get-target-connection 0 | get-edit-part -className ""] {
+                mouse-move 41 11 button1 -height 13 -width 83
+                mouse-press 41 11 button1 -height 13 -width 83
+                mouse-release 4 11 button1 524288 -height 13 -width 83
+            }
+        }
+        key-type F2
+        get-edit-part -name "NewModel Activity Diagram" | get-edit-part -name NewModel | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartmentEditPart | get-edit-part -name "" 
+            | get-target-connection 0 | get-edit-part -className "" | activate-direct-edit
+    }
+    with [get-editbox] {
+        set-text "new name"
+    }
+    with [get-diagram -index 1] {
+        commit-direct-edit
+        key-type ESC
+    }
+}
+
+// Check diagram and model
+with [get-editor "NewModel Activity Diagram" | get-diagram -index 1 | get-edit-part -name "NewModel Activity Diagram" 
+    | get-edit-part -name NewModel | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart 
+    | get-edit-part -name "" | get-target-connection 0] {
+    get-edit-part -className "" | get-property "getFigure().getText()" | equals "new name" | verify-true
+    get-property "element.target.name" | equals "new name" | verify-true
+}

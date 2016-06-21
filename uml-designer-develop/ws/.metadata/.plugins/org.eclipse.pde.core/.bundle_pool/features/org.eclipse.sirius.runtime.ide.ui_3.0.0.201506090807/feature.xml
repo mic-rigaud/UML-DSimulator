@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Obeo - Initial API and implementation
+-->
+<feature
+      id="org.eclipse.sirius.runtime.ide.ui"
+      label="%featureName"
+      version="3.0.0.201506090807"
+      provider-name="%providerName"
+      plugin="org.eclipse.sirius.common.ui">
+
+   <description url="http://www.eclipse.org/sirius">
+Sirius UI and workbench integration, including graphical editors for all types of Sirius representations, and support for Modeling projects with streamlined workflow.
+Install this if you need to use Sirius-based modelers or create new ones.
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <includes
+         id="org.eclipse.sirius.runtime"
+         version="3.0.0.201506090807"/>
+
+   <requires>
+      <import feature="org.eclipse.gmf" version="1.4.2"/>
+   </requires>
+
+   <plugin
+         id="org.eclipse.sirius.common.ui"
+         download-size="287"
+         install-size="576"
+         version="3.0.0.201506090807"
+         unpack="false"/>
+         
+   <plugin
+         id="org.eclipse.sirius.common.ui.ext"
+         download-size="7"
+         install-size="10"
+         version="3.0.0.201506090807"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.sirius.diagram.sequence"
+         download-size="701"
+         install-size="1850"
+         version="3.0.0.201506090807"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.sirius.diagram.sequence.edit"
+         download-size="180"
+         install-size="417"
+         version="3.0.0.201506090807"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.sirius.diagram.sequence.ui"
+         download-size="353"
+         install-size="902"
+         version="3.0.0.201506090807"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.sirius.diagram.ui"
+         download-size="5036"
+         install-size="9113"
+         version="3.0.0.201506090807"
+         unpack="false"/>
+         
+   <plugin
+         id="org.eclipse.sirius.diagram.ui.ext"
+         download-size="8"
+         install-size="13"
+         version="3.0.0.201506090807"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.sirius.table.ui"
+         download-size="558"
+         install-size="1257"
+         version="3.0.0.201506090807"
+         unpack="false"/>
+         
+   <plugin
+         id="org.eclipse.sirius.table.ui.ext"
+         download-size="8"
+         install-size="12"
+         version="3.0.0.201506090807"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.sirius.tree.ui"
+         download-size="220"
+         install-size="507"
+         version="3.0.0.201506090807"
+         unpack="false"/>
+         
+   <plugin
+         id="org.eclipse.sirius.tree.ui.ext"
+         download-size="7"
+         install-size="10"
+         version="3.0.0.201506090807"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.sirius.ui"
+         download-size="1253"
+         install-size="2759"
+         version="3.0.0.201506090807"
+         unpack="false"/>
+         
+   <plugin
+         id="org.eclipse.sirius.ui.ext"
+         download-size="13"
+         install-size="23"
+         version="3.0.0.201506090807"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.sirius.ext.swt"
+         download-size="8"
+         install-size="11"
+         version="3.0.0.201506090807"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.sirius.ext.jface"
+         download-size="6"
+         install-size="9"
+         version="3.0.0.201506090807"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.sirius.ext.e3.ui"
+         download-size="37"
+         install-size="69"
+         version="3.0.0.201506090807"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.sirius.ext.draw2d"
+         download-size="13"
+         install-size="23"
+         version="3.0.0.201506090807"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.sirius.ext.gef"
+         download-size="12"
+         install-size="19"
+         version="3.0.0.201506090807"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.sirius.ext.gmf.runtime"
+         download-size="23"
+         install-size="41"
+         version="3.0.0.201506090807"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.sirius.ext.emf.ui"
+         download-size="10"
+         install-size="15"
+         version="3.0.0.201506090807"
+         unpack="false"/>
+
+</feature>

@@ -1,0 +1,32 @@
+// A refresh is needed after each action to update model explorer tree before to check action was done.
+// Create a new class in model
+get-view "Model Explorer" | get-tree | select "test/model.uml/<Model> NewModel" 
+    | get-menu "New Child/Packaged Element/Class" | click
+get-view "Model Explorer" | get-tree | select "test/model.uml" | get-menu Refresh | click
+
+// Copy/Paste with model explorer contextual menu 
+get-view "Model Explorer" | get-tree | get-item "test/model.uml/<Model> NewModel" | get-property childCount | equals 2 
+    | verify-true
+with [get-view "Model Explorer" | get-tree] {
+    select "test/model.uml/<Model> NewModel/<Class> Class1" | get-menu Copy | click
+    select "test/model.uml/<Model> NewModel" | get-menu Paste | click
+    select "test/model.uml" | get-menu Refresh | click
+}
+
+get-view "Model Explorer" | get-tree | get-item "test/model.uml/<Model> NewModel" | get-property childCount | equals 3 
+    | verify-true
+    
+// Cut/Paste in a new package with model explorer contextual menu
+get-view "Model Explorer" | get-tree | select "test/model.uml/<Model> NewModel" 
+    | get-menu "New Child/Nested Package/Package" | click
+with [get-view "Model Explorer" | get-tree] {
+    select "test/model.uml/<Model> NewModel/<Class> Class1" [get-item "test/model.uml/<Model> NewModel" 
+        | get-item "<Class> Class1" -index 1]
+    get-menu Cut | click
+    select "test/model.uml/<Model> NewModel/<Package> Package1" | get-menu Paste | click
+    select "test/model.uml" | get-menu Refresh | click
+}
+with [get-view "Model Explorer" | get-tree] {
+    get-item "test/model.uml/<Model> NewModel" | get-property childCount | equals 2 | verify-true
+    get-item "test/model.uml/<Model> NewModel/<Package> Package1" | get-property childCount | equals 2 | verify-true
+}

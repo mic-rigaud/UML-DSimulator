@@ -1,0 +1,69 @@
+// Create a port for component
+with [get-editor "NewModel Component Diagram"] {    
+    with [get-palette | get-palette-entry Port] {
+        mouse-move 40 12 button1 -height 23 -width 146
+        mouse-press 40 12 button1 -height 23 -width 146
+        mouse-release 40 12 button1 524288 -height 23 -width 146
+    }
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Component Diagram"] {
+        with [get-edit-part -name Component1] {
+            with [get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+                mouse-move 114 22 button1 -height 98 -width 118
+                mouse-press 114 22 button1 -height 98 -width 118
+                mouse-release 114 22 button1 524288 -height 98 -width 118
+            }
+        }
+    }
+}
+// Check diagram
+get-eclipse-window | key-type ESC
+
+with [get-editor "NewModel Component Diagram" | get-diagram -index 1 | get-edit-part 
+    -name "NewModel Component Diagram"] {
+    with [get-edit-part -name Component1 | get-edit-part -name port1] {
+        with [get-edit-part -className BundledImageEditPart | get-figure 0] {
+            get-property "isVisible()" | equals true | verify-true
+        }
+        with [get-edit-part -name port1] {
+            get-property visible | equals true | verify-true
+            get-property "element.target.owner.name" | equals Component1 | verify-true
+            get-property "element.target.name" | equals port1 | verify-true
+            get-property "getFigure().getText()" | equals port1 | verify-true
+        }
+    }
+}
+
+// Create a port for class
+with [get-editor "NewModel Component Diagram"] {
+    get-diagram -index 1 | get-edit-part -name "NewModel Component Diagram" | mouse-move 780 171 -height 524 -width 781
+    with [get-palette | get-palette-entry Port] {
+        mouse-move 22 10 button1 -height 23 -width 146
+        mouse-press 22 10 button1 -height 23 -width 146
+        mouse-release 22 10 button1 524288 -height 23 -width 146
+    }
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Component Diagram"] {
+        mouse-move 354 245 -height 524 -width 781
+        with [get-edit-part -name Class1 | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+            mouse-move 115 19 button1 -height 98 -width 118
+            mouse-press 115 19 button1 -height 98 -width 118
+            mouse-release 115 19 button1 524288 -height 98 -width 118
+        }
+    }
+}
+get-eclipse-window | key-type ESC
+
+with [get-editor "NewModel Component Diagram" | get-diagram -index 1 | get-edit-part 
+    -name "NewModel Component Diagram"] {
+    with [get-edit-part -name Class1 | get-edit-part -name port1] {
+        with [get-edit-part -className BundledImageEditPart | get-figure 0] {
+            get-property "isVisible()" | equals true | verify-true
+        }
+        with [get-edit-part -name port1] {
+            get-property "element.target.owner.name" | equals Class1 | verify-true
+            get-property "element.target.name" | equals port1 | verify-true
+            get-property "getFigure().getText()" | equals port1 | verify-true
+            get-property "getFigure().isVisible()" | equals true | verify-true
+        }
+    }
+}

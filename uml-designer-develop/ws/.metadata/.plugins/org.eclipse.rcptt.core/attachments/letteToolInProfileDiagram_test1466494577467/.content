@@ -1,0 +1,30 @@
+// Create new ImportMetaclass in Profile diagram
+with [get-editor "Test Profile Diagram"] {
+    with [get-palette | get-palette-entry "Import Metaclass"] {
+        mouse-move 49 14 button1 -height 23 -width 182
+        mouse-press 49 14 button1 -height 23 -width 182
+        mouse-release 49 14 button1 524288 -height 23 -width 182
+    }
+    with [get-diagram -index 1 | get-edit-part -name "Test Profile Diagram"] {
+        mouse-move 87 79 button1 -height 524 -width 646
+        mouse-press 87 79 button1 -height 524 -width 646
+        mouse-release 87 79 button1 524288 -height 524 -width 646
+    }
+}
+with [get-window "Import UML Metaclasses"] {
+    get-table | select Actor
+    get-button OK | click
+}
+
+// Check Diagram
+with [get-editor "Test Profile Diagram" | get-diagram -index 1 | get-edit-part -name "Test Profile Diagram"] {
+    get-edit-part -name "«Metaclass»\n"
+        + "Actor" | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart | get-figure "1/0" 
+        | get-property "isVisible()" | equals true | verify-true
+    get-property "children.Node[0].element.name" | equals "«Metaclass»\n"
+        + "Actor" | verify-true
+}
+// Check model
+with [get-editor "Test Profile Diagram" | get-diagram -index 1 | get-edit-part -name "Test Profile Diagram"] {
+    get-property "element.target.member.Class[0].name" | equals Actor | verify-true
+}

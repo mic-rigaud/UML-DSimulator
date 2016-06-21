@@ -1,0 +1,19 @@
+// With filter in tool bar hide Containment
+get-editor "Package Hierarchy" | get-button Filters | click -arrow
+get-menu "Hide containment" | click
+get-editor "Package Hierarchy" | get-diagram -index 1 | get-edit-part -name "Package Hierarchy" | mouse-move 30 36 
+    -height 524 -width 793
+    
+// Check only "Contained in" connection are hide   
+with [get-editor "Package Hierarchy" | get-diagram -index 1 | get-edit-part -name "Package Hierarchy"] {
+    // Check "ContainedIn" connections are hide
+    with [get-edit-part -name Behaviours] {
+       get-target-connection 0 | get-property "getFigure().isVisible()" | equals true | verify-false
+       get-target-connection 1 | get-property "getFigure().isVisible()" | equals true | verify-false
+    }
+    // Check other connections are visible
+    get-edit-part -name Actors | get-target-connection 0 | get-property "getFigure().isVisible()" | equals true 
+        | verify-true
+    get-edit-part -name Interfaces | get-target-connection 0 | get-property "getFigure().isVisible()" | equals true 
+        | verify-true
+}

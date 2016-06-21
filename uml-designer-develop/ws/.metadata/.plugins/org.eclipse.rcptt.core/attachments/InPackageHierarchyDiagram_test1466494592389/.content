@@ -1,0 +1,28 @@
+// Delete Dependency existing connection from Package1 to Package2
+with [get-editor "NewModel Package Hierarchy"] {
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Package Hierarchy"] {
+        mouse-move 233 183 -height 524 -width 793
+        with [get-edit-part -name Package2 | get-target-connection 0] {
+            mouse-move 28 100 button1 -height 181 -width 59
+            mouse-press 28 100 button1 -height 181 -width 59
+            mouse-release 28 100 button1 524288 -height 181 -width 59
+        }
+    }
+    get-button "Delete from Model" | click
+}
+
+// Check Diagram and model
+get-editor "NewModel Package Hierarchy" | get-diagram -index 1 | get-edit-part 
+    -name "NewModel Package Hierarchy" | get-edit-part -name Package2 
+    | verify-error {get-target-connection 0}
+
+// Check Model to verify connection between Package1 and Package2
+with [get-editor "NewModel Package Hierarchy" | get-diagram -index 1 | get-edit-part  
+    -name "NewModel Package Hierarchy"] {
+    
+    verify-error {get-property "element.target.member.Package[3].ownedElement.Dependency[0].source.Package[0].name" 
+        | equals Package1 | verify-true}
+    verify-error {get-property "element.target.member.Package[3].ownedElement.Dependency[0].target.Package[0].name" 
+        | equals Package2 | verify-true}
+    
+}

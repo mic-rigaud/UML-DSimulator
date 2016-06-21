@@ -1,0 +1,94 @@
+// Start of test
+// Select tool Class and click on Class1
+with [get-editor "test Class Diagram"] {
+    with [get-palette] {
+        with [get-palette-entry Class] {
+            mouse-move 52 12 button1 -height 23 -width 125
+            mouse-press 52 12 button1 -height 23 -width 125
+            mouse-release 52 12 button1 524288 -height 23 -width 125
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+        with [get-edit-part -name Class2 | get-edit-part -className DNodeListViewNodeListCompartment2EditPart] {
+            mouse-move 50 26 button1 -height 71 -width 116
+            mouse-press 50 26 button1 -height 71 -width 116
+            mouse-release 50 26 button1 524288 -height 71 -width 116
+        }
+    }
+    with [get-palette | get-palette-entry Class] {
+        mouse-move 55 14 button1 -height 23 -width 125
+        mouse-press 55 14 button1 -height 23 -width 125
+        mouse-release 55 14 button1 524288 -height 23 -width 125
+    }
+    with [get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+        with [get-edit-part -name Package1 | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartmentEditPart | get-edit-part -name Class1 | get-edit-part 
+            -className DNodeListViewNodeListCompartmentEditPart] {
+            mouse-move 50 29 button1 -height 71 -width 116
+            mouse-press 50 29 button1 -height 71 -width 116
+            mouse-release 50 29 button1 524288 -height 71 -width 116
+        }
+    }
+}
+// Activate Archetype layer
+with [get-editor "test Class Diagram"] {
+    get-diagram -index 1 | get-edit-part -name "test Class Diagram" | mouse-move 142 1 -height 338 -width 761
+    get-button Layers | click -arrow
+}
+get-menu Archetypes | click
+
+// Check Class1 Style
+with [get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+    with [get-edit-part -name Package1 | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart 
+        | get-edit-part -name Class1 | get-edit-part -className DNodeListName2EditPart] {
+        get-property "getFigure().getText()" | equals Class1 | verify-true
+        get-property "getFigure().getParent().getGradientColor()" | equals "#FABEBE" | verify-true
+    }
+    with [get-edit-part -name Class2 | get-edit-part -className DNodeListNameEditPart] {
+        get-property "getFigure().getText()" | equals Class2 | verify-true
+        get-property "getFigure().getParent().getGradientColor()" | equals "#B4C8D2" | verify-true
+    }
+}
+
+// Click on Class1
+with [get-editor "test Class Diagram"] {
+    with [get-palette | get-palette-entry Class] {
+        mouse-move 25 3 button1 -height 23 -width 125
+        mouse-press 25 3 button1 -height 23 -width 125
+        mouse-release 25 3 button1 524288 -height 23 -width 125
+    }
+    with [get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+        with [get-edit-part -name Class2 | get-edit-part -className DNodeListViewNodeListCompartment2EditPart] {
+            mouse-move 46 14 button1 -height 71 -width 116
+            mouse-press 46 14 button1 -height 71 -width 116
+            mouse-release 46 14 button1 524288 -height 71 -width 116
+        }
+    }
+    with [get-palette | get-palette-entry Class] {
+        mouse-move 33 5 button1 -height 23 -width 125
+        mouse-press 33 5 button1 -height 23 -width 125
+        mouse-release 33 5 button1 524288 -height 23 -width 125
+    }
+    with [get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+        with [get-edit-part -name Package1 | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartmentEditPart | get-edit-part -name Class1 | get-edit-part 
+            -className DNodeListViewNodeListCompartmentEditPart] {
+            mouse-move 59 21 button1 -height 71 -width 116
+            mouse-press 59 21 button1 -height 71 -width 116
+            mouse-release 59 21 button1 524288 -height 71 -width 116
+        }
+    }
+}
+// Checkclass1 style
+with [get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+    with [get-edit-part -name Package1 | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart 
+        | get-edit-part -name Class1 | get-edit-part -className DNodeListName2EditPart] {
+        get-property "getFigure().getText()" | equals Class1 | verify-true
+        get-property "getFigure().getParent().getGradientColor()" | equals "#E8EFF7" | verify-true
+    }
+    with [get-edit-part -name Class2 | get-edit-part -className DNodeListNameEditPart] {
+        get-property "getFigure().getText()" | equals Class2 | verify-true
+        get-property "getFigure().getParent().getGradientColor()" | equals "#E8EFF7" | verify-true
+    }
+}
+

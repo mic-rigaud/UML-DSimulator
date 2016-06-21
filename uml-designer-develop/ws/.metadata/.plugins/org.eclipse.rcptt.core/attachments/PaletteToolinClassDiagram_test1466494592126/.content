@@ -1,0 +1,17 @@
+// Create new semantic element using palette tool : Package
+with [get-editor "test Class Diagram"] {
+	with [get-palette | get-palette-entry Interface] {
+		mouse-move 33 8 button1 -height 24 -width 125
+		mouse-press 33 8 button1 -height 24 -width 125
+		mouse-release 33 8 button1 524288 -height 24 -width 125
+		mouse-move 11 9 -height 24 -width 125
+	}
+	with [get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+		mouse-move 556 135 button1 -height 343 -width 607
+		mouse-press 556 135 button1 -height 343 -width 607
+		mouse-release 556 135 button1 524288 -height 343 -width 607
+	}
+}
+// Verify Graphical element is created
+get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram" | get-edit-part -name Interface1 
+    | get-figure "0/0" | get-property "getLabelFigure().getText()" | equals "Interface1" | verify-true

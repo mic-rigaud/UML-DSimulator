@@ -1,0 +1,49 @@
+// Test: change Orientation of submachine
+// Check mapping orientation before
+with [get-editor "NewModel State Machine Diagram" | get-diagram -index 1 | get-edit-part 
+    -name "NewModel State Machine Diagram"] {
+    get-property "element.diagramElements.DNodeContainer[0].name" | equals NewModel | verify-true
+    get-property "element.diagramElements.DNodeContainer[0].actualMapping.name" | equals "SM_StateMachineHorizontal" 
+        | verify-true
+}
+// Change from horizontal to vertical mapping
+with [get-editor "NewModel State Machine Diagram"] {
+    with [get-palette | get-palette-entry "State machine"] {
+        mouse-move 58 8 button1 -height 23 -width 178
+        mouse-press 58 8 button1 -height 23 -width 178
+        mouse-release 58 8 button1 524288 -height 23 -width 178
+    }
+    with [get-diagram -index 1 | get-edit-part -name "NewModel State Machine Diagram" | get-edit-part -name NewModel] {
+        mouse-move 738 14 button1 -height 429 -width 794
+        mouse-press 738 14 button1 -height 429 -width 794
+        mouse-release 738 14 button1 524288 -height 429 -width 794
+    }
+}
+// Check mapping orientation after first change
+with [get-editor "NewModel State Machine Diagram" | get-diagram -index 1 | get-edit-part 
+    -name "NewModel State Machine Diagram"] {
+    get-property "element.diagramElements.DNodeContainer[0].name" | equals NewModel | verify-true
+    get-property "element.diagramElements.DNodeContainer[0].actualMapping.name" | equals "SM_StateMachineVertical" 
+        | verify-true
+}
+// Change from vertical to horizontal mapping
+with [get-editor "NewModel State Machine Diagram"] {
+    with [get-palette | get-palette-entry "State machine"] {
+        mouse-move 47 9 button1 -height 23 -width 178
+        mouse-press 47 9 button1 -height 23 -width 178
+        mouse-release 47 9 button1 524288 -height 23 -width 178
+    }
+    with [get-diagram -index 1 | get-edit-part -name "NewModel State Machine Diagram" |
+        get-edit-part -name NewModel | get-edit-part -className DNodeContainerNameEditPart] {
+            mouse-move 47 9 button1 -height 16 -width 77
+            mouse-press 47 9 button1 -height 16 -width 77
+            mouse-release 47 9 button1 524288 -height 16 -width 77
+    }
+}
+// Check mapping orientation
+with [get-editor "NewModel State Machine Diagram" | get-diagram -index 1 | get-edit-part 
+    -name "NewModel State Machine Diagram"] {
+    get-property "element.diagramElements.DNodeContainer[0].name" | equals NewModel | verify-true
+    get-property "element.diagramElements.DNodeContainer[0].actualMapping.name" | equals "SM_StateMachineHorizontal" 
+        | verify-true
+}

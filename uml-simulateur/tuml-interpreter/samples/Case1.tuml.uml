@@ -1,0 +1,829 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xmi:XMI xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Blocks="http://www.eclipse.org/papyrus/0.7.0/SysML/Blocks" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/papyrus/0.7.0/SysML/Blocks http://www.eclipse.org/papyrus/0.7.0/SysML#//blocks">
+  <uml:Model xmi:id="_iQ5SIMvjEeW1JoFFN1CLQA" name="LevelCrossingCase0">
+    <packagedElement xmi:type="uml:Class" xmi:id="_iQ5SIcvjEeW1JoFFN1CLQA" name="SUS">
+      <ownedAttribute xmi:id="_iQ5SIsvjEeW1JoFFN1CLQA" name="lumiere" visibility="public" type="_iRfvQ8vjEeW1JoFFN1CLQA" isUnique="false" aggregation="composite">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iQ5SI8vjEeW1JoFFN1CLQA" value="1"/>
+        <upperValue xmi:type="uml:LiteralInteger" xmi:id="_iQ5SJMvjEeW1JoFFN1CLQA" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_iQ5SJcvjEeW1JoFFN1CLQA" name="son" visibility="public" type="_iRpgEMvjEeW1JoFFN1CLQA" isUnique="false" aggregation="composite">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iQ5SJsvjEeW1JoFFN1CLQA" value="1"/>
+        <upperValue xmi:type="uml:LiteralInteger" xmi:id="_iQ5SJ8vjEeW1JoFFN1CLQA" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_iQ5SKMvjEeW1JoFFN1CLQA" name="barriere" visibility="public" type="_iRpgHcvjEeW1JoFFN1CLQA" isUnique="false" aggregation="composite">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iQ5SKcvjEeW1JoFFN1CLQA" value="1"/>
+        <upperValue xmi:type="uml:LiteralInteger" xmi:id="_iQ5SKsvjEeW1JoFFN1CLQA" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_iQ5SK8vjEeW1JoFFN1CLQA" name="dispatcher" visibility="public" type="_iRyqAMvjEeW1JoFFN1CLQA" isUnique="false" aggregation="composite">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iQ5SLMvjEeW1JoFFN1CLQA" value="1"/>
+        <upperValue xmi:type="uml:LiteralInteger" xmi:id="_iQ5SLcvjEeW1JoFFN1CLQA" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_iQ5SLsvjEeW1JoFFN1CLQA" name="controleur" visibility="public" type="_iRDDS8vjEeW1JoFFN1CLQA" isUnique="false" aggregation="composite">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iQ5SL8vjEeW1JoFFN1CLQA" value="1"/>
+        <upperValue xmi:type="uml:LiteralInteger" xmi:id="_iQ5SMMvjEeW1JoFFN1CLQA" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_iQ5SMcvjEeW1JoFFN1CLQA" name="gestionnaireAnnonce" visibility="public" type="_iRM0McvjEeW1JoFFN1CLQA" isUnique="false" aggregation="composite">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iQ5SMsvjEeW1JoFFN1CLQA" value="1"/>
+        <upperValue xmi:type="uml:LiteralInteger" xmi:id="_iQ5SM8vjEeW1JoFFN1CLQA" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_iQ5SNMvjEeW1JoFFN1CLQA" name="gestionnaireLiberation" visibility="public" type="_iRM0VcvjEeW1JoFFN1CLQA" isUnique="false" aggregation="composite">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iQ5SNcvjEeW1JoFFN1CLQA" value="1"/>
+        <upperValue xmi:type="uml:LiteralInteger" xmi:id="_iQ5SNsvjEeW1JoFFN1CLQA" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_iQ5SN8vjEeW1JoFFN1CLQA" name="conditionOuverture" visibility="public" type="_iRfvFMvjEeW1JoFFN1CLQA" isUnique="false" aggregation="composite">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iQ5SOMvjEeW1JoFFN1CLQA" value="1"/>
+        <upperValue xmi:type="uml:LiteralInteger" xmi:id="_iQ5SOcvjEeW1JoFFN1CLQA" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_iQ5SOsvjEeW1JoFFN1CLQA" name="conditionFinAnnonce" visibility="public" type="_iRV-HcvjEeW1JoFFN1CLQA" isUnique="false" aggregation="composite">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iQ5SO8vjEeW1JoFFN1CLQA" value="1"/>
+        <upperValue xmi:type="uml:LiteralInteger" xmi:id="_iQ5SPMvjEeW1JoFFN1CLQA" value="1"/>
+      </ownedAttribute>
+      <ownedConnector xmi:id="_iQ5SPcvjEeW1JoFFN1CLQA" name="controleur-lumiere" type="_iRDDI8vjEeW1JoFFN1CLQA">
+        <end xmi:id="_iQ5SPsvjEeW1JoFFN1CLQA" role="_iQ5SLsvjEeW1JoFFN1CLQA"/>
+        <end xmi:id="_iQ5SP8vjEeW1JoFFN1CLQA" role="_iQ5SIsvjEeW1JoFFN1CLQA"/>
+      </ownedConnector>
+      <ownedConnector xmi:id="_iQ5SQMvjEeW1JoFFN1CLQA" name="controleur-son" type="_iRDDJ8vjEeW1JoFFN1CLQA">
+        <end xmi:id="_iQ5SQcvjEeW1JoFFN1CLQA" role="_iQ5SLsvjEeW1JoFFN1CLQA"/>
+        <end xmi:id="_iQ5SQsvjEeW1JoFFN1CLQA" role="_iQ5SJcvjEeW1JoFFN1CLQA"/>
+      </ownedConnector>
+      <ownedConnector xmi:id="_iQ5SQ8vjEeW1JoFFN1CLQA" name="controleur-barriere" type="_iRDDK8vjEeW1JoFFN1CLQA">
+        <end xmi:id="_iQ5SRMvjEeW1JoFFN1CLQA" role="_iQ5SLsvjEeW1JoFFN1CLQA"/>
+        <end xmi:id="_iQ5SRcvjEeW1JoFFN1CLQA" role="_iQ5SKMvjEeW1JoFFN1CLQA"/>
+      </ownedConnector>
+      <ownedConnector xmi:id="_iQ5SRsvjEeW1JoFFN1CLQA" name="controleur-gestionnaireAnnonce" type="_iRDDL8vjEeW1JoFFN1CLQA">
+        <end xmi:id="_iQ5SR8vjEeW1JoFFN1CLQA" role="_iQ5SMcvjEeW1JoFFN1CLQA"/>
+        <end xmi:id="_iQ5SSMvjEeW1JoFFN1CLQA" role="_iQ5SLsvjEeW1JoFFN1CLQA"/>
+      </ownedConnector>
+      <ownedConnector xmi:id="_iQ5SScvjEeW1JoFFN1CLQA" name="conditionOuverture-gestionnaireAnnonce" type="_iRDDM8vjEeW1JoFFN1CLQA">
+        <end xmi:id="_iQ5SSsvjEeW1JoFFN1CLQA" role="_iQ5SMcvjEeW1JoFFN1CLQA"/>
+        <end xmi:id="_iQ5SS8vjEeW1JoFFN1CLQA" role="_iQ5SN8vjEeW1JoFFN1CLQA"/>
+      </ownedConnector>
+      <ownedConnector xmi:id="_iQ5STMvjEeW1JoFFN1CLQA" name="gestionnaireLiberation-gestionnaireAnnonce" type="_iRDDN8vjEeW1JoFFN1CLQA">
+        <end xmi:id="_iQ5STcvjEeW1JoFFN1CLQA" role="_iQ5SMcvjEeW1JoFFN1CLQA"/>
+        <end xmi:id="_iQ5STsvjEeW1JoFFN1CLQA" role="_iQ5SNMvjEeW1JoFFN1CLQA"/>
+      </ownedConnector>
+      <ownedConnector xmi:id="_iQ5ST8vjEeW1JoFFN1CLQA" name="controleur-gestionnaireLiberation" type="_iRDDO8vjEeW1JoFFN1CLQA">
+        <end xmi:id="_iQ5SUMvjEeW1JoFFN1CLQA" role="_iQ5SNMvjEeW1JoFFN1CLQA"/>
+        <end xmi:id="_iQ5SUcvjEeW1JoFFN1CLQA" role="_iQ5SLsvjEeW1JoFFN1CLQA"/>
+      </ownedConnector>
+      <ownedConnector xmi:id="_iQ5SUsvjEeW1JoFFN1CLQA" name="gestionnaireAnnonce-conditionFinAnnonce" type="_iRDDP8vjEeW1JoFFN1CLQA">
+        <end xmi:id="_iQ5SU8vjEeW1JoFFN1CLQA" role="_iQ5SOsvjEeW1JoFFN1CLQA"/>
+        <end xmi:id="_iQ5SVMvjEeW1JoFFN1CLQA" role="_iQ5SMcvjEeW1JoFFN1CLQA"/>
+      </ownedConnector>
+      <ownedConnector xmi:id="_iQ5SVcvjEeW1JoFFN1CLQA" name="gestionnaireLiberation-conditionOuverture" type="_iRDDQ8vjEeW1JoFFN1CLQA">
+        <end xmi:id="_iQ5SVsvjEeW1JoFFN1CLQA" role="_iQ5SN8vjEeW1JoFFN1CLQA"/>
+        <end xmi:id="_iQ5SV8vjEeW1JoFFN1CLQA" role="_iQ5SNMvjEeW1JoFFN1CLQA"/>
+      </ownedConnector>
+      <ownedConnector xmi:id="_iQ5SWMvjEeW1JoFFN1CLQA" name="gestionnaireAnnonce-dispatcher" type="_iRpgRMvjEeW1JoFFN1CLQA">
+        <end xmi:id="_iQ5SWcvjEeW1JoFFN1CLQA" role="_iQ5SK8vjEeW1JoFFN1CLQA"/>
+        <end xmi:id="_iQ5SWsvjEeW1JoFFN1CLQA" role="_iQ5SMcvjEeW1JoFFN1CLQA"/>
+      </ownedConnector>
+      <ownedConnector xmi:id="_iQ5SW8vjEeW1JoFFN1CLQA" name="dispatcher-conditionFinAnnonce" type="_iRpgSMvjEeW1JoFFN1CLQA">
+        <end xmi:id="_iQ5SXMvjEeW1JoFFN1CLQA" role="_iQ5SK8vjEeW1JoFFN1CLQA"/>
+        <end xmi:id="_iQ5SXcvjEeW1JoFFN1CLQA" role="_iQ5SOsvjEeW1JoFFN1CLQA"/>
+      </ownedConnector>
+      <ownedConnector xmi:id="_iQ5SXsvjEeW1JoFFN1CLQA" name="dispatcher-conditionOuverture" type="_iRpgTMvjEeW1JoFFN1CLQA">
+        <end xmi:id="_iQ5SX8vjEeW1JoFFN1CLQA" role="_iQ5SK8vjEeW1JoFFN1CLQA"/>
+        <end xmi:id="_iQ5SYMvjEeW1JoFFN1CLQA" role="_iQ5SN8vjEeW1JoFFN1CLQA"/>
+      </ownedConnector>
+      <ownedConnector xmi:id="_iQ5SYcvjEeW1JoFFN1CLQA" name="dispatcher-controleur" type="_iRpgUMvjEeW1JoFFN1CLQA">
+        <end xmi:id="_iQ5SYsvjEeW1JoFFN1CLQA" role="_iQ5SK8vjEeW1JoFFN1CLQA"/>
+        <end xmi:id="_iQ5SY8vjEeW1JoFFN1CLQA" role="_iQ5SLsvjEeW1JoFFN1CLQA"/>
+      </ownedConnector>
+      <ownedConnector xmi:id="_iRDDIMvjEeW1JoFFN1CLQA" name="dispatcher-gestionnaireLiberation" type="_iRpgVMvjEeW1JoFFN1CLQA">
+        <end xmi:id="_iRDDIcvjEeW1JoFFN1CLQA" role="_iQ5SK8vjEeW1JoFFN1CLQA"/>
+        <end xmi:id="_iRDDIsvjEeW1JoFFN1CLQA" role="_iQ5SNMvjEeW1JoFFN1CLQA"/>
+      </ownedConnector>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_iRDDI8vjEeW1JoFFN1CLQA" name="Controleur_Lumiere" memberEnd="_iRDDJMvjEeW1JoFFN1CLQA _iRDDT8vjEeW1JoFFN1CLQA">
+      <ownedEnd xmi:id="_iRDDJMvjEeW1JoFFN1CLQA" name="controleur" type="_iRDDS8vjEeW1JoFFN1CLQA" isUnique="false" association="_iRDDI8vjEeW1JoFFN1CLQA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iRDDJcvjEeW1JoFFN1CLQA" value="1"/>
+        <upperValue xmi:type="uml:LiteralInteger" xmi:id="_iRDDJsvjEeW1JoFFN1CLQA" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_iRDDJ8vjEeW1JoFFN1CLQA" name="Controleur_Son" memberEnd="_iRDDKMvjEeW1JoFFN1CLQA _iRDDUsvjEeW1JoFFN1CLQA">
+      <ownedEnd xmi:id="_iRDDKMvjEeW1JoFFN1CLQA" name="controleur" type="_iRDDS8vjEeW1JoFFN1CLQA" isUnique="false" association="_iRDDJ8vjEeW1JoFFN1CLQA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iRDDKcvjEeW1JoFFN1CLQA" value="1"/>
+        <upperValue xmi:type="uml:LiteralInteger" xmi:id="_iRDDKsvjEeW1JoFFN1CLQA" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_iRDDK8vjEeW1JoFFN1CLQA" name="Controleur_Barriere" memberEnd="_iRDDLMvjEeW1JoFFN1CLQA _iRDDVcvjEeW1JoFFN1CLQA">
+      <ownedEnd xmi:id="_iRDDLMvjEeW1JoFFN1CLQA" name="controleur" type="_iRDDS8vjEeW1JoFFN1CLQA" isUnique="false" association="_iRDDK8vjEeW1JoFFN1CLQA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iRDDLcvjEeW1JoFFN1CLQA" value="1"/>
+        <upperValue xmi:type="uml:LiteralInteger" xmi:id="_iRDDLsvjEeW1JoFFN1CLQA" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_iRDDL8vjEeW1JoFFN1CLQA" name="GestionnaireAnnonce_Controleur" memberEnd="_iRDDMMvjEeW1JoFFN1CLQA _iRM0N8vjEeW1JoFFN1CLQA">
+      <ownedEnd xmi:id="_iRDDMMvjEeW1JoFFN1CLQA" name="gestionnaireAnnonce" type="_iRM0McvjEeW1JoFFN1CLQA" isUnique="false" association="_iRDDL8vjEeW1JoFFN1CLQA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iRDDMcvjEeW1JoFFN1CLQA" value="1"/>
+        <upperValue xmi:type="uml:LiteralInteger" xmi:id="_iRDDMsvjEeW1JoFFN1CLQA" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_iRDDM8vjEeW1JoFFN1CLQA" name="GestionnaireAnnonce_ConditionOuverture" memberEnd="_iRDDNMvjEeW1JoFFN1CLQA _iRM0OsvjEeW1JoFFN1CLQA">
+      <ownedEnd xmi:id="_iRDDNMvjEeW1JoFFN1CLQA" name="gestionnaireAnnonce" type="_iRM0McvjEeW1JoFFN1CLQA" isUnique="false" association="_iRDDM8vjEeW1JoFFN1CLQA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iRDDNcvjEeW1JoFFN1CLQA" value="1"/>
+        <upperValue xmi:type="uml:LiteralInteger" xmi:id="_iRDDNsvjEeW1JoFFN1CLQA" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_iRDDN8vjEeW1JoFFN1CLQA" name="GestionnaireAnnonce_GestionnaireLiberation" memberEnd="_iRDDOMvjEeW1JoFFN1CLQA _iRM0PcvjEeW1JoFFN1CLQA">
+      <ownedEnd xmi:id="_iRDDOMvjEeW1JoFFN1CLQA" name="gestionnaireAnnonce" type="_iRM0McvjEeW1JoFFN1CLQA" isUnique="false" association="_iRDDN8vjEeW1JoFFN1CLQA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iRDDOcvjEeW1JoFFN1CLQA" value="1"/>
+        <upperValue xmi:type="uml:LiteralInteger" xmi:id="_iRDDOsvjEeW1JoFFN1CLQA" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_iRDDO8vjEeW1JoFFN1CLQA" name="GestionnaireLiberation_Controleur" memberEnd="_iRDDPMvjEeW1JoFFN1CLQA _iRM0WcvjEeW1JoFFN1CLQA">
+      <ownedEnd xmi:id="_iRDDPMvjEeW1JoFFN1CLQA" name="gestionnaireLiberation" type="_iRM0VcvjEeW1JoFFN1CLQA" isUnique="false" association="_iRDDO8vjEeW1JoFFN1CLQA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iRDDPcvjEeW1JoFFN1CLQA" value="1"/>
+        <upperValue xmi:type="uml:LiteralInteger" xmi:id="_iRDDPsvjEeW1JoFFN1CLQA" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_iRDDP8vjEeW1JoFFN1CLQA" name="ConditionFinAnnonce_GestionnaireAnnonce" memberEnd="_iRDDQMvjEeW1JoFFN1CLQA _iRV-K8vjEeW1JoFFN1CLQA">
+      <ownedEnd xmi:id="_iRDDQMvjEeW1JoFFN1CLQA" name="conditionFinAnnonce" type="_iRV-HcvjEeW1JoFFN1CLQA" isUnique="false" association="_iRDDP8vjEeW1JoFFN1CLQA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iRDDQcvjEeW1JoFFN1CLQA" value="1"/>
+        <upperValue xmi:type="uml:LiteralInteger" xmi:id="_iRDDQsvjEeW1JoFFN1CLQA" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_iRDDQ8vjEeW1JoFFN1CLQA" name="ConditionOuverture_GestionnaireLiberation" memberEnd="_iRDDRMvjEeW1JoFFN1CLQA _iRfvHsvjEeW1JoFFN1CLQA">
+      <ownedEnd xmi:id="_iRDDRMvjEeW1JoFFN1CLQA" name="conditionOuverture" type="_iRfvFMvjEeW1JoFFN1CLQA" isUnique="false" association="_iRDDQ8vjEeW1JoFFN1CLQA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iRDDRcvjEeW1JoFFN1CLQA" value="1"/>
+        <upperValue xmi:type="uml:LiteralInteger" xmi:id="_iRDDRsvjEeW1JoFFN1CLQA" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Signal" xmi:id="_iRDDR8vjEeW1JoFFN1CLQA" name="sysInit"/>
+    <packagedElement xmi:type="uml:SignalEvent" xmi:id="_iRDDSMvjEeW1JoFFN1CLQA" name="sysInitSE" signal="_iRDDR8vjEeW1JoFFN1CLQA"/>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_iRDDScvjEeW1JoFFN1CLQA" name="IInitialisable">
+      <ownedReception xmi:id="_iRDDSsvjEeW1JoFFN1CLQA" name="sysInit" signal="_iRDDR8vjEeW1JoFFN1CLQA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_iRDDS8vjEeW1JoFFN1CLQA" clientDependency="_iRDDTMvjEeW1JoFFN1CLQA _iRDDTcvjEeW1JoFFN1CLQA _iRDDTsvjEeW1JoFFN1CLQA" name="Controleur" classifierBehavior="_iRDDWMvjEeW1JoFFN1CLQA" isActive="true">
+      <ownedAttribute xmi:id="_iRDDT8vjEeW1JoFFN1CLQA" name="lumiere" type="_iRfvQ8vjEeW1JoFFN1CLQA" isUnique="false" association="_iRDDI8vjEeW1JoFFN1CLQA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iRDDUMvjEeW1JoFFN1CLQA" value="1"/>
+        <upperValue xmi:type="uml:LiteralInteger" xmi:id="_iRDDUcvjEeW1JoFFN1CLQA" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_iRDDUsvjEeW1JoFFN1CLQA" name="son" type="_iRpgEMvjEeW1JoFFN1CLQA" isUnique="false" association="_iRDDJ8vjEeW1JoFFN1CLQA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iRDDU8vjEeW1JoFFN1CLQA" value="1"/>
+        <upperValue xmi:type="uml:LiteralInteger" xmi:id="_iRDDVMvjEeW1JoFFN1CLQA" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_iRDDVcvjEeW1JoFFN1CLQA" name="barriere" type="_iRpgHcvjEeW1JoFFN1CLQA" isUnique="false" association="_iRDDK8vjEeW1JoFFN1CLQA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iRDDVsvjEeW1JoFFN1CLQA" value="1"/>
+        <upperValue xmi:type="uml:LiteralInteger" xmi:id="_iRDDV8vjEeW1JoFFN1CLQA" value="1"/>
+      </ownedAttribute>
+      <interfaceRealization xmi:id="_iRDDTMvjEeW1JoFFN1CLQA" client="_iRDDS8vjEeW1JoFFN1CLQA" supplier="_iRM0U8vjEeW1JoFFN1CLQA" contract="_iRM0U8vjEeW1JoFFN1CLQA"/>
+      <interfaceRealization xmi:id="_iRDDTcvjEeW1JoFFN1CLQA" client="_iRDDS8vjEeW1JoFFN1CLQA" supplier="_iRM0LcvjEeW1JoFFN1CLQA" contract="_iRM0LcvjEeW1JoFFN1CLQA"/>
+      <interfaceRealization xmi:id="_iRDDTsvjEeW1JoFFN1CLQA" client="_iRDDS8vjEeW1JoFFN1CLQA" supplier="_iRDDScvjEeW1JoFFN1CLQA" contract="_iRDDScvjEeW1JoFFN1CLQA"/>
+      <ownedBehavior xmi:type="uml:StateMachine" xmi:id="_iRDDWMvjEeW1JoFFN1CLQA" name="SM">
+        <region xmi:id="_iRDDWcvjEeW1JoFFN1CLQA" name="R">
+          <transition xmi:id="_iRDDWsvjEeW1JoFFN1CLQA" source="_iRM0JsvjEeW1JoFFN1CLQA" target="_iRyqOMvjEeW1JoFFN1CLQA"/>
+          <transition xmi:id="_iRDDW8vjEeW1JoFFN1CLQA" source="_iRyqOMvjEeW1JoFFN1CLQA" target="_iRyqOcvjEeW1JoFFN1CLQA">
+            <trigger xmi:id="_iRDDXMvjEeW1JoFFN1CLQA" event="_iRDDSMvjEeW1JoFFN1CLQA"/>
+          </transition>
+          <transition xmi:id="_iRDDXcvjEeW1JoFFN1CLQA" source="_iRyqOcvjEeW1JoFFN1CLQA" target="_iRyqOsvjEeW1JoFFN1CLQA">
+            <effect xmi:type="uml:OpaqueBehavior" xmi:id="_iRDDX8vjEeW1JoFFN1CLQA">
+              <language>ABCD</language>
+              <body>&#xD;
+											send clignote to lumiere;&#xD;
+											send debute to son;&#xD;
+											send ferme to barriere;&#xD;
+										</body>
+            </effect>
+            <trigger xmi:id="_iRDDXsvjEeW1JoFFN1CLQA" event="_iRM0KMvjEeW1JoFFN1CLQA"/>
+          </transition>
+          <transition xmi:id="_iRM0IMvjEeW1JoFFN1CLQA" source="_iRyqOsvjEeW1JoFFN1CLQA" target="_iRyqO8vjEeW1JoFFN1CLQA">
+            <effect xmi:type="uml:OpaqueBehavior" xmi:id="_iRM0IsvjEeW1JoFFN1CLQA">
+              <language>ABCD</language>
+              <body>&#xD;
+											send allume to lumiere;&#xD;
+											send arret to son;&#xD;
+										</body>
+            </effect>
+            <trigger xmi:id="_iRM0IcvjEeW1JoFFN1CLQA" event="_iRM0KsvjEeW1JoFFN1CLQA"/>
+          </transition>
+          <transition xmi:id="_iRM0I8vjEeW1JoFFN1CLQA" source="_iRyqO8vjEeW1JoFFN1CLQA" target="_iRyqOcvjEeW1JoFFN1CLQA">
+            <effect xmi:type="uml:OpaqueBehavior" xmi:id="_iRM0JcvjEeW1JoFFN1CLQA">
+              <language>ABCD</language>
+              <body>&#xD;
+											send eteint to lumiere;&#xD;
+											send ouvre to barriere;&#xD;
+										</body>
+            </effect>
+            <trigger xmi:id="_iRM0JMvjEeW1JoFFN1CLQA" event="_iRM0UsvjEeW1JoFFN1CLQA"/>
+          </transition>
+          <subvertex xmi:type="uml:Pseudostate" xmi:id="_iRM0JsvjEeW1JoFFN1CLQA" name="Initial"/>
+          <subvertex xmi:type="uml:State" xmi:id="_iRyqOMvjEeW1JoFFN1CLQA" name="Initialisation"/>
+          <subvertex xmi:type="uml:State" xmi:id="_iRyqOcvjEeW1JoFFN1CLQA" name="Repos"/>
+          <subvertex xmi:type="uml:State" xmi:id="_iRyqOsvjEeW1JoFFN1CLQA" name="Approche"/>
+          <subvertex xmi:type="uml:State" xmi:id="_iRyqO8vjEeW1JoFFN1CLQA" name="Passage"/>
+        </region>
+      </ownedBehavior>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Signal" xmi:id="_iRM0J8vjEeW1JoFFN1CLQA" name="annonceApproche"/>
+    <packagedElement xmi:type="uml:SignalEvent" xmi:id="_iRM0KMvjEeW1JoFFN1CLQA" name="annonceApprocheSE" signal="_iRM0J8vjEeW1JoFFN1CLQA"/>
+    <packagedElement xmi:type="uml:Signal" xmi:id="_iRM0KcvjEeW1JoFFN1CLQA" name="annoncePassage"/>
+    <packagedElement xmi:type="uml:SignalEvent" xmi:id="_iRM0KsvjEeW1JoFFN1CLQA" name="annoncePassageSE" signal="_iRM0KcvjEeW1JoFFN1CLQA"/>
+    <packagedElement xmi:type="uml:Signal" xmi:id="_iRM0K8vjEeW1JoFFN1CLQA" name="annonceInactive"/>
+    <packagedElement xmi:type="uml:SignalEvent" xmi:id="_iRM0LMvjEeW1JoFFN1CLQA" name="annonceInactiveSE" signal="_iRM0K8vjEeW1JoFFN1CLQA"/>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_iRM0LcvjEeW1JoFFN1CLQA" name="IConsommateurAnnonce">
+      <ownedReception xmi:id="_iRM0LsvjEeW1JoFFN1CLQA" name="annonceApproche" signal="_iRM0J8vjEeW1JoFFN1CLQA"/>
+      <ownedReception xmi:id="_iRM0L8vjEeW1JoFFN1CLQA" name="annoncePassage" signal="_iRM0KcvjEeW1JoFFN1CLQA"/>
+      <ownedReception xmi:id="_iRM0MMvjEeW1JoFFN1CLQA" name="annonceInactive" signal="_iRM0K8vjEeW1JoFFN1CLQA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_iRM0McvjEeW1JoFFN1CLQA" clientDependency="_iRM0MsvjEeW1JoFFN1CLQA _iRM0M8vjEeW1JoFFN1CLQA _iRM0NMvjEeW1JoFFN1CLQA _iRM0NcvjEeW1JoFFN1CLQA _iRM0NsvjEeW1JoFFN1CLQA" name="GestionnaireAnnonce" classifierBehavior="_iRM0QMvjEeW1JoFFN1CLQA" isActive="true">
+      <ownedAttribute xmi:id="_iRM0N8vjEeW1JoFFN1CLQA" name="controleur" visibility="public" type="_iRDDS8vjEeW1JoFFN1CLQA" isUnique="false" association="_iRDDL8vjEeW1JoFFN1CLQA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iRM0OMvjEeW1JoFFN1CLQA" value="1"/>
+        <upperValue xmi:type="uml:LiteralInteger" xmi:id="_iRM0OcvjEeW1JoFFN1CLQA" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_iRM0OsvjEeW1JoFFN1CLQA" name="conditionOuverture" visibility="public" type="_iRfvFMvjEeW1JoFFN1CLQA" isUnique="false" association="_iRDDM8vjEeW1JoFFN1CLQA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iRM0O8vjEeW1JoFFN1CLQA" value="1"/>
+        <upperValue xmi:type="uml:LiteralInteger" xmi:id="_iRM0PMvjEeW1JoFFN1CLQA" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_iRM0PcvjEeW1JoFFN1CLQA" name="gestionnaireLiberation" visibility="public" type="_iRM0VcvjEeW1JoFFN1CLQA" isUnique="false" association="_iRDDN8vjEeW1JoFFN1CLQA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iRM0PsvjEeW1JoFFN1CLQA" value="1"/>
+        <upperValue xmi:type="uml:LiteralInteger" xmi:id="_iRM0P8vjEeW1JoFFN1CLQA" value="1"/>
+      </ownedAttribute>
+      <interfaceRealization xmi:id="_iRM0MsvjEeW1JoFFN1CLQA" client="_iRM0McvjEeW1JoFFN1CLQA" supplier="_iRV-G8vjEeW1JoFFN1CLQA" contract="_iRV-G8vjEeW1JoFFN1CLQA"/>
+      <interfaceRealization xmi:id="_iRM0M8vjEeW1JoFFN1CLQA" client="_iRM0McvjEeW1JoFFN1CLQA" supplier="_iRpgM8vjEeW1JoFFN1CLQA" contract="_iRpgM8vjEeW1JoFFN1CLQA"/>
+      <interfaceRealization xmi:id="_iRM0NMvjEeW1JoFFN1CLQA" client="_iRM0McvjEeW1JoFFN1CLQA" supplier="_iRpgOsvjEeW1JoFFN1CLQA" contract="_iRpgOsvjEeW1JoFFN1CLQA"/>
+      <interfaceRealization xmi:id="_iRM0NcvjEeW1JoFFN1CLQA" client="_iRM0McvjEeW1JoFFN1CLQA" supplier="_iRpgJsvjEeW1JoFFN1CLQA" contract="_iRpgJsvjEeW1JoFFN1CLQA"/>
+      <interfaceRealization xmi:id="_iRM0NsvjEeW1JoFFN1CLQA" client="_iRM0McvjEeW1JoFFN1CLQA" supplier="_iRDDScvjEeW1JoFFN1CLQA" contract="_iRDDScvjEeW1JoFFN1CLQA"/>
+      <ownedBehavior xmi:type="uml:StateMachine" xmi:id="_iRM0QMvjEeW1JoFFN1CLQA" name="SM">
+        <region xmi:id="_iRM0QcvjEeW1JoFFN1CLQA" name="R">
+          <transition xmi:id="_iRM0QsvjEeW1JoFFN1CLQA" source="_iRM0UMvjEeW1JoFFN1CLQA" target="_iRyqPMvjEeW1JoFFN1CLQA"/>
+          <transition xmi:id="_iRM0Q8vjEeW1JoFFN1CLQA" source="_iRyqPMvjEeW1JoFFN1CLQA" target="_iRyqPcvjEeW1JoFFN1CLQA">
+            <trigger xmi:id="_iRM0RMvjEeW1JoFFN1CLQA" event="_iRDDSMvjEeW1JoFFN1CLQA"/>
+          </transition>
+          <transition xmi:id="_iRM0RcvjEeW1JoFFN1CLQA" source="_iRyqPcvjEeW1JoFFN1CLQA" target="_iRyqPsvjEeW1JoFFN1CLQA">
+            <effect xmi:type="uml:OpaqueBehavior" xmi:id="_iRM0R8vjEeW1JoFFN1CLQA">
+              <language>ABCD</language>
+              <body>&#xD;
+							send annonceApproche to controleur;&#xD;
+							send annonceApproche to conditionOuverture;&#xD;
+							send annonceApproche to gestionnaireLiberation;&#xD;
+						</body>
+            </effect>
+            <trigger xmi:id="_iRM0RsvjEeW1JoFFN1CLQA" event="_iRpgJcvjEeW1JoFFN1CLQA"/>
+          </transition>
+          <transition xmi:id="_iRM0SMvjEeW1JoFFN1CLQA" source="_iRyqPsvjEeW1JoFFN1CLQA" target="_iRyqP8vjEeW1JoFFN1CLQA">
+            <effect xmi:type="uml:OpaqueBehavior" xmi:id="_iRM0SsvjEeW1JoFFN1CLQA">
+              <language>ABCD</language>
+              <body>&#xD;
+							send annoncePassage to controleur;&#xD;
+						</body>
+            </effect>
+            <trigger xmi:id="_iRM0ScvjEeW1JoFFN1CLQA" event="_iRpgOcvjEeW1JoFFN1CLQA"/>
+          </transition>
+          <transition xmi:id="_iRM0S8vjEeW1JoFFN1CLQA" source="_iRyqP8vjEeW1JoFFN1CLQA" target="_iRyqPsvjEeW1JoFFN1CLQA">
+            <trigger xmi:id="_iRM0TMvjEeW1JoFFN1CLQA" event="_iRpgMsvjEeW1JoFFN1CLQA"/>
+          </transition>
+          <transition xmi:id="_iRM0TcvjEeW1JoFFN1CLQA" source="_iRyqP8vjEeW1JoFFN1CLQA" target="_iRyqPcvjEeW1JoFFN1CLQA">
+            <effect xmi:type="uml:OpaqueBehavior" xmi:id="_iRM0T8vjEeW1JoFFN1CLQA">
+              <language>ABCD</language>
+              <body>&#xD;
+							send annonceInactive to conditionOuverture;&#xD;
+							send annonceInactive to gestionnaireLiberation;&#xD;
+						</body>
+            </effect>
+            <trigger xmi:id="_iRM0TsvjEeW1JoFFN1CLQA" event="_iRV-GsvjEeW1JoFFN1CLQA"/>
+          </transition>
+          <subvertex xmi:type="uml:Pseudostate" xmi:id="_iRM0UMvjEeW1JoFFN1CLQA" name="Initial"/>
+          <subvertex xmi:type="uml:State" xmi:id="_iRyqPMvjEeW1JoFFN1CLQA" name="Initialisation"/>
+          <subvertex xmi:type="uml:State" xmi:id="_iRyqPcvjEeW1JoFFN1CLQA" name="Inactive"/>
+          <subvertex xmi:type="uml:State" xmi:id="_iRyqPsvjEeW1JoFFN1CLQA" name="Approche"/>
+          <subvertex xmi:type="uml:State" xmi:id="_iRyqP8vjEeW1JoFFN1CLQA" name="Passage"/>
+        </region>
+      </ownedBehavior>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Signal" xmi:id="_iRM0UcvjEeW1JoFFN1CLQA" name="liberation"/>
+    <packagedElement xmi:type="uml:SignalEvent" xmi:id="_iRM0UsvjEeW1JoFFN1CLQA" name="liberationSE" signal="_iRM0UcvjEeW1JoFFN1CLQA"/>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_iRM0U8vjEeW1JoFFN1CLQA" name="IConsommateurLiberation">
+      <ownedReception xmi:id="_iRM0VMvjEeW1JoFFN1CLQA" name="liberation" signal="_iRM0UcvjEeW1JoFFN1CLQA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_iRM0VcvjEeW1JoFFN1CLQA" clientDependency="_iRM0VsvjEeW1JoFFN1CLQA _iRM0V8vjEeW1JoFFN1CLQA _iRM0WMvjEeW1JoFFN1CLQA" name="GestionnaireLiberation" classifierBehavior="_iRM0XMvjEeW1JoFFN1CLQA" isActive="true">
+      <ownedAttribute xmi:id="_iRM0WcvjEeW1JoFFN1CLQA" name="controleur" visibility="public" type="_iRDDS8vjEeW1JoFFN1CLQA" isUnique="false" association="_iRDDO8vjEeW1JoFFN1CLQA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iRM0WsvjEeW1JoFFN1CLQA" value="1"/>
+        <upperValue xmi:type="uml:LiteralInteger" xmi:id="_iRM0W8vjEeW1JoFFN1CLQA" value="1"/>
+      </ownedAttribute>
+      <interfaceRealization xmi:id="_iRM0VsvjEeW1JoFFN1CLQA" client="_iRM0VcvjEeW1JoFFN1CLQA" supplier="_iRM0LcvjEeW1JoFFN1CLQA" contract="_iRM0LcvjEeW1JoFFN1CLQA"/>
+      <interfaceRealization xmi:id="_iRM0V8vjEeW1JoFFN1CLQA" client="_iRM0VcvjEeW1JoFFN1CLQA" supplier="_iRfvEsvjEeW1JoFFN1CLQA" contract="_iRfvEsvjEeW1JoFFN1CLQA"/>
+      <interfaceRealization xmi:id="_iRM0WMvjEeW1JoFFN1CLQA" client="_iRM0VcvjEeW1JoFFN1CLQA" supplier="_iRDDScvjEeW1JoFFN1CLQA" contract="_iRDDScvjEeW1JoFFN1CLQA"/>
+      <ownedBehavior xmi:type="uml:StateMachine" xmi:id="_iRM0XMvjEeW1JoFFN1CLQA" name="SM">
+        <region xmi:id="_iRM0XcvjEeW1JoFFN1CLQA" name="R">
+          <transition xmi:id="_iRM0XsvjEeW1JoFFN1CLQA" source="_iRV-F8vjEeW1JoFFN1CLQA" target="_iRyqQMvjEeW1JoFFN1CLQA"/>
+          <transition xmi:id="_iRV-EMvjEeW1JoFFN1CLQA" source="_iRyqQMvjEeW1JoFFN1CLQA" target="_iRyqQcvjEeW1JoFFN1CLQA">
+            <trigger xmi:id="_iRV-EcvjEeW1JoFFN1CLQA" event="_iRDDSMvjEeW1JoFFN1CLQA"/>
+          </transition>
+          <transition xmi:id="_iRV-EsvjEeW1JoFFN1CLQA" source="_iRyqQcvjEeW1JoFFN1CLQA" target="_iRyqQsvjEeW1JoFFN1CLQA">
+            <trigger xmi:id="_iRV-E8vjEeW1JoFFN1CLQA" event="_iRM0KMvjEeW1JoFFN1CLQA"/>
+          </transition>
+          <transition xmi:id="_iRV-FMvjEeW1JoFFN1CLQA" source="_iRyqQsvjEeW1JoFFN1CLQA" target="_iRyqQcvjEeW1JoFFN1CLQA">
+            <effect xmi:type="uml:OpaqueBehavior" xmi:id="_iRV-FsvjEeW1JoFFN1CLQA">
+              <language>ABCD</language>
+              <body>&#xD;
+							send liberation to controleur;&#xD;
+						</body>
+            </effect>
+            <trigger xmi:id="_iRV-FcvjEeW1JoFFN1CLQA" event="_iRfvEcvjEeW1JoFFN1CLQA"/>
+          </transition>
+          <subvertex xmi:type="uml:Pseudostate" xmi:id="_iRV-F8vjEeW1JoFFN1CLQA" name="Initial"/>
+          <subvertex xmi:type="uml:State" xmi:id="_iRyqQMvjEeW1JoFFN1CLQA" name="Initialisation"/>
+          <subvertex xmi:type="uml:State" xmi:id="_iRyqQcvjEeW1JoFFN1CLQA" name="Ouvert"/>
+          <subvertex xmi:type="uml:State" xmi:id="_iRyqQsvjEeW1JoFFN1CLQA" name="Ferme"/>
+        </region>
+      </ownedBehavior>
+    </packagedElement>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_iRV-GMvjEeW1JoFFN1CLQA" name="bool"/>
+    <packagedElement xmi:type="uml:Signal" xmi:id="_iRV-GcvjEeW1JoFFN1CLQA" name="finAnnonce"/>
+    <packagedElement xmi:type="uml:SignalEvent" xmi:id="_iRV-GsvjEeW1JoFFN1CLQA" name="finAnnonceSE" signal="_iRV-GcvjEeW1JoFFN1CLQA"/>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_iRV-G8vjEeW1JoFFN1CLQA" name="IConsommateurFinAnnonce">
+      <ownedReception xmi:id="_iRV-HMvjEeW1JoFFN1CLQA" name="finAnnonce" signal="_iRV-GcvjEeW1JoFFN1CLQA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_iRV-HcvjEeW1JoFFN1CLQA" clientDependency="_iRV-HsvjEeW1JoFFN1CLQA _iRV-H8vjEeW1JoFFN1CLQA _iRV-IMvjEeW1JoFFN1CLQA _iRV-IcvjEeW1JoFFN1CLQA" name="ConditionFinAnnonce" classifierBehavior="_iRV-LsvjEeW1JoFFN1CLQA" isActive="true">
+      <ownedAttribute xmi:id="_iRV-IsvjEeW1JoFFN1CLQA" name="z1" visibility="private" type="_iRV-GMvjEeW1JoFFN1CLQA" isUnique="false">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iRV-I8vjEeW1JoFFN1CLQA" value="1"/>
+        <upperValue xmi:type="uml:LiteralInteger" xmi:id="_iRV-JMvjEeW1JoFFN1CLQA" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_iRV-JcvjEeW1JoFFN1CLQA" name="z3" visibility="private" type="_iRV-GMvjEeW1JoFFN1CLQA" isUnique="false">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iRV-JsvjEeW1JoFFN1CLQA" value="1"/>
+        <upperValue xmi:type="uml:LiteralInteger" xmi:id="_iRV-J8vjEeW1JoFFN1CLQA" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_iRV-KMvjEeW1JoFFN1CLQA" name="z5" visibility="private" type="_iRV-GMvjEeW1JoFFN1CLQA" isUnique="false">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iRV-KcvjEeW1JoFFN1CLQA" value="1"/>
+        <upperValue xmi:type="uml:LiteralInteger" xmi:id="_iRV-KsvjEeW1JoFFN1CLQA" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_iRV-K8vjEeW1JoFFN1CLQA" name="gestionnaireAnnonce" visibility="public" type="_iRM0McvjEeW1JoFFN1CLQA" isUnique="false" association="_iRDDP8vjEeW1JoFFN1CLQA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iRV-LMvjEeW1JoFFN1CLQA" value="1"/>
+        <upperValue xmi:type="uml:LiteralInteger" xmi:id="_iRV-LcvjEeW1JoFFN1CLQA" value="1"/>
+      </ownedAttribute>
+      <interfaceRealization xmi:id="_iRV-HsvjEeW1JoFFN1CLQA" client="_iRV-HcvjEeW1JoFFN1CLQA" supplier="_iRpgLMvjEeW1JoFFN1CLQA" contract="_iRpgLMvjEeW1JoFFN1CLQA"/>
+      <interfaceRealization xmi:id="_iRV-H8vjEeW1JoFFN1CLQA" client="_iRV-HcvjEeW1JoFFN1CLQA" supplier="_iRpgM8vjEeW1JoFFN1CLQA" contract="_iRpgM8vjEeW1JoFFN1CLQA"/>
+      <interfaceRealization xmi:id="_iRV-IMvjEeW1JoFFN1CLQA" client="_iRV-HcvjEeW1JoFFN1CLQA" supplier="_iRpgOsvjEeW1JoFFN1CLQA" contract="_iRpgOsvjEeW1JoFFN1CLQA"/>
+      <interfaceRealization xmi:id="_iRV-IcvjEeW1JoFFN1CLQA" client="_iRV-HcvjEeW1JoFFN1CLQA" supplier="_iRDDScvjEeW1JoFFN1CLQA" contract="_iRDDScvjEeW1JoFFN1CLQA"/>
+      <ownedBehavior xmi:type="uml:StateMachine" xmi:id="_iRV-LsvjEeW1JoFFN1CLQA" name="SM">
+        <region xmi:id="_iRV-L8vjEeW1JoFFN1CLQA" name="R">
+          <transition xmi:id="_iRV-MMvjEeW1JoFFN1CLQA" source="_iRV-TcvjEeW1JoFFN1CLQA" target="_iRyqQ8vjEeW1JoFFN1CLQA"/>
+          <transition xmi:id="_iRV-McvjEeW1JoFFN1CLQA" source="_iRyqQ8vjEeW1JoFFN1CLQA" target="_iRyqRMvjEeW1JoFFN1CLQA">
+            <effect xmi:type="uml:OpaqueBehavior" xmi:id="_iRV-M8vjEeW1JoFFN1CLQA">
+              <language>ABCD</language>
+              <body>&#xD;
+							z1 := false;&#xD;
+							z3 := false;&#xD;
+							z5 := false;&#xD;
+						</body>
+            </effect>
+            <trigger xmi:id="_iRV-MsvjEeW1JoFFN1CLQA" event="_iRDDSMvjEeW1JoFFN1CLQA"/>
+          </transition>
+          <transition xmi:id="_iRV-NMvjEeW1JoFFN1CLQA" source="_iRyqRMvjEeW1JoFFN1CLQA" target="_iRyqRMvjEeW1JoFFN1CLQA">
+            <effect xmi:type="uml:OpaqueBehavior" xmi:id="_iRV-NsvjEeW1JoFFN1CLQA">
+              <language>ABCD</language>
+              <body>&#xD;
+							z1 := true;&#xD;
+						</body>
+            </effect>
+            <trigger xmi:id="_iRV-NcvjEeW1JoFFN1CLQA" event="_iRpgK8vjEeW1JoFFN1CLQA"/>
+          </transition>
+          <transition xmi:id="_iRV-N8vjEeW1JoFFN1CLQA" source="_iRyqRMvjEeW1JoFFN1CLQA" target="_iRyqRMvjEeW1JoFFN1CLQA">
+            <effect xmi:type="uml:OpaqueBehavior" xmi:id="_iRV-OcvjEeW1JoFFN1CLQA">
+              <language>ABCD</language>
+              <body>&#xD;
+							z3 := true;&#xD;
+						</body>
+            </effect>
+            <trigger xmi:id="_iRV-OMvjEeW1JoFFN1CLQA" event="_iRpgMsvjEeW1JoFFN1CLQA"/>
+          </transition>
+          <transition xmi:id="_iRV-OsvjEeW1JoFFN1CLQA" source="_iRyqRMvjEeW1JoFFN1CLQA" target="_iRyqRMvjEeW1JoFFN1CLQA">
+            <effect xmi:type="uml:OpaqueBehavior" xmi:id="_iRV-PMvjEeW1JoFFN1CLQA">
+              <language>ABCD</language>
+              <body>&#xD;
+							z5 := true;&#xD;
+						</body>
+            </effect>
+            <trigger xmi:id="_iRV-O8vjEeW1JoFFN1CLQA" event="_iRpgOcvjEeW1JoFFN1CLQA"/>
+          </transition>
+          <transition xmi:id="_iRV-PcvjEeW1JoFFN1CLQA" source="_iRyqRMvjEeW1JoFFN1CLQA" target="_iRV-TsvjEeW1JoFFN1CLQA">
+            <effect xmi:type="uml:OpaqueBehavior" xmi:id="_iRV-P8vjEeW1JoFFN1CLQA">
+              <language>ABCD</language>
+              <body>&#xD;
+							z1 := false;&#xD;
+						</body>
+            </effect>
+            <trigger xmi:id="_iRV-PsvjEeW1JoFFN1CLQA" event="_iRpgKcvjEeW1JoFFN1CLQA"/>
+          </transition>
+          <transition xmi:id="_iRV-QMvjEeW1JoFFN1CLQA" source="_iRyqRMvjEeW1JoFFN1CLQA" target="_iRV-TsvjEeW1JoFFN1CLQA">
+            <effect xmi:type="uml:OpaqueBehavior" xmi:id="_iRV-QsvjEeW1JoFFN1CLQA">
+              <language>ABCD</language>
+              <body>&#xD;
+							z3 := false;&#xD;
+						</body>
+            </effect>
+            <trigger xmi:id="_iRV-QcvjEeW1JoFFN1CLQA" event="_iRpgMMvjEeW1JoFFN1CLQA"/>
+          </transition>
+          <transition xmi:id="_iRV-Q8vjEeW1JoFFN1CLQA" source="_iRyqRMvjEeW1JoFFN1CLQA" target="_iRV-TsvjEeW1JoFFN1CLQA">
+            <effect xmi:type="uml:OpaqueBehavior" xmi:id="_iRV-RcvjEeW1JoFFN1CLQA">
+              <language>ABCD</language>
+              <body>&#xD;
+							z5 := false;&#xD;
+						</body>
+            </effect>
+            <trigger xmi:id="_iRV-RMvjEeW1JoFFN1CLQA" event="_iRpgN8vjEeW1JoFFN1CLQA"/>
+          </transition>
+          <transition xmi:id="_iRV-RsvjEeW1JoFFN1CLQA" source="_iRV-TsvjEeW1JoFFN1CLQA" target="_iRyqRMvjEeW1JoFFN1CLQA">
+            <ownedRule xmi:id="_iRV-R8vjEeW1JoFFN1CLQA">
+              <specification xmi:type="uml:OpaqueExpression" xmi:id="_iRV-SMvjEeW1JoFFN1CLQA">
+                <language>ABCD</language>
+                <body>not (z1 or z3 or z5)</body>
+              </specification>
+            </ownedRule>
+            <effect xmi:type="uml:OpaqueBehavior" xmi:id="_iRV-ScvjEeW1JoFFN1CLQA">
+              <language>ABCD</language>
+              <body>&#xD;
+							send finAnnonce to gestionnaireAnnonce;&#xD;
+						</body>
+            </effect>
+          </transition>
+          <transition xmi:id="_iRV-SsvjEeW1JoFFN1CLQA" source="_iRV-TsvjEeW1JoFFN1CLQA" target="_iRyqRMvjEeW1JoFFN1CLQA">
+            <ownedRule xmi:id="_iRV-S8vjEeW1JoFFN1CLQA">
+              <specification xmi:type="uml:OpaqueExpression" xmi:id="_iRV-TMvjEeW1JoFFN1CLQA">
+                <language>ABCD</language>
+                <body>else</body>
+              </specification>
+            </ownedRule>
+          </transition>
+          <subvertex xmi:type="uml:Pseudostate" xmi:id="_iRV-TcvjEeW1JoFFN1CLQA" name="Initial"/>
+          <subvertex xmi:type="uml:Pseudostate" xmi:id="_iRV-TsvjEeW1JoFFN1CLQA" name="Condition" kind="choice"/>
+          <subvertex xmi:type="uml:State" xmi:id="_iRyqQ8vjEeW1JoFFN1CLQA" name="Initialisation"/>
+          <subvertex xmi:type="uml:State" xmi:id="_iRyqRMvjEeW1JoFFN1CLQA" name="Ecoute"/>
+        </region>
+      </ownedBehavior>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Signal" xmi:id="_iRfvEMvjEeW1JoFFN1CLQA" name="ouverture"/>
+    <packagedElement xmi:type="uml:SignalEvent" xmi:id="_iRfvEcvjEeW1JoFFN1CLQA" name="ouvertureSE" signal="_iRfvEMvjEeW1JoFFN1CLQA"/>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_iRfvEsvjEeW1JoFFN1CLQA" name="IConsommateurOuverture">
+      <ownedReception xmi:id="_iRfvE8vjEeW1JoFFN1CLQA" name="ouverture" signal="_iRfvEMvjEeW1JoFFN1CLQA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_iRfvFMvjEeW1JoFFN1CLQA" clientDependency="_iRfvFcvjEeW1JoFFN1CLQA _iRfvFsvjEeW1JoFFN1CLQA _iRfvF8vjEeW1JoFFN1CLQA" name="ConditionOuverture" classifierBehavior="_iRfvIcvjEeW1JoFFN1CLQA" isActive="true">
+      <ownedAttribute xmi:id="_iRfvGMvjEeW1JoFFN1CLQA" name="z5_1" visibility="private" type="_iRV-GMvjEeW1JoFFN1CLQA" isUnique="false">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iRfvGcvjEeW1JoFFN1CLQA" value="1"/>
+        <upperValue xmi:type="uml:LiteralInteger" xmi:id="_iRfvGsvjEeW1JoFFN1CLQA" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_iRfvG8vjEeW1JoFFN1CLQA" name="annonce" visibility="private" type="_iRV-GMvjEeW1JoFFN1CLQA" isUnique="false">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iRfvHMvjEeW1JoFFN1CLQA" value="1"/>
+        <upperValue xmi:type="uml:LiteralInteger" xmi:id="_iRfvHcvjEeW1JoFFN1CLQA" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_iRfvHsvjEeW1JoFFN1CLQA" name="gestionnaireLiberation" visibility="public" type="_iRM0VcvjEeW1JoFFN1CLQA" isUnique="false" association="_iRDDQ8vjEeW1JoFFN1CLQA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iRfvH8vjEeW1JoFFN1CLQA" value="1"/>
+        <upperValue xmi:type="uml:LiteralInteger" xmi:id="_iRfvIMvjEeW1JoFFN1CLQA" value="1"/>
+      </ownedAttribute>
+      <interfaceRealization xmi:id="_iRfvFcvjEeW1JoFFN1CLQA" client="_iRfvFMvjEeW1JoFFN1CLQA" supplier="_iRM0LcvjEeW1JoFFN1CLQA" contract="_iRM0LcvjEeW1JoFFN1CLQA"/>
+      <interfaceRealization xmi:id="_iRfvFsvjEeW1JoFFN1CLQA" client="_iRfvFMvjEeW1JoFFN1CLQA" supplier="_iRpgQcvjEeW1JoFFN1CLQA" contract="_iRpgQcvjEeW1JoFFN1CLQA"/>
+      <interfaceRealization xmi:id="_iRfvF8vjEeW1JoFFN1CLQA" client="_iRfvFMvjEeW1JoFFN1CLQA" supplier="_iRDDScvjEeW1JoFFN1CLQA" contract="_iRDDScvjEeW1JoFFN1CLQA"/>
+      <ownedBehavior xmi:type="uml:StateMachine" xmi:id="_iRfvIcvjEeW1JoFFN1CLQA" name="SM">
+        <region xmi:id="_iRfvIsvjEeW1JoFFN1CLQA" name="R">
+          <transition xmi:id="_iRfvI8vjEeW1JoFFN1CLQA" source="_iRfvOsvjEeW1JoFFN1CLQA" target="_iRyqRcvjEeW1JoFFN1CLQA"/>
+          <transition xmi:id="_iRfvJMvjEeW1JoFFN1CLQA" source="_iRyqRcvjEeW1JoFFN1CLQA" target="_iRyqRsvjEeW1JoFFN1CLQA">
+            <effect xmi:type="uml:OpaqueBehavior" xmi:id="_iRfvJsvjEeW1JoFFN1CLQA">
+              <language>ABCD</language>
+              <body>&#xD;
+							z5_1 := false;&#xD;
+							annonce := false;&#xD;
+						</body>
+            </effect>
+            <trigger xmi:id="_iRfvJcvjEeW1JoFFN1CLQA" event="_iRDDSMvjEeW1JoFFN1CLQA"/>
+          </transition>
+          <transition xmi:id="_iRfvJ8vjEeW1JoFFN1CLQA" source="_iRyqRsvjEeW1JoFFN1CLQA" target="_iRyqRsvjEeW1JoFFN1CLQA">
+            <effect xmi:type="uml:OpaqueBehavior" xmi:id="_iRfvKcvjEeW1JoFFN1CLQA">
+              <language>ABCD</language>
+              <body>&#xD;
+							z5_1 := false;&#xD;
+						</body>
+            </effect>
+            <trigger xmi:id="_iRfvKMvjEeW1JoFFN1CLQA" event="_iRpgPsvjEeW1JoFFN1CLQA"/>
+          </transition>
+          <transition xmi:id="_iRfvKsvjEeW1JoFFN1CLQA" source="_iRyqRsvjEeW1JoFFN1CLQA" target="_iRyqRsvjEeW1JoFFN1CLQA">
+            <effect xmi:type="uml:OpaqueBehavior" xmi:id="_iRfvLMvjEeW1JoFFN1CLQA">
+              <language>ABCD</language>
+              <body>&#xD;
+							annonce := true;&#xD;
+						</body>
+            </effect>
+            <trigger xmi:id="_iRfvK8vjEeW1JoFFN1CLQA" event="_iRM0KMvjEeW1JoFFN1CLQA"/>
+          </transition>
+          <transition xmi:id="_iRfvLcvjEeW1JoFFN1CLQA" source="_iRyqRsvjEeW1JoFFN1CLQA" target="_iRfvO8vjEeW1JoFFN1CLQA">
+            <effect xmi:type="uml:OpaqueBehavior" xmi:id="_iRfvL8vjEeW1JoFFN1CLQA">
+              <language>ABCD</language>
+              <body>&#xD;
+							z5_1 := true;&#xD;
+						</body>
+            </effect>
+            <trigger xmi:id="_iRfvLsvjEeW1JoFFN1CLQA" event="_iRpgQMvjEeW1JoFFN1CLQA"/>
+          </transition>
+          <transition xmi:id="_iRfvMMvjEeW1JoFFN1CLQA" source="_iRyqRsvjEeW1JoFFN1CLQA" target="_iRfvO8vjEeW1JoFFN1CLQA">
+            <effect xmi:type="uml:OpaqueBehavior" xmi:id="_iRfvMsvjEeW1JoFFN1CLQA">
+              <language>ABCD</language>
+              <body>&#xD;
+							annonce := false;&#xD;
+						</body>
+            </effect>
+            <trigger xmi:id="_iRfvMcvjEeW1JoFFN1CLQA" event="_iRM0LMvjEeW1JoFFN1CLQA"/>
+          </transition>
+          <transition xmi:id="_iRfvM8vjEeW1JoFFN1CLQA" source="_iRfvO8vjEeW1JoFFN1CLQA" target="_iRyqRsvjEeW1JoFFN1CLQA">
+            <ownedRule xmi:id="_iRfvNMvjEeW1JoFFN1CLQA">
+              <specification xmi:type="uml:OpaqueExpression" xmi:id="_iRfvNcvjEeW1JoFFN1CLQA">
+                <language>ABCD</language>
+                <body>z5_1 and (not annonce)</body>
+              </specification>
+            </ownedRule>
+            <effect xmi:type="uml:OpaqueBehavior" xmi:id="_iRfvNsvjEeW1JoFFN1CLQA">
+              <language>ABCD</language>
+              <body>&#xD;
+							send ouverture to gestionnaireLiberation;&#xD;
+						</body>
+            </effect>
+          </transition>
+          <transition xmi:id="_iRfvN8vjEeW1JoFFN1CLQA" source="_iRfvO8vjEeW1JoFFN1CLQA" target="_iRyqRsvjEeW1JoFFN1CLQA">
+            <ownedRule xmi:id="_iRfvOMvjEeW1JoFFN1CLQA">
+              <specification xmi:type="uml:OpaqueExpression" xmi:id="_iRfvOcvjEeW1JoFFN1CLQA">
+                <language>ABCD</language>
+                <body>else</body>
+              </specification>
+            </ownedRule>
+          </transition>
+          <subvertex xmi:type="uml:Pseudostate" xmi:id="_iRfvOsvjEeW1JoFFN1CLQA" name="Initial"/>
+          <subvertex xmi:type="uml:Pseudostate" xmi:id="_iRfvO8vjEeW1JoFFN1CLQA" name="Condition" kind="choice"/>
+          <subvertex xmi:type="uml:State" xmi:id="_iRyqRcvjEeW1JoFFN1CLQA" name="Initialisation"/>
+          <subvertex xmi:type="uml:State" xmi:id="_iRyqRsvjEeW1JoFFN1CLQA" name="Ecoute"/>
+        </region>
+      </ownedBehavior>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Signal" xmi:id="_iRfvPMvjEeW1JoFFN1CLQA" name="clignote"/>
+    <packagedElement xmi:type="uml:Signal" xmi:id="_iRfvPcvjEeW1JoFFN1CLQA" name="eteint"/>
+    <packagedElement xmi:type="uml:Signal" xmi:id="_iRfvPsvjEeW1JoFFN1CLQA" name="allume"/>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_iRfvP8vjEeW1JoFFN1CLQA" name="ILumiere">
+      <ownedReception xmi:id="_iRfvQMvjEeW1JoFFN1CLQA" name="clignote" signal="_iRfvPMvjEeW1JoFFN1CLQA"/>
+      <ownedReception xmi:id="_iRfvQcvjEeW1JoFFN1CLQA" name="eteint" signal="_iRfvPcvjEeW1JoFFN1CLQA"/>
+      <ownedReception xmi:id="_iRfvQsvjEeW1JoFFN1CLQA" name="allume" signal="_iRfvPsvjEeW1JoFFN1CLQA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_iRfvQ8vjEeW1JoFFN1CLQA" clientDependency="_iRfvRMvjEeW1JoFFN1CLQA _iRfvRcvjEeW1JoFFN1CLQA" name="Lumiere" classifierBehavior="_iRfvRsvjEeW1JoFFN1CLQA" isActive="true">
+      <interfaceRealization xmi:id="_iRfvRMvjEeW1JoFFN1CLQA" client="_iRfvQ8vjEeW1JoFFN1CLQA" supplier="_iRDDScvjEeW1JoFFN1CLQA" contract="_iRDDScvjEeW1JoFFN1CLQA"/>
+      <interfaceRealization xmi:id="_iRfvRcvjEeW1JoFFN1CLQA" client="_iRfvQ8vjEeW1JoFFN1CLQA" supplier="_iRfvP8vjEeW1JoFFN1CLQA" contract="_iRfvP8vjEeW1JoFFN1CLQA"/>
+      <ownedBehavior xmi:type="uml:StateMachine" xmi:id="_iRfvRsvjEeW1JoFFN1CLQA" name="SM">
+        <region xmi:id="_iRfvR8vjEeW1JoFFN1CLQA" name="R">
+          <transition xmi:id="_iRfvSMvjEeW1JoFFN1CLQA" source="_iRfvScvjEeW1JoFFN1CLQA" target="_iR8bAMvjEeW1JoFFN1CLQA"/>
+          <subvertex xmi:type="uml:Pseudostate" xmi:id="_iRfvScvjEeW1JoFFN1CLQA" name="Initial"/>
+          <subvertex xmi:type="uml:State" xmi:id="_iR8bAMvjEeW1JoFFN1CLQA" name="Initialisation"/>
+        </region>
+      </ownedBehavior>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Signal" xmi:id="_iRfvSsvjEeW1JoFFN1CLQA" name="debute"/>
+    <packagedElement xmi:type="uml:Signal" xmi:id="_iRfvS8vjEeW1JoFFN1CLQA" name="arret"/>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_iRfvTMvjEeW1JoFFN1CLQA" name="ISon">
+      <ownedReception xmi:id="_iRfvTcvjEeW1JoFFN1CLQA" name="debute" signal="_iRfvSsvjEeW1JoFFN1CLQA"/>
+      <ownedReception xmi:id="_iRfvTsvjEeW1JoFFN1CLQA" name="arret" signal="_iRfvS8vjEeW1JoFFN1CLQA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_iRpgEMvjEeW1JoFFN1CLQA" clientDependency="_iRpgEsvjEeW1JoFFN1CLQA _iRpgE8vjEeW1JoFFN1CLQA" name="Son" classifierBehavior="_iRpgFMvjEeW1JoFFN1CLQA" isActive="true">
+      <ownedComment xmi:id="_iRpgEcvjEeW1JoFFN1CLQA">
+        <body>Signal sonore</body>
+      </ownedComment>
+      <interfaceRealization xmi:id="_iRpgEsvjEeW1JoFFN1CLQA" client="_iRpgEMvjEeW1JoFFN1CLQA" supplier="_iRDDScvjEeW1JoFFN1CLQA" contract="_iRDDScvjEeW1JoFFN1CLQA"/>
+      <interfaceRealization xmi:id="_iRpgE8vjEeW1JoFFN1CLQA" client="_iRpgEMvjEeW1JoFFN1CLQA" supplier="_iRfvTMvjEeW1JoFFN1CLQA" contract="_iRfvTMvjEeW1JoFFN1CLQA"/>
+      <ownedBehavior xmi:type="uml:StateMachine" xmi:id="_iRpgFMvjEeW1JoFFN1CLQA" name="SM">
+        <region xmi:id="_iRpgFcvjEeW1JoFFN1CLQA" name="R">
+          <transition xmi:id="_iRpgFsvjEeW1JoFFN1CLQA" source="_iRpgF8vjEeW1JoFFN1CLQA" target="_iR8bAcvjEeW1JoFFN1CLQA"/>
+          <subvertex xmi:type="uml:Pseudostate" xmi:id="_iRpgF8vjEeW1JoFFN1CLQA" name="Initial"/>
+          <subvertex xmi:type="uml:State" xmi:id="_iR8bAcvjEeW1JoFFN1CLQA" name="Initialisation"/>
+        </region>
+      </ownedBehavior>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Signal" xmi:id="_iRpgGMvjEeW1JoFFN1CLQA" name="ouvre"/>
+    <packagedElement xmi:type="uml:Signal" xmi:id="_iRpgGcvjEeW1JoFFN1CLQA" name="ferme"/>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_iRpgGsvjEeW1JoFFN1CLQA" name="IBarriere">
+      <ownedReception xmi:id="_iRpgG8vjEeW1JoFFN1CLQA" name="ouvre" signal="_iRpgGMvjEeW1JoFFN1CLQA"/>
+      <ownedReception xmi:id="_iRpgHMvjEeW1JoFFN1CLQA" name="ferme" signal="_iRpgGcvjEeW1JoFFN1CLQA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_iRpgHcvjEeW1JoFFN1CLQA" clientDependency="_iRpgHsvjEeW1JoFFN1CLQA _iRpgH8vjEeW1JoFFN1CLQA" name="Barriere" classifierBehavior="_iRpgIMvjEeW1JoFFN1CLQA" isActive="true">
+      <interfaceRealization xmi:id="_iRpgHsvjEeW1JoFFN1CLQA" client="_iRpgHcvjEeW1JoFFN1CLQA" supplier="_iRDDScvjEeW1JoFFN1CLQA" contract="_iRDDScvjEeW1JoFFN1CLQA"/>
+      <interfaceRealization xmi:id="_iRpgH8vjEeW1JoFFN1CLQA" client="_iRpgHcvjEeW1JoFFN1CLQA" supplier="_iRpgGsvjEeW1JoFFN1CLQA" contract="_iRpgGsvjEeW1JoFFN1CLQA"/>
+      <ownedBehavior xmi:type="uml:StateMachine" xmi:id="_iRpgIMvjEeW1JoFFN1CLQA" name="SM">
+        <region xmi:id="_iRpgIcvjEeW1JoFFN1CLQA" name="R">
+          <transition xmi:id="_iRpgIsvjEeW1JoFFN1CLQA" source="_iRpgI8vjEeW1JoFFN1CLQA" target="_iR8bAsvjEeW1JoFFN1CLQA"/>
+          <subvertex xmi:type="uml:Pseudostate" xmi:id="_iRpgI8vjEeW1JoFFN1CLQA" name="Initial"/>
+          <subvertex xmi:type="uml:State" xmi:id="_iR8bAsvjEeW1JoFFN1CLQA" name="Initialisation"/>
+        </region>
+      </ownedBehavior>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Signal" xmi:id="_iRpgJMvjEeW1JoFFN1CLQA" name="pedaleEnclenchee"/>
+    <packagedElement xmi:type="uml:SignalEvent" xmi:id="_iRpgJcvjEeW1JoFFN1CLQA" name="pedaleEnclencheeSE" signal="_iRpgJMvjEeW1JoFFN1CLQA"/>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_iRpgJsvjEeW1JoFFN1CLQA" name="IConsommateurPedale">
+      <ownedReception xmi:id="_iRpgJ8vjEeW1JoFFN1CLQA" name="pedaleEnclenchee" signal="_iRpgJMvjEeW1JoFFN1CLQA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Signal" xmi:id="_iRpgKMvjEeW1JoFFN1CLQA" name="Z1Libre"/>
+    <packagedElement xmi:type="uml:SignalEvent" xmi:id="_iRpgKcvjEeW1JoFFN1CLQA" name="Z1LibreSE" signal="_iRpgKMvjEeW1JoFFN1CLQA"/>
+    <packagedElement xmi:type="uml:Signal" xmi:id="_iRpgKsvjEeW1JoFFN1CLQA" name="Z1Occupe"/>
+    <packagedElement xmi:type="uml:SignalEvent" xmi:id="_iRpgK8vjEeW1JoFFN1CLQA" name="Z1OccupeSE" signal="_iRpgKsvjEeW1JoFFN1CLQA"/>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_iRpgLMvjEeW1JoFFN1CLQA" name="IConsommateurZ1">
+      <ownedReception xmi:id="_iRpgLcvjEeW1JoFFN1CLQA" name="Z1Libre" signal="_iRpgKMvjEeW1JoFFN1CLQA"/>
+      <ownedReception xmi:id="_iRpgLsvjEeW1JoFFN1CLQA" name="Z1Occupe" signal="_iRpgKsvjEeW1JoFFN1CLQA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Signal" xmi:id="_iRpgL8vjEeW1JoFFN1CLQA" name="Z3Libre"/>
+    <packagedElement xmi:type="uml:SignalEvent" xmi:id="_iRpgMMvjEeW1JoFFN1CLQA" name="Z3LibreSE" signal="_iRpgL8vjEeW1JoFFN1CLQA"/>
+    <packagedElement xmi:type="uml:Signal" xmi:id="_iRpgMcvjEeW1JoFFN1CLQA" name="Z3Occupe"/>
+    <packagedElement xmi:type="uml:SignalEvent" xmi:id="_iRpgMsvjEeW1JoFFN1CLQA" name="Z3OccupeSE" signal="_iRpgMcvjEeW1JoFFN1CLQA"/>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_iRpgM8vjEeW1JoFFN1CLQA" name="IConsommateurZ3">
+      <ownedReception xmi:id="_iRpgNMvjEeW1JoFFN1CLQA" name="Z3Libre" signal="_iRpgL8vjEeW1JoFFN1CLQA"/>
+      <ownedReception xmi:id="_iRpgNcvjEeW1JoFFN1CLQA" name="Z3Occupe" signal="_iRpgMcvjEeW1JoFFN1CLQA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Signal" xmi:id="_iRpgNsvjEeW1JoFFN1CLQA" name="Z5Libre"/>
+    <packagedElement xmi:type="uml:SignalEvent" xmi:id="_iRpgN8vjEeW1JoFFN1CLQA" name="Z5LibreSE" signal="_iRpgNsvjEeW1JoFFN1CLQA"/>
+    <packagedElement xmi:type="uml:Signal" xmi:id="_iRpgOMvjEeW1JoFFN1CLQA" name="Z5Occupe"/>
+    <packagedElement xmi:type="uml:SignalEvent" xmi:id="_iRpgOcvjEeW1JoFFN1CLQA" name="Z5OccupeSE" signal="_iRpgOMvjEeW1JoFFN1CLQA"/>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_iRpgOsvjEeW1JoFFN1CLQA" name="IConsommateurZ5">
+      <ownedReception xmi:id="_iRpgO8vjEeW1JoFFN1CLQA" name="Z5Libre" signal="_iRpgNsvjEeW1JoFFN1CLQA"/>
+      <ownedReception xmi:id="_iRpgPMvjEeW1JoFFN1CLQA" name="Z5Occupe" signal="_iRpgOMvjEeW1JoFFN1CLQA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Signal" xmi:id="_iRpgPcvjEeW1JoFFN1CLQA" name="Z5_1Libre"/>
+    <packagedElement xmi:type="uml:SignalEvent" xmi:id="_iRpgPsvjEeW1JoFFN1CLQA" name="Z5_1LibreSE" signal="_iRpgPcvjEeW1JoFFN1CLQA"/>
+    <packagedElement xmi:type="uml:Signal" xmi:id="_iRpgP8vjEeW1JoFFN1CLQA" name="Z5_1Occupe"/>
+    <packagedElement xmi:type="uml:SignalEvent" xmi:id="_iRpgQMvjEeW1JoFFN1CLQA" name="Z5_1OccupeSE" signal="_iRpgP8vjEeW1JoFFN1CLQA"/>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_iRpgQcvjEeW1JoFFN1CLQA" name="IConsommateurZ5_1">
+      <ownedReception xmi:id="_iRpgQsvjEeW1JoFFN1CLQA" name="Z5_1Libre" signal="_iRpgPcvjEeW1JoFFN1CLQA"/>
+      <ownedReception xmi:id="_iRpgQ8vjEeW1JoFFN1CLQA" name="Z5_1Occupe" signal="_iRpgP8vjEeW1JoFFN1CLQA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_iRpgRMvjEeW1JoFFN1CLQA" name="Dispatcher_GestionnaireAnnonce" memberEnd="_iRpgRcvjEeW1JoFFN1CLQA _iRyqCsvjEeW1JoFFN1CLQA">
+      <ownedEnd xmi:id="_iRpgRcvjEeW1JoFFN1CLQA" name="dispatcher" type="_iRyqAMvjEeW1JoFFN1CLQA" isUnique="false" association="_iRpgRMvjEeW1JoFFN1CLQA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iRpgRsvjEeW1JoFFN1CLQA" value="1"/>
+        <upperValue xmi:type="uml:LiteralInteger" xmi:id="_iRpgR8vjEeW1JoFFN1CLQA" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_iRpgSMvjEeW1JoFFN1CLQA" name="Dispatcher_ConditionFinAnnonce" memberEnd="_iRpgScvjEeW1JoFFN1CLQA _iRyqEMvjEeW1JoFFN1CLQA">
+      <ownedEnd xmi:id="_iRpgScvjEeW1JoFFN1CLQA" name="dispatcher" type="_iRyqAMvjEeW1JoFFN1CLQA" isUnique="false" association="_iRpgSMvjEeW1JoFFN1CLQA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iRpgSsvjEeW1JoFFN1CLQA" value="1"/>
+        <upperValue xmi:type="uml:LiteralInteger" xmi:id="_iRpgS8vjEeW1JoFFN1CLQA" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_iRpgTMvjEeW1JoFFN1CLQA" name="Dispatcher_ConditionOuverture" memberEnd="_iRpgTcvjEeW1JoFFN1CLQA _iRyqE8vjEeW1JoFFN1CLQA">
+      <ownedEnd xmi:id="_iRpgTcvjEeW1JoFFN1CLQA" name="dispatcher" type="_iRyqAMvjEeW1JoFFN1CLQA" isUnique="false" association="_iRpgTMvjEeW1JoFFN1CLQA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iRpgTsvjEeW1JoFFN1CLQA" value="1"/>
+        <upperValue xmi:type="uml:LiteralInteger" xmi:id="_iRpgT8vjEeW1JoFFN1CLQA" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_iRpgUMvjEeW1JoFFN1CLQA" name="Dispatcher_Controleur" memberEnd="_iRpgUcvjEeW1JoFFN1CLQA _iRyqB8vjEeW1JoFFN1CLQA">
+      <ownedEnd xmi:id="_iRpgUcvjEeW1JoFFN1CLQA" name="dispatcher" type="_iRyqAMvjEeW1JoFFN1CLQA" isUnique="false" association="_iRpgUMvjEeW1JoFFN1CLQA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iRpgUsvjEeW1JoFFN1CLQA" value="1"/>
+        <upperValue xmi:type="uml:LiteralInteger" xmi:id="_iRpgU8vjEeW1JoFFN1CLQA" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_iRpgVMvjEeW1JoFFN1CLQA" name="Dispatcher_GestionnaireLiberation" memberEnd="_iRpgVcvjEeW1JoFFN1CLQA _iRyqDcvjEeW1JoFFN1CLQA">
+      <ownedEnd xmi:id="_iRpgVcvjEeW1JoFFN1CLQA" name="dispatcher" type="_iRyqAMvjEeW1JoFFN1CLQA" isUnique="false" association="_iRpgVMvjEeW1JoFFN1CLQA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iRpgVsvjEeW1JoFFN1CLQA" value="1"/>
+        <upperValue xmi:type="uml:LiteralInteger" xmi:id="_iRpgV8vjEeW1JoFFN1CLQA" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Signal" xmi:id="_iRpgWMvjEeW1JoFFN1CLQA" name="ini"/>
+    <packagedElement xmi:type="uml:SignalEvent" xmi:id="_iRpgWcvjEeW1JoFFN1CLQA" name="iniSE" signal="_iRpgWMvjEeW1JoFFN1CLQA"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_iRyqAMvjEeW1JoFFN1CLQA" clientDependency="_iRyqAcvjEeW1JoFFN1CLQA _iRyqAsvjEeW1JoFFN1CLQA _iRyqA8vjEeW1JoFFN1CLQA _iRyqBMvjEeW1JoFFN1CLQA _iRyqBcvjEeW1JoFFN1CLQA" name="Dispatcher" classifierBehavior="_iRyqFsvjEeW1JoFFN1CLQA" isActive="true">
+      <ownedAttribute xmi:id="_iRyqB8vjEeW1JoFFN1CLQA" name="controleur" type="_iRDDS8vjEeW1JoFFN1CLQA" isUnique="false" association="_iRpgUMvjEeW1JoFFN1CLQA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iRyqCMvjEeW1JoFFN1CLQA" value="1"/>
+        <upperValue xmi:type="uml:LiteralInteger" xmi:id="_iRyqCcvjEeW1JoFFN1CLQA" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_iRyqCsvjEeW1JoFFN1CLQA" name="gestionnaireAnnonce" type="_iRM0McvjEeW1JoFFN1CLQA" isUnique="false" association="_iRpgRMvjEeW1JoFFN1CLQA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iRyqC8vjEeW1JoFFN1CLQA" value="1"/>
+        <upperValue xmi:type="uml:LiteralInteger" xmi:id="_iRyqDMvjEeW1JoFFN1CLQA" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_iRyqDcvjEeW1JoFFN1CLQA" name="gestionnaireLiberation" type="_iRM0VcvjEeW1JoFFN1CLQA" isUnique="false" association="_iRpgVMvjEeW1JoFFN1CLQA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iRyqDsvjEeW1JoFFN1CLQA" value="1"/>
+        <upperValue xmi:type="uml:LiteralInteger" xmi:id="_iRyqD8vjEeW1JoFFN1CLQA" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_iRyqEMvjEeW1JoFFN1CLQA" name="conditionFinAnnonce" type="_iRV-HcvjEeW1JoFFN1CLQA" isUnique="false" association="_iRpgSMvjEeW1JoFFN1CLQA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iRyqEcvjEeW1JoFFN1CLQA" value="1"/>
+        <upperValue xmi:type="uml:LiteralInteger" xmi:id="_iRyqEsvjEeW1JoFFN1CLQA" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_iRyqE8vjEeW1JoFFN1CLQA" name="conditionOuverture" type="_iRfvFMvjEeW1JoFFN1CLQA" isUnique="false" association="_iRpgTMvjEeW1JoFFN1CLQA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iRyqFMvjEeW1JoFFN1CLQA" value="1"/>
+        <upperValue xmi:type="uml:LiteralInteger" xmi:id="_iRyqFcvjEeW1JoFFN1CLQA" value="1"/>
+      </ownedAttribute>
+      <interfaceRealization xmi:id="_iRyqAcvjEeW1JoFFN1CLQA" client="_iRyqAMvjEeW1JoFFN1CLQA" supplier="_iRpgLMvjEeW1JoFFN1CLQA" contract="_iRpgLMvjEeW1JoFFN1CLQA"/>
+      <interfaceRealization xmi:id="_iRyqAsvjEeW1JoFFN1CLQA" client="_iRyqAMvjEeW1JoFFN1CLQA" supplier="_iRpgM8vjEeW1JoFFN1CLQA" contract="_iRpgM8vjEeW1JoFFN1CLQA"/>
+      <interfaceRealization xmi:id="_iRyqA8vjEeW1JoFFN1CLQA" client="_iRyqAMvjEeW1JoFFN1CLQA" supplier="_iRpgOsvjEeW1JoFFN1CLQA" contract="_iRpgOsvjEeW1JoFFN1CLQA"/>
+      <interfaceRealization xmi:id="_iRyqBMvjEeW1JoFFN1CLQA" client="_iRyqAMvjEeW1JoFFN1CLQA" supplier="_iRpgQcvjEeW1JoFFN1CLQA" contract="_iRpgQcvjEeW1JoFFN1CLQA"/>
+      <interfaceRealization xmi:id="_iRyqBcvjEeW1JoFFN1CLQA" client="_iRyqAMvjEeW1JoFFN1CLQA" supplier="_iRpgJsvjEeW1JoFFN1CLQA" contract="_iRpgJsvjEeW1JoFFN1CLQA"/>
+      <ownedBehavior xmi:type="uml:StateMachine" xmi:id="_iRyqFsvjEeW1JoFFN1CLQA" name="SM">
+        <region xmi:id="_iRyqF8vjEeW1JoFFN1CLQA" name="R">
+          <transition xmi:id="_iRyqGMvjEeW1JoFFN1CLQA" source="_iRyqN8vjEeW1JoFFN1CLQA" target="_iR8bA8vjEeW1JoFFN1CLQA"/>
+          <transition xmi:id="_iRyqGcvjEeW1JoFFN1CLQA" source="_iR8bA8vjEeW1JoFFN1CLQA" target="_iR8bA8vjEeW1JoFFN1CLQA">
+            <effect xmi:type="uml:OpaqueBehavior" xmi:id="_iRyqG8vjEeW1JoFFN1CLQA">
+              <language>ABCD</language>
+              <body>&#xD;
+	                        send sysInit to controleur;&#xD;
+	                        send sysInit to gestionnaireAnnonce;&#xD;
+	                        send sysInit to gestionnaireLiberation;&#xD;
+	                        send sysInit to conditionFinAnnonce;&#xD;
+	                        send sysInit to conditionOuverture;&#xD;
+						</body>
+            </effect>
+            <trigger xmi:id="_iRyqGsvjEeW1JoFFN1CLQA" event="_iRpgWcvjEeW1JoFFN1CLQA"/>
+          </transition>
+          <transition xmi:id="_iRyqHMvjEeW1JoFFN1CLQA" source="_iR8bA8vjEeW1JoFFN1CLQA" target="_iR8bA8vjEeW1JoFFN1CLQA">
+            <effect xmi:type="uml:OpaqueBehavior" xmi:id="_iRyqHsvjEeW1JoFFN1CLQA">
+              <language>ABCD</language>
+              <body>&#xD;
+	                        send Z1Libre to conditionFinAnnonce;&#xD;
+						</body>
+            </effect>
+            <trigger xmi:id="_iRyqHcvjEeW1JoFFN1CLQA" event="_iRpgKcvjEeW1JoFFN1CLQA"/>
+          </transition>
+          <transition xmi:id="_iRyqH8vjEeW1JoFFN1CLQA" source="_iR8bA8vjEeW1JoFFN1CLQA" target="_iR8bA8vjEeW1JoFFN1CLQA">
+            <effect xmi:type="uml:OpaqueBehavior" xmi:id="_iRyqIcvjEeW1JoFFN1CLQA">
+              <language>ABCD</language>
+              <body>&#xD;
+	                        send Z1Occupe to conditionFinAnnonce;&#xD;
+						</body>
+            </effect>
+            <trigger xmi:id="_iRyqIMvjEeW1JoFFN1CLQA" event="_iRpgK8vjEeW1JoFFN1CLQA"/>
+          </transition>
+          <transition xmi:id="_iRyqIsvjEeW1JoFFN1CLQA" source="_iR8bA8vjEeW1JoFFN1CLQA" target="_iR8bA8vjEeW1JoFFN1CLQA">
+            <effect xmi:type="uml:OpaqueBehavior" xmi:id="_iRyqJMvjEeW1JoFFN1CLQA">
+              <language>ABCD</language>
+              <body>&#xD;
+	                        send pedaleEnclenchee to gestionnaireAnnonce;&#xD;
+						</body>
+            </effect>
+            <trigger xmi:id="_iRyqI8vjEeW1JoFFN1CLQA" event="_iRpgJcvjEeW1JoFFN1CLQA"/>
+          </transition>
+          <transition xmi:id="_iRyqJcvjEeW1JoFFN1CLQA" source="_iR8bA8vjEeW1JoFFN1CLQA" target="_iR8bA8vjEeW1JoFFN1CLQA">
+            <effect xmi:type="uml:OpaqueBehavior" xmi:id="_iRyqJ8vjEeW1JoFFN1CLQA">
+              <language>ABCD</language>
+              <body>&#xD;
+	                        send Z3Libre to conditionFinAnnonce;&#xD;
+	                        send Z3Libre to gestionnaireAnnonce;&#xD;
+						</body>
+            </effect>
+            <trigger xmi:id="_iRyqJsvjEeW1JoFFN1CLQA" event="_iRpgMMvjEeW1JoFFN1CLQA"/>
+          </transition>
+          <transition xmi:id="_iRyqKMvjEeW1JoFFN1CLQA" source="_iR8bA8vjEeW1JoFFN1CLQA" target="_iR8bA8vjEeW1JoFFN1CLQA">
+            <effect xmi:type="uml:OpaqueBehavior" xmi:id="_iRyqKsvjEeW1JoFFN1CLQA">
+              <language>ABCD</language>
+              <body>&#xD;
+	                        send Z3Occupe to conditionFinAnnonce;&#xD;
+	                        send Z3Occupe to gestionnaireAnnonce;&#xD;
+						</body>
+            </effect>
+            <trigger xmi:id="_iRyqKcvjEeW1JoFFN1CLQA" event="_iRpgMsvjEeW1JoFFN1CLQA"/>
+          </transition>
+          <transition xmi:id="_iRyqK8vjEeW1JoFFN1CLQA" source="_iR8bA8vjEeW1JoFFN1CLQA" target="_iR8bA8vjEeW1JoFFN1CLQA">
+            <effect xmi:type="uml:OpaqueBehavior" xmi:id="_iRyqLcvjEeW1JoFFN1CLQA">
+              <language>ABCD</language>
+              <body>&#xD;
+	                        send Z5Libre to conditionFinAnnonce;&#xD;
+	                        send Z5Libre to gestionnaireAnnonce;&#xD;
+						</body>
+            </effect>
+            <trigger xmi:id="_iRyqLMvjEeW1JoFFN1CLQA" event="_iRpgN8vjEeW1JoFFN1CLQA"/>
+          </transition>
+          <transition xmi:id="_iRyqLsvjEeW1JoFFN1CLQA" source="_iR8bA8vjEeW1JoFFN1CLQA" target="_iR8bA8vjEeW1JoFFN1CLQA">
+            <effect xmi:type="uml:OpaqueBehavior" xmi:id="_iRyqMMvjEeW1JoFFN1CLQA">
+              <language>ABCD</language>
+              <body>&#xD;
+	                        send Z5Occupe to conditionFinAnnonce;&#xD;
+	                        send Z5Occupe to gestionnaireAnnonce;&#xD;
+						</body>
+            </effect>
+            <trigger xmi:id="_iRyqL8vjEeW1JoFFN1CLQA" event="_iRpgOcvjEeW1JoFFN1CLQA"/>
+          </transition>
+          <transition xmi:id="_iRyqMcvjEeW1JoFFN1CLQA" source="_iR8bA8vjEeW1JoFFN1CLQA" target="_iR8bA8vjEeW1JoFFN1CLQA">
+            <effect xmi:type="uml:OpaqueBehavior" xmi:id="_iRyqM8vjEeW1JoFFN1CLQA">
+              <language>ABCD</language>
+              <body>&#xD;
+	                        send Z5_1Libre to conditionOuverture;&#xD;
+						</body>
+            </effect>
+            <trigger xmi:id="_iRyqMsvjEeW1JoFFN1CLQA" event="_iRpgPsvjEeW1JoFFN1CLQA"/>
+          </transition>
+          <transition xmi:id="_iRyqNMvjEeW1JoFFN1CLQA" source="_iR8bA8vjEeW1JoFFN1CLQA" target="_iR8bA8vjEeW1JoFFN1CLQA">
+            <effect xmi:type="uml:OpaqueBehavior" xmi:id="_iRyqNsvjEeW1JoFFN1CLQA">
+              <language>ABCD</language>
+              <body>&#xD;
+	                        send Z5_1Occupe to conditionOuverture;&#xD;
+						</body>
+            </effect>
+            <trigger xmi:id="_iRyqNcvjEeW1JoFFN1CLQA" event="_iRpgQMvjEeW1JoFFN1CLQA"/>
+          </transition>
+          <subvertex xmi:type="uml:Pseudostate" xmi:id="_iRyqN8vjEeW1JoFFN1CLQA" name="Initial"/>
+          <subvertex xmi:type="uml:State" xmi:id="_iR8bA8vjEeW1JoFFN1CLQA" name="s0"/>
+        </region>
+      </ownedBehavior>
+      <ownedReception xmi:id="_iRyqBsvjEeW1JoFFN1CLQA" name="ini" signal="_iRpgWMvjEeW1JoFFN1CLQA"/>
+    </packagedElement>
+    <profileApplication xmi:id="_iXozUMvjEeW1JoFFN1CLQA">
+      <eAnnotations xmi:id="_iXozUcvjEeW1JoFFN1CLQA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/0.7.0/SysML#//blocks"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://SysML_PROFILES/SysML.profile.uml#_fSw28LX7EduFmqQsrNB9lw"/>
+    </profileApplication>
+  </uml:Model>
+  <Blocks:Block xmi:id="_iZo-cMvjEeW1JoFFN1CLQA" base_Class="_iRDDS8vjEeW1JoFFN1CLQA"/>
+  <Blocks:Block xmi:id="_iZyIYMvjEeW1JoFFN1CLQA" base_Class="_iRM0McvjEeW1JoFFN1CLQA"/>
+  <Blocks:Block xmi:id="_iZ75YcvjEeW1JoFFN1CLQA" base_Class="_iRM0VcvjEeW1JoFFN1CLQA"/>
+  <Blocks:Block xmi:id="_iZ75ZcvjEeW1JoFFN1CLQA" base_Class="_iRV-HcvjEeW1JoFFN1CLQA"/>
+  <Blocks:Block xmi:id="_iaFqYsvjEeW1JoFFN1CLQA" base_Class="_iRfvFMvjEeW1JoFFN1CLQA"/>
+  <Blocks:Block xmi:id="_iaFqaMvjEeW1JoFFN1CLQA" base_Class="_iRfvQ8vjEeW1JoFFN1CLQA"/>
+  <Blocks:Block xmi:id="_iaO0VcvjEeW1JoFFN1CLQA" base_Class="_iRpgEMvjEeW1JoFFN1CLQA"/>
+  <Blocks:Block xmi:id="_iaYlUMvjEeW1JoFFN1CLQA" base_Class="_iRpgHcvjEeW1JoFFN1CLQA"/>
+  <Blocks:Block xmi:id="_iaYlWcvjEeW1JoFFN1CLQA" base_Class="_iRyqAMvjEeW1JoFFN1CLQA"/>
+</xmi:XMI>

@@ -1,0 +1,28 @@
+//Create new Device
+with [get-editor "NewModel Deployment Diagram"] {
+   with [get-palette | get-palette-entry Device] {
+        mouse-move 51 10 button1 -height 23 -width 214
+        mouse-press 51 10 button1 -height 23 -width 214
+        mouse-release 51 10 button1 524288 -height 23 -width 214
+    }
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Deployment Diagram"] {
+        mouse-move 352 223 button1 -height 524 -width 713
+        mouse-press 352 223 button1 -height 524 -width 713
+        mouse-release 352 223 button1 524288 -height 524 -width 713
+    }
+}
+// Check diagram
+with [get-editor "NewModel Deployment Diagram" | get-diagram -index 1 | get-edit-part 
+    -name "NewModel Deployment Diagram"] {
+    with [get-edit-part -name Device1 | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart 
+        | get-figure "1/0"] {
+        get-property "isVisible()" | equals true | verify-true
+    }
+}
+
+//Check model
+with [get-editor "NewModel Deployment Diagram" | get-diagram -index 1 | get-edit-part 
+    -name "NewModel Deployment Diagram"] {
+    get-property childrenCount | equals 1 | verify-true
+    get-property "element.target.ownedElement.Device[0].name" | equals Device1 | verify-true
+}

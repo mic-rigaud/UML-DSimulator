@@ -1,0 +1,43 @@
+// Initialize Model
+with [get-view "Model Explorer" | get-tree] {
+    select "AllMappings/model.uml" | double-click
+}
+// Create New ClassDiagram
+with [get-view "Model Explorer" | get-tree] {
+    select "AllMappings/model.uml/<Model> Test" | get-menu "New Representation/Test Package Hierarchy" | click
+}
+with [get-window "New Representation"] {
+    with [get-editbox -after [get-label "Representation name:"]] {
+       set-text "RcpTT Test Package Hierarchy"
+    }
+    get-button OK | click
+}
+
+// ------ Test : Add an existing Package ------------------------------------------------------------
+// Select tool Add
+with [get-editor "RcpTT Test Package Hierarchy"] {
+    with [get-palette | get-palette-entry Add] {
+        mouse-move 41 8 button1 -height 23 -width 135
+        mouse-press 41 8 button1 -height 23 -width 135
+        mouse-release 41 8 button1 524288 -height 23 -width 135
+    }
+    with [get-diagram -index 1 | get-edit-part -name "RcpTT Test Package Hierarchy"] {
+        mouse-move 448 85 button1 -height 328 -width 780
+        mouse-press 448 85 button1 -height 328 -width 780
+        mouse-release 448 85 button1 524288 -height 328 -width 780
+    }
+}
+// Add Package
+with [get-window "Add existing elements"] {
+get-button "Uncheck All" | click
+with [get-tree] {
+        get-item "<Model> Test/<Package> New package 1" | check
+        select "<Model> Test/<Package> New package 1"
+    }
+    get-button OK | click
+}
+
+// Check graphical element was added
+get-editor "RcpTT Test Package Hierarchy" | get-diagram -index 1 | get-edit-part -name "RcpTT Test Package Hierarchy" 
+    | get-edit-part -name "New package 1" | get-edit-part -className WorkspaceImageEditPart | get-figure "0/0" 
+    | get-property "getText()" | equals "New package 1" | verify-true

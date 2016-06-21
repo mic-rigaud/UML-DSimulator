@@ -1,0 +1,57 @@
+// Create Call Operation Action
+with [get-editor "NewModel Activity Diagram"] {
+    with [get-palette] {
+        with [get-palette-entry Action] {
+            mouse-move 7 10 button1 -height 23 -width 214
+            mouse-press 7 10 button1 -height 23 -width 214
+            mouse-release 7 10 button1 524288 -height 23 -width 214
+        }
+        with [get-palette-entry "Call Operation Action"] {
+            mouse-move 49 15 button1 -height 23 -width 214
+            mouse-press 49 15 button1 -height 23 -width 214
+            mouse-release 49 15 button1 524288 -height 23 -width 214
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Activity Diagram" | get-edit-part 
+        -name "NewModel" | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+        mouse-move 48 64 button1 -height 322 -width 542
+        mouse-press 48 64 button1 -height 322 -width 542
+        mouse-release 48 64 button1 524288 -height 322 -width 542
+    }
+}
+// Select Class1 Operation1
+with [get-window "New Call Operation Action"] {
+    get-tree | select "<Model> NewModel/<Class> Class1/<Operation> Operation_1 \\(\\)"
+    get-button Finish | click
+}
+
+// Check diagram
+with [get-editor "NewModel Activity Diagram" | get-diagram -index 1 | get-edit-part 
+    -name "NewModel Activity Diagram"] {
+    with [get-edit-part -name "NewModel" | get-edit-part 
+        -className DNodeContainerViewNodeContainerCompartmentEditPart | get-edit-part 
+        -name "Operation_1_call : Operation_1" | get-edit-part 
+        -className DNodeContainerViewNodeContainerCompartment2EditPart | get-figure "1/0"] {
+        get-property "isVisible()" | equals true | verify-true
+    }
+}
+// Check port is present
+with [get-editor "NewModel Activity Diagram" | get-diagram -index 1 | get-edit-part 
+    -name "NewModel Activity Diagram" | get-edit-part -name "NewModel " | get-edit-part 
+    -className DNodeContainerViewNodeContainerCompartmentEditPart | get-edit-part 
+    -name "Operation_1_call : Operation_1" | get-edit-part -name "target : [1]"] {
+    get-edit-part -className SquareEditPart | get-figure 0 | get-property "isVisible()" | equals true | verify-true
+    get-edit-part -name "target : [1]" | get-property "getFigure().getText()" | equals "target : [1]" | verify-true
+}
+
+// Check model
+with [get-editor "NewModel Activity Diagram" | get-diagram -index 1 | get-edit-part 
+    -name "NewModel Activity Diagram"] {
+    get-property "element.target.ownedElement.size" | equals 1 | verify-true
+    get-property "element.target.ownedElement.CallOperationAction[0].ownedElement.size" | equals 1 | verify-true
+    get-property "element.target.ownedElement.CallOperationAction[0].ownedElement.InputPin[0].name" | equals target 
+        | verify-true
+    get-property "element.target.ownedElement.CallOperationAction[0].name" | equals "Operation_1_call" | verify-true
+    get-property "element.target.ownedElement.CallOperationAction[0].operation.qualifiedName" 
+    | equals "NewModel::Class1::Operation_1" | verify-true
+}

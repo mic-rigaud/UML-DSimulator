@@ -1,0 +1,23 @@
+with [get-editor "Test Profile Diagram"] {
+    with [get-diagram -index 1 | get-edit-part -name "Test Profile Diagram"] {
+        with [get-edit-part -name "«Profile» \n"
+            + "Profile1" | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+            mouse-move 39 34 button1 -height 68 -width 148
+            mouse-press 39 34 button1 -height 68 -width 148
+            mouse-release 39 34 button1 524288 -height 68 -width 148
+        }
+    }
+    get-button "Delete from Model" | click
+}
+// Check Diagram
+get-editor "Test Profile Diagram" | get-diagram -index 1 | get-edit-part -name "Test Profile Diagram"
+    | verify-error {get-edit-part -name "«Profile» \n"
+            + "Profile1"}
+    
+// Check model
+with [get-editor "Test Profile Diagram" | get-diagram -index 1 | get-edit-part -name "Test Profile Diagram"] {
+    get-property "element.target.member.size" | equals 6 | verify-true
+    verify-error {get-editor "Test Profile Diagram" | get-diagram -index 1 | get-edit-part -name "Test Profile Diagram" 
+    | get-property "element.target.member.Profile[2].name" | equals Profile1 | verify-true}
+}
+

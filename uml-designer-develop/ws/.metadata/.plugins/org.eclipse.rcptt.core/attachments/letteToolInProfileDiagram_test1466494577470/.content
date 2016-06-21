@@ -1,0 +1,30 @@
+// Create new PrimitiveType Profile diagram
+with [get-editor "Test Profile Diagram"] {
+    with [get-palette] {
+        with [get-palette-entry DataTypes] {
+            mouse-move 9 6 button1 -height 23 -width 182
+            mouse-press 9 6 button1 -height 23 -width 182
+            mouse-release 9 6 button1 524288 -height 23 -width 182
+        }
+        with [get-palette-entry PrimitiveType] {
+            mouse-move 30 9 button1 -height 23 -width 182
+            mouse-press 30 9 button1 -height 23 -width 182
+            mouse-release 30 9 button1 524288 -height 23 -width 182
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "Test Profile Diagram"] {
+        mouse-move 78 85 button1 -height 524 -width 646
+        mouse-press 78 85 button1 -height 524 -width 646
+        mouse-release 78 85 button1 524288 -height 524 -width 646
+    }
+}
+// Check Diagram
+with [get-editor "Test Profile Diagram" | get-diagram -index 1 | get-edit-part -name "Test Profile Diagram"] {
+    get-edit-part -name PrimitiveType1 | get-edit-part -className DNodeListNameEditPart 
+        | get-property "getFigure().getText()" | equals PrimitiveType1 | verify-true
+}
+
+// Check model
+with [get-editor "Test Profile Diagram" | get-diagram -index 1 | get-edit-part -name "Test Profile Diagram"] {
+    get-property "element.target.member.PrimitiveType[0].name" | equals PrimitiveType1 | verify-true
+}

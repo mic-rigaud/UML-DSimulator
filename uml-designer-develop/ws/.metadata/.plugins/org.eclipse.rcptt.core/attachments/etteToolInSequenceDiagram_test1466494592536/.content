@@ -1,0 +1,76 @@
+// Add Existing Elements Class with tool
+with [get-editor "Test Sequence Diagram"] {
+    with [get-palette] {        with [get-palette-entry Class] {
+            mouse-move 51 7 button1 -height 23 -width 253
+            mouse-press 51 7 button1 -height 23 -width 253
+            mouse-release 51 7 button1 524288 -height 23 -width 253
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "Test Sequence Diagram"] {
+        mouse-move 4 134 button1 -height 500 -width 575
+        mouse-press 4 134 button1 -height 500 -width 575
+        mouse-move 5 134 -mask 524288 -height 500 -width 575
+        mouse-drag 340 189 button1 524288 -height 500 -width 575
+        mouse-release 340 189 button1 524288 -height 500 -width 575
+    }
+}
+
+// Select an existing class (component used in an a travel agency sequence diagram exemple)
+with [get-window "Selection Wizard"] {
+    get-tree | select "<Model> Travel Agency/<Package> Components/<Component> Agency  Offers"
+    get-button Finish | click
+}
+// Check element appears in diagram
+with [get-editor "Test Sequence Diagram"] {
+    get-label "Agency  Offers : Agency  Offers [1]" | get-property "getText()" | equals "Agency  Offers : Agency  Offers [1]" | verify-true
+    with [get-diagram -index 1 | get-edit-part -name "Test Sequence Diagram" | get-edit-part 
+        -name "Agency  Offers : Agency  Offers [1]"] {
+        get-edit-part -className SquareEditPart | get-figure "0/0" | get-property "getText()" 
+            | equals "Agency  Offers : Agency  Offers [1]" | verify-true
+        get-edit-part -name "Agency  Offers" | get-edit-part -className SquareEditPart | get-figure "0/0" 
+            | get-property "isVisible()" | equals true | verify-true
+    }
+}
+// Add an other Class which is connected in an other sequence diagram to the previous added element
+with [get-editor "Test Sequence Diagram"] {
+    get-diagram -index 1 | get-edit-part -name "Test Sequence Diagram" | mouse-move 697 42 -height 500 -width 703
+    with [get-palette | get-palette-entry Class] {
+        mouse-move 46 5 button1 -height 23 -width 125
+        mouse-press 46 5 button1 -height 23 -width 125
+        mouse-release 46 5 button1 524288 -height 23 -width 125
+    }
+    with [get-diagram -index 1 | get-edit-part -name "Test Sequence Diagram"] {
+        mouse-move 396 50 button1 -height 500 -width 703
+        mouse-press 396 50 button1 -height 500 -width 703
+        mouse-move 396 51 -mask 524288 -height 500 -width 703
+        mouse-drag 714 107 button1 524288 -height 500 -width 721
+        mouse-release 714 107 button1 524288 -height 500 -width 721
+    }
+}
+
+// Select an existing class (component used in an a travel agency sequence diagram exemple)
+with [get-window "Selection Wizard"] {
+    get-tree | select "<Model> Travel Agency/<Package> Components/<Component> Web Agent/<Component> Agency App"
+    get-button Finish | click
+}
+// Check element appears in diagram
+with [get-editor "Test Sequence Diagram"] {
+    get-label "Agency App : Agency App [1]" | get-property "getText()" | equals "Agency App : Agency App [1]" | verify-true
+    with [get-diagram -index 1 | get-edit-part -name "Test Sequence Diagram" | get-edit-part 
+        -name "Agency App : Agency App [1]"] {
+        get-edit-part -className SquareEditPart | get-figure "0/0" | get-property "getText()" 
+            | equals "Agency App : Agency App [1]" | verify-true
+        get-edit-part -name "Agency App" | get-edit-part -className SquareEditPart | get-figure "0/0" 
+            | get-property "isVisible()" | equals true | verify-true
+    }
+}
+
+// Check diagram to verify only lifeline are added
+with [get-editor "Test Sequence Diagram" | get-diagram -index 1 | get-edit-part -name "Test Sequence Diagram"] {
+    get-property "getConnections().size()" | equals 0 | verify-true
+    get-property "getChildren().InstanceRoleEditPart[0].getModel().getElement().getName()" 
+        | equals "Agency  Offers : Agency  Offers [1]" | verify-true
+    get-property "getChildren().InstanceRoleEditPart[1].getModel().getElement().getName()" 
+        | equals "Agency App : Agency App [1]" | verify-true
+    get-property "getChildren().size()" | equals 2 | verify-true
+}

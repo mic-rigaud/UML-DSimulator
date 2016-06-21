@@ -1,0 +1,19 @@
+// Create fist class diagram click on OK button
+get-view "Model Explorer" | get-tree | select "test/model.uml/<Model> NewModel"
+    | get-menu "New Representation/NewModel Class Diagram" | click
+with [get-window "New Representation"] {
+    with [get-editbox -after [get-label "Representation name:"]] {
+       set-text "testClassDiagram"
+    }
+    get-button OK | click
+}
+
+// Create second class diagram click on Cancel button
+get-view "Model Explorer" | get-tree | select "test/model.uml/<Model> NewModel"
+    | get-menu "New Representation/NewModel Class Diagram" | click
+with [get-window "New Representation"] {
+    with [get-editbox -after [get-label "Representation name:"]] {
+          set-text "testClassDiagram Cancel"
+    }
+    get-button Cancel | click
+}

@@ -1,0 +1,29 @@
+// Create new element with palette tool: Class
+
+with [get-editor "NewModel Component Diagram"] {
+    get-diagram -index 1 | get-edit-part -name "NewModel Component Diagram" | mouse-move 778 132 -height 524 -width 781
+    with [get-palette] {
+        with [get-palette-entry Component] {
+            mouse-move 6 15 button1 -height 23 -width 146
+            mouse-press 6 15 button1 -height 23 -width 146
+            mouse-release 6 15 button1 524288 -height 23 -width 146
+        }
+        get-palette-entry Component -index 1 | mouse-move 11 21 -height 23 -width 128
+        with [get-palette-entry Class] {
+            mouse-move 27 12 button1 -height 23 -width 146
+            mouse-press 27 12 button1 -height 23 -width 146
+            mouse-release 27 12 button1 524288 -height 23 -width 146
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Component Diagram"] {
+        mouse-move 181 70 button1 -height 524 -width 781
+        mouse-press 181 70 button1 -height 524 -width 781
+        mouse-release 181 70 button1 524288 -height 524 -width 781
+    }
+}
+// Check diagram
+with [get-editor "NewModel Component Diagram" | get-diagram -index 1 | get-edit-part -name "NewModel Component Diagram" 
+    | get-edit-part -name Class1 | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart 
+    | get-figure "1/0"] {
+    get-property "isVisible()" | equals true | verify-true
+}

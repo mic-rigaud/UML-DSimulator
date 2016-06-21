@@ -1,0 +1,49 @@
+// Create an interruptible activity in Activity Element
+with [get-editor "NewModel Activity Diagram"] {
+    get-diagram -index 1 | get-edit-part -name "NewModel Activity Diagram" | mouse-move 779 64 -height 342 
+        -width 781
+    with [get-palette] {
+        with [get-palette-entry Group] {
+            mouse-move 10 9 button1 -height 23 -width 214
+            mouse-press 10 9 button1 -height 23 -width 214
+            mouse-release 10 9 button1 524288 -height 23 -width 214
+        }
+        with [get-palette-entry InterruptibleActivityRegion] {
+            mouse-move 32 5 button1 -height 23 -width 214
+            mouse-press 32 5 button1 -height 23 -width 214
+            mouse-release 32 5 button1 524288 -height 23 -width 214
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Activity Diagram"] {
+        with [get-edit-part -name "NewModel" | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+            mouse-move 438 98 button1 -height 332 -width 542
+            mouse-press 438 98 button1 -height 332 -width 542
+            mouse-release 438 98 button1 524288 -height 332 -width 542
+        }
+    }
+}
+// Check Diagram
+with [get-editor "NewModel Activity Diagram" | get-diagram -index 1 | get-edit-part 
+    -name "NewModel Activity Diagram" | get-edit-part -name "NewModel" | get-edit-part 
+    -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+    get-edit-part -name InterruptibleActivityRegion1 | get-edit-part 
+        -className DNodeContainerViewNodeContainerCompartment2EditPart | get-figure "1/0" | get-property "isVisible()" 
+        | equals true | verify-true
+    get-figure "1/0" | get-property childrenCount | equals 1 | verify-true
+}
+with [get-editor "NewModel Activity Diagram" | get-diagram -index 1 | get-edit-part 
+    -name "NewModel Activity Diagram"] {
+    with [get-edit-part -name "NewModel" | get-edit-part 
+        -className DNodeContainerViewNodeContainerCompartmentEditPart | get-edit-part -name InterruptibleActivityRegion1
+        | get-edit-part -className DNodeContainerViewNodeContainerCompartment2EditPart | get-figure 1] {
+    }
+}
+
+// Check Model
+with [get-editor "NewModel Activity Diagram" | get-diagram -index 1 | get-edit-part 
+    -name "NewModel Activity Diagram"] {
+    get-property "element.target.ownedElement.ActivityPartition[0].inActivity.ownedElement.ActivityPartition[0].name" 
+        | equals InterruptibleActivityRegion1 | verify-true
+}
+

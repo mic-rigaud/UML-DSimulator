@@ -1,0 +1,112 @@
+// Test: Create new Sub-StateMachine in Region1 
+with [get-editor "NewModel State Machine Diagram"] {
+    with [get-palette] {
+        with [get-palette-entry "State machine"] {
+            mouse-move 36 9 button1 -height 23 -width 178
+            mouse-press 36 9 button1 -height 23 -width 178
+            mouse-release 36 9 button1 524288 -height 23 -width 178
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "NewModel State Machine Diagram"] {
+        with [get-edit-part -name NewModel | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartmentEditPart | get-edit-part -name Region1 | get-edit-part 
+            -name Region1] {
+            mouse-move 276 62 button1 -height 399 -width 790
+            mouse-press 276 62 button1 -height 399 -width 790
+            mouse-release 276 62 button1 524288 -height 399 -width 790
+        }
+    }
+}
+
+// Check Diagram, and model
+with [get-editor "NewModel State Machine Diagram" | get-diagram -index 1 | get-edit-part 
+    -name "NewModel State Machine Diagram" | get-edit-part -name NewModel | get-edit-part 
+    -className DNodeContainerViewNodeContainerCompartmentEditPart | get-edit-part -name Region1 | get-edit-part 
+    -name Region1 | get-edit-part -name StateMachine2] {
+    get-edit-part -className DNodeContainerName2EditPart | get-property visible | equals true | verify-true
+    get-edit-part -className DNodeContainerViewNodeContainerCompartment2EditPart | get-edit-part -name Region1 
+        | get-edit-part -name Region1 | get-property visible | equals true | verify-true
+}
+
+//Test: Try to create Submachine outside of state machine (invalid action)
+with [get-editor "NewModel State Machine Diagram"] {
+    with [get-palette] {
+        with [get-palette-entry "State machine"] {
+            mouse-move 36 9 button1 -height 23 -width 178
+            mouse-press 36 9 button1 -height 23 -width 178
+            mouse-release 36 9 button1 524288 -height 23 -width 178
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "NewModel State Machine Diagram"] {
+        mouse-move 823 168 button1 -height 524 -width 824
+        mouse-press 823 168 button1 -height 524 -width 824
+        mouse-release 823 168 button1 524288 -height 524 -width 824
+    }
+}
+
+// Test: change Orientation of submachine
+// Check mapping orientation before
+with [get-editor "NewModel State Machine Diagram" | get-diagram -index 1 | get-edit-part 
+    -name "NewModel State Machine Diagram"] {
+    get-property "element.diagramElements.DNodeContainer[2].name" | equals StateMachine2 | verify-true
+    get-property "element.diagramElements.DNodeContainer[2].actualMapping.name" | equals "SM_CompositeStateHorizontal" 
+        | verify-true
+}
+// Change from horizontal to vertical mapping
+with [get-editor "NewModel State Machine Diagram"] {
+    with [get-palette] {
+        with [get-palette-entry "State machine"] {
+            mouse-move 19 15 button1 -height 23 -width 178
+            mouse-press 19 15 button1 -height 23 -width 178
+            mouse-release 19 15 button1 524288 -height 23 -width 178
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "NewModel State Machine Diagram" | get-edit-part -name NewModel] {
+        with [get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart | get-edit-part -name Region1 
+            | get-edit-part -name Region1 | get-edit-part -name StateMachine2] {
+            mouse-move 126 9 button1 -height 70 -width 141
+            mouse-press 126 9 button1 -height 70 -width 141
+            mouse-release 126 9 button1 524288 -height 70 -width 141
+        }
+    }
+}
+// Check mapping orientation after first change
+with [get-editor "NewModel State Machine Diagram" | get-diagram -index 1 | get-edit-part 
+    -name "NewModel State Machine Diagram"] {
+    get-property "element.diagramElements.DNodeContainer[2].name" | equals StateMachine2 | verify-true
+    get-property "element.diagramElements.DNodeContainer[2].actualMapping.name" | equals "SM_CompositeStateVertical" 
+        | verify-true
+}
+// Change from vertical to horizontal mapping
+with [get-editor "NewModel State Machine Diagram"] {
+    with [get-palette] {
+        with [get-palette-entry "State machine"] {
+            mouse-move 19 15 button1 -height 23 -width 178
+            mouse-press 19 15 button1 -height 23 -width 178
+            mouse-release 19 15 button1 524288 -height 23 -width 178
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "NewModel State Machine Diagram" | get-edit-part -name NewModel] {
+        with [get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart | get-edit-part -name Region1 
+            | get-edit-part -name Region1 | get-edit-part -name StateMachine2] {
+            mouse-move 126 9 button1 -height 70 -width 141
+            mouse-press 126 9 button1 -height 70 -width 141
+            mouse-release 126 9 button1 524288 -height 70 -width 141
+        }
+    }
+}
+// Check mapping orientation after first change
+with [get-editor "NewModel State Machine Diagram" | get-diagram -index 1 | get-edit-part 
+    -name "NewModel State Machine Diagram"] {
+    get-property "element.diagramElements.DNodeContainer[2].name" | equals StateMachine2 | verify-true
+    get-property "element.diagramElements.DNodeContainer[2].actualMapping.name" | equals "SM_CompositeStateHorizontal" 
+        | verify-true
+}
+
+// Test: change orientation of StateMachine mapping
+with [get-editor "NewModel State Machine Diagram" | get-diagram -index 1 | get-edit-part 
+    -name "NewModel State Machine Diagram"] {
+    get-property "element.diagramElements.DNodeContainer[0].name" | equals NewModel | verify-true
+    get-property "element.diagramElements.DNodeContainer[0].actualMapping.name" | equals "SM_StateMachineHorizontal" 
+        | verify-true
+}

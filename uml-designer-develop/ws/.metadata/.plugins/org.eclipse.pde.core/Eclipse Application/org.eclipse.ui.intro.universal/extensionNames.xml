@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<contributor name="org.eclipse.pde.ui"/>
+<contributor name="org.eclipse.platform"/>
+<contributor name="org.obeonetwork.dsl.uml2.design.doc"/>
+<contributor name="org.eclipse.acceleo.ide.ui"/>
+<contributor name="org.eclipse.amalgam.discovery.modeling"/>
+<contributor name="org.eclipse.swtbot.eclipse.ui"/>
+<contributor name="org.eclipse.ui.intro"/>
+<contributor name="org.obeonetwork.dsl.uml2.discovery"/>
+<contributor name="org.eclipse.epp.mpc.ui"/>
+<contributor name="org.eclipse.ui.intro.universal"/>
+</root>

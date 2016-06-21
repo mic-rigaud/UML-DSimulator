@@ -1,0 +1,32 @@
+// Create a new package hierarchy model
+get-view "Model Explorer" | get-tree | select "test/model.uml/<Model> NewModel" 
+    | get-menu "New Representation/NewModel Package Hierarchy" | click
+get-window "New Representation" | get-button OK | click
+
+// Create a new Package
+// Create a new Package
+with [get-editor "NewModel Package Hierarchy"] {
+    with [get-palette | get-palette-entry Package] {
+        mouse-move 61 14 button1 -height 24 -width 125
+        mouse-press 61 14 button1 -height 24 -width 125
+        mouse-release 61 14 button1 524288 -height 24 -width 125
+        mouse-move 28 15 -height 24 -width 125
+    }
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Package Hierarchy"] {
+        mouse-move 785 130 button1 -height 397 -width 920
+        mouse-press 785 130 button1 -height 397 -width 920
+        mouse-release 785 130 button1 524288 -height 397 -width 920
+    }
+}
+// Create a new Class Diagram click OK
+get-view "Model Explorer" | get-tree | select "test/model.uml/<Model> NewModel/<Package> Package1" 
+    | get-menu "New Representation/Package1 Class Diagram" | click
+get-window "New Representation" | get-button OK | click
+
+// Create a new Class Diagram click Cancel
+get-view "Model Explorer" | get-tree | select "test/model.uml/<Model> NewModel/<Package> Package1" 
+    | get-menu "New Representation/Package1 Class Diagram" | click
+with [get-window "New Representation"] {
+    get-editbox -after [get-label "Representation name:"] | set-text "Package1 Class Diagram2"
+    get-button Cancel | click
+}

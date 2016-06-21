@@ -1,0 +1,98 @@
+// Create an interrupting edge
+with [get-editor "NewModel Activity Diagram"] {
+    get-diagram -index 1 | get-edit-part -name "NewModel Activity Diagram" | mouse-move 187 396 -height 396 -width 922
+    with [get-palette | get-palette-entry "Interrupting Edge"] {
+        mouse-move 42 34 button1 -height 41 -width 125
+        mouse-press 42 34 button1 -height 41 -width 125
+        mouse-release 42 34 button1 524288 -height 41 -width 125
+    }
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Activity Diagram" | get-edit-part -name NewModel 
+        | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+        mouse-move 277 171 -height 387 -width 542
+        with [get-edit-part -name InterruptibleActivityRegion1] {
+            with [get-edit-part -className DNodeContainerViewNodeContainerCompartment2EditPart | get-edit-part 
+                -name "OpaqueAction2\n\n"
+                + "// TODO body of OpaqueAction2" | get-edit-part 
+                -className DNodeContainerViewNodeContainerCompartment2EditPart] {
+                mouse-move 56 11 button1 -height 68 -width 162
+                mouse-press 56 11 button1 -height 68 -width 162
+                mouse-release 56 11 button1 524288 -height 68 -width 162
+            }
+        }
+        with [get-edit-part -name "OpaqueAction1\n\n"
+            + "// TODO body of OpaqueAction1" | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartment2EditPart] {
+            mouse-move 54 12 button1 -height 68 -width 162
+            mouse-press 54 12 button1 -height 68 -width 162
+        }
+    }
+}
+
+// Create a control flow
+with [get-editor "NewModel Activity Diagram"] {
+    with [get-palette | get-palette-entry "Control Flow"] {
+        mouse-move 102 16 button1 -height 24 -width 142
+        mouse-press 102 16 button1 -height 24 -width 142
+        mouse-release 102 15 button1 524288 -height 24 -width 142
+        mouse-move 22 19 -height 24 -width 142
+    }
+    with [get-diagram -index 1] {
+        with [get-edit-part -name "NewModel Activity Diagram" | get-edit-part -name NewModel | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+            mouse-move 432 223 -height 387 -width 542
+            with [get-edit-part -name "OpaqueAction3\n\n"
+                + "// TODO body of OpaqueAction3" | get-edit-part 
+                -className DNodeContainerViewNodeContainerCompartment2EditPart] {
+                mouse-move 35 28 button1 -height 68 -width 162
+                mouse-press 35 28 button1 -height 68 -width 162
+                mouse-move 35 27 -mask 524288 -height 68 -width 162
+            }
+        }
+        mouse-drag 441 263 -mask 524288 -height 396 -width 922
+        with [get-edit-part -name "NewModel Activity Diagram" | get-edit-part -name NewModel | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+            with [get-edit-part -name "OpaqueAction3\n\n"
+                + "// TODO body of OpaqueAction3" | get-edit-part -className DNodeContainerName2EditPart] {
+                mouse-drag 34 22 button1 524288 -height 26 -width 160
+                mouse-release 34 22 button1 524288 -height 26 -width 160
+            }
+            mouse-move 309 152 -height 387 -width 542
+            with [get-edit-part -name InterruptibleActivityRegion1 | get-edit-part 
+                -className DNodeContainerViewNodeContainerCompartment2EditPart] {
+                mouse-move 229 82 -height 111 -width 230
+                with [get-edit-part -name "OpaqueAction2\n\n"
+                    + "// TODO body of OpaqueAction2" | get-edit-part 
+                    -className DNodeContainerViewNodeContainerCompartment2EditPart] {
+                    mouse-move 106 18 button1 -height 68 -width 162
+                    mouse-press 106 18 button1 -height 68 -width 162
+                }
+            }
+        }
+    }
+}
+
+// Verify interruptible edge icon
+with [get-editor "NewModel Activity Diagram" | get-diagram -index 1 | get-edit-part -name "NewModel Activity Diagram" 
+    | get-edit-part -name NewModel | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+    mouse-move 95 188 -height 387 -width 542
+    mouse-move 20 278 -height 387 -width 542
+}
+with [get-editor "NewModel Activity Diagram" | get-diagram -index 1 | get-edit-part -name "NewModel Activity Diagram" 
+    | get-edit-part -name NewModel | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+    with [get-edit-part -name "OpaqueAction1\n\n"
+        + "// TODO body of OpaqueAction1" | get-target-connection 0] {
+        get-edit-part -className "" | get-property visible | equals true | verify-true
+        get-property "source.element.name" | equals "OpaqueAction2\n\n"
+            + "// TODO body of OpaqueAction2" | verify-true
+        get-property "target.element.name" | equals "OpaqueAction1\n\n"
+            + "// TODO body of OpaqueAction1" | verify-true
+    }
+    with [get-edit-part -name InterruptibleActivityRegion1 | get-edit-part 
+        -className DNodeContainerViewNodeContainerCompartment2EditPart | get-edit-part -name "OpaqueAction2\n\n"
+        + "// TODO body of OpaqueAction2" | get-target-connection 0] {
+        get-property "source.element.name" | equals "OpaqueAction3\n\n"
+            + "// TODO body of OpaqueAction3" | verify-true
+        get-property "target.element.name" | equals "OpaqueAction2\n\n"
+            + "// TODO body of OpaqueAction2" | verify-true
+    }
+}

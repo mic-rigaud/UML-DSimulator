@@ -1,0 +1,64 @@
+//Check diagram
+with [get-editor "Test Deployment Diagram" | get-diagram -index 1 | get-edit-part -name "Test Deployment Diagram"] {
+    get-property "getFigure().getChildren().size()" | equals 4 | verify-true
+    get-property "getConnections().size()" | equals 5 | verify-true
+}
+// Link
+get-editor "Test Deployment Diagram" | get-diagram -index 1 | get-edit-part -name "Test Deployment Diagram" 
+    | get-property "getFigure().isVisible()" | equals true | verify-true
+get-editor "Test Deployment Diagram" | get-diagram -index 1 | get-edit-part -name "Test Deployment Diagram" 
+    | get-edit-part -name "Other Device" | get-target-connection 0 | get-edit-part -className "" 
+    | get-property "getFigure().getText()" | equals "devicesToOther Devices" | verify-true
+
+// Dependency
+get-editor "Test Deployment Diagram" | get-diagram -index 1 | get-edit-part -name "Test Deployment Diagram" 
+    | get-edit-part -name "New package 6" | get-target-connection 0 | get-property "getFigure().isVisible()" 
+    | equals true | verify-true
+
+// Manifestation
+get-editor "Test Deployment Diagram" | get-diagram -index 1 | get-edit-part -name "Test Deployment Diagram" 
+    | get-property "getFigure().isVisible()" | equals true | verify-true
+    
+ // Generalization
+get-editor "Test Deployment Diagram" | get-diagram -index 1 | get-edit-part -name "Test Deployment Diagram"
+    | get-edit-part -name Device | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart 
+    | get-edit-part -name Generalization | get-target-connection 0 | get-property "getFigure().isVisible()" 
+    | equals true | verify-true
+    
+ // Deployment
+with [get-editor "Test Deployment Diagram" | get-diagram -index 1 | get-edit-part -name "Test Deployment Diagram"
+    | get-edit-part -name "Other Device" | get-target-connection 1] {
+    get-property "getFigure().isVisible()" | equals true | verify-true
+    get-edit-part -className "" | get-property "getFigure().getText()" | equals "<<deploy>>" | verify-true
+}
+
+ // Node
+get-editor "Test Deployment Diagram" | get-diagram -index 1 | get-edit-part -name "Test Deployment Diagram"
+    | get-edit-part -name Device | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart 
+    | get-edit-part -name Node | get-edit-part -className DNodeContainerViewNodeContainerCompartment2EditPart 
+    | get-property "getFigure().isVisible()" | equals true | verify-true
+    
+// Device
+get-editor "Test Deployment Diagram" | get-diagram -index 1 | get-edit-part -name "Test Deployment Diagram"
+    | get-edit-part -name Device | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart 
+    | get-figure "1/0" | get-property "isVisible()" | equals true | verify-true
+   
+// Artefact
+get-editor "Test Deployment Diagram" | get-diagram -index 1 | get-edit-part -name "Test Deployment Diagram"
+    | get-edit-part -name "Other Device" | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart 
+    | get-edit-part -name ExecutionEnvironment | get-edit-part 
+    -className DNodeContainerViewNodeContainerCompartment2EditPart | get-edit-part -name Artifact2 | get-edit-part 
+    -className DNodeContainerViewNodeContainerCompartment2EditPart | get-property "getFigure().isVisible()" 
+   | equals true | verify-true
+
+//ExecutionEnvironment
+get-editor "Test Deployment Diagram" | get-diagram -index 1 | get-edit-part -name "Test Deployment Diagram"
+    | get-edit-part -name "Other Device" | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart 
+    | get-edit-part -name ExecutionEnvironment | get-edit-part 
+    -className DNodeContainerViewNodeContainerCompartment2EditPart | get-property "getFigure().isVisible()" 
+    | equals true | verify-true
+    
+// Package
+get-editor "Test Deployment Diagram" | get-diagram -index 1 | get-edit-part -name "Test Deployment Diagram" 
+    | get-edit-part -name "New package 6" | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart 
+    | get-property "getFigure().isVisible()" | equals true | verify-true

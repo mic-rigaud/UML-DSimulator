@@ -1,0 +1,30 @@
+// Reconnect association target
+with [get-editor "Test Use Case Diagram"] {
+    with [get-diagram -index 1 | get-edit-part -name "Test Use Case Diagram"] {
+        with [get-edit-part -name Actor1 | get-target-connection 0] {
+            mouse-move 20 13 button1 -height 27 -width 289
+            mouse-press 20 13 button1 -height 27 -width 289
+            mouse-release 22 15 button1 524288 -height 31 -width 293
+            with [get-handle SiriusConnectionEndPointHandle -index 1] {
+                mouse-hover 3 4 -height 7 -width 7
+                mouse-move 3 4 button1 -height 7 -width 7
+                mouse-press 3 4 button1 -height 7 -width 7
+                mouse-move 3 5 -mask 524288 -height 7 -width 7
+            }
+        }
+        with [get-edit-part -name Actor2]{
+            mouse-drag 1 1 button1 524288 -height 524 -width 893
+            mouse-release 1 1 button1 524288 -height 524 -width 893
+        }
+    }
+}
+// Check diagram
+get-editor "Test Use Case Diagram" | get-diagram -index 1 | get-edit-part -name "Test Use Case Diagram" 
+    | get-edit-part -name Actor2 | get-target-connection 0
+// Check model
+with [get-editor "Test Use Case Diagram" | get-diagram -index 1 | get-edit-part -name "Test Use Case Diagram" 
+    | get-edit-part -name Actor2 | get-target-connection 0] {
+    get-property "element.targetNode.target.name" | equals Actor2 | verify-true
+    get-property "element.sourceNode.name" | equals UseCaseTest1 | verify-true
+  
+}

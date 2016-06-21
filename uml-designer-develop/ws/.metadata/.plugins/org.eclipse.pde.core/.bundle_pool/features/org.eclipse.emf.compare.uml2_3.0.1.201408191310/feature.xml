@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.eclipse.emf.compare.uml2"
+      label="%featureName"
+      version="3.0.1.201408191310"
+      provider-name="%providerName"
+      plugin="org.eclipse.emf.compare.uml2">
+
+   <description>
+      %description
+   </description>
+
+   <copyright url="%copyrightURL">
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <requires>
+      <import feature="org.eclipse.emf.compare" version="3.0.0.qualifier"/>
+      <import feature="org.eclipse.emf.compare.ide.ui" version="3.0.0.qualifier"/>
+      <import plugin="org.eclipse.uml2.uml" version="3.2.0" match="greaterOrEqual"/>
+   </requires>
+
+   <plugin
+         id="org.eclipse.emf.compare.uml2"
+         download-size="114"
+         install-size="253"
+         version="2.2.1.201408191310"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.emf.compare.uml2.edit"
+         download-size="57"
+         install-size="123"
+         version="2.2.1.201408191310"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.emf.compare.uml2.rcp.ui"
+         download-size="33"
+         install-size="67"
+         version="2.2.1.201408191310"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.emf.compare.uml2.rcp"
+         download-size="11"
+         install-size="20"
+         version="2.2.0.201408191310"
+         unpack="false"/>
+
+</feature>

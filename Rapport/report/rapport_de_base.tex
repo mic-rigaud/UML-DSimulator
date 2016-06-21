@@ -1,0 +1,165 @@
+\documentclass[a4paper, 11pt, oneside, oldfontcommands]{memoir}
+
+%%%%% Packages %%%%%
+\usepackage{lmodern}
+\usepackage{palatino}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+
+
+%%%%%%%%%%%%%%%%%%%%  PACKAGE SECONDAIRE
+
+%\usepackage{amstext,amsmath,amssymb,amsfonts} % package math
+%\usepackage{multirow,colortbl}	% to use multirow and ?
+%\usepackage{xspace,varioref}
+\usepackage[linktoc=all, hidelinks]{hyperref}			% permet d'utiliser les liens hyper textes
+\usepackage{float}				% permet d ajouter d autre fonction au floatant
+%\usepackage{wrapfig}			% permet d avoir des image avec texte coulant a cote
+%\usepackage{fancyhdr}			% permet d inserer des choses en haut et en bas de chaque page
+\usepackage{microtype}			% permet d ameliorer l apparence du texte
+\usepackage[explicit]{titlesec}	% permet de modifier les titres
+\usepackage{graphicx}			% permet d utiliser les graphiques
+\graphicspath{{./images/}}		% to say where are image
+%\usepackage{eso-pic} 			% to put figure in the background
+\usepackage[svgnames]{xcolor}	% permet d avoir plus de 300 couleur predefini
+%\usepackage{array}				% permet d ajouter des option dans les tableaux
+%\usepackage{listings}			% permet d ajouter des ligne de code
+%\usepackage{tikz}				% to draw figure
+%\usepackage{appendix}			% permet de faire les index
+%\usepackage{makeidx}			% permet de creer les index
+%\usepackage{fancyvrb}			% to use Verbatim
+%\usepackage{framed}				% permet de faire des environnement cadre
+%\usepackage{fancybox}			% permet de realiser les cadres
+\usepackage{titletoc}			% permet de modifier les titres
+%\usepackage{caption}
+\usepackage[a4paper, top=2cm, bottom=2cm]{geometry}
+\usepackage{frbib}                      %permet d avoir une biblio francaise
+\usepackage[babel=true]{csquotes}
+
+
+\usepackage{graphicx}
+\RequirePackage{pageGardeEnsta}	% permet d avoir la page de garde ensta
+
+%\setcounter{secnumdepth}{2}		% permet d'augmenter la numerotation
+%\setcounter{tocdepth}{2}		% permet d'augmenter la numerotation
+
+%%%%%%%%%%%%%%%%%%  DEFINITION DES BOITES
+\newcounter{rem}[chapter]
+
+\newcommand{\remarque}[1]{\stepcounter{rem}\noindent\fcolorbox{OliveDrab}{white}{\parbox{\textwidth}{\textcolor{OliveDrab}{
+\textbf{Remarque~\thechapter.\therem~:}}\\#1}}}
+
+\newcounter{th}[chapter]
+
+\newcommand{\theoreme}[2]{\noindent\fcolorbox{FireBrick}{white}{\stepcounter{th}
+\parbox{\textwidth}{\textbf{\textcolor{FireBrick}{Théorème~\thechapter.\theth~:}}{\hfill \textit{#1}}\\#2}}}
+
+\newcommand{\attention}[1]{\noindent\fcolorbox{white}{white}{\parbox{\textwidth}{\textcolor{FireBrick}{
+\textbf{Attention !}}\\\textit{#1}\\}}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%% INDEX %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\makeindex
+
+%%%%% Useful macros %%%%%
+\newcommand{\latinloc}[1]{\ifx\undefined\lncs\relax\emph{#1}\else\textrm{#1}\fi\xspace}
+\newcommand{\etc}{\latinloc{etc}}
+\newcommand{\eg}{\latinloc{e.g.}}
+\newcommand{\ie}{\latinloc{i.e.}}
+\newcommand{\cad}{c'est-à-dire }
+\newcommand{\st}{\ensuremath{\text{\xspace s.t.\xspace}}}
+
+%%%% Definition des couleur %%%%
+
+\newcommand\couleurb[1]{\textcolor{SteelBlue}{#1}}
+\newcommand\couleurr[1]{\textcolor{DarkRed}{#1}}
+
+
+%% number page style style %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pagestyle{plain}
+%\pagestyle{empty}
+%\pagestyle{headings}
+%\pagestyle{myheadings}
+
+
+
+%% chapters style %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% You may try several styles (see more in the memoir manual).
+
+%\chapterstyle{veelo}
+%\chapterstyle{chappell}
+%\chapterstyle{ell}
+%\chapterstyle{ger}
+%\chapterstyle{pedersen}
+%\chapterstyle{verville}
+\chapterstyle{madsen}
+%\chapterstyle{thatcher}
+
+
+%%%%% Report Title %%%%%
+\title{Simulation of StateChart}
+\author{\textsc{Rigaud Michaël}}
+\date{\today}
+\doctype{Rapport de stage}
+\promo{promo 2017}
+\etablissement{\textsc{Ensta} Bretagne\\2, rue François Verny\\
+  29806 \textsc{Brest} cedex\\\textsc{France}\\Tel +33 (0)2 98 34 88 00\\ \url{www.ensta-bretagne.fr}}
+\logoEcole{\includegraphics[height=4.2cm]{logo_ENSTA_Bretagne_Vertical_CMJN}}
+
+
+
+%%%%%%%%%%%%%%%%%% DEBUT DU DOCUMENT
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+\newpage
+
+\tableofcontents
+
+
+%%%%%%%%%%%%%%%%% INTRODUCTION
+
+\chapter*{Introduction}
+\addcontentsline{toc}{chapter}{Introduction}
+\newpage	  
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\part{Presentation}
+
+
+\input{Partie/Presentation}
+\input{Partie/UMLDesigner}
+\input{Partie/Simulator}
+
+\part{Study of the subject}
+
+\input{Partie/Communication}
+
+
+
+%%%% CONCLUSION %%%%%%%%%
+
+\chapter*{Conclusion}
+\addcontentsline{toc}{chapter}{Conclusion}
+\newpage
+
+%%%% ANNEXE %%%%%%%%%%%%
+
+\part*{Annexe}
+\input{Partie/Organisation}
+
+\appendix
+\nocite{*}
+%\input{annexe_}
+\newpage
+ \listoffigures
+ \printindex
+ \bibliographystyle{plain}
+  \bibliography{biblio}
+
+\end{document}
+%%%%%%%%%%%%%%%%% FIN DU DOCUMENT

@@ -1,0 +1,50 @@
+
+// Create a new Class diagram
+get-view "Model Explorer" | get-tree | select "test/model.uml/<Model> NewModel" 
+    | get-menu "New Representation/NewModel Class Diagram" | click
+get-window "New Representation" | get-button OK | click
+
+// check diagram is empty
+get-editor "NewModel Class Diagram" | get-diagram -index 1 | get-edit-part -name "NewModel Class Diagram" 
+    | mouse-move 986 10 -height 562 -width 1163
+with [get-editor "NewModel Class Diagram" | get-diagram -index 1 | get-edit-part -name "NewModel Class Diagram"] {
+    get-property childrenCount | equals 1 | verify-true
+    get-property "sourceEdges.size" | equals 0 | verify-true
+    get-property "targetEdges.size" | equals 0 | verify-true
+    get-property "children.size" | equals 1 | verify-true
+    get-property "transientChildren.size" | equals 0 | verify-true
+    get-property "edges.size" | equals 0 | verify-true
+    get-property "TransientEdges.size" | equals 0 | verify-true
+}
+
+// Drop from model explorer Ends of Association class
+with [get-view "Model Explorer" | get-tree] {
+    select "test/model.uml/<Model> NewModel/<Class> Class1"
+    get-item "test/model.uml/<Model> NewModel/<Class> Class1" | drag-start 8 9
+}
+get-view "Model Explorer" | get-tree | drag-set-data
+get-editor "NewModel Class Diagram" | get-diagram -index 1 | get-edit-part -name "NewModel Class Diagram" | drop 48 174 
+    -detail move    
+get-view "Model Explorer" | get-tree | drag-end -detail move
+
+with [get-view "Model Explorer" | get-tree] {
+    select "test/model.uml/<Model> NewModel/<Class> Class2"
+    get-item "test/model.uml/<Model> NewModel/<Class> Class2" | drag-start 53 8
+}
+get-view "Model Explorer" | get-tree | drag-set-data
+get-editor "NewModel Class Diagram" | get-diagram -index 1 | get-edit-part -name "NewModel Class Diagram" 
+    | drop 428 203 -detail move
+
+
+// Check diagram
+with [get-editor "NewModel Class Diagram" | get-diagram -index 1 | get-edit-part -name "NewModel Class Diagram"] {
+    get-property "children.size" | equals 3 | verify-true
+    get-property "children.Node[0].element.name" | equals Class1 | verify-true
+    get-property "children.Node[1].element.name" | equals Class2 | verify-true
+    get-property "children.Node[2].element.name" | equals AssociationClass1 | verify-true
+    get-property "edges.size" | equals 2 | verify-true
+    get-property "edges.Edge[0].source.element.name" | equals Class1 | verify-true
+    get-property "edges.Edge[0].target.element.name" | equals Class2 | verify-true
+    get-property "edges.Edge[1].source.element.name" | equals AssociationClass1 | verify-true
+    get-property "edges.Edge[1].target.element.name" | equals AssociationClass1 | verify-true
+}

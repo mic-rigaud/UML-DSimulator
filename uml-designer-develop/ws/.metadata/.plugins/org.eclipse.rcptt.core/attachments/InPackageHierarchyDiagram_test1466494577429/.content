@@ -1,0 +1,52 @@
+// Remove an Existing element from diagram with palette tool
+with [get-editor "Package Hierarchy"] {
+    with [get-palette | get-palette-entry Remove] {
+        mouse-move 57 13 button1 -height 23 -width 134
+        mouse-press 57 13 button1 -height 23 -width 134
+        mouse-release 57 13 button1 524288 -height 23 -width 134
+    }
+    with [get-diagram -index 1 | get-edit-part -name "Package Hierarchy"] {
+        with [get-edit-part -name Components | get-edit-part -className WorkspaceImageEditPart] {
+            mouse-move 38 29 button1 -height 50 -width 80
+            mouse-press 38 29 button1 -height 50 -width 80
+            mouse-release 38 29 button1 524288 -height 50 -width 80
+        }
+    }
+}
+// Check package and connection are removed from diagram
+with [get-editor "Package Hierarchy" | get-diagram -index 1 | get-edit-part -name "Package Hierarchy"] {
+    verify-error {get-edit-part -name Interfaces | get-target-connection 0 }
+    verify-error {get-edit-part -name Components}
+}
+
+// Try to remove an existing edge   
+with [get-editor "Package Hierarchy"] {
+    with [get-palette | get-palette-entry Remove] {
+        mouse-move 50 7 button1 -height 23 -width 134
+        mouse-press 50 7 button1 -height 23 -width 134
+        mouse-release 50 7 button1 524288 -height 23 -width 134
+    }
+    with [get-diagram -index 1 | get-edit-part -name "Package Hierarchy"] {
+        mouse-move 443 236 -height 524 -width 793
+        with [get-edit-part -name Actors | get-target-connection 0 | get-edit-part -className ""] {
+            mouse-move 14 0 button1 -height 13 -width 41
+            mouse-press 14 0 button1 -height 13 -width 41
+            mouse-release 14 0 button1 524288 -height 13 -width 41
+        }
+    }
+}
+get-editor "Package Hierarchy" | get-diagram -index 1 | get-edit-part -name "Package Hierarchy" | get-edit-part 
+    -name Actors | get-target-connection 0 | get-edit-part -className "" | get-property "getFigure().getText()" 
+    | equals "<<use>>" | verify-true
+
+// Check model
+with [get-editor "Package Hierarchy" | get-diagram -index 1 | get-edit-part -name "Package Hierarchy"] {
+    get-property "element.target.name" | equals "Travel Agency" | verify-true
+    get-property "element.target.member.size" | equals 6 | verify-true
+    get-property "element.target.member.Package[0].name" | equals Components | verify-true
+    get-property "element.target.member.Package[1].name" | equals Interfaces | verify-true
+    get-property "element.target.member.Package[2].name" | equals Deployment | verify-true
+    get-property "element.target.member.Package[3].name" | equals Relations | verify-true
+    get-property "element.target.member.Package[4].name" | equals Behaviours | verify-true
+    get-property "element.target.member.Package[5].name" | equals Instances | verify-true
+}

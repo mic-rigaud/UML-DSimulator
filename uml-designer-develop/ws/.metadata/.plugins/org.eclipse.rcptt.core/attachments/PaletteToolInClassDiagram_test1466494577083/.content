@@ -1,0 +1,62 @@
+// Select tool Association to reconnect broken association
+with [get-editor "test Class Diagram"] {
+    with [get-palette | get-palette-entry Association] {
+        mouse-move 42 4 button1 -height 23 -width 178
+        mouse-press 42 4 button1 -height 23 -width 178
+        mouse-release 42 4 button1 524288 -height 23 -width 178
+    }
+    with [get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+        with [get-edit-part -name Class4 | get-edit-part -className DNodeListViewNodeListCompartment2EditPart] {
+            mouse-move 49 37 button1 -height 71 -width 116
+            mouse-press 49 37 button1 -height 71 -width 116
+            mouse-release 49 37 button1 524288 -height 71 -width 116
+        }
+        with [get-edit-part -name "A_class1s_class2s_class3s_class4s_class5s" | get-edit-part 
+            -className WorkspaceImageEditPart] {
+            mouse-move 11 11 button1 -height 20 -width 30
+            mouse-press 11 11 button1 -height 20 -width 30
+            mouse-release 11 11 button1 524288 -height 20 -width 30
+        }
+    }
+}
+// Select links to reconnect
+with [get-window "Reconnect broken association end:"] {
+    get-table | select class4s
+    get-button OK | click
+}
+// Check diagram
+get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram" | get-edit-part 
+    -name "A_class1s_class2s_class3s_class4s_class5s" | get-target-connection 4 | get-edit-part -className "" -index 1 
+    | get-property "getLabelText()" | equals "class4s[*]" | verify-true
+
+// Reconnect last broken link
+with [get-editor "test Class Diagram"] {
+    with [get-palette | get-palette-entry Association] {
+        mouse-move 38 13 button1 -height 23 -width 178
+        mouse-press 38 13 button1 -height 23 -width 178
+        mouse-release 38 13 button1 524288 -height 23 -width 178
+    }
+    with [get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+        with [get-edit-part -name Class5 | get-edit-part -className DNodeListViewNodeListCompartment2EditPart] {
+            mouse-move 63 14 button1 -height 71 -width 116
+            mouse-press 63 14 button1 -height 71 -width 116
+            mouse-release 63 14 button1 524288 -height 71 -width 116
+        }
+        with [get-edit-part -name "A_class1s_class2s_class3s_class4s_class5s" | get-edit-part 
+            -className WorkspaceImageEditPart] {
+            mouse-move 11 8 button1 -height 20 -width 30
+            mouse-press 11 8 button1 -height 20 -width 30
+            mouse-release 11 8 button1 524288 -height 20 -width 30
+        }
+    }
+}
+// Check diagram
+with [get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram" | get-edit-part 
+    -name "A_class1s_class2s_class3s_class4s_class5s"] {
+    with [get-target-connection 3] {
+        get-property visible | equals true | verify-true
+        get-edit-part -className "" -index 1 | get-property "getLabelText()" | equals "class4s[*]" | verify-true
+    }
+    get-target-connection 4 | get-edit-part -className "" -index 1 | get-property "getLabelText()" 
+        | equals "class5s[*]" | verify-true
+}

@@ -1,0 +1,59 @@
+// Reconnect target
+with [get-editor "test Class Diagram"] {
+    with [get-diagram -index 1] {
+       with [get-edit-part -name "test Class Diagram"] {
+            with [get-edit-part -name Class2 | get-target-connection 0] {
+                mouse-move 232 91 button1 -height 148 -width 368
+                mouse-press 232 91 button1 -height 148 -width 368
+                mouse-release 234 93 button1 524288 -height 152 -width 372
+            }
+            with [get-edit-part -name Class2] {
+                with [get-target-connection 0 | get-handle SiriusConnectionEndPointHandle -index 1] {
+                    mouse-move 3 3 button1 -height 7 -width 7
+                    mouse-press 3 3 button1 -height 7 -width 7
+                }
+            }
+        }
+        with [get-edit-part -name "test Class Diagram" | get-edit-part -name Class1 | get-edit-part 
+            -className DNodeListViewNodeListCompartment2EditPart] {
+            mouse-drag 82 19 button1 524288 -height 71 -width 116
+            mouse-release 82 19 button1 524288 -height 71 -width 116
+        }
+    }
+}
+// Check diagram
+with [get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram" | get-edit-part 
+    -name Class1 | get-target-connection 0] {
+    get-property "source.element.name" | equals Class3 | verify-true
+    get-property "target.element.name" | equals Class1 | verify-true
+}
+
+
+// Reconnect source
+
+with [get-editor "test Class Diagram"] {
+    with [get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+        with [get-edit-part -name Class1 | get-target-connection 0] {
+            mouse-move 191 42 button1 -height 92 -width 439
+            mouse-press 191 42 button1 -height 92 -width 439
+            mouse-release 193 43 button1 524288 -height 95 -width 443
+        }
+        with [get-edit-part -name Class1 | get-target-connection 0 | get-handle SiriusConnectionEndPointHandle 
+            -index 0] {
+            mouse-move 4 6 button1 -height 7 -width 7
+            mouse-press 4 6 button1 -height 7 -width 7
+        }
+       with [get-edit-part -name Class2 | get-edit-part 
+            -className DNodeListViewNodeListCompartment2EditPart] {
+            mouse-drag 82 19 button1 524288 -height 71 -width 116
+            mouse-release 82 19 button1 524288 -height 71 -width 116
+        }
+    }
+   
+}
+// Check diagram
+with [get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram" | get-edit-part 
+    -name Class1 | get-target-connection 0] {
+    get-property "source.element.name" | equals Class2 | verify-true
+    get-property "target.element.name" | equals Class1 | verify-true
+}

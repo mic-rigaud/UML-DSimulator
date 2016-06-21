@@ -1,0 +1,26 @@
+with [get-editor "Test Profile Diagram"] {
+    with [get-diagram -index 1 | get-edit-part -name "Test Profile Diagram"] {
+        with [get-edit-part -name "«Stereotype» \n"
+            + "Stereotype1"] {
+            with [get-edit-part -className DNodeListNameEditPart] {
+                mouse-move 32 19 button1 -height 34 -width 100
+                mouse-press 32 19 button1 -height 34 -width 100
+                mouse-move 32 18 -mask 524288 -height 34 -width 100
+            }
+        }
+        mouse-move 295 0 -height 524 -width 646
+    }
+    get-button "Delete from Model" | click
+    get-diagram -index 1 | get-edit-part -name "Test Profile Diagram" | mouse-move 8 465 -height 524 -width 646
+}
+// Check Diagram
+get-editor "Test Profile Diagram" | get-diagram -index 1 | get-edit-part -name "Test Profile Diagram"
+    | verify-error {get-edit-part -name "«Stereotype» \n"
+            + "Stereotype1"}
+    
+// Check model
+with [get-editor "Test Profile Diagram" | get-diagram -index 1 | get-edit-part -name "Test Profile Diagram"] {
+    get-property "element.target.member.size" | equals 6 | verify-true
+    verify-error {get-editor "Test Profile Diagram" | get-diagram -index 1 | get-edit-part -name "Test Profile Diagram" 
+    | get-property "element.target.member.Stereotype[3].name" | equals Stereotype1 | verify-true}
+}

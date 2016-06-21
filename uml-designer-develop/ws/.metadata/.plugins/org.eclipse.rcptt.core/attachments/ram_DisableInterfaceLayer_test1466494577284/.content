@@ -1,0 +1,16 @@
+// disable interface layer
+with [get-editor "Component1 Composite Structure Diagram"] {
+    with [get-diagram -index 1] {
+        with [get-edit-part -name "Component1 Composite Structure Diagram"] {
+             mouse-move 761 92 button1 -height 355 -width 848
+            mouse-press 761 92 button1 -height 355 -width 848
+            mouse-release 761 92 button1 524288 -height 355 -width 848
+        }
+    }
+    get-button Layers | click -arrow
+}
+get-menu Interfaces | click
+
+// Check diagram
+get-editor "Component1 Composite Structure Diagram" | get-diagram -index 1 | get-edit-part 
+    -name "Component1 Composite Structure Diagram" | get-property "getConnections().size()" | equals 4 | verify-true

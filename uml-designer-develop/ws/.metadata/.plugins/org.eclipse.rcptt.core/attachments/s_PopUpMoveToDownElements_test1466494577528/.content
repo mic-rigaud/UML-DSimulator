@@ -1,0 +1,29 @@
+get-view "Model Explorer" | get-tree | select "TravelAgency/agency.uml/<Model> Travel Agency/Package Containment" 
+    | double-click
+with [get-editor "Package Containment" | get-diagram -index 1] {
+    with [get-edit-part -name "Package Containment"] {
+        get-edit-part -name Instances | mouse-move 139 17 -height 112 -width 143
+        with [get-edit-part -name Actors | get-edit-part -className DNodeListViewNodeListCompartment2EditPart] {
+            mouse-move 70 42 -height 89 -width 304
+            with [get-edit-part -name Marketing] {
+                mouse-move 35 5 button1 -height 16 -width 66
+                mouse-press 35 5 button1 -height 16 -width 66
+                mouse-release 35 5 button1 524288 -height 16 -width 66
+                mouse-press 35 5 button3 -height 16 -width 66
+            }
+        }
+    }
+get-editor "Package Containment" | get-diagram -index 1 | get-edit-part -name "Package Containment" | get-edit-part 
+    -name Actors | get-edit-part -className DNodeListViewNodeListCompartment2EditPart | get-figure "1/0/0" 
+    | get-property "getChildren().SiriusWrapLabel[2].getText()" | equals Marketing | verify-true
+    get-menu "Move to/Down" | click
+    with [get-edit-part -name "Package Containment"] {
+        with [get-edit-part -name UseCases | get-edit-part -className DNodeListViewNodeListCompartment2EditPart] {
+            mouse-move 227 62 -height 309 -width 304
+            mouse-hover 227 62 -height 309 -width 304
+        }
+    }
+}
+get-editor "Package Containment" | get-diagram -index 1 | get-edit-part -name "Package Containment" | get-edit-part 
+    -name Actors | get-edit-part -className DNodeListViewNodeListCompartment2EditPart | get-figure "1/0/0" 
+    | get-property "getChildren().SiriusWrapLabel[3].getText()" | equals Marketing | verify-true

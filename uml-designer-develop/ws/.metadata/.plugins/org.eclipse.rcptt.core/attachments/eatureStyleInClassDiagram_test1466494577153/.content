@@ -1,0 +1,147 @@
+// Set property to static check underline
+with [get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram" | get-edit-part 
+    -name Class1 | get-edit-part -className DNodeListViewNodeListCompartment2EditPart | get-edit-part 
+    -name "property1 :  [0..1]"] {
+    get-property "getContentPane().isTextUnderlined()" | equals false | verify-true
+}
+with [get-editor "test Class Diagram"] {
+    with [get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+        with [get-edit-part -name Class1 | get-edit-part -className DNodeListViewNodeListCompartment2EditPart] {
+           with [get-edit-part -name "property1 :  [0..1]"] {
+                mouse-move 38 6 button1 -height 16 -width 105
+                mouse-press 38 6 button1 -height 16 -width 105
+                mouse-release 38 6 button1 524288 -height 16 -width 105
+            }
+        }
+        mouse-move 233 432 -height 433 -width 535
+    }
+}
+get-view Properties | get-button "Is Static" | check
+with [get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram" | get-edit-part 
+    -name Class1 | get-edit-part -className DNodeListViewNodeListCompartment2EditPart | get-edit-part 
+    -name "property1 :  [0..1]"] {
+    get-property "getContentPane().isTextUnderlined()" | equals true | verify-true
+}
+
+// Set typed property to static check underline
+with [get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram" | get-edit-part 
+    -name Class1 | get-edit-part -className DNodeListViewNodeListCompartment2EditPart | get-edit-part 
+    -name "property2 : Class1 [0..1]"] {
+    get-property "getContentPane().isTextUnderlined()" | equals false | verify-true
+}
+with [get-editor "test Class Diagram"] {
+    with [get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+        with [get-edit-part -name Class1 | get-edit-part -className DNodeListViewNodeListCompartment2EditPart] {
+            mouse-move 83 36 -height 71 -width 116
+            with [get-edit-part -name "property2 : Class1 [0..1]"] {
+                mouse-move 51 14 button1 -height 26 -width 78
+                mouse-press 51 14 button1 -height 26 -width 78
+                mouse-release 51 14 button1 524288 -height 26 -width 78
+            }
+        }
+        mouse-move 220 426 -height 433 -width 535
+    }
+}
+get-view Properties | get-button "Is Static" | check
+with [get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram" | get-edit-part 
+    -name Class1 | get-edit-part -className DNodeListViewNodeListCompartment2EditPart | get-edit-part 
+    -name "property2 : Class1 [0..1]"] {
+    get-property "getContentPane().isTextUnderlined()" | equals true | verify-true
+}
+
+// Set operation to static check underline
+with [get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram" | get-edit-part 
+    -name Class1 | get-edit-part -className DNodeListViewNodeListCompartment2EditPart | get-edit-part 
+    -name "Operation_1()"] {
+    get-property "getContentPane().isTextUnderlined()" | equals false | verify-true
+}
+with [get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+    with [get-edit-part -name Class1 | get-edit-part -className DNodeListViewNodeListCompartment2EditPart] {
+        mouse-move 59 60 -height 71 -width 116
+        with [get-edit-part -name "Operation_1()"] {
+            mouse-move 54 10 button1 -height 16 -width 89
+            mouse-press 54 10 button1 -height 16 -width 89
+            mouse-release 54 10 button1 524288 -height 16 -width 89
+        }
+    }
+    mouse-move 216 432 -height 433 -width 535
+}
+get-view Properties | get-button "Is Static" | check
+with [get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram" | get-edit-part 
+    -name Class1 | get-edit-part -className DNodeListViewNodeListCompartment2EditPart | get-edit-part 
+    -name "Operation_1()"] {
+    get-property "getContentPane().isTextUnderlined()" | equals true | verify-true
+}
+
+// Set component port to static check underline
+with [get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram" | get-edit-part 
+    -name Component1 | get-edit-part -className DNodeListViewNodeListCompartment2EditPart | get-edit-part 
+    -name "port1 :  [1]"] {
+    get-property "getContentPane().isTextUnderlined()" | equals false | verify-true
+}
+with [get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+    mouse-move 369 143 -height 433 -width 535
+    with [get-edit-part -name Component1 | get-edit-part -className DNodeListViewNodeListCompartment2EditPart] {
+        mouse-move 3 17 -height 71 -width 116
+        with [get-edit-part -name "port1 :  [1]"] {
+            mouse-move 18 9 button1 -height 16 -width 71
+            mouse-press 18 9 button1 -height 16 -width 71
+            mouse-release 18 9 button1 524288 -height 16 -width 71
+        }
+    }
+    mouse-move 314 432 -height 433 -width 535
+}
+get-view Properties | get-button "Is Static" | check
+with [get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram" | get-edit-part 
+    -name Component1 | get-edit-part -className DNodeListViewNodeListCompartment2EditPart | get-edit-part 
+    -name "port1 :  [1]"] {
+    get-property "getContentPane().isTextUnderlined()" | equals true | verify-true
+}
+
+// Set component end to static check underline
+with [get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram" | get-edit-part 
+    -name Component1 | get-edit-part -className DNodeListViewNodeListCompartment2EditPart | get-edit-part 
+    -name "property1 :  [0..1]"] {
+    get-property "getContentPane().isTextUnderlined()" | equals false | verify-true
+}
+with [get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+    with [get-edit-part -name Component1 | get-edit-part -className DNodeListViewNodeListCompartment2EditPart] {
+        mouse-move 3 33 -height 71 -width 116
+        with [get-edit-part -name "property1 :  [0..1]"] {
+            mouse-move 27 8 button1 -height 16 -width 105
+            mouse-press 27 8 button1 -height 16 -width 105
+            mouse-release 27 8 button1 524288 -height 16 -width 105
+        }
+    }
+    mouse-move 336 430 -height 433 -width 535
+}
+get-view Properties | get-button "Is Static" | check
+with [get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram" | get-edit-part 
+    -name Component1 | get-edit-part -className DNodeListViewNodeListCompartment2EditPart | get-edit-part 
+    -name "property1 :  [0..1]"] {
+    get-property "getContentPane().isTextUnderlined()" | equals true | verify-true
+}
+
+// Set component property to static check underline
+with [get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram" | get-edit-part 
+    -name Component1 | get-edit-part -className DNodeListViewNodeListCompartment2EditPart | get-edit-part 
+    -name "property1 :  [1]"] {
+    get-property "getContentPane().isTextUnderlined()" | equals false | verify-true
+}
+with [get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+    with [get-edit-part -name Component1 | get-edit-part -className DNodeListViewNodeListCompartment2EditPart] {
+        mouse-move 11 50 -height 71 -width 116
+        with [get-edit-part -name "property1 :  [1]"] {
+            mouse-move 17 8 button1 -height 16 -width 93
+            mouse-press 17 8 button1 -height 16 -width 93
+            mouse-release 17 8 button1 524288 -height 16 -width 93
+        }
+    }
+    mouse-move 330 425 -height 433 -width 535
+}
+get-view Properties | get-button "Is Static" | check
+with [get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram" | get-edit-part 
+    -name Component1 | get-edit-part -className DNodeListViewNodeListCompartment2EditPart | get-edit-part 
+    -name "property1 :  [1]"] {
+    get-property "getContentPane().isTextUnderlined()" | equals true | verify-true
+}

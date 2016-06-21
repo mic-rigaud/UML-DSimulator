@@ -1,0 +1,59 @@
+
+// Create a new Association between Class1 and Class2
+with [get-editor "test Class Diagram"] {
+    maximize
+    with [get-palette] {
+        get-palette-entry Association | mouse-move 71 22 -height 23 -width 135
+        with [get-palette-entry Associations] {
+            mouse-move 10 14 button1 -height 23 -width 135
+            mouse-press 10 14 button1 -height 23 -width 135
+            mouse-release 10 14 button1 524288 -height 23 -width 135
+        }
+        with [get-palette-entry Composition] {
+            mouse-move 45 11 button1 -height 23 -width 135
+            mouse-press 45 11 button1 -height 23 -width 135
+            mouse-release 45 11 button1 524288 -height 23 -width 135
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+        with [get-edit-part -name Class1 | get-edit-part -className DNodeListViewNodeListCompartment2EditPart] {
+            mouse-move 82 26 button1 -height 71 -width 116
+            mouse-press 82 26 button1 -height 71 -width 116
+            mouse-release 82 26 button1 524288 -height 71 -width 116
+        }
+        mouse-move 230 306 -height 562 -width 967
+        with [get-edit-part -name Class2 | get-edit-part -className DNodeListViewNodeListCompartment2EditPart] {
+            mouse-move 62 34 button1 -height 71 -width 116
+            mouse-press 62 34 button1 -height 71 -width 116
+            mouse-release 62 34 button1 524288 -height 71 -width 116
+        }
+    }
+}
+
+// Check Graphical element is created
+with [get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram" | get-edit-part 
+    -name Class2 | get-target-connection 0] {
+    get-edit-part -className "" -index 1 | get-property "getFigure().getText()" | equals "class1s[0..1]" | verify-true
+    get-edit-part -className "" -index 2 | get-property "getFigure().getText()" | equals "class2s[*]" | verify-true
+}
+
+// Check Source and target
+with [get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram" | get-edit-part 
+    -name Class2 | get-target-connection 0] {
+    get-property "getTarget().getPrimaryFigure().getLabelFigure().getText()" | equals Class2 | verify-true
+    get-property "getSource().getPrimaryFigure().getLabelFigure().getText()" | equals Class1 | verify-true
+    get-edit-part -className "" | get-property "getFigure().getText()" | equals "A_class1s_class2s" | verify-true
+}
+
+// Check style connection style
+with [get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram" | get-edit-part 
+    -name Class2 | get-target-connection 0 | get-edit-part -className "" -index 1] {
+    get-property "element.ownedStyle.customFeatures" | equals "[]" | verify-true
+    get-property "element.ownedStyle.lineStyle" | equals solid | verify-true
+    get-property "element.ownedStyle.targetArrow" | equals InputArrow| verify-true
+    get-property "element.ownedStyle.sourceArrow" | equals FillDiamond | verify-true
+    get-property "element.ownedStyle.foldingStyle" | equals NONE | verify-true
+    get-property "element.ownedStyle.size" | equals 1 | verify-true
+    get-property "element.ownedStyle.routingStyle" | equals straight | verify-true
+    get-property "element.ownedStyle.centered" | equals None | verify-true
+}

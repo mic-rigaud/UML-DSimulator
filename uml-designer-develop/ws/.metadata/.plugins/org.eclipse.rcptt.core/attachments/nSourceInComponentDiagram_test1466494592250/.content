@@ -1,0 +1,21 @@
+// Move component realization source from Component1 to Component3
+with [get-editor "NewModel Component Diagram"] {
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Component Diagram"] {
+        with [get-edit-part -name Component2 | get-target-connection 0 | get-handle SiriusConnectionEndPointHandle] {
+            mouse-move 1 1 button1 -height 7 -width 7
+            mouse-press 1 1 button1 -height 7 -width 7
+            mouse-move 2 1 -mask 524288 -height 7 -width 7
+        }
+        mouse-drag 565 73 button1 524288 -height 524 -width 657
+        mouse-release 565 73 button1 524288 -height 524 -width 657
+    }
+}
+
+//Check diagram and model
+with [get-editor "NewModel Component Diagram" | get-diagram -index 1 | get-edit-part -name "NewModel Component Diagram" 
+    | get-edit-part -name Component2 | get-target-connection 0] {
+    get-property "source.element.name" | equals Component3 | verify-true
+    get-property "target.element.name" | equals Component2 | verify-true
+    get-property "getFigure().isVisible()" | equals true | verify-true
+    get-property "element.semanticElements.size" | equals 1 | verify-true
+}

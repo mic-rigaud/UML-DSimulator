@@ -1,0 +1,48 @@
+// Activate Profiles layer
+get-editor Entities|get-button Layers | click -arrow
+get-menu Stereotypes | click
+
+// Select Profiles/Stereotypes palette tool
+with [get-editor Entities] {
+   with [get-palette | get-palette-entry Stereotype] {
+        mouse-move 40 10 button1 -height 23 -width 135
+        mouse-press 40 10 button1 -height 23 -width 135
+        mouse-release 40 10 button1 524288 -height 23 -width 135
+    }
+}
+// Apply to a class: Agency
+with [get-editor Entities | get-diagram -index 1 | get-edit-part -name Entities] {
+    mouse-move 573 79 -height 698 -width 953
+    with [get-edit-part -name Agency] {
+        mouse-move 137 19 button1 -height 63 -width 183
+        mouse-press 137 19 button1 -height 63 -width 183
+        mouse-release 137 19 button1 524288 -height 63 -width 183
+    }
+}
+// Apply a stereotype EClass
+with [get-window "Select stereotypes to apply"] {
+    get-tree | select "<Profile> Ecore Profile/<Stereotype> Ecore Class"
+    get-button Add | click
+    get-button Finish | click
+}
+
+// Check Class name is modified in diagram
+get-editor Entities | get-diagram -index 1 | get-edit-part -name Entities | get-edit-part -name "«EClass»\r\n"
+    + "Agency" | get-edit-part -className DNodeListNameEditPart | get-property "getFigure().getText()" 
+    | equals "«EClass»\n"
+    + "Agency" | verify-true
+// Check model
+get-editor Entities | get-diagram -index 1 | get-edit-part -name Entities | get-edit-part -name "«EClass»\r\n"
+    + "Agency" | get-property "element.target.name" | equals Agency | verify-true
+    
+with [get-editor Entities | get-diagram -index 1 | get-edit-part -name Entities | get-edit-part -name EClass] {
+    with [get-edit-part -className DNodeListViewNodeListCompartment2EditPart] {
+        get-edit-part -name "xmlName=null" | get-property "getEditText()" | equals "xmlName=null" | verify-true
+        get-edit-part -name "annotations=[]" | get-property "getEditText()" | equals "annotations=[]" | verify-true
+        get-edit-part -name "instanceClassName=null" | get-property "getEditText()" | equals "instanceClassName=null" 
+            | verify-true
+        get-edit-part -name "className=null" | get-property "getEditText()" | equals "className=null" | verify-true
+    }
+    get-edit-part -className DNodeListNameEditPart | get-property "getFigure().getText()" | equals EClass | verify-true
+}
+get-editor Entities | get-diagram -index 1 | get-edit-part -name Entities | mouse-move 310 148 -height 698 -width 953

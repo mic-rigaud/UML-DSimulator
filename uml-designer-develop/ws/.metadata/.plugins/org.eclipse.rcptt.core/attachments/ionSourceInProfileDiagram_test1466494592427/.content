@@ -1,0 +1,63 @@
+// Reconnect Extension source
+with [get-editor "Test Profile Diagram"] {
+    with [get-diagram -index 1 | get-edit-part -name "Test Profile Diagram"] {
+        with [get-edit-part -name "«Metaclass»\n"
+            + "Class" | get-target-connection 0] {
+            mouse-move 45 121 button1 -height 192 -width 64
+            mouse-press 45 121 button1 -height 192 -width 64
+            mouse-release 45 121 button1 524288 -height 192 -width 64
+        }
+        with [get-edit-part -name "«Metaclass»\n"
+            + "Class" | get-target-connection 0 | get-handle SiriusConnectionEndPointHandle] {
+            mouse-move 1 4 button1 -height 7 -width 7
+            mouse-press 1 4 button1 -height 7 -width 7
+        }
+         with [get-edit-part  -name "«Stereotype» \n"
+        + "Stereotype2"]{
+            mouse-drag 1 1 button1 524288 -height 524 -width 646
+            mouse-release 1 1 button1 524288 -height 524 -width 646
+        }
+    }
+}
+// Check Reconnection source is done
+with [get-editor "Test Profile Diagram" | get-diagram -index 1 | get-edit-part -name "Test Profile Diagram" 
+    | get-edit-part -name "«Metaclass»\n"
+    + "Class" | get-target-connection 0] {
+    get-property "element.sourceNode.name" | equals "«Stereotype» \n"
+        + "Stereotype2" | verify-true
+    get-property "element.targetNode.name" | equals "«Metaclass»\n"
+        + "Class" | verify-true
+    get-property "source.element.name" | equals "«Stereotype» \n"
+        + "Stereotype2" | verify-true
+    get-property "target.element.name" | equals "«Metaclass»\n"
+        + "Class" | verify-true
+    get-property "getFigure().isVisible()" | equals true | verify-true
+}
+
+// Try to reconnect Source to a metaclass (invalid action)
+with [get-editor "Test Profile Diagram" | get-diagram -index 1 | get-edit-part -name "Test Profile Diagram"] {
+    with [get-edit-part -name "«Metaclass»\n"
+        + "Class" | get-target-connection 0] {
+        mouse-move 347 139 button1 -height 192 -width 369
+        mouse-press 347 139 button1 -height 192 -width 369
+    }
+     with [get-edit-part --name "«Metaclass»\n"
+        + "Actor" | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+        mouse-drag 1 1 button1 524288 -height 524 -width 646
+        mouse-release 1 1 button1 524288 -height 524 -width 646
+    }
+}
+// Check Reconnection source is NOT done
+with [get-editor "Test Profile Diagram" | get-diagram -index 1 | get-edit-part -name "Test Profile Diagram" 
+    | get-edit-part -name "«Metaclass»\n"
+    + "Class" | get-target-connection 0] {
+    get-property "element.sourceNode.name" | equals "«Stereotype» \n"
+        + "Stereotype2" | verify-true
+    get-property "element.targetNode.name" | equals "«Metaclass»\n"
+        + "Class" | verify-true
+    get-property "source.element.name" | equals "«Stereotype» \n"
+        + "Stereotype2" | verify-true
+    get-property "target.element.name" | equals "«Metaclass»\n"
+        + "Class" | verify-true
+    get-property "getFigure().isVisible()" | equals true | verify-true
+}

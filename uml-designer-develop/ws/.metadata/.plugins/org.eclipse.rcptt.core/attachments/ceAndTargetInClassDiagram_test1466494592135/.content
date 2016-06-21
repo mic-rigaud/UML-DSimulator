@@ -1,0 +1,89 @@
+
+// Move target from Usage class to Class21 class
+with [get-editor "Test Class Diagram Edges"] {
+    with [get-diagram -index 1] {
+        with [get-edit-part -name "Test Class Diagram Edges"] {
+            with [get-edit-part -name Usage | get-target-connection 0] {
+                mouse-move 232 91 button1 -height 148 -width 368
+                mouse-press 232 91 button1 -height 148 -width 368
+                mouse-release 234 93 button1 524288 -height 152 -width 372
+            }
+            with [get-edit-part -name Usage] {
+                get-edit-part -className DNodeListViewNodeListCompartment2EditPart | mouse-move 89 34 -height 71 
+                    -width 116
+                with [get-target-connection 0 | get-handle SiriusConnectionEndPointHandle -index 1] {
+                    mouse-move 3 3 button1 -height 7 -width 7
+                    mouse-press 3 3 button1 -height 7 -width 7
+                }
+            }
+        }
+        with [get-edit-part -name "Test Class Diagram Edges" | get-edit-part -name Class21 | get-edit-part 
+            -className DNodeListViewNodeListCompartment2EditPart] {
+            mouse-drag 82 19 button1 524288 -height 71 -width 116
+            mouse-release 82 19 button1 524288 -height 71 -width 116
+        }
+    }
+}
+
+// Check diagram
+with [get-editor "Test Class Diagram Edges" | get-diagram -index 1 | get-edit-part -name "Test Class Diagram Edges" 
+    | get-edit-part -name Class21 | get-target-connection 0]  {
+    get-property "getSource().getMainFigure().getChildren().GradientRoundedRectangle[0].getLabelFigure().getText()" 
+        | equals DefaultClass | verify-true
+    get-property "getTarget().getMainFigure().getChildren().GradientRoundedRectangle[0].getLabelFigure().getText()" 
+        | equals Class21 | verify-true
+    
+}
+get-editor "Test Class Diagram Edges" | get-diagram -index 1 | get-edit-part -name "Test Class Diagram Edges" 
+    | get-edit-part -name Usage | verify-error{get-target-connection 0}
+
+// Check model
+with [get-editor "Test Class Diagram Edges" | get-diagram -index 1 | get-edit-part -name "Test Class Diagram Edges" 
+    | get-edit-part -name Class21 | get-target-connection 0] {
+    get-property "element.sourceNode.name" | equals DefaultClass | verify-true
+    get-property "element.targetNode.name" | equals Class21 | verify-true
+}
+
+
+
+// Move source from Usage class to Class21 class
+with [get-editor "Test Class Diagram Edges"] {
+    with [get-diagram -index 1] {
+        with [get-edit-part -name "Test Class Diagram Edges"] {
+            with [get-edit-part -name Class21 | get-target-connection 0] {
+                mouse-move 288 32 button1 -height 57 -width 424
+                mouse-press 288 32 button1 -height 57 -width 424
+                mouse-release 290 33 button1 524288 -height 59 -width 428
+            }
+            with [get-edit-part -name DefaultClass | get-edit-part 
+                -className DNodeListViewNodeListCompartment2EditPart] {
+                get-edit-part -name "Port1 :  [1]" | mouse-hover 4 2 -height 16 -width 68
+                mouse-move 3 20 -height 81 -width 143
+            }
+            with [get-edit-part -name Class21 | get-target-connection 0 | get-handle SiriusConnectionEndPointHandle] {
+                mouse-move 3 3 button1 -height 7 -width 7
+                mouse-press 3 3 button1 -height 7 -width 7
+                mouse-move 1 5 -mask 524288 -height 7 -width 7
+            }
+            mouse-drag 311 223 button1 524288 -height 537 -width 1057
+            mouse-release 311 223 button1 524288 -height 537 -width 1057
+        }
+    }
+}
+
+// Check diagram
+with [get-editor "Test Class Diagram Edges" | get-diagram -index 1 | get-edit-part -name "Test Class Diagram Edges" 
+    | get-edit-part -name Class21 | get-target-connection 0]  {
+    get-property "getSource().getMainFigure().getChildren().GradientRoundedRectangle[0].getLabelFigure().getText()" 
+        | equals Class22 | verify-true
+    get-property "getTarget().getMainFigure().getChildren().GradientRoundedRectangle[0].getLabelFigure().getText()" 
+        | equals Class21 | verify-true
+    
+}
+// Check model
+with [get-editor "Test Class Diagram Edges" | get-diagram -index 1 | get-edit-part -name "Test Class Diagram Edges" 
+    | get-edit-part -name Class21 | get-target-connection 0] {
+    get-property "element.sourceNode.name" | equals Class22 | verify-true
+    get-property "element.targetNode.name" | equals Class21 | verify-true
+}
+

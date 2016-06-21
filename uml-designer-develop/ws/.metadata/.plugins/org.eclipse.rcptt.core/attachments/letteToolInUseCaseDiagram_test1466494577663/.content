@@ -1,0 +1,20 @@
+//Create new Artifact
+with [get-editor "NewModel Use Case Diagram"] {
+    with [get-palette | get-palette-entry Artifact] {
+        mouse-move 28 3 button1 -height 23 -width 146
+        mouse-press 28 3 button1 -height 23 -width 146
+        mouse-release 28 3 button1 524288 -height 23 -width 146
+    }
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Use Case Diagram"] {
+        mouse-move 595 301 button1 -height 531 -width 781
+        mouse-press 595 301 button1 -height 531 -width 781
+        mouse-release 595 301 button1 524288 -height 531 -width 781
+    }
+}
+
+// Check diagram
+with [get-editor "NewModel Use Case Diagram" | get-diagram -index 1 | get-edit-part -name "NewModel Use Case Diagram" 
+    | get-edit-part -name "NewModel Subject" | get-edit-part 
+    -className DNodeContainerViewNodeContainerCompartmentEditPart | get-figure "1/0"] {
+    get-property "isVisible()" | equals true | verify-true
+}

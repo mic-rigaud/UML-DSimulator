@@ -1,0 +1,37 @@
+// Fix 797 possible to make circular references
+// With the tool move click on package 3 
+with [get-editor "test Package Containment"] {
+    with [get-palette] {
+        with [get-palette-entry Move] {
+            mouse-move 53 8 button1 -height 23 -width 178
+            mouse-press 53 8 button1 -height 23 -width 178
+            mouse-release 53 8 button1 524288 -height 23 -width 178
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "test Package Containment" | get-edit-part -name Package3 
+        | get-edit-part -className DNodeListViewNodeListCompartment2EditPart] {
+        mouse-move 62 1 button1 -height 71 -width 116
+        mouse-press 62 1 button1 -height 71 -width 116
+        mouse-release 62 1 button1 524288 -height 71 -width 116
+    }
+}
+
+// In the selection window select the parent package1
+with [get-window "Selection Wizard"] {
+    get-tree | select "<Model> NewModel/<Package> Package1"
+    get-button Add | click
+    get-button Finish | click
+}
+
+// Check an error pop up is display
+get-window "Selection Error" | get-button OK | click
+
+// Check model is not modified
+with [get-editor "test Package Containment" | get-diagram -index 1 | get-edit-part -name "test Package Containment"] {
+    get-edit-part -name Package1 | get-edit-part -className DNodeListViewNodeListCompartment2EditPart | get-edit-part 
+        -name Package2 | get-property "getLabelText()" | equals Package2 | verify-true
+    get-edit-part -name Package2 | get-edit-part -className DNodeListViewNodeListCompartment2EditPart | get-edit-part 
+        -name Package3 | get-property "getEditText()" | equals Package3 | verify-true
+    get-edit-part -name Package3 | get-edit-part -className DNodeListNameEditPart | get-property "getLabelText()" 
+        | equals Package3 | verify-true
+}
