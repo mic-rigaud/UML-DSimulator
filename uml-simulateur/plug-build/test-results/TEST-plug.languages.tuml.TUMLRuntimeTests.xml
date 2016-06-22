@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="plug.languages.tuml.TUMLRuntimeTests" tests="6" skipped="0" failures="1" errors="0" timestamp="2016-06-20T08:40:45" hostname="michael-UBUNTU" time="24.124">
+<testsuite name="plug.languages.tuml.TUMLRuntimeTests" tests="6" skipped="0" failures="1" errors="0" timestamp="2016-06-22T14:18:33" hostname="michael-UBUNTU" time="24.12">
   <properties/>
-  <testcase name="testProducerConsumerNoDefer" classname="plug.languages.tuml.TUMLRuntimeTests" time="1.754"/>
-  <testcase name="testProducerConsumerDefer" classname="plug.languages.tuml.TUMLRuntimeTests" time="0.367"/>
-  <testcase name="testPingPong0" classname="plug.languages.tuml.TUMLRuntimeTests" time="0.021"/>
-  <testcase name="testSimulateSNCFCas1" classname="plug.languages.tuml.TUMLRuntimeTests" time="0.405"/>
-  <testcase name="testSNCFCas1" classname="plug.languages.tuml.TUMLRuntimeTests" time="21.554">
+  <testcase name="testProducerConsumerNoDefer" classname="plug.languages.tuml.TUMLRuntimeTests" time="1.843"/>
+  <testcase name="testProducerConsumerDefer" classname="plug.languages.tuml.TUMLRuntimeTests" time="0.386"/>
+  <testcase name="testPingPong0" classname="plug.languages.tuml.TUMLRuntimeTests" time="0.018"/>
+  <testcase name="testSimulateSNCFCas1" classname="plug.languages.tuml.TUMLRuntimeTests" time="0.363"/>
+  <testcase name="testSNCFCas1" classname="plug.languages.tuml.TUMLRuntimeTests" time="21.486">
     <failure message="java.lang.AssertionError: expected:&lt;12096&gt; but was:&lt;162065&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected:&lt;12096&gt; but was:&lt;162065&gt;
 	at org.junit.Assert.fail(Assert.java:88)
 	at org.junit.Assert.failNotEquals(Assert.java:834)
@@ -58,10 +58,34 @@
 	at java.lang.Thread.run(Thread.java:745)
 </failure>
   </testcase>
-  <testcase name="testPingPong0_tuml" classname="plug.languages.tuml.TUMLRuntimeTests" time="0.02"/>
-  <system-out><![CDATA[State-space size : 3
+  <testcase name="testPingPong0_tuml" classname="plug.languages.tuml.TUMLRuntimeTests" time="0.023"/>
+  <system-out><![CDATA[Coucou les enfants!!UMLResourcesUtil
+Le prob est pas la...
+heuuuuuuuu jar:file:/home/michael/.gradle/caches/modules-2/files-2.1/org.eclipse.uml2/org.eclipse.uml2.uml.resources/5.0.2.v20150202-0947/13ef0d0c12cab61db9f4c689cf1026cbe057460e/org.eclipse.uml2.uml.resources-5.0.2.v20150202-0947.jar!/org/eclipse/uml2/uml/resources/util/UMLResourcesUtil.class
+voila le mot qui pose prob je pense :{org.eclipse.uml2.uml.resources=jar:file:/home/michael/.gradle/caches/modules-2/files-2.1/org.eclipse.uml2/org.eclipse.uml2.uml.resources/5.0.2.v20150202-0947/13ef0d0c12cab61db9f4c689cf1026cbe057460e/org.eclipse.uml2.uml.resources-5.0.2.v20150202-0947.jar!}
+Coucou les enfants!!UMLResourcesUtil
+Le prob est pas la...
+heuuuuuuuu jar:file:/home/michael/.gradle/caches/modules-2/files-2.1/org.eclipse.uml2/org.eclipse.uml2.uml.resources/5.0.2.v20150202-0947/13ef0d0c12cab61db9f4c689cf1026cbe057460e/org.eclipse.uml2.uml.resources-5.0.2.v20150202-0947.jar!/org/eclipse/uml2/uml/resources/util/UMLResourcesUtil.class
+voila le mot qui pose prob je pense :{org.eclipse.uml2.uml.resources=jar:file:/home/michael/.gradle/caches/modules-2/files-2.1/org.eclipse.uml2/org.eclipse.uml2.uml.resources/5.0.2.v20150202-0947/13ef0d0c12cab61db9f4c689cf1026cbe057460e/org.eclipse.uml2.uml.resources-5.0.2.v20150202-0947.jar!}
+Coucou les enfants!!UMLResourcesUtil
+Le prob est pas la...
+heuuuuuuuu jar:file:/home/michael/.gradle/caches/modules-2/files-2.1/org.eclipse.uml2/org.eclipse.uml2.uml.resources/5.0.2.v20150202-0947/13ef0d0c12cab61db9f4c689cf1026cbe057460e/org.eclipse.uml2.uml.resources-5.0.2.v20150202-0947.jar!/org/eclipse/uml2/uml/resources/util/UMLResourcesUtil.class
+voila le mot qui pose prob je pense :{org.eclipse.uml2.uml.resources=jar:file:/home/michael/.gradle/caches/modules-2/files-2.1/org.eclipse.uml2/org.eclipse.uml2.uml.resources/5.0.2.v20150202-0947/13ef0d0c12cab61db9f4c689cf1026cbe057460e/org.eclipse.uml2.uml.resources-5.0.2.v20150202-0947.jar!}
+State-space size : 3
+Coucou les enfants!!UMLResourcesUtil
+Le prob est pas la...
+heuuuuuuuu jar:file:/home/michael/.gradle/caches/modules-2/files-2.1/org.eclipse.uml2/org.eclipse.uml2.uml.resources/5.0.2.v20150202-0947/13ef0d0c12cab61db9f4c689cf1026cbe057460e/org.eclipse.uml2.uml.resources-5.0.2.v20150202-0947.jar!/org/eclipse/uml2/uml/resources/util/UMLResourcesUtil.class
+voila le mot qui pose prob je pense :{org.eclipse.uml2.uml.resources=jar:file:/home/michael/.gradle/caches/modules-2/files-2.1/org.eclipse.uml2/org.eclipse.uml2.uml.resources/5.0.2.v20150202-0947/13ef0d0c12cab61db9f4c689cf1026cbe057460e/org.eclipse.uml2.uml.resources-5.0.2.v20150202-0947.jar!}
 State-space size : 33
+Coucou les enfants!!UMLResourcesUtil
+Le prob est pas la...
+heuuuuuuuu jar:file:/home/michael/.gradle/caches/modules-2/files-2.1/org.eclipse.uml2/org.eclipse.uml2.uml.resources/5.0.2.v20150202-0947/13ef0d0c12cab61db9f4c689cf1026cbe057460e/org.eclipse.uml2.uml.resources-5.0.2.v20150202-0947.jar!/org/eclipse/uml2/uml/resources/util/UMLResourcesUtil.class
+voila le mot qui pose prob je pense :{org.eclipse.uml2.uml.resources=jar:file:/home/michael/.gradle/caches/modules-2/files-2.1/org.eclipse.uml2/org.eclipse.uml2.uml.resources/5.0.2.v20150202-0947/13ef0d0c12cab61db9f4c689cf1026cbe057460e/org.eclipse.uml2.uml.resources-5.0.2.v20150202-0947.jar!}
 State-space size : 162065
+Coucou les enfants!!UMLResourcesUtil
+Le prob est pas la...
+heuuuuuuuu jar:file:/home/michael/.gradle/caches/modules-2/files-2.1/org.eclipse.uml2/org.eclipse.uml2.uml.resources/5.0.2.v20150202-0947/13ef0d0c12cab61db9f4c689cf1026cbe057460e/org.eclipse.uml2.uml.resources-5.0.2.v20150202-0947.jar!/org/eclipse/uml2/uml/resources/util/UMLResourcesUtil.class
+voila le mot qui pose prob je pense :{org.eclipse.uml2.uml.resources=jar:file:/home/michael/.gradle/caches/modules-2/files-2.1/org.eclipse.uml2/org.eclipse.uml2.uml.resources/5.0.2.v20150202-0947/13ef0d0c12cab61db9f4c689cf1026cbe057460e/org.eclipse.uml2.uml.resources-5.0.2.v20150202-0947.jar!}
 State-space size : 3
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>

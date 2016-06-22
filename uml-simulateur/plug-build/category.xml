@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+  <feature url="features/platform.feature_0.0.1.bnd-VBMjjw.jar" id="platform.feature" version="0.0.1.bnd-VBMjjw">
+    <category name="platform" />
+  </feature>
+  <category-def name="platform" label="Target platform" />
+</site>
