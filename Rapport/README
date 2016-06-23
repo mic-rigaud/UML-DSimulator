@@ -1,5 +1,6 @@
-UMLSimulator: a UMLDesigner plugin to Simulate
-==========================================
+UMLSimulator: a UMLDesigner plugin to Simulate UML model
+--------------------------
+
 
 UMLSimulator is a plugin for UMLDesigner which permit to create a simulation of a stateMachine.
 With this plugin you can visualize the evolution.

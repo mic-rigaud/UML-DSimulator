@@ -1,8 +1,0 @@
-source.. = src/
-output.. = bin/
-bin.includes = plugin.xml,\
-               META-INF/,\
-               .,\
-               icons/,\
-               META-INF/lib/plug-core-0.0.1.jar,\
-               META-INF/lib/plug-simulation-ui-0.0.1.jar

@@ -1,15 +1,13 @@
 package org.ensta.uml.sim.handlers;
 
-import java.io.File;
-
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.handlers.HandlerUtil;
-
-import plug.simulation.ui.SimulationModel;
 
 /**
  * Our sample handler extends AbstractHandler, an IHandler base class.
@@ -19,23 +17,20 @@ import plug.simulation.ui.SimulationModel;
  */
 public class SampleHandler extends AbstractHandler {
 
-    SimulationModel model;
-
     PluginUI plug;
 
     @Override
     public Object execute(ExecutionEvent event) throws ExecutionException {
         IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
 
-        model = new SimulationModel();
-        plug = new PluginUI();
-        File fichier = new File("/home/michael/Documents/Ensta/Stage/2A/uml-simulateur/plug-build/resources/test/PingPong0.tuml.uml");
+        Display display = Display.getCurrent();
+        Shell fenetre = new Shell(display, SWT.SHELL_TRIM | SWT.TOOL | SWT.TITLE);
+        fenetre.setSize(220, 240);
+        fenetre.setText("simulateur");
 
-        model.loadModel(fichier);
+        plug = new PluginUI(fenetre);
+        fenetre.open();
 
-        System.out.println(model.getCurrentState());
-
-        MessageDialog.openInformation(window.getShell(), "Sim", "Hello, Eclipse world");
         return null;
     }
 }

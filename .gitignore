@@ -23,3 +23,7 @@ plug-simulation-ui-0.0.1/*
 bin
 eclipse-installer
 sirius
+Rapport/.git
+**.metadata
+**.settings
+**.content
