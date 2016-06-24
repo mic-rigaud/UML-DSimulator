@@ -1,8 +1,9 @@
-package org.ensta.uml.sim.handlers;
+package org.ensta.uml.sim.simulateur;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Random;
 
 import plug.core.IFireableTransition;
 import plug.core.Observable;
@@ -13,8 +14,11 @@ public class SimulatorControler implements Observateur {
 
     List<IFireableTransition> listTransition;
 
+    Random random = new Random();
+
     public SimulatorControler() {
         this.listTransition = new ArrayList<IFireableTransition>();
+
     }
 
     @Override
@@ -22,7 +26,7 @@ public class SimulatorControler implements Observateur {
         if (o instanceof SimulationModel) {
             SimulationModel sim = (SimulationModel) o;
             this.actualiserListTransition(sim);
-            System.out.println("Par actualisation: " + sim.getCurrentState());
+
         }
     }
 
@@ -34,8 +38,11 @@ public class SimulatorControler implements Observateur {
         }
     }
 
+    public List<IFireableTransition> getListTransition() {
+        return listTransition;
+    }
+
     public IFireableTransition getTransition(int i) {
-        System.out.println(listTransition.get(i).toString());
         return listTransition.get(i);
     }
 
@@ -49,7 +56,22 @@ public class SimulatorControler implements Observateur {
                 return this.getTransition(i);
             }
         }
-        return null;
+        return this.getRandomTransition();
+    }
+
+    public IFireableTransition getRandomTransition() {
+        return listTransition.get(random.nextInt(this.getListTransitionSize()));
+
+    }
+
+    public IFireableTransition getTransition(String objet) {
+        for (int i = 0; i < this.getListTransitionSize(); i++) {
+            if (objet.equals(this.getTransition(i).toString())) {
+                return this.getTransition(i);
+            }
+        }
+        System.out.println("transition non trouve donc aleatoire...");
+        return this.getRandomTransition();
     }
 
 }

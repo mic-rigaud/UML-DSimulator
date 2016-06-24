@@ -17,8 +17,6 @@ import org.eclipse.ui.handlers.HandlerUtil;
  */
 public class SampleHandler extends AbstractHandler {
 
-    PluginUI plug;
-
     @Override
     public Object execute(ExecutionEvent event) throws ExecutionException {
         IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
@@ -28,7 +26,6 @@ public class SampleHandler extends AbstractHandler {
         fenetre.setSize(220, 240);
         fenetre.setText("simulateur");
 
-        plug = new PluginUI(fenetre);
         fenetre.open();
 
         return null;

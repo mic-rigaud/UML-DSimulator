@@ -1,7 +1,7 @@
 package org.ensta.uml.sim.views;
 
-import java.io.File;
-import java.util.Random;
+import java.io.IOException;
+import java.util.concurrent.Semaphore;
 
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IMenuListener;
@@ -27,9 +27,7 @@ import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.IWorkbenchActionConstants;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.ViewPart;
-import org.ensta.uml.sim.handlers.SimulatorControler;
-
-import plug.simulation.ui.SimulationModel;
+import org.ensta.uml.sim.simulateur.CommunicationSortantSimulateur;
 
 /**
  * This sample class demonstrates how to plug-in a new workbench view. The view
@@ -46,7 +44,7 @@ import plug.simulation.ui.SimulationModel;
  * <p>
  */
 
-public class SimulatorView extends ViewPart {
+public class SimulatorView extends ViewPart implements Observateur {
 
     /**
      * The ID of the view as specified by the extension.
@@ -59,15 +57,17 @@ public class SimulatorView extends ViewPart {
 
     private Action stop;
 
+    private Action restart;
+
     private Action doubleClickAction;
 
-    SimulationModel model;
+    private CommunicationSimulateur comm;
 
-    SimulatorControler controler;
+    private CommunicationSortantSimulateur comm2;
 
-    Random random = new Random();
+    private String transitions;
 
-    File fichier = new File("/home/michael/Documents/Ensta/Stage/2A/uml-simulateur/plug-build/resources/test/PingPong0.tuml.uml");
+    private Semaphore sem = new Semaphore(0);
 
     class ViewLabelProvider extends LabelProvider implements ITableLabelProvider {
         @Override
@@ -90,11 +90,13 @@ public class SimulatorView extends ViewPart {
      * The constructor.
      */
     public SimulatorView() {
-        model = new SimulationModel();
-        controler = new SimulatorControler();
-        model.ajouterObservateur(controler);
-        model.loadModel(fichier);
-        model.initialize();
+        comm = new CommunicationSimulateur(9000);
+        comm.start();
+        comm.ajouterObservateur(this);
+        comm2 = new CommunicationSortantSimulateur("/home/michael/Documents/Ensta/Stage/2A/uml-simulateur/plug-build/resources/test/Case1.tuml.uml");
+        comm2.start();
+        transitions = new String();
+        // comm.ajouterObservateur(o);
     }
 
     /**
@@ -118,6 +120,23 @@ public class SimulatorView extends ViewPart {
         contributeToActionBars();
     }
 
+    public void actualiserPartControl() {
+        try {
+            sem.acquire();
+            System.out.println(transitions);
+            viewer.setInput(transitions.split("#"));
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+
+    public void actualiserPartControl(String liste) {
+
+        System.out.println("ok cool: " + liste);
+        viewer.setInput(liste.split("#"));
+    }
+
     private void hookContextMenu() {
         MenuManager menuMgr = new MenuManager("#PopupMenu");
         menuMgr.setRemoveAllWhenShown(true);
@@ -139,12 +158,15 @@ public class SimulatorView extends ViewPart {
     }
 
     private void fillLocalPullDown(IMenuManager manager) {
+        manager.add(restart);
+        manager.add(new Separator());
         manager.add(play);
         manager.add(new Separator());
         manager.add(stop);
     }
 
     private void fillContextMenu(IMenuManager manager) {
+        manager.add(restart);
         manager.add(play);
         manager.add(stop);
         // Other plug-ins can contribute there actions here
@@ -152,37 +174,60 @@ public class SimulatorView extends ViewPart {
     }
 
     private void fillLocalToolBar(IToolBarManager manager) {
+        manager.add(restart);
         manager.add(play);
         manager.add(stop);
     }
 
     private void makeActions() {
+        restart = new Action() {
+            @Override
+            public void run() {
+                try {
+                    comm.sendMessage("restart");
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+                actualiserPartControl("Initialize");
+                showMessage("Restart");
+            }
+        };
+        restart.setText("Restart");
+        restart.setToolTipText("restart tooltip");
+        restart.setImageDescriptor(PlatformUI.getWorkbench().getSharedImages().getImageDescriptor(ISharedImages.IMG_TOOL_FORWARD));
+
         play = new Action() {
             @Override
             public void run() {
-                showMessage("Action 1 realise");
+                showMessage("Play the simulateur");
             }
         };
-        play.setText("Action 1");
-        play.setToolTipText("Action 1 tooltip");
-        play.setImageDescriptor(PlatformUI.getWorkbench().getSharedImages().getImageDescriptor(ISharedImages.IMG_OBJS_INFO_TSK));
+        play.setText("Play");
+        play.setToolTipText("Play tooltip");
+        play.setImageDescriptor(PlatformUI.getWorkbench().getSharedImages().getImageDescriptor(ISharedImages.IMG_TOOL_FORWARD));
 
         stop = new Action() {
             @Override
             public void run() {
-                showMessage("Action 2 executed");
+                showMessage("Stop the simulateur");
             }
         };
-        stop.setText("Action 2");
-        stop.setToolTipText("Action 2 tooltip");
-        stop.setImageDescriptor(PlatformUI.getWorkbench().getSharedImages().getImageDescriptor(ISharedImages.IMG_OBJS_INFO_TSK));
+        stop.setText("Stop");
+        stop.setToolTipText("Stop tooltip");
+        stop.setImageDescriptor(PlatformUI.getWorkbench().getSharedImages().getImageDescriptor(ISharedImages.IMG_ELCL_STOP));
         doubleClickAction = new Action() {
             @Override
             public void run() {
                 ISelection selection = viewer.getSelection();
                 Object obj = ((IStructuredSelection) selection).getFirstElement();
-
-                showMessage("Double-click detected on " + obj.toString());
+                try {
+                    comm.sendMessage(obj.toString());
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+                actualiserPartControl();
             }
         };
     }
@@ -212,5 +257,15 @@ public class SimulatorView extends ViewPart {
     public Object getAdapter(Class arg0) {
         // TODO Auto-generated method stub
         return null;
+    }
+
+    @Override
+    public void actualiser(Observable o) {
+        // TODO Auto-generated method stub
+        if (o instanceof CommunicationSimulateur) {
+            CommunicationSimulateur comm = (CommunicationSimulateur) o;
+            transitions = comm.getMessage();
+        }
+        sem.release();
     }
 }
