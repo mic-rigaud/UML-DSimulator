@@ -1,0 +1,33 @@
+FlatContainerStyleSpec(ContainerStyleImpl).setBorderColor(RGBValues) line: 276	
+FlatContainerStyleSpec(ContainerStyleImpl).eSet(int, Object) line: 361	
+FlatContainerStyleSpec(FlatContainerStyleImpl).eSet(int, Object) line: 238	
+FlatContainerStyleSpec(BasicEObjectImpl).eSet(EStructuralFeature, Object) line: 1071	
+SetCommand.doExecute() line: 726	
+SetCommand(AbstractOverrideableCommand).execute() line: 125	
+EMFCommandOperation.doExecute(IProgressMonitor, IAdaptable) line: 119	
+EMFCommandOperation(AbstractEMFOperation).execute(IProgressMonitor, IAdaptable) line: 150	
+DefaultOperationHistory.execute(IUndoableOperation, IProgressMonitor, IAdaptable) line: 516	
+WorkspaceCommandStackImpl.doExecute(Command, Map<?,?>) line: 208	
+WorkspaceCommandStackImpl(AbstractTransactionalCommandStack).execute(Command, Map<?,?>) line: 165	
+WorkspaceCommandStackImpl(AbstractTransactionalCommandStack).execute(Command) line: 219	
+ItemPropertyDescriptor.setPropertyValue(Object, Object) line: 1605	
+StylePropertySection$StylePropertySource(PropertySource).setPropertyValue(Object, Object) line: 121	
+StylePropertySection$StylePropertySource.setPropertyValue(Object, Object) line: 207	
+SetModelPropertyValueCommand.doExecuteWithResult(IProgressMonitor, IAdaptable) line: 104	
+SetModelPropertyValueCommand(AbstractTransactionalCommand).doExecute(IProgressMonitor, IAdaptable) line: 247	
+SetModelPropertyValueCommand(AbstractEMFOperation).execute(IProgressMonitor, IAdaptable) line: 150	
+CompositeTransactionalCommand(CompositeEMFOperation).doExecute(IProgressMonitor, IAdaptable) line: 217	
+CompositeTransactionalCommand(AbstractEMFOperation).execute(IProgressMonitor, IAdaptable) line: 150	
+TriggeredOperations.execute(IProgressMonitor, IAdaptable) line: 165	
+DefaultOperationHistory.execute(IUndoableOperation, IProgressMonitor, IAdaptable) line: 516	
+UndoableModelPropertySheetEntry.executeValueChangedCommand(UndoableModelPropertySheetEntry, ICommand) line: 273	
+UndoableModelPropertySheetEntry.setValue(Object) line: 202	
+UndoableModelPropertySheetEntry.applyEditorValue() line: 130	
+CellEditor$1.run() line: 336	
+SafeRunner.run(ISafeRunnable) line: 42	
+JFaceUtil$1.run(ISafeRunnable) line: 50	
+SafeRunnable.run(ISafeRunnable) line: 173	
+PropertyDescriptor$EDataTypeCellEditor(CellEditor).fireApplyEditorValue() line: 333	
+PropertyDescriptor$EDataTypeCellEditor(TextCellEditor).handleDefaultSelection(SelectionEvent) line: 298	
+TextCellEditor$1.widgetDefaultSelected(SelectionEvent) line: 147	
+TypedListener.handleEvent(Event) line: 119	

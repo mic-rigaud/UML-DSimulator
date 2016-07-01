@@ -1,0 +1,20 @@
+FlatContainerStyleSpec(ContainerStyleImpl).setBorderColor(RGBValues) line: 276	
+ViewPropertiesSynchronizer.setBorderColor(BorderedStyle, FixedColor) line: 387	
+ViewPropertiesSynchronizer.synchronizeDDiagramElementStyleColorProperties(View, FixedColor, String, IInterpreter) line: 265	
+SiriusPropertyHandlerEditPolicy$4.doExecuteWithResult(IProgressMonitor, IAdaptable) line: 183	
+SiriusPropertyHandlerEditPolicy$4(AbstractTransactionalCommand).doExecute(IProgressMonitor, IAdaptable) line: 247	
+SiriusPropertyHandlerEditPolicy$4(AbstractEMFOperation).execute(IProgressMonitor, IAdaptable) line: 150	
+CompositeCommand.doExecuteWithResult(IProgressMonitor, IAdaptable) line: 403	
+CompositeCommand(AbstractCommand).execute(IProgressMonitor, IAdaptable) line: 134	
+WrappingCommandIgnoringAffectedFiles.execute(IProgressMonitor, IAdaptable) line: 124	
+DefaultOperationHistory.execute(IUndoableOperation, IProgressMonitor, IAdaptable) line: 516	
+DDiagramCommandStack.execute(ICommand, IProgressMonitor) line: 71	
+DDiagramCommandStack.execute(Command, IProgressMonitor) line: 52	
+ColorPropertyContributionItem(CustomContributionItem).execute(Command, IProgressMonitor) line: 100	
+ColorPropertyContributionItem(CustomContributionItem).doRun(IProgressMonitor) line: 75	
+ColorPropertyContributionItem(AbstractContributionItem).run(IProgressMonitor) line: 734	
+ActionManager$1.run() line: 225	
+BusyIndicator.showWhile(Display, Runnable) line: 70	
+ActionManager.run(IActionWithProgress) line: 223	
+ColorPropertyContributionItem(AbstractContributionItem).runWithEvent(Event) line: 529	
+ColorPropertyContributionItem.handleEvent(Event) line: 585	

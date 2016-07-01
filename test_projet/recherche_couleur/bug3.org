@@ -1,0 +1,76 @@
+FlatContainerStyleSpec(ContainerStyleImpl).setBorderColor(RGBValues) line: 276	
+FlatContainerStyleSpec(ContainerStyleImpl).eSet(int, Object) line: 361	
+FlatContainerStyleSpec(FlatContainerStyleImpl).eSet(int, Object) line: 238	
+FlatContainerStyleSpec(BasicEObjectImpl).eSet(EStructuralFeature, Object) line: 1071	
+DiagramStyleColorUpdater.updateNotCustomFeatureReflectively(EObject, Customizable, EObject, EAttribute) line: 122	
+DiagramStyleColorUpdater.updateColorReflectively(EObject, Customizable, EObject, Option<Customizable>) line: 111	
+DiagramStyleColorUpdater.updateColors(Style, StyleDescription, Option<Customizable>) line: 150	
+StyleHelper.refreshColors(Style, Option<Style>) line: 1487	
+StyleHelper.createContainerStyle(ContainerStyleDescription) line: 583	
+StyleHelper.createStyle(StyleDescription) line: 195	
+MappingHelper.getBestStyle(DiagramElementMapping, EObject, EObject, EObject, DDiagram) line: 88	
+DDiagramElementSynchronizer.refreshStyle(AbstractDNode, AbstractNodeMapping) line: 669	
+DDiagramElementSynchronizer.refresh(DDiagramElementContainer) line: 567	
+DDiagramElementSynchronizer.refresh(DDiagramElement) line: 509	
+DDiagramSynchronizer(DDiagramSynchronizer).handleKeptNode(DragAndDropTarget, AbstractDNodeCandidate, Collection<AbstractDNode>, boolean, IProgressMonitor) line: 1062	
+DDiagramSynchronizer(DDiagramSynchronizer).handleKeptNodes(DragAndDropTarget, SetIntersection<AbstractDNodeCandidate>, Collection<AbstractDNode>, boolean, IProgressMonitor) line: 1032	
+DDiagramSynchronizer(DDiagramSynchronizer).refreshContainerMapping(Map<DiagramElementMapping,Collection<EdgeTarget>>, DragAndDropTarget, ContainerMapping, Set<AbstractDNodeCandidate>, boolean, boolean, IProgressMonitor) line: 798	
+DDiagramSynchronizer(DDiagramSynchronizer).refreshOperation(IProgressMonitor) line: 412	
+DDiagramSynchronizer(DDiagramSynchronizer).refresh(IProgressMonitor) line: 352	
+DDiagramSynchronizer.refresh(IProgressMonitor) line: 91	
+DiagramDialectServices.refresh(DRepresentation, boolean, IProgressMonitor) line: 249	
+DialectManagerImpl.refresh(DRepresentation, boolean, IProgressMonitor) line: 118	
+RefreshRepresentationsCommand.doExecute() line: 124	
+RefreshRepresentationsCommand(RecordingCommand).execute() line: 135	
+CompoundCommand.execute() line: 261	
+CompoundCommand.execute() line: 261	
+TriggerCommand.execute() line: 113	
+WorkspaceCommandStackImpl.executeTriggers(Command, List<Command>, Map<?,?>) line: 398	
+TransactionalEditingDomainImpl.precommit(InternalTransaction) line: 712	
+TransactionImpl.commit() line: 414	
+GMFCommandWrapper(AbstractEMFOperation).execute(IProgressMonitor, IAdaptable) line: 155	
+CompositeCommand.doExecuteWithResult(IProgressMonitor, IAdaptable) line: 403	
+CompositeCommand(AbstractCommand).execute(IProgressMonitor, IAdaptable) line: 134	
+CompositeCommand.doExecuteWithResult(IProgressMonitor, IAdaptable) line: 403	
+CompositeCommand(AbstractCommand).execute(IProgressMonitor, IAdaptable) line: 134	
+WrappingCommandIgnoringAffectedFiles.execute(IProgressMonitor, IAdaptable) line: 124	
+DefaultOperationHistory.execute(IUndoableOperation, IProgressMonitor, IAdaptable) line: 516	
+DDiagramCommandStack.execute(ICommand, IProgressMonitor) line: 71	
+DDiagramCommandStack.execute(Command, IProgressMonitor) line: 52	
+DDiagramCommandStack(DiagramCommandStack).execute(Command) line: 156	
+CreationTool(AbstractTool).executeCommand(Command) line: 425	
+CreationTool(AbstractTool).executeCurrentCommand() line: 438	
+CreationTool(CreationTool).performCreation(int) line: 269	
+CreationTool(CreationTool).handleButtonUp(int) line: 189	
+CreationTool(AbstractTool).mouseUp(MouseEvent, EditPartViewer) line: 1200	
+DiagramEditDomain(EditDomain).mouseUp(MouseEvent, EditPartViewer) line: 301	
+DomainEventDispatcher.dispatchMouseReleased(MouseEvent) line: 380	
+LightweightSystem$EventHandler.mouseUp(MouseEvent) line: 548	
+TypedListener.handleEvent(Event) line: 220	
+EventTable.sendEvent(Event) line: 84	
+Display.sendEvent(EventTable, Event) line: 4481	
+FigureCanvas(Widget).sendEvent(Event) line: 1329	
+Display.runDeferredEvents() line: 3819	
+Display.readAndDispatch() line: 3430	
+PartRenderingEngine$4.run() line: 1127	
+Realm.runWithDefault(Realm, Runnable) line: 337	
+PartRenderingEngine.run(MApplicationElement, IEclipseContext) line: 1018	
+E4Workbench.createAndRunUI(MApplicationElement) line: 156	
+Workbench$5.run() line: 694	
+Realm.runWithDefault(Realm, Runnable) line: 337	
+Workbench.createAndRunWorkbench(Display, WorkbenchAdvisor) line: 606	
+PlatformUI.createAndRunWorkbench(Display, WorkbenchAdvisor) line: 150	
+IDEApplication.start(IApplicationContext) line: 139	
+EclipseAppHandle.run(Object) line: 196	
+EclipseAppLauncher.runApplication(Object) line: 134	
+EclipseAppLauncher.start(Object) line: 104	
+EclipseStarter.run(Object) line: 380	
+EclipseStarter.run(String[], Runnable) line: 235	
+NativeMethodAccessorImpl.invoke0(Method, Object, Object[]) line: not available [native method]	
+NativeMethodAccessorImpl.invoke(Object, Object[]) line: 62	
+DelegatingMethodAccessorImpl.invoke(Object, Object[]) line: 43	
+Method.invoke(Object, Object...) line: 498	
+Main.invokeFramework(String[], URL[]) line: 669	
+Main.basicRun(String[]) line: 608	
+Main.run(String[]) line: 1515	
+Main.main(String[]) line: 1488	

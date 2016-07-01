@@ -59,6 +59,14 @@
 {
 \def\@logoEcole{#1}
 }
+\newcommand{\respo}[1]
+{
+\def\@respo{#1}
+}
+\newcommand{\tuteur}[1]
+{
+\def\@tuteur{#1}
+}
 
 % valeurs par defaut des variables
 \def\@nopromo{}
@@ -66,6 +74,8 @@
 \def\@etablissement{}
 \def\@imgGarde{}
 \def\@logoEcole{}
+\def\@respo{}
+\def\@tuteur{}
 
 % redefinition de la page de garde
 \def\maketitle{
@@ -113,6 +123,13 @@
         \vskip 1em
         \begin{center}%
           {\large\lineskip .75em \bfseries \@author \par}
+        \end{center}%
+        \vskip 6em
+        \begin{center}%
+          {\large\lineskip .75em Stage chief: \@respo \par}
+        \end{center}%
+        \begin{center}%
+          {\large\lineskip .75em Tutor: \@tuteur \par}
         \end{center}%
         \vfill
   }

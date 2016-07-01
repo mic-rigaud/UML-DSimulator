@@ -36,6 +36,7 @@
 \usepackage[a4paper, top=2cm, bottom=2cm]{geometry}
 \usepackage{frbib}                      %permet d avoir une biblio francaise
 \usepackage[babel=true]{csquotes}
+\usepackage{colortbl}
 
 
 \usepackage{graphicx}
@@ -70,6 +71,7 @@
 \newcommand{\ie}{\latinloc{i.e.}}
 \newcommand{\cad}{c'est-à-dire }
 \newcommand{\st}{\ensuremath{\text{\xspace s.t.\xspace}}}
+\newcommand{\umld}{UML Designer }
 
 %%%% Definition des couleur %%%%
 
@@ -100,15 +102,16 @@
 
 
 %%%%% Report Title %%%%%
-\title{Simulation of StateChart}
-\author{\textsc{Rigaud Michaël}}
+\title{Simulation of UML StateChart}
+\author{\textsc{IETA Michaël Rigaud }}
 \date{\today}
-\doctype{Rapport de stage}
+\doctype{Internship report}
 \promo{promo 2017}
 \etablissement{\textsc{Ensta} Bretagne\\2, rue François Verny\\
   29806 \textsc{Brest} cedex\\\textsc{France}\\Tel +33 (0)2 98 34 88 00\\ \url{www.ensta-bretagne.fr}}
 \logoEcole{\includegraphics[height=4.2cm]{logo_ENSTA_Bretagne_Vertical_CMJN}}
-
+\respo{Prof. Hans Vangheluwe}
+\tuteur{Simon Van Mierlo}
 
 
 %%%%%%%%%%%%%%%%%% DEBUT DU DOCUMENT
@@ -118,7 +121,7 @@
 \thispagestyle{empty}
 \newpage
 
-\tableofcontents
+\tableofcontents*
 
 
 %%%%%%%%%%%%%%%%% INTRODUCTION
@@ -150,11 +153,15 @@
 %%%% ANNEXE %%%%%%%%%%%%
 
 \part*{Annexe}
+\addcontentsline{toc}{part}{Annexe}
+\appendix
 \input{Partie/Organisation}
 
-\appendix
+
 \nocite{*}
 %\input{annexe_}
+\newpage
+~\\
 \newpage
  \listoffigures
  \printindex

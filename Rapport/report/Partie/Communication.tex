@@ -3,9 +3,13 @@
 
 \section{Type of communication conceivable}
 
-A lot of type of communication inter process were suggested to create a discussion enter the plugin and the simulator. But we will present only the most consistent.
+A lot of type of communication inter process were suggested to create
+a discussion enter the plugin and the simulator. But we will present
+only the most consistent with their advantages and their drawbacks.
 
-The communication is the part the most important of this project, because that will implement the interface between the two software.
+The communication is the most important part of this project, because
+that will implement the interface between the two software.
+
 
 \subsection{Socket}
 
@@ -13,7 +17,9 @@ The communication is the part the most important of this project, because that w
 \hline
   \textbf{Advantages}&\textbf{Drawback}\\
 \hline
-Work with every simulator type (python, java, ...) & communication synchronous\\
+Work with every simulator type (python, java, ...) & Message need to be formatted\\
+\hline
+& Not very fast\\
 \hline
 \end{tabular}
 
@@ -55,16 +61,29 @@ It is possible to use the Simulator outside the graphical modeling tool & \\
 \hline
   \textbf{Advantages}&\textbf{Drawback}\\
 \hline
-&Need to recode the simulator \\
+&problem if the thread don't avance at the good speed\\
 \hline
 \end{tabular}
+
+\subsection{Heritage}
+
+\begin{tabular}{|p{0.45\textwidth}||p{0.45\textwidth}|}
+\hline
+  \textbf{Advantages}&\textbf{Drawback}\\
+\hline
+Easy to implement&Need to add code in the simulator\\
+\hline
+&We can only use simulator in Java\\
+\hline
+\end{tabular}
+
 
 
 \subsection{Our solution}
 
 The solution was not in this list of common way to communicate inter process. In fact, we use the \textit{Runtime} class which is in the java library.~\\
 
-
+\noindent
 \begin{tabular}{|p{0.45\textwidth}||p{0.45\textwidth}|}
 \hline
   \textbf{Advantages}&\textbf{Drawback}\\
@@ -74,7 +93,6 @@ It is possible to use the Simulator outside the graphical modeling tool & \\
 Work with every type of simulator& \\
 \hline
 \end{tabular}
-
 
 
 

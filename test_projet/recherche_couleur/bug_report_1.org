@@ -1,0 +1,36 @@
+* Code
+
+
+Session mysession = SessionManager.INSTANCE.getSessions().toArray(new Session[0])[0];
+if (mysession != null) {
+  final Collection<DRepresentation> representations = DialectManager.INSTANCE.getAllRepresentations(mysession);
+  for (final DRepresentation representation : representations) {
+
+    if (representation instanceof DSemanticDiagram) {
+      DSemanticDiagram diagram = (DSemanticDiagram) representation;
+      for (int i = 0; i < diagram.getDiagramElements().size(); i++) {
+        DDiagramElement node = diagram.getDiagramElements().get(i);
+        Style style = node.getStyle();
+        if (style instanceof FlatContainerStyle) {
+          ((FlatContainerStyle) style).setForegroundColor(VisualBindingManager.getDefault().getRGBValuesFor(SystemColors.DARK_PURPLE_LITERAL));
+        }
+      }
+    } 
+  }
+}
+
+
+
+
+* The exception
+
+java.lang.IllegalStateException: Cannot modify resource set without a write transaction
+	at org.eclipse.emf.transaction.impl.TransactionChangeRecorder.assertWriting(TransactionChangeRecorder.java:348)
+	at org.eclipse.emf.transaction.impl.TransactionChangeRecorder.appendNotification(TransactionChangeRecorder.java:302)
+	at org.eclipse.emf.transaction.impl.TransactionChangeRecorder.processObjectNotification(TransactionChangeRecorder.java:284)
+	at org.eclipse.emf.transaction.impl.TransactionChangeRecorder.notifyChanged(TransactionChangeRecorder.java:240)
+
+
+* Description
+
+The exception is raised when I try to change the color. 
