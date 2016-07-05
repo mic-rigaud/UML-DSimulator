@@ -1,13 +1,10 @@
 package org.ensta.uml.sim.views;
 
 import java.io.IOException;
-import java.util.Collection;
 import java.util.concurrent.Semaphore;
 
-import org.eclipse.emf.transaction.RecordingCommand;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.jface.action.Action;
+import org.eclipse.jface.action.IMenuCreator;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.IToolBarManager;
@@ -22,18 +19,6 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.ITableLabelProvider;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.TableViewer;
-import org.eclipse.sirius.business.api.dialect.DialectManager;
-import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.diagram.BorderedStyle;
-import org.eclipse.sirius.diagram.DNodeListElement;
-import org.eclipse.sirius.diagram.DSemanticDiagram;
-import org.eclipse.sirius.diagram.description.style.SquareDescription;
-import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.Style;
-import org.eclipse.sirius.viewpoint.description.ColorDescription;
-import org.eclipse.sirius.viewpoint.description.SystemColor;
-import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Composite;
@@ -75,6 +60,8 @@ public class SimulatorView extends ViewPart implements Observateur {
 
     private Action restart;
 
+    private Action choixVue;
+
     private Action doubleClickAction;
 
     private CommunicationSimulateur comm;
@@ -84,6 +71,8 @@ public class SimulatorView extends ViewPart implements Observateur {
     private String transitions;
 
     private Semaphore sem = new Semaphore(0);
+
+    private DesignModificateur design;
 
     class ViewLabelProvider extends LabelProvider implements ITableLabelProvider {
         @Override
@@ -112,6 +101,7 @@ public class SimulatorView extends ViewPart implements Observateur {
         comm2 = new CommunicationSortantSimulateur("/home/michael/Documents/Ensta/Stage/2A/uml-simulateur/plug-build/resources/test/PingPong0.tuml.uml");
         comm2.start();
         transitions = new String();
+        design = new DesignModificateur();
         // comm.ajouterObservateur(o);
     }
 
@@ -134,6 +124,7 @@ public class SimulatorView extends ViewPart implements Observateur {
         hookContextMenu();
         hookDoubleClickAction();
         contributeToActionBars();
+
     }
 
     public void actualiserPartControl() {
@@ -179,12 +170,15 @@ public class SimulatorView extends ViewPart implements Observateur {
         manager.add(play);
         manager.add(new Separator());
         manager.add(stop);
+        manager.add(new Separator());
+        manager.add(choixVue);
     }
 
     private void fillContextMenu(IMenuManager manager) {
         manager.add(restart);
         manager.add(play);
         manager.add(stop);
+        manager.add(choixVue);
         // Other plug-ins can contribute there actions here
         manager.add(new Separator(IWorkbenchActionConstants.MB_ADDITIONS));
     }
@@ -193,6 +187,7 @@ public class SimulatorView extends ViewPart implements Observateur {
         manager.add(restart);
         manager.add(play);
         manager.add(stop);
+        manager.add(choixVue);
     }
 
     private void makeActions() {
@@ -226,18 +221,37 @@ public class SimulatorView extends ViewPart implements Observateur {
         stop = new Action() {
             @Override
             public void run() {
-                changerColor();
-                showMessage("Stop the simulateur");
+                design.getModel();
+                showMessage(design.elementsToString());
             }
         };
         stop.setText("Stop");
         stop.setToolTipText("Stop tooltip");
         stop.setImageDescriptor(PlatformUI.getWorkbench().getSharedImages().getImageDescriptor(ISharedImages.IMG_ELCL_STOP));
+
+        choixVue = new Action("My action", Action.AS_DROP_DOWN_MENU) {
+            @Override
+            public void run() {
+                IMenuCreator imenu = this.getMenuCreator();
+                Menu menu = imenu.getMenu(viewer.getControl());
+                menu.setVisible(true);
+            }
+        };
+        choixVue.setText("Choix model");
+
+        MyMenuCreator creator = new MyMenuCreator();
+        choixVue.setMenuCreator(creator);
+        choixVue.setToolTipText("Choix model");
+        choixVue.setChecked(true);
+        choixVue.setImageDescriptor(PlatformUI.getWorkbench().getSharedImages().getImageDescriptor(ISharedImages.IMG_ETOOL_HOME_NAV));
+
         doubleClickAction = new Action() {
             @Override
             public void run() {
                 ISelection selection = viewer.getSelection();
                 Object obj = ((IStructuredSelection) selection).getFirstElement();
+                System.out.println("element " + obj.toString().split(":")[0]);
+                design.changeColor(obj.toString().split(":")[0]);
                 try {
                     comm.sendMessage(obj.toString());
                 } catch (IOException e) {
@@ -286,65 +300,4 @@ public class SimulatorView extends ViewPart implements Observateur {
         sem.release();
     }
 
-    public void changerColor() {
-        Session mysession = SessionManager.INSTANCE.getSessions().toArray(new Session[0])[0];
-        String phrase = "-----" + mysession.toString();
-
-        if (mysession != null) {
-            final Collection<DRepresentation> representations = DialectManager.INSTANCE.getAllRepresentations(mysession);
-
-            for (final DRepresentation representation : representations) {
-
-                if (representation instanceof DSemanticDiagram) {
-                    DSemanticDiagram diagram = (DSemanticDiagram) representation;
-                    phrase += "\n------------- " + diagram.getName() + "----------------";
-
-                    for (int i = 0; i < diagram.getNodeListElements().size(); i++) {
-                        phrase += "\n";
-                        phrase += "nom:" + diagram.getNodeListElements().get(i).getName();
-                        DNodeListElement dnode = diagram.getNodeListElements().get(i);
-
-                        if (dnode.getName().startsWith("pinger")) {
-
-                            Style style = dnode.getStyle();
-                            StyleDescription description = style.getDescription();
-                            if (style instanceof BorderedStyle) {
-                                System.out.println("toto " + dnode.getName());
-                                // BorderedStyle sd = (BorderedStyle) style;
-                                SquareDescription sd = (SquareDescription) description;
-                                TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(sd);
-                                domain.getCommandStack().execute(new RecordingCommand(domain) {
-
-                                    @Override
-                                    protected void doExecute() {
-                                        ColorDescription cd = sd.getBorderColor();
-                                        SystemColor sc = (SystemColor) cd;
-
-                                        sc.setBlue(0);
-                                        sc.setGreen(255);
-                                        sc.setRed(0);
-                                        sd.setBorderColor(sc);
-                                        sd.setWidth(10);
-                                        sd.setBorderSizeComputationExpression("2");
-
-                                        // RGBValues rgb =
-                                        // VisualBindingManager.getDefault().getRGBValuesFor(SystemColors.DARK_PURPLE_LITERAL);
-                                        // sd.setBorderColor(rgb);
-                                        // sd.getCustomFeatures().add(DiagramPackage.Literals.BORDERED_STYLE__BORDER_COLOR.getName());
-                                        // sd.setBorderColor(rgb);
-                                    }
-                                });
-
-                            }
-                        }
-                    }
-
-                }
-
-            }
-        }
-
-        showMessage(phrase);
-
-    }
 }
