@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_7lKesM_0EeW2BrtSe1IkoQ" name="PingPong0">
+<uml:Model xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_7lKesM_0EeW2BrtSe1IkoQ" name="PingPong0">
   <packagedElement xmi:type="uml:Class" xmi:id="_7lMT4M_0EeW2BrtSe1IkoQ" name="SUS">
     <ownedAttribute xmi:id="_7lM68M_0EeW2BrtSe1IkoQ" name="pinger" visibility="public" type="_7lsDIM_0EeW2BrtSe1IkoQ" isUnique="false" aggregation="composite">
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_7lPXMM_0EeW2BrtSe1IkoQ" value="1"/>
@@ -18,7 +18,7 @@
       <end xmi:id="_7lpm4c_0EeW2BrtSe1IkoQ" role="_7lM68M_0EeW2BrtSe1IkoQ"/>
     </ownedConnector>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_7lsDIM_0EeW2BrtSe1IkoQ" name="Pinger" classifierBehavior="_7mIIAM_0EeW2BrtSe1IkoQ" isActive="true">
+  <packagedElement xmi:type="uml:Class" xmi:id="_7lsDIM_0EeW2BrtSe1IkoQ" clientDependency="_7l0mAM_0EeW2BrtSe1IkoQ" name="Pinger" classifierBehavior="_7mIIAM_0EeW2BrtSe1IkoQ" isActive="true">
     <ownedAttribute xmi:id="_7l3CQM_0EeW2BrtSe1IkoQ" name="itsPonger" type="_7mrhoM_0EeW2BrtSe1IkoQ" isUnique="false" association="_7nNtIM_0EeW2BrtSe1IkoQ">
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_7l3CQc_0EeW2BrtSe1IkoQ" value="1"/>
       <upperValue xmi:type="uml:LiteralInteger" xmi:id="_7l3pUM_0EeW2BrtSe1IkoQ" value="1"/>
@@ -46,14 +46,10 @@
       </region>
     </ownedBehavior>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_7mrhoM_0EeW2BrtSe1IkoQ" name="Ponger" classifierBehavior="_7mt94M_0EeW2BrtSe1IkoQ" isActive="true">
-    <ownedAttribute xmi:id="_7msIsM_0EeW2BrtSe1IkoQ" name="itsPinger" visibility="public" type="_7lsDIM_0EeW2BrtSe1IkoQ" isUnique="false" association="_7nQJYM_0EeW2BrtSe1IkoQ">
+  <packagedElement xmi:type="uml:Class" xmi:id="_7mrhoM_0EeW2BrtSe1IkoQ" clientDependency="_7mrhoc_0EeW2BrtSe1IkoQ" name="Ponger" classifierBehavior="_7mt94M_0EeW2BrtSe1IkoQ" isActive="true">
+    <ownedAttribute xmi:id="_7msIsM_0EeW2BrtSe1IkoQ" name="itsPinger" type="_7lsDIM_0EeW2BrtSe1IkoQ" isUnique="false" association="_7nQJYM_0EeW2BrtSe1IkoQ">
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_7msIsc_0EeW2BrtSe1IkoQ" value="1"/>
       <upperValue xmi:type="uml:LiteralInteger" xmi:id="_7msvwM_0EeW2BrtSe1IkoQ" value="1"/>
-    </ownedAttribute>
-    <ownedAttribute xmi:id="_HYFWkD03EeavCerNlG0NjA" name="property2" visibility="public" type="_7mrhoM_0EeW2BrtSe1IkoQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_HYF9oD03EeavCerNlG0NjA" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_HYF9oT03EeavCerNlG0NjA" value="1"/>
     </ownedAttribute>
     <interfaceRealization xmi:id="_7mrhoc_0EeW2BrtSe1IkoQ" client="_7mrhoM_0EeW2BrtSe1IkoQ" supplier="_7nNGEM_0EeW2BrtSe1IkoQ" contract="_7nNGEM_0EeW2BrtSe1IkoQ"/>
     <ownedBehavior xmi:type="uml:StateMachine" xmi:id="_7mt94M_0EeW2BrtSe1IkoQ" name="SM">

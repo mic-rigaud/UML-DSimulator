@@ -1,8 +1,15 @@
 package org.ensta.uml.sim.views;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.Semaphore;
 
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.Platform;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IMenuCreator;
 import org.eclipse.jface.action.IMenuListener;
@@ -11,6 +18,7 @@ import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.DoubleClickEvent;
 import org.eclipse.jface.viewers.IDoubleClickListener;
@@ -19,6 +27,8 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.ITableLabelProvider;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.TableViewer;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Composite;
@@ -27,8 +37,10 @@ import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.IWorkbenchActionConstants;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.internal.util.BundleUtility;
 import org.eclipse.ui.part.ViewPart;
 import org.ensta.uml.sim.simulateur.CommunicationSortantSimulateur;
+import org.osgi.framework.Bundle;
 
 /**
  * This sample class demonstrates how to plug-in a new workbench view. The view
@@ -95,14 +107,18 @@ public class SimulatorView extends ViewPart implements Observateur {
      * The constructor.
      */
     public SimulatorView() {
+        Session session = SessionManager.INSTANCE.getSessions().toArray(new Session[0])[0];
+        Resource res = session.getSessionResource();
+        URI path = res.getURI();
+        String nouveauPath = ResourcesPlugin.getWorkspace().getRoot().getFile(new org.eclipse.core.runtime.Path(res.getURI().toPlatformString(true))).getLocation().toPortableString()
+                .replace(path.lastSegment(), "model.uml");
         comm = new CommunicationSimulateur(9000);
         comm.start();
         comm.ajouterObservateur(this);
-        comm2 = new CommunicationSortantSimulateur("/home/michael/Documents/Ensta/Stage/2A/uml-simulateur/plug-build/resources/test/PingPong0.tuml.uml");
+        comm2 = new CommunicationSortantSimulateur(nouveauPath);
         comm2.start();
         transitions = new String();
         design = new DesignModificateur();
-        // comm.ajouterObservateur(o);
     }
 
     /**
@@ -127,21 +143,26 @@ public class SimulatorView extends ViewPart implements Observateur {
 
     }
 
+    /*
+     * Code redondant... mais je vois pas comment le modifier. Attention: il
+     * faut appeler transition apres le sem.acquire sinon prob...
+     */
     public void actualiserPartControl() {
         try {
             sem.acquire();
-            System.out.println(transitions);
             viewer.setInput(transitions.split("#"));
         } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
 
     public void actualiserPartControl(String liste) {
-
-        System.out.println("ok cool: " + liste);
-        viewer.setInput(liste.split("#"));
+        try {
+            sem.acquire();
+            viewer.setInput(liste.split("#"));
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     private void hookContextMenu() {
@@ -165,29 +186,29 @@ public class SimulatorView extends ViewPart implements Observateur {
     }
 
     private void fillLocalPullDown(IMenuManager manager) {
-        manager.add(restart);
+        manager.add(choixVue);
         manager.add(new Separator());
         manager.add(play);
-        manager.add(new Separator());
         manager.add(stop);
         manager.add(new Separator());
-        manager.add(choixVue);
+        manager.add(restart);
+
     }
 
     private void fillContextMenu(IMenuManager manager) {
-        manager.add(restart);
+        manager.add(choixVue);
         manager.add(play);
         manager.add(stop);
-        manager.add(choixVue);
+        manager.add(restart);
         // Other plug-ins can contribute there actions here
         manager.add(new Separator(IWorkbenchActionConstants.MB_ADDITIONS));
     }
 
     private void fillLocalToolBar(IToolBarManager manager) {
-        manager.add(restart);
+        manager.add(choixVue);
         manager.add(play);
         manager.add(stop);
-        manager.add(choixVue);
+        manager.add(restart);
     }
 
     private void makeActions() {
@@ -197,7 +218,6 @@ public class SimulatorView extends ViewPart implements Observateur {
                 try {
                     comm.sendMessage("restart");
                 } catch (IOException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
                 actualiserPartControl("Initialize");
@@ -206,7 +226,7 @@ public class SimulatorView extends ViewPart implements Observateur {
         };
         restart.setText("Restart");
         restart.setToolTipText("restart tooltip");
-        restart.setImageDescriptor(PlatformUI.getWorkbench().getSharedImages().getImageDescriptor(ISharedImages.IMG_TOOL_FORWARD));
+        restart.setImageDescriptor(this.getImageDescriptor("icons/replay.gif"));
 
         play = new Action() {
             @Override
@@ -216,13 +236,11 @@ public class SimulatorView extends ViewPart implements Observateur {
         };
         play.setText("Play");
         play.setToolTipText("Play tooltip");
-        play.setImageDescriptor(PlatformUI.getWorkbench().getSharedImages().getImageDescriptor(ISharedImages.IMG_TOOL_FORWARD));
-
+        play.setImageDescriptor(this.getImageDescriptor("icons/play.gif"));
         stop = new Action() {
             @Override
             public void run() {
-                design.getModel();
-                showMessage(design.elementsToString());
+                showMessage("Stop Simulation");
             }
         };
         stop.setText("Stop");
@@ -232,15 +250,15 @@ public class SimulatorView extends ViewPart implements Observateur {
         choixVue = new Action("My action", Action.AS_DROP_DOWN_MENU) {
             @Override
             public void run() {
+                MyMenuCreator creator = new MyMenuCreator();
+                creator.setActions(createListActionsChoiceModel());
+                this.setMenuCreator(creator);
                 IMenuCreator imenu = this.getMenuCreator();
                 Menu menu = imenu.getMenu(viewer.getControl());
                 menu.setVisible(true);
             }
         };
         choixVue.setText("Choix model");
-
-        MyMenuCreator creator = new MyMenuCreator();
-        choixVue.setMenuCreator(creator);
         choixVue.setToolTipText("Choix model");
         choixVue.setChecked(true);
         choixVue.setImageDescriptor(PlatformUI.getWorkbench().getSharedImages().getImageDescriptor(ISharedImages.IMG_ETOOL_HOME_NAV));
@@ -250,12 +268,10 @@ public class SimulatorView extends ViewPart implements Observateur {
             public void run() {
                 ISelection selection = viewer.getSelection();
                 Object obj = ((IStructuredSelection) selection).getFirstElement();
-                System.out.println("element " + obj.toString().split(":")[0]);
                 design.changeColor(obj.toString().split(":")[0]);
                 try {
                     comm.sendMessage(obj.toString());
                 } catch (IOException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
                 actualiserPartControl();
@@ -284,20 +300,53 @@ public class SimulatorView extends ViewPart implements Observateur {
         viewer.getControl().setFocus();
     }
 
+    @SuppressWarnings("unchecked")
     @Override
-    public Object getAdapter(Class arg0) {
-        // TODO Auto-generated method stub
+    public Object getAdapter(@SuppressWarnings("rawtypes") Class arg0) {
         return null;
+    }
+
+    private List<Action> createListActionsChoiceModel() {
+        List<Action> actions = new ArrayList<Action>();
+        Session[] sessions = SessionManager.INSTANCE.getSessions().toArray(new Session[0]);
+        for (int i = 0; i < sessions.length; i++) {
+            final Session session = sessions[i];
+            final Resource res = session.getSessionResource();
+            final URI path = res.getURI();
+
+            actions.add(new Action(path.segment(1)) {
+                @Override
+                public void run() {
+                    design.initialiser(session);
+                    String nouveauPath = ResourcesPlugin.getWorkspace().getRoot().getFile(new org.eclipse.core.runtime.Path(res.getURI().toPlatformString(true))).getLocation().toPortableString()
+                            .replace(path.lastSegment(), "model.uml");
+                    try {
+                        comm.sendMessage("reload:" + nouveauPath);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    actualiserPartControl("Initialize");
+                    showMessage("Vous avez bien basculer sur la session: " + path.segment(1));
+                }
+            });
+        }
+        return actions;
     }
 
     @Override
     public void actualiser(Observable o) {
-        // TODO Auto-generated method stub
         if (o instanceof CommunicationSimulateur) {
             CommunicationSimulateur comm = (CommunicationSimulateur) o;
             transitions = comm.getMessage();
         }
         sem.release();
+    }
+
+    public ImageDescriptor getImageDescriptor(String path) {
+        String pluginId = "org.ensta.uml.sim";
+        Bundle bundle = Platform.getBundle(pluginId);
+        URL fullPathString = BundleUtility.find(bundle, path);
+        return ImageDescriptor.createFromURL(fullPathString);
     }
 
 }

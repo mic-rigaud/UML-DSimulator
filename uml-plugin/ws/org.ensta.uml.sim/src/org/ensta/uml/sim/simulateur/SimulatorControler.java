@@ -33,6 +33,9 @@ public class SimulatorControler implements Observateur {
     public void actualiserListTransition(SimulationModel sim) {
         listTransition.clear();
         Collection<IFireableTransition> transitions = sim.getTransition();
+        if (transitions.size() == 0) {
+            System.out.println("error pas de transitions");
+        }
         for (IFireableTransition transition : transitions) {
             listTransition.add(transition);
         }

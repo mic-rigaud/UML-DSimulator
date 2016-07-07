@@ -16,7 +16,7 @@ public class CommunicationSortantSimulateur extends Thread {
 
     SimulatorControler controler;
 
-    File fichier; // "/home/michael/Documents/Ensta/Stage/2A/uml-simulateur/plug-build/resources/test/PingPong0.tuml.uml");
+    File fichier;
 
     Socket client;
 
@@ -31,14 +31,9 @@ public class CommunicationSortantSimulateur extends Thread {
         controler = new SimulatorControler();
         model.ajouterObservateur(controler);
         fichier = new File(nomfichier);
-        // TODO: faire en sorte que le chemin du fichier ne soit pas en dur.
         model.loadModel(fichier);
         model.initialize();
         message = new String();
-
-    }
-
-    public CommunicationSortantSimulateur() {
 
     }
 
@@ -51,11 +46,19 @@ public class CommunicationSortantSimulateur extends Thread {
                 while (true) {
                     DataInputStream in = new DataInputStream(client.getInputStream());
                     message = in.readUTF();
+                    System.out.println("message:" + message);
                     if (message.equalsIgnoreCase("initialize")) {
+                        System.out.println("Init");
                         model.initialize();
                         model.nextStep(controler.getRandomTransition());
                     } else if (message.equalsIgnoreCase("restart")) {
                         model.loadModel(fichier);
+                    } else if (message.startsWith("reload")) {
+                        fichier = new File(message.split(":")[1]);
+                        model.loadModel(fichier); // TODO exception si fichier
+                                                  // incorrect a traiter
+                    } else if (message.equalsIgnoreCase("random")) {
+                        model.nextStep(controler.getRandomTransition());
                     } else {
                         model.nextStep(controler.getTransition(message));
                     }
@@ -68,7 +71,6 @@ public class CommunicationSortantSimulateur extends Thread {
                 e.printStackTrace();
                 break;
             } catch (InterruptedException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
         }
@@ -91,7 +93,6 @@ public class CommunicationSortantSimulateur extends Thread {
         try {
             out.writeUTF(listeString);
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         return;
