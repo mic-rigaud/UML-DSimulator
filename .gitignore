@@ -28,3 +28,5 @@ Rapport/.git
 **.settings
 **.content
 **.cp
+Rapport/presentation
+uml-plugin/resource*

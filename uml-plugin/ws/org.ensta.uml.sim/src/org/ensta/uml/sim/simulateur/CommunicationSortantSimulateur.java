@@ -6,8 +6,11 @@ import java.io.File;
 import java.io.IOException;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
+import json.JSONObject;
 import plug.core.IFireableTransition;
 import plug.simulation.ui.SimulationModel;
 
@@ -24,7 +27,7 @@ public class CommunicationSortantSimulateur extends Thread {
 
     private String serverName = "localhost";
 
-    private String message;
+    JSONObject jsonOut;
 
     public CommunicationSortantSimulateur(String nomfichier) {
         model = new SimulationModel();
@@ -33,7 +36,8 @@ public class CommunicationSortantSimulateur extends Thread {
         fichier = new File(nomfichier);
         model.loadModel(fichier);
         model.initialize();
-        message = new String();
+        jsonOut = new JSONObject();
+        initialiserJson(jsonOut);
 
     }
 
@@ -45,22 +49,23 @@ public class CommunicationSortantSimulateur extends Thread {
                 client = new Socket(serverName, port);
                 while (true) {
                     DataInputStream in = new DataInputStream(client.getInputStream());
-                    message = in.readUTF();
-                    System.out.println("message:" + message);
-                    if (message.equalsIgnoreCase("initialize")) {
+                    JSONObject json = new JSONObject(in.readUTF());
+
+                    System.out.println("message:" + json.toString());
+                    if (json.getBoolean("initialize")) {
                         System.out.println("Init");
                         model.initialize();
                         model.nextStep(controler.getRandomTransition());
-                    } else if (message.equalsIgnoreCase("restart")) {
+                    } else if (json.getBoolean("restart")) {
                         model.loadModel(fichier);
-                    } else if (message.startsWith("reload")) {
-                        fichier = new File(message.split(":")[1]);
+                    } else if (json.getBoolean("reload")) {
+                        fichier = new File(json.getString("reload_path"));
                         model.loadModel(fichier); // TODO exception si fichier
                                                   // incorrect a traiter
-                    } else if (message.equalsIgnoreCase("random")) {
+                    } else if (json.getBoolean("random")) {
                         model.nextStep(controler.getRandomTransition());
                     } else {
-                        model.nextStep(controler.getTransition(message));
+                        model.nextStep(controler.getTransition(json.getString("state")));
                     }
                     this.sendMessage(controler.getListTransition());
                 }
@@ -76,26 +81,27 @@ public class CommunicationSortantSimulateur extends Thread {
         }
     }
 
-    public void sendMessage(String message) {
-        return;
-    }
-
     public void sendMessage(List<IFireableTransition> liste) throws IOException {
-        String listeString = new String();
-        for (IFireableTransition transition : liste) {
-            if (listeString.isEmpty()) {
-                listeString = transition.toString();
-            } else {
-                listeString = listeString + "#" + transition.toString();
-            }
-        }
-        DataOutputStream out = new DataOutputStream(client.getOutputStream());
         try {
-            out.writeUTF(listeString);
+            List<String> transitions = new ArrayList<String>();
+            for (IFireableTransition transition : liste) {
+                transitions.add(transition.toString());
+            }
+            jsonOut.put("transitions", transitions);
+            DataOutputStream out = new DataOutputStream(client.getOutputStream());
+            out.writeUTF(jsonOut.toString());
         } catch (IOException e) {
             e.printStackTrace();
         }
         return;
+    }
+
+    public void initialiserJson(JSONObject json) {
+        List<String> t = new LinkedList<String>();
+        t.add("");
+        json.put("transitions", t);
+        json.put("error", false);
+        json.put("error_message", "");
     }
 
 }

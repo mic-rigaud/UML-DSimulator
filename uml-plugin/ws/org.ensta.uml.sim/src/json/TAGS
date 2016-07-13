@@ -1,0 +1,333 @@
+
+CDL.java,671
+public class CDL 47,2010
+    private static String getValue(CDL.getValue59,2353
+    public static JSONArray rowToJSONArray(CDL.rowToJSONArray105,3619
+    public static JSONObject rowToJSONObject(CDL.rowToJSONObject142,4941
+    public static String rowToString(CDL.rowToString156,5442
+    public static JSONArray toJSONArray(CDL.toJSONArray193,6802
+    public static JSONArray toJSONArray(CDL.toJSONArray206,7250
+    public static JSONArray toJSONArray(CDL.toJSONArray221,7751
+    public static JSONArray toJSONArray(CDL.toJSONArray236,8282
+    public static String toString(CDL.toString263,9088
+    public static String toString(CDL.toString285,9797
+
+CookieList.java,171
+public class CookieList 35,1275
+    public static JSONObject toJSONObject(CookieList.toJSONObject52,1886
+    public static String toString(CookieList.toString75,2712
+
+HTTP.java,209
+public class HTTP 34,1286
+    public static final String CRLF HTTP.CRLF37,1348
+    public static JSONObject toJSONObject(HTTP.toJSONObject71,2725
+    public static String toString(HTTP.toString127,4390
+
+HTTPTokener.java,149
+public class HTTPTokener 33,1282
+    public HTTPTokener(HTTPTokener.HTTPTokener39,1431
+    public String nextToken(HTTPTokener.nextToken49,1647
+
+JSONArray.java,3564
+public class JSONArray 83,3599
+    private final ArrayList<Object> myArrayList;JSONArray.myArrayList88,3733
+    public JSONArray(JSONArray.JSONArray93,3836
+    public JSONArray(JSONArray.JSONArray105,4116
+    public JSONArray(JSONArray.JSONArray146,5445
+    public JSONArray(JSONArray.JSONArray156,5678
+    public JSONArray(JSONArray.JSONArray171,6061
+    public Iterator<Object> iterator(JSONArray.iterator185,6530
+    public Object get(JSONArray.get198,6894
+    public boolean getBoolean(JSONArray.getBoolean217,7544
+    public double getDouble(JSONArray.getDouble241,8452
+    public <E extends Enum<E>> E getEnum(JSONArray.getEnum263,9243
+    public BigDecimal getBigDecimal JSONArray.getBigDecimal286,10201
+    public BigInteger getBigInteger JSONArray.getBigInteger306,10883
+    public int getInt(JSONArray.getInt325,11519
+    public JSONArray getJSONArray(JSONArray.getJSONArray345,12223
+    public JSONObject getJSONObject(JSONArray.getJSONObject363,12808
+    public long getLong(JSONArray.getLong381,13427
+    public String getString(JSONArray.getString400,14079
+    public boolean isNull(JSONArray.isNull415,14576
+    public String join(JSONArray.join430,15117
+    public int length(JSONArray.length448,15632
+    public Object opt(JSONArray.opt459,15952
+    public boolean optBoolean(JSONArray.optBoolean473,16424
+    public boolean optBoolean(JSONArray.optBoolean488,16936
+    public double optDouble(JSONArray.optDouble505,17471
+    public double optDouble(JSONArray.optDouble520,17941
+    public int optInt(JSONArray.optInt537,18470
+    public int optInt(JSONArray.optInt552,18955
+    public <E extends Enum<E>> E optEnum(JSONArray.optEnum569,19441
+    public <E extends Enum<E>> E optEnum(JSONArray.optEnum585,20023
+    public BigInteger optBigInteger(JSONArray.optBigInteger617,21126
+    public BigDecimal optBigDecimal(JSONArray.optBigDecimal636,21756
+    public JSONArray optJSONArray(JSONArray.optJSONArray652,22223
+    public JSONObject optJSONObject(JSONArray.optJSONObject666,22706
+    public long optLong(JSONArray.optLong680,23192
+    public long optLong(JSONArray.optLong695,23681
+    public String optString(JSONArray.optString712,24230
+    public String optString(JSONArray.optString726,24640
+    public JSONArray put(JSONArray.put739,25021
+    public JSONArray put(JSONArray.put752,25366
+    public JSONArray put(JSONArray.put766,25728
+    public JSONArray put(JSONArray.put780,26079
+    public JSONArray put(JSONArray.put792,26350
+    public JSONArray put(JSONArray.put805,26658
+    public JSONArray put(JSONArray.put819,27098
+    public JSONArray put(JSONArray.put837,27619
+    public JSONArray put(JSONArray.put854,28160
+    public JSONArray put(JSONArray.put872,28741
+    public JSONArray put(JSONArray.put890,29278
+    public JSONArray put(JSONArray.put908,29813
+    public JSONArray put(JSONArray.put926,30348
+    public JSONArray put(JSONArray.put947,31146
+    public Object query(JSONArray.query982,32274
+    public Object optQuery(JSONArray.optQuery994,32762
+    public Object remove(JSONArray.remove1011,33265
+    public boolean similar(JSONArray.similar1024,33619
+    public JSONObject toJSONObject(JSONArray.toJSONObject1062,34948
+    public String toString(JSONArray.toString1084,35802
+    public String toString(JSONArray.toString1104,36508
+    public Writer write(JSONArray.write1120,37023
+    public Writer write(JSONArray.write1139,37654
+    public List<Object> toList(JSONArray.toList1185,39306
+
+JSONException.java,304
+public class JSONException 9,147
+    private static final long serialVersionUID JSONException.serialVersionUID11,229
+    public JSONException(JSONException.JSONException19,451
+    public JSONException(JSONException.JSONException31,760
+    public JSONException(JSONException.JSONException41,1007
+
+JSONML.java,490
+public class JSONML 38,1383
+    private static Object parse(JSONML.parse49,1841
+    public static JSONArray toJSONArray(JSONML.toJSONArray250,9532
+    public static JSONArray toJSONArray(JSONML.toJSONArray267,10338
+    public static JSONObject toJSONObject(JSONML.toJSONObject285,11166
+    public static JSONObject toJSONObject(JSONML.toJSONObject303,11989
+    public static String toString(JSONML.toString314,12314
+    public static String toString(JSONML.toString398,14978
+
+JSONObject.java,5171
+public class JSONObject 98,4287
+    private static final class Null JSONObject.Null104,4500
+        protected final Object clone(JSONObject.Null.clone113,4742
+        public boolean equals(JSONObject.Null.equals126,5124
+        public String toString(JSONObject.Null.toString135,5348
+    private final Map<JSONObject.Map143,5502
+    private final Map<String, Object> map;JSONObject.map143,5502
+    public static final Object NULL JSONObject.NULL151,5858
+    public JSONObject(JSONObject.JSONObject156,5963
+    public JSONObject(JSONObject.JSONObject170,6356
+    public JSONObject(JSONObject.JSONObject189,6921
+    public JSONObject(JSONObject.JSONObject242,8307
+    public JSONObject(JSONObject.JSONObject275,9729
+    public JSONObject(JSONObject.JSONObject294,10467
+    public JSONObject(JSONObject.JSONObject318,11327
+    public JSONObject(JSONObject.JSONObject332,11746
+    public JSONObject accumulate(JSONObject.accumulate384,13904
+    public JSONObject append(JSONObject.append414,15082
+    public static String doubleToString(JSONObject.doubleToString436,15784
+    public Object get(JSONObject.get465,16676
+    public <E extends Enum<E>> E getEnum(JSONObject.getEnum488,17382
+    public boolean getBoolean(JSONObject.getBoolean511,18243
+    public BigInteger getBigInteger(JSONObject.getBigInteger536,19150
+    public BigDecimal getBigDecimal(JSONObject.getBigDecimal556,19810
+    public double getDouble(JSONObject.getDouble576,20491
+    public int getInt(JSONObject.getInt597,21198
+    public JSONArray getJSONArray(JSONObject.getJSONArray617,21877
+    public JSONObject getJSONObject(JSONObject.getJSONObject635,22472
+    public long getLong(JSONObject.getLong654,23078
+    public static String[] getNames(JSONObject.getNames670,23624
+    public static String[] getNames(JSONObject.getNames690,24165
+    public String getString(JSONObject.getString716,24894
+    public boolean has(JSONObject.has731,25360
+    public JSONObject increment(JSONObject.increment747,25918
+    public boolean isNull(JSONObject.isNull778,27117
+    public Iterator<String> keys(JSONObject.keys787,27338
+    public Set<String> keySet(JSONObject.keySet796,27515
+    public int length(JSONObject.length805,27722
+    public JSONArray names(JSONObject.names816,28007
+    public static String numberToString(JSONObject.numberToString834,28463
+    public Object opt(JSONObject.opt862,29363
+    public <E extends Enum<E>> E optEnum(JSONObject.optEnum875,29727
+    public <E extends Enum<E>> E optEnum(JSONObject.optEnum891,30276
+    public boolean optBoolean(JSONObject.optBoolean919,31212
+    public boolean optBoolean(JSONObject.optBoolean934,31663
+    public double optDouble(JSONObject.optDouble951,32206
+    public BigInteger optBigInteger(JSONObject.optBigInteger966,32705
+    public BigDecimal optBigDecimal(JSONObject.optBigDecimal985,33322
+    public double optDouble(JSONObject.optDouble1004,33935
+    public int optInt(JSONObject.optInt1021,34465
+    public int optInt(JSONObject.optInt1036,34940
+    public JSONArray optJSONArray(JSONObject.optJSONArray1052,35387
+    public JSONObject optJSONObject(JSONObject.optJSONObject1065,35801
+    public long optLong(JSONObject.optLong1079,36303
+    public long optLong(JSONObject.optLong1094,36782
+    public String optString(JSONObject.optString1111,37289
+    public String optString(JSONObject.optString1125,37666
+    private void populateMap(JSONObject.populateMap1130,37846
+    public JSONObject put(JSONObject.put1187,40015
+    public JSONObject put(JSONObject.put1203,40488
+    public JSONObject put(JSONObject.put1219,40948
+    public JSONObject put(JSONObject.put1235,41365
+    public JSONObject put(JSONObject.put1251,41781
+    public JSONObject put(JSONObject.put1267,42217
+    public JSONObject put(JSONObject.put1286,42945
+    public JSONObject putOnce(JSONObject.putOnce1310,43641
+    public JSONObject putOpt(JSONObject.putOpt1334,44485
+    public Object query(JSONObject.query1360,45318
+    public Object optQuery(JSONObject.optQuery1372,45806
+    public static String quote(JSONObject.quote1391,46508
+    public static Writer quote(JSONObject.quote1403,46888
+    public Object remove(JSONObject.remove1470,48713
+    public boolean similar(JSONObject.similar1482,49047
+    public static Object stringToValue(JSONObject.stringToValue1522,50455
+    public static void testValidity(JSONObject.testValidity1574,52189
+    public JSONArray toJSONArray(JSONObject.toJSONArray1601,53217
+    public String toString(JSONObject.toString1624,54132
+    public String toString(JSONObject.toString1646,54916
+    public static String valueToString(JSONObject.valueToString1677,56402
+    public static Object wrap(JSONObject.wrap1726,58302
+    public Writer write(JSONObject.write1776,60330
+    static final Writer writeValue(JSONObject.writeValue1780,60440
+    static final void indent(JSONObject.indent1814,61974
+    public Writer write(JSONObject.write1835,62667
+    public Map<JSONObject.Map1891,64741
+    public Map<String, Object> toMap(JSONObject.toMap1891,64741
+
+JSONPointerException.java,303
+public class JSONPointerException 34,1289
+    private static final long serialVersionUID JSONPointerException.serialVersionUID35,1347
+    public JSONPointerException(JSONPointerException.JSONPointerException37,1419
+    public JSONPointerException(JSONPointerException.JSONPointerException41,1500
+
+JSONPointer.java,993
+public class JSONPointer 52,2217
+    private static final String ENCODING JSONPointer.ENCODING55,2287
+    public static class Builder JSONPointer.Builder61,2470
+        public JSONPointer build(JSONPointer.Builder.build70,2799
+        public Builder append(JSONPointer.Builder.append86,3541
+        public Builder append(JSONPointer.Builder.append101,4059
+    public static Builder builder(JSONPointer.builder122,4704
+    private final List<String> refTokens;JSONPointer.refTokens127,4822
+    public JSONPointer(JSONPointer.JSONPointer137,5324
+    public JSONPointer(JSONPointer.JSONPointer163,6239
+    private String unescape(JSONPointer.unescape167,6354
+    public Object queryFrom(JSONPointer.queryFrom183,7085
+    private Object readByIndexToken(JSONPointer.readByIndexToken209,8077
+    public String toString(JSONPointer.toString228,8828
+    private String escape(JSONPointer.escape244,9426
+    public String toURIFragment(JSONPointer.toURIFragment255,9762
+
+JSONStringer.java,152
+public class JSONStringer 59,2558
+    public JSONStringer(JSONStringer.JSONStringer63,2698
+    public String toString(JSONStringer.toString75,3154
+
+JSONString.java,36
+public interface JSONString 10,451
+
+JSONTokener.java,1498
+public class JSONTokener 41,1522
+    private long    character;JSONTokener.character43,1550
+    private boolean eof;JSONTokener.eof44,1581
+    private long    index;JSONTokener.index45,1606
+    private long    line;JSONTokener.line46,1633
+    private char    previous;JSONTokener.previous47,1659
+    private Reader  reader;JSONTokener.reader48,1689
+    private boolean usePrevious;JSONTokener.usePrevious49,1717
+    public JSONTokener(JSONTokener.JSONTokener57,1856
+    public JSONTokener(JSONTokener.JSONTokener74,2280
+    public JSONTokener(JSONTokener.JSONTokener84,2515
+    public void back(JSONTokener.back94,2800
+    public static int dehexchar(JSONTokener.dehexchar111,3350
+    public boolean end(JSONTokener.end124,3654
+    public boolean more(JSONTokener.more134,3904
+    public char next(JSONTokener.next149,4239
+    public char next(JSONTokener.next188,5313
+     public String next(JSONTokener.next207,5850
+    public char nextClean(JSONTokener.nextClean231,6453
+    public String nextString(JSONTokener.nextString252,7157
+    public String nextTo(JSONTokener.nextTo313,9005
+    public String nextTo(JSONTokener.nextTo334,9663
+    public Object nextValue(JSONTokener.nextValue358,10373
+    public char skipTo(JSONTokener.skipTo405,11838
+    public JSONException syntaxError(JSONTokener.syntaxError436,12762
+    public JSONException syntaxError(JSONTokener.syntaxError447,13125
+    public String toString(JSONTokener.toString456,13418
+
+JSONWriter.java,1127
+public class JSONWriter 59,2537
+    private static final int maxdepth JSONWriter.maxdepth60,2564
+    private boolean comma;JSONWriter.comma66,2723
+    protected char mode;JSONWriter.mode76,2910
+    private final JSONObject stack[JSONWriter.stack81,2988
+    private int top;JSONWriter.top86,3124
+    protected Writer writer;JSONWriter.writer91,3215
+    public JSONWriter(JSONWriter.JSONWriter96,3337
+    private JSONWriter append(JSONWriter.append110,3697
+    public JSONWriter array(JSONWriter.array141,4865
+    private JSONWriter end(JSONWriter.end158,5353
+    public JSONWriter endArray(JSONWriter.endArray180,6012
+    public JSONWriter endObject(JSONWriter.endObject190,6305
+    public JSONWriter key(JSONWriter.key202,6746
+    public JSONWriter object(JSONWriter.object234,7964
+    private void pop(JSONWriter.pop254,8501
+    private void push(JSONWriter.push275,9127
+    public JSONWriter value(JSONWriter.value292,9599
+    public JSONWriter value(JSONWriter.value302,9878
+    public JSONWriter value(JSONWriter.value312,10115
+    public JSONWriter value(JSONWriter.value324,10534
+
+LICENSE,15
+Copyright 1,0
+
+Property.java,177
+public class Property 36,1319
+    public static JSONObject toJSONObject(Property.toJSONObject43,1575
+    public static Properties toProperties(Property.toProperties61,2247
+
+README,270
+JSON is a light-weight,weight3,33
+JSON is a light-weight, language independent,3,33
+It also includes the capability to convert between JSON and XML,7,198
+headers,8,268
+headers, Cookies,8,268
+then,12,448
+not evil." If your conscience cannot live with that,15,550
+
+XML.java,941
+public class XML 37,1355
+    public static final Character AMP XML.AMP40,1409
+    public static final Character APOS XML.APOS43,1485
+    public static final Character BANG XML.BANG46,1563
+    public static final Character EQ XML.EQ49,1640
+    public static final Character GT XML.GT52,1715
+    public static final Character LT XML.LT55,1793
+    public static final Character QUEST XML.QUEST58,1868
+    public static final Character QUOT XML.QUOT61,1946
+    public static final Character SLASH XML.SLASH64,2023
+    public static String escape(XML.escape80,2546
+    public static void noSpace(XML.noSpace115,3533
+    private static boolean parse(XML.parse140,4383
+    public static Object stringToValue(XML.stringToValue307,10231
+    public static JSONObject toJSONObject(XML.toJSONObject327,11172
+    public static String toString(XML.toString344,11661
+    public static String toString(XML.toString358,12065
+
+XMLTokener.java,604
+public class XMLTokener 33,1278
+   public static final java.util.HashMap<XMLTokener.HashMap39,1442
+   public static final java.util.HashMap<String, Character> entity;XMLTokener.entity39,1442
+    public XMLTokener(XMLTokener.XMLTokener54,1865
+    public String nextCDATA(XMLTokener.nextCDATA63,2107
+    public Object nextContent(XMLTokener.nextContent92,3018
+    public Object nextEntity(XMLTokener.nextEntity127,4013
+    public Object nextMeta(XMLTokener.nextMeta154,5049
+    public Object nextToken(XMLTokener.nextToken219,6821
+    public boolean skipPast(XMLTokener.skipPast301,8961
+
+Cookie.java,0

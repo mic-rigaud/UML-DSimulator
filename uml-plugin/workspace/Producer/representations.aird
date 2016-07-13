@@ -1855,7 +1855,7 @@
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_nJAt0EQXEeao3_emoFUAnw" name="SUS" width="12" height="10">
         <target xmi:type="uml:Class" href="model.uml#_cTKSANANEeWpK6pFHJ1hEg"/>
         <semanticElements xmi:type="uml:Class" href="model.uml#_cTKSANANEeWpK6pFHJ1hEg"/>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_nJAt0UQXEeao3_emoFUAnw" labelSize="9" borderColor="39,76,114" backgroundStyle="Liquid" foregroundColor="232,239,247">
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_nJAt0UQXEeao3_emoFUAnw" labelSize="9" borderColor="39,76,114" backgroundStyle="Liquid">
           <labelFormat>bold</labelFormat>
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class']/@style"/>
         </ownedStyle>
@@ -1863,7 +1863,7 @@
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_nJE_QEQXEeao3_emoFUAnw" name="producer : Producer [1]{seq}">
           <target xmi:type="uml:Property" href="model.uml#_cTK5ENANEeWpK6pFHJ1hEg"/>
           <semanticElements xmi:type="uml:Property" href="model.uml#_cTK5ENANEeWpK6pFHJ1hEg"/>
-          <ownedStyle xmi:type="diagram:Square" xmi:id="_nJFmUEQXEeao3_emoFUAnw" labelAlignment="LEFT">
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_nJFmUEQXEeao3_emoFUAnw" labelColor="156,12,12" labelAlignment="LEFT">
             <description xmi:type="style:SquareDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Property']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Property']"/>
@@ -1883,7 +1883,7 @@
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_nSYsQUQXEeao3_emoFUAnw" labelSize="9" borderColor="39,76,114" backgroundStyle="Liquid" foregroundColor="232,239,247">
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_nSYsQUQXEeao3_emoFUAnw" labelSize="9" borderColor="39,76,114" backgroundStyle="Liquid">
           <labelFormat>bold</labelFormat>
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class']/@style"/>
         </ownedStyle>
@@ -1903,7 +1903,7 @@
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_niK0sEQXEeao3_emoFUAnw" labelSize="9" borderColor="39,76,114" backgroundStyle="Liquid" foregroundColor="232,239,247">
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_niK0sEQXEeao3_emoFUAnw" labelSize="9" borderColor="39,76,114" backgroundStyle="Liquid">
           <labelFormat>bold</labelFormat>
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class']/@style"/>
         </ownedStyle>

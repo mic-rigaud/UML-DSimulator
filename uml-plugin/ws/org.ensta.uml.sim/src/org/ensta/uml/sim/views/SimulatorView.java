@@ -1,6 +1,5 @@
 package org.ensta.uml.sim.views;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -80,7 +79,7 @@ public class SimulatorView extends ViewPart implements Observateur {
 
     private CommunicationSortantSimulateur comm2;
 
-    private String transitions;
+    private String[] transitions;
 
     private Semaphore sem = new Semaphore(0);
 
@@ -117,7 +116,6 @@ public class SimulatorView extends ViewPart implements Observateur {
         comm.ajouterObservateur(this);
         comm2 = new CommunicationSortantSimulateur(nouveauPath);
         comm2.start();
-        transitions = new String();
         design = new DesignModificateur();
     }
 
@@ -150,7 +148,7 @@ public class SimulatorView extends ViewPart implements Observateur {
     public void actualiserPartControl() {
         try {
             sem.acquire();
-            viewer.setInput(transitions.split("#"));
+            viewer.setInput(transitions);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -215,11 +213,8 @@ public class SimulatorView extends ViewPart implements Observateur {
         restart = new Action() {
             @Override
             public void run() {
-                try {
-                    comm.sendMessage("restart");
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                comm.putJson("restart");
+                comm.sendMessage();
                 actualiserPartControl("Initialize");
                 showMessage("Restart");
             }
@@ -269,11 +264,12 @@ public class SimulatorView extends ViewPart implements Observateur {
                 ISelection selection = viewer.getSelection();
                 Object obj = ((IStructuredSelection) selection).getFirstElement();
                 design.changeColor(obj.toString().split(":")[0]);
-                try {
-                    comm.sendMessage(obj.toString());
-                } catch (IOException e) {
-                    e.printStackTrace();
+                if (obj.toString().equalsIgnoreCase("initialize")) {
+                    comm.putJson("initialize");
+                } else {
+                    comm.putJson("state", obj.toString());
                 }
+                comm.sendMessage();
                 actualiserPartControl();
             }
         };
@@ -320,11 +316,8 @@ public class SimulatorView extends ViewPart implements Observateur {
                     design.initialiser(session);
                     String nouveauPath = ResourcesPlugin.getWorkspace().getRoot().getFile(new org.eclipse.core.runtime.Path(res.getURI().toPlatformString(true))).getLocation().toPortableString()
                             .replace(path.lastSegment(), "model.uml");
-                    try {
-                        comm.sendMessage("reload:" + nouveauPath);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                    comm.putJson("reload", nouveauPath);
+                    comm.sendMessage();
                     actualiserPartControl("Initialize");
                     showMessage("Vous avez bien basculer sur la session: " + path.segment(1));
                 }
@@ -337,7 +330,7 @@ public class SimulatorView extends ViewPart implements Observateur {
     public void actualiser(Observable o) {
         if (o instanceof CommunicationSimulateur) {
             CommunicationSimulateur comm = (CommunicationSimulateur) o;
-            transitions = comm.getMessage();
+            transitions = comm.getTransitions();
         }
         sem.release();
     }
