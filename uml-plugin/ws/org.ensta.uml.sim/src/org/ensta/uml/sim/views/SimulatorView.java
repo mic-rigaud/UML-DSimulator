@@ -31,6 +31,7 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.ISharedImages;
@@ -126,10 +127,10 @@ public class SimulatorView extends ViewPart implements Observateur {
     @Override
     public void createPartControl(Composite parent) {
         viewer = new TableViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
-
         viewer.setContentProvider(ArrayContentProvider.getInstance());
         viewer.setInput(new String[] { "Initialize" });
         viewer.setLabelProvider(new ViewLabelProvider());
+        Label label = new Label(parent, 0);
 
         // Create the help context id for the viewer's control
         PlatformUI.getWorkbench().getHelpSystem().setHelp(viewer.getControl(), "org.ensta.uml.sim.viewer");
@@ -149,6 +150,8 @@ public class SimulatorView extends ViewPart implements Observateur {
         try {
             sem.acquire();
             viewer.setInput(transitions);
+
+            design.refreshColor();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -158,6 +161,7 @@ public class SimulatorView extends ViewPart implements Observateur {
         try {
             sem.acquire();
             viewer.setInput(liste.split("#"));
+            design.refreshColor();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -235,6 +239,7 @@ public class SimulatorView extends ViewPart implements Observateur {
         stop = new Action() {
             @Override
             public void run() {
+                design.printInfo();
                 showMessage("Stop Simulation");
             }
         };
@@ -263,7 +268,12 @@ public class SimulatorView extends ViewPart implements Observateur {
             public void run() {
                 ISelection selection = viewer.getSelection();
                 Object obj = ((IStructuredSelection) selection).getFirstElement();
-                design.changeColor(obj.toString().split(":")[0]);
+                if (obj == null) {
+                    System.out.println("erreur: doubleClickAction: Null");
+                    return;
+                }
+                // design.changeColor(obj.toString().split(":")[0]); // TODO
+                // change
                 if (obj.toString().equalsIgnoreCase("initialize")) {
                     comm.putJson("initialize");
                 } else {
@@ -331,6 +341,7 @@ public class SimulatorView extends ViewPart implements Observateur {
         if (o instanceof CommunicationSimulateur) {
             CommunicationSimulateur comm = (CommunicationSimulateur) o;
             transitions = comm.getTransitions();
+            design.refreshElements(comm.getCurrentClass(), comm.getStates());
         }
         sem.release();
     }

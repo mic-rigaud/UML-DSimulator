@@ -7,6 +7,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import json.JSONArray;
@@ -17,7 +18,7 @@ public class CommunicationSimulateur extends Thread implements Observable {
 
     private String[] keyOutput = { "state", "initialize", "reload", "play", "stop", "restart", "random" };
 
-    private String[] keyInput = { "transitions", "error", "error_message" };
+    private String[] keyInput = { "transitions", "error", "error_message", "currentStates", "currentClass" };
 
     private JSONObject jsonIn;
 
@@ -163,6 +164,19 @@ public class CommunicationSimulateur extends Thread implements Observable {
             }
         }
         return true;
+    }
+
+    public String getCurrentClass() {
+        return jsonIn.getString("currentClass");
+    }
+
+    public HashMap<String, String> getStates() {
+        JSONObject json = (JSONObject) jsonIn.get("currentStates");
+        HashMap<String, String> map = new HashMap<String, String>();
+        for (String key : json.toMap().keySet()) {
+            map.put(key, json.getString(key));
+        }
+        return map;
     }
 
 }

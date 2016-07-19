@@ -1,35 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry exported="true" kind="lib" path="libs/aopalliance-1.0.jar"/>
-	<classpathentry exported="true" kind="lib" path="libs/asm-3.1.jar"/>
-	<classpathentry exported="true" kind="lib" path="libs/cglib-2.2.1-v20090111.jar"/>
-	<classpathentry exported="true" kind="lib" path="libs/guava-15.0-rc1.jar"/>
-	<classpathentry exported="true" kind="lib" path="libs/guice-3.0.jar"/>
-	<classpathentry exported="true" kind="lib" path="libs/java-petitparser-2.0.0.jar"/>
-	<classpathentry exported="true" kind="lib" path="libs/javax.inject-1.jar"/>
-	<classpathentry exported="true" kind="lib" path="libs/log4j-1.2.15.jar"/>
-	<classpathentry exported="true" kind="lib" path="libs/org.eclipse.emf.common-2.11.0-v20150123-0347.jar"/>
-	<classpathentry exported="true" kind="lib" path="libs/org.eclipse.emf.ecore-2.11.0-v20150123-0347.jar"/>
-	<classpathentry exported="true" kind="lib" path="libs/org.eclipse.emf.ecore.xmi-2.11.0-v20150123-0347.jar"/>
-	<classpathentry exported="true" kind="lib" path="libs/org.eclipse.emf.mapping.ecore2xml-2.8.0-v20150123-0452.jar"/>
-	<classpathentry exported="true" kind="lib" path="libs/org.eclipse.uml2.common-2.0.1.v20150202-0947.jar"/>
-	<classpathentry exported="true" kind="lib" path="libs/org.eclipse.uml2.types-2.0.0.v20150202-0947.jar"/>
-	<classpathentry exported="true" kind="lib" path="libs/org.eclipse.uml2.uml-5.0.2.v20150202-0947.jar"/>
-	<classpathentry exported="true" kind="lib" path="libs/org.eclipse.uml2.uml.profile.standard-1.0.0.v20150202-0947.jar"/>
-	<classpathentry exported="true" kind="lib" path="libs/org.eclipse.uml2.uml.resources-5.0.2.v20150202-0947.jar"/>
-	<classpathentry exported="true" kind="lib" path="libs/org.eclipse.xtend.lib-2.9.0.jar"/>
-	<classpathentry exported="true" kind="lib" path="libs/org.eclipse.xtend.lib.macro-2.9.0.jar"/>
-	<classpathentry exported="true" kind="lib" path="libs/org.eclipse.xtend.standalone-2.4.3.jar"/>
-	<classpathentry exported="true" kind="lib" path="libs/org.eclipse.xtext.xbase.lib-2.9.0.jar"/>
-	<classpathentry exported="true" kind="lib" path="libs/petitparser-core-2.0.0.jar"/>
-	<classpathentry exported="true" kind="lib" path="libs/petitparser-json-2.0.0.jar"/>
-	<classpathentry exported="true" kind="lib" path="libs/petitparser-smalltalk-2.0.0.jar"/>
-	<classpathentry exported="true" kind="lib" path="libs/petitparser-xml-2.0.0.jar"/>
-	<classpathentry exported="true" kind="lib" path="libs/plug-core-0.0.1.jar"/>
-	<classpathentry exported="true" kind="lib" path="libs/plug-runtime-ltuml-0.0.1.jar"/>
-	<classpathentry exported="true" kind="lib" path="libs/plug-simulation-ui-0.0.1.jar"/>
-	<classpathentry exported="true" kind="lib" path="libs/plug-utils-0.0.1.jar"/>
-	<classpathentry exported="true" kind="lib" path="libs/tuml-interpreter-0.0.1.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins">
 		<accessrules>
@@ -37,5 +7,35 @@
 		</accessrules>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="libs/aopalliance-1.0.jar"/>
+	<classpathentry kind="lib" path="libs/asm-3.1.jar"/>
+	<classpathentry kind="lib" path="libs/cglib-2.2.1-v20090111.jar"/>
+	<classpathentry kind="lib" path="libs/guava-15.0-rc1.jar"/>
+	<classpathentry kind="lib" path="libs/guice-3.0.jar"/>
+	<classpathentry kind="lib" path="libs/java-petitparser-2.0.0.jar"/>
+	<classpathentry kind="lib" path="libs/javax.inject-1.jar"/>
+	<classpathentry kind="lib" path="libs/log4j-1.2.15.jar"/>
+	<classpathentry kind="lib" path="libs/org.eclipse.emf.common-2.11.0-v20150123-0347.jar"/>
+	<classpathentry kind="lib" path="libs/org.eclipse.emf.ecore-2.11.0-v20150123-0347.jar"/>
+	<classpathentry kind="lib" path="libs/org.eclipse.emf.ecore.xmi-2.11.0-v20150123-0347.jar"/>
+	<classpathentry kind="lib" path="libs/org.eclipse.emf.mapping.ecore2xml-2.8.0-v20150123-0452.jar"/>
+	<classpathentry kind="lib" path="libs/org.eclipse.uml2.common-2.0.1.v20150202-0947.jar"/>
+	<classpathentry kind="lib" path="libs/org.eclipse.uml2.types-2.0.0.v20150202-0947.jar"/>
+	<classpathentry kind="lib" path="libs/org.eclipse.uml2.uml-5.0.2.v20150202-0947.jar"/>
+	<classpathentry kind="lib" path="libs/org.eclipse.uml2.uml.profile.standard-1.0.0.v20150202-0947.jar"/>
+	<classpathentry kind="lib" path="libs/org.eclipse.uml2.uml.resources-5.0.2.v20150202-0947.jar"/>
+	<classpathentry kind="lib" path="libs/org.eclipse.xtend.lib-2.9.0.jar"/>
+	<classpathentry kind="lib" path="libs/org.eclipse.xtend.lib.macro-2.9.0.jar"/>
+	<classpathentry kind="lib" path="libs/org.eclipse.xtend.standalone-2.4.3.jar"/>
+	<classpathentry kind="lib" path="libs/org.eclipse.xtext.xbase.lib-2.9.0.jar"/>
+	<classpathentry kind="lib" path="libs/petitparser-core-2.0.0.jar"/>
+	<classpathentry kind="lib" path="libs/petitparser-json-2.0.0.jar"/>
+	<classpathentry kind="lib" path="libs/petitparser-smalltalk-2.0.0.jar"/>
+	<classpathentry kind="lib" path="libs/petitparser-xml-2.0.0.jar"/>
+	<classpathentry kind="lib" path="libs/plug-core-0.0.1.jar"/>
+	<classpathentry kind="lib" path="libs/plug-runtime-ltuml-0.0.1.jar"/>
+	<classpathentry kind="lib" path="libs/plug-simulation-ui-0.0.1.jar"/>
+	<classpathentry kind="lib" path="libs/plug-utils-0.0.1.jar"/>
+	<classpathentry kind="lib" path="libs/tuml-interpreter-0.0.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
