@@ -2,6 +2,7 @@ package org.ensta.uml.sim.views;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.Semaphore;
 
@@ -30,9 +31,14 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Menu;
+import org.eclipse.swt.widgets.Tree;
+import org.eclipse.swt.widgets.TreeColumn;
+import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.IWorkbenchActionConstants;
@@ -66,6 +72,8 @@ public class SimulatorView extends ViewPart implements Observateur {
 
     private TableViewer viewer;
 
+    private Tree tree;
+
     private Action play;
 
     private Action stop;
@@ -81,6 +89,8 @@ public class SimulatorView extends ViewPart implements Observateur {
     private CommunicationSortantSimulateur comm2;
 
     private String[] transitions;
+
+    private String currentProject;
 
     private Semaphore sem = new Semaphore(0);
 
@@ -110,6 +120,7 @@ public class SimulatorView extends ViewPart implements Observateur {
         Session session = SessionManager.INSTANCE.getSessions().toArray(new Session[0])[0];
         Resource res = session.getSessionResource();
         URI path = res.getURI();
+        currentProject = path.segment(1);
         String nouveauPath = ResourcesPlugin.getWorkspace().getRoot().getFile(new org.eclipse.core.runtime.Path(res.getURI().toPlatformString(true))).getLocation().toPortableString()
                 .replace(path.lastSegment(), "model.uml");
         comm = new CommunicationSimulateur(9000);
@@ -126,11 +137,21 @@ public class SimulatorView extends ViewPart implements Observateur {
      */
     @Override
     public void createPartControl(Composite parent) {
+        FillLayout grid = (FillLayout) parent.getLayout();
+        grid.type = SWT.VERTICAL;
+        parent.setLayout(grid);
         viewer = new TableViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
         viewer.setContentProvider(ArrayContentProvider.getInstance());
         viewer.setInput(new String[] { "Initialize" });
         viewer.setLabelProvider(new ViewLabelProvider());
-        Label label = new Label(parent, 0);
+        tree = new Tree(parent, SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL);
+        tree.setHeaderVisible(true);
+
+        TreeColumn column1 = new TreeColumn(tree, SWT.LEFT);
+        column1.setText("Overview of the project");
+        column1.setWidth(200);
+        TreeItem item = new TreeItem(tree, SWT.NONE);
+        item.setText(SessionManager.INSTANCE.getSessions().toArray(new Session[0])[0].getSessionResource().getURI().segment(1));
 
         // Create the help context id for the viewer's control
         PlatformUI.getWorkbench().getHelpSystem().setHelp(viewer.getControl(), "org.ensta.uml.sim.viewer");
@@ -139,7 +160,7 @@ public class SimulatorView extends ViewPart implements Observateur {
         hookContextMenu();
         hookDoubleClickAction();
         contributeToActionBars();
-
+        selectedActionInstance();
     }
 
     /*
@@ -150,7 +171,7 @@ public class SimulatorView extends ViewPart implements Observateur {
         try {
             sem.acquire();
             viewer.setInput(transitions);
-
+            refreshTreeView();
             design.refreshColor();
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -161,6 +182,7 @@ public class SimulatorView extends ViewPart implements Observateur {
         try {
             sem.acquire();
             viewer.setInput(liste.split("#"));
+            refreshTreeView();
             design.refreshColor();
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -272,8 +294,6 @@ public class SimulatorView extends ViewPart implements Observateur {
                     System.out.println("erreur: doubleClickAction: Null");
                     return;
                 }
-                // design.changeColor(obj.toString().split(":")[0]); // TODO
-                // change
                 if (obj.toString().equalsIgnoreCase("initialize")) {
                     comm.putJson("initialize");
                 } else {
@@ -290,6 +310,16 @@ public class SimulatorView extends ViewPart implements Observateur {
             @Override
             public void doubleClick(DoubleClickEvent event) {
                 doubleClickAction.run();
+            }
+        });
+    }
+
+    private void selectedActionInstance() {
+        tree.addListener(SWT.Selection, new Listener() {
+            @Override
+            public void handleEvent(Event event) {
+                String string = event.detail == SWT.CHECK ? "Checked" : "Selected";
+                System.out.println(((TreeItem) event.item).getText());
             }
         });
     }
@@ -329,11 +359,31 @@ public class SimulatorView extends ViewPart implements Observateur {
                     comm.putJson("reload", nouveauPath);
                     comm.sendMessage();
                     actualiserPartControl("Initialize");
+                    currentProject = path.segment(1);
+                    refreshTreeView();
                     showMessage("Vous avez bien basculer sur la session: " + path.segment(1));
                 }
             });
         }
         return actions;
+    }
+
+    protected void refreshTreeView() {
+        tree.removeAll();
+        TreeItem item = new TreeItem(tree, SWT.NONE);
+        item.setText(currentProject);
+        item.setExpanded(true);
+        HashMap<String, String> map = design.getActiveState();
+        for (String etat : map.keySet()) {
+            System.out.println(etat);
+            if (etat.contains("/")) {
+                System.out.println("une instance...");
+
+            } else {
+                TreeItem subitem = new TreeItem(item, SWT.NONE);
+                subitem.setText("Class : " + etat);
+            }
+        }
     }
 
     @Override

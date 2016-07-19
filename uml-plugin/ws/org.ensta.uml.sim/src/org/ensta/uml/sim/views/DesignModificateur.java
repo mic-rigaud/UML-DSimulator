@@ -134,6 +134,10 @@ public class DesignModificateur {
         }
     }
 
+    public HashMap<String, String> getActiveState() {
+        return this.activeState;
+    }
+
     /*****************************************************************************
      * les fonctions suivantes servent a du debug
      */
