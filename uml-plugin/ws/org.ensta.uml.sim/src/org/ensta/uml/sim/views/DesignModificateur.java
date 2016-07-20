@@ -1,7 +1,6 @@
 package org.ensta.uml.sim.views;
 
 import java.util.Collection;
-import java.util.HashMap;
 
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
@@ -27,13 +26,18 @@ import org.eclipse.sirius.viewpoint.description.SystemColors;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.StateMachine;
 
+import json.JSONArray;
+import json.JSONObject;
+
 public class DesignModificateur {
 
     public EList<DDiagramElement> elements;
 
-    public HashMap<String, String> activeState;
-
     private String currentClasse;
+
+    private JSONArray currentState;
+
+    private String currentInstance = "1";
 
     public DesignModificateur() {
         initialiser(SessionManager.INSTANCE.getSessions().toArray(new Session[0])[0]);
@@ -41,7 +45,7 @@ public class DesignModificateur {
 
     public void initialiser(Session mysession) {
         elements = new BasicEList<DDiagramElement>();
-        activeState = new HashMap<String, String>();
+        currentState = new JSONArray();
         currentClasse = "";
         if (mysession != null) {
             final Collection<DRepresentation> representations = DialectManager.INSTANCE.getAllRepresentations(mysession);
@@ -57,10 +61,9 @@ public class DesignModificateur {
         }
     }
 
-    public void refreshElements(String currentClasse, HashMap<String, String> hash) {
+    public void refreshElements(String currentClasse, JSONArray currentState) {
         this.currentClasse = currentClasse.toLowerCase();
-        this.activeState.clear();
-        this.activeState = hash;
+        this.currentState = currentState;
     }
 
     public void refreshColor() {
@@ -84,10 +87,17 @@ public class DesignModificateur {
             if (semantic.getTarget() instanceof StateMachine) {
                 StateMachine sm = (StateMachine) semantic.getTarget();
                 if (sm.eContainer() instanceof Class) {
-                    String nom = ((Class) sm.eContainer()).getName().toLowerCase();
-                    if (activeState.containsKey(nom)) {
-                        if (activeState.get(nom).equalsIgnoreCase(dDiagramElement.getName())) {
-                            return true;
+                    String classe = ((Class) sm.eContainer()).getName().toLowerCase();
+                    String state = dDiagramElement.getName().toLowerCase();
+                    for (Object obj : currentState) {
+                        JSONObject jsonClasse = (JSONObject) obj;
+                        if (jsonClasse.getString("class").equals(classe)) {
+                            for (Object obj2 : jsonClasse.getJSONArray("instance")) {
+                                JSONObject jsonInstance = (JSONObject) obj2;
+                                if (jsonInstance.getString("name").equals(currentInstance) && jsonInstance.getString("state").equals(state)) {
+                                    return true;
+                                }
+                            }
                         }
                     }
                 }
@@ -134,8 +144,8 @@ public class DesignModificateur {
         }
     }
 
-    public HashMap<String, String> getActiveState() {
-        return this.activeState;
+    public JSONArray getCurrentState() {
+        return this.currentState;
     }
 
     /*****************************************************************************

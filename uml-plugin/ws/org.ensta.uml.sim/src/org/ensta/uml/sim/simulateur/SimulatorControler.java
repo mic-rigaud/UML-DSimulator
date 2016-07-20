@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Random;
 
+import plug.core.IConfiguration;
 import plug.core.IFireableTransition;
 import plug.core.Observable;
 import plug.core.Observateur;
@@ -16,9 +17,11 @@ public class SimulatorControler implements Observateur {
 
     Random random = new Random();
 
+    IConfiguration conf;
+
     public SimulatorControler() {
         this.listTransition = new ArrayList<IFireableTransition>();
-
+        this.conf = null;
     }
 
     @Override
@@ -26,7 +29,7 @@ public class SimulatorControler implements Observateur {
         if (o instanceof SimulationModel) {
             SimulationModel sim = (SimulationModel) o;
             this.actualiserListTransition(sim);
-
+            conf = sim.currentState();
         }
     }
 
@@ -75,6 +78,10 @@ public class SimulatorControler implements Observateur {
         }
         System.out.println("transition non trouve donc aleatoire...");
         return this.getRandomTransition();
+    }
+
+    public IConfiguration getConf() {
+        return this.conf;
     }
 
 }

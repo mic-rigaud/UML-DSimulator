@@ -18,7 +18,7 @@ public class CommunicationSimulateur extends Thread implements Observable {
 
     private String[] keyOutput = { "state", "initialize", "reload", "play", "stop", "restart", "random" };
 
-    private String[] keyInput = { "transitions", "error", "error_message", "currentStates", "currentClass" };
+    private String[] keyInput = { "transitions", "error", "error_message", "currentClass", "currentState" };
 
     private JSONObject jsonIn;
 
@@ -26,7 +26,7 @@ public class CommunicationSimulateur extends Thread implements Observable {
 
     private Socket server;
 
-    private JSONObject json;
+    private JSONObject jsonOut;
 
     public CommunicationSimulateur(int port) {
         tabObservateur = new ArrayList<Observateur>();
@@ -36,9 +36,9 @@ public class CommunicationSimulateur extends Thread implements Observable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        json = new JSONObject();
-        initialiserJson(json);
-        json.put("reload_path", "");
+        jsonOut = new JSONObject();
+        initialiserJson();
+        jsonOut.put("reload_path", "");
         jsonIn = new JSONObject();
     }
 
@@ -54,6 +54,7 @@ public class CommunicationSimulateur extends Thread implements Observable {
                     this.notifierObservateurs();
                 } else {
                     System.out.println("error jsonin");
+                    this.notifierObservateurs();
                 }
             }
         } catch (SocketTimeoutException s) {
@@ -80,12 +81,11 @@ public class CommunicationSimulateur extends Thread implements Observable {
                 return;
             }
             DataOutputStream out = new DataOutputStream(server.getOutputStream());
-            out.writeUTF(json.toString());
-            initialiserJson(json);
+            out.writeUTF(jsonOut.toString());
+            initialiserJson();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     public void close() {
@@ -97,11 +97,13 @@ public class CommunicationSimulateur extends Thread implements Observable {
     }
 
     public String[] getTransitions() {
-        JSONArray array = (JSONArray) jsonIn.get("transitions");
-        List<Object> liste = array.toList();
+        List<Object> liste = jsonIn.getJSONArray("transitions").toList();
         String[] trans = liste.toArray(new String[liste.size()]);
-
         return trans;
+    }
+
+    public JSONArray getCurrentState() {
+        return jsonIn.getJSONArray("currentState");
     }
 
     @Override
@@ -123,24 +125,24 @@ public class CommunicationSimulateur extends Thread implements Observable {
         }
     }
 
-    public void initialiserJson(JSONObject json) {
-        json.put("initialize", false);
-        json.put("play", false);
-        json.put("stop", false);
-        json.put("reload", false);
-        json.put("state", "");
-        json.put("restart", false);
-        json.put("random", false);
+    public void initialiserJson() {
+        jsonOut.put("initialize", false);
+        jsonOut.put("play", false);
+        jsonOut.put("stop", false);
+        jsonOut.put("reload", false);
+        jsonOut.put("state", "");
+        jsonOut.put("restart", false);
+        jsonOut.put("random", false);
     }
 
     public void putJson(String key, String valeur) {
         for (String keys : keyOutput) {
             if (keys.equals(key)) {
                 if (key.equals("reload")) {
-                    json.put(key, true);
-                    json.put("reload_path", valeur);
+                    jsonOut.put(key, true);
+                    jsonOut.put("reload_path", valeur);
                 } else {
-                    json.put(key, valeur);
+                    jsonOut.put(key, valeur);
                 }
             }
         }
@@ -149,7 +151,7 @@ public class CommunicationSimulateur extends Thread implements Observable {
     public void putJson(String key) {
         for (String keys : keyOutput) {
             if (keys.equals(key)) {
-                json.put(key, true);
+                jsonOut.put(key, true);
             }
         }
 
@@ -161,6 +163,31 @@ public class CommunicationSimulateur extends Thread implements Observable {
         for (String key : keyInput) {
             if (!jsonIn.has(key)) {
                 return false;
+            }
+            if (key.equals("currentState")) {
+                JSONArray list = jsonIn.getJSONArray("currentState");
+                if (list.length() == 0)
+                    break;
+                for (Object obj : list) {
+                    if (obj instanceof JSONObject) {
+                        JSONObject json = (JSONObject) obj;
+                        if (!json.has("class") || !json.has("instance")) {
+                            return false;
+                        }
+                        for (Object obj2 : json.getJSONArray("instance")) {
+                            if (obj2 instanceof JSONObject) {
+                                JSONObject json2 = (JSONObject) obj2;
+                                if (!json2.has("name") || !json2.has("state")) {
+                                    return false;
+                                }
+                            } else {
+                                return false;
+                            }
+                        }
+                    } else {
+                        return false;
+                    }
+                }
             }
         }
         return true;

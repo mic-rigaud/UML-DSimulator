@@ -2,7 +2,6 @@ package org.ensta.uml.sim.views;
 
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.Semaphore;
 
@@ -47,6 +46,9 @@ import org.eclipse.ui.internal.util.BundleUtility;
 import org.eclipse.ui.part.ViewPart;
 import org.ensta.uml.sim.simulateur.CommunicationSortantSimulateur;
 import org.osgi.framework.Bundle;
+
+import json.JSONArray;
+import json.JSONObject;
 
 /**
  * This sample class demonstrates how to plug-in a new workbench view. The view
@@ -373,15 +375,15 @@ public class SimulatorView extends ViewPart implements Observateur {
         TreeItem item = new TreeItem(tree, SWT.NONE);
         item.setText(currentProject);
         item.setExpanded(true);
-        HashMap<String, String> map = design.getActiveState();
-        for (String etat : map.keySet()) {
-            System.out.println(etat);
-            if (etat.contains("/")) {
-                System.out.println("une instance...");
-
-            } else {
-                TreeItem subitem = new TreeItem(item, SWT.NONE);
-                subitem.setText("Class : " + etat);
+        JSONArray currentState = design.getCurrentState();
+        for (Object obj : currentState) {
+            JSONObject jsonClass = (JSONObject) obj;
+            TreeItem subitem = new TreeItem(item, SWT.NONE);
+            subitem.setText("Class : " + jsonClass.getString("class"));
+            for (Object obj2 : jsonClass.getJSONArray("instance")) {
+                JSONObject jsonInstance = (JSONObject) obj2;
+                TreeItem subsubitem = new TreeItem(subitem, SWT.NONE);
+                subsubitem.setText("Instance : " + jsonInstance.getString("name"));
             }
         }
     }
@@ -391,7 +393,7 @@ public class SimulatorView extends ViewPart implements Observateur {
         if (o instanceof CommunicationSimulateur) {
             CommunicationSimulateur comm = (CommunicationSimulateur) o;
             transitions = comm.getTransitions();
-            design.refreshElements(comm.getCurrentClass(), comm.getStates());
+            design.refreshElements(comm.getCurrentClass(), comm.getCurrentState());
         }
         sem.release();
     }

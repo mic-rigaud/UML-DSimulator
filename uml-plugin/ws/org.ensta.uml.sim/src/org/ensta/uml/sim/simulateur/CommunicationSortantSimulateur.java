@@ -7,12 +7,12 @@ import java.io.IOException;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
 import org.eclipse.xtext.xbase.lib.Pair;
 
+import json.JSONArray;
 import json.JSONObject;
 import plug.core.IFireableTransition;
 import plug.simulation.ui.SimulationModel;
@@ -33,7 +33,7 @@ public class CommunicationSortantSimulateur extends Thread {
 
     JSONObject jsonOut;
 
-    HashMap<String, String> currentStates;
+    ArrayList<JSONObject> listCurrentState;
 
     public CommunicationSortantSimulateur(String nomfichier) {
         model = new SimulationModel();
@@ -42,8 +42,8 @@ public class CommunicationSortantSimulateur extends Thread {
         fichier = new File(nomfichier);
         model.loadModel(fichier);
         model.initialize();
-        currentStates = new HashMap<String, String>();
         jsonOut = new JSONObject();
+        listCurrentState = new ArrayList<JSONObject>();
         initialiserJson(jsonOut);
     }
 
@@ -60,14 +60,14 @@ public class CommunicationSortantSimulateur extends Thread {
 
                     if (json.getBoolean("initialize")) {
                         System.out.println("Init");
-                        clearHash();
+                        clearListCurrentState();
                         model.initialize();
                         model.nextStep(controler.getRandomTransition());
                     } else if (json.getBoolean("restart")) {
                         model.loadModel(fichier);
-                        clearHash();
+                        clearListCurrentState();
                     } else if (json.getBoolean("reload")) {
-                        clearHash();
+                        clearListCurrentState();
                         fichier = new File(json.getString("reload_path"));
                         // TODO initialiser la hashmap
                         model.loadModel(fichier); // TODO exception si fichier
@@ -96,14 +96,51 @@ public class CommunicationSortantSimulateur extends Thread {
     @SuppressWarnings({ "rawtypes" })
     private void fillJsonOutLastState(IFireableTransition transition) {
         ActiveObject a = (ActiveObject) ((Pair) transition.getAction()).getKey();
-        currentStates.put(a.getName().toLowerCase(), a.getCurrentState().getName().toLowerCase());
-        jsonOut.put("currentStates", currentStates);
+        String classe = a.getName().toLowerCase();
+        String state = a.getCurrentState().getName().toLowerCase();
+        fillListCurrentState(classe, "1", state);
+        jsonOut.put("currentState", listCurrentState);
         jsonOut.put("currentClass", a.getName().toLowerCase());
     }
 
-    private void clearHash() {
-        currentStates.clear();
-        jsonOut.put("currentStates", currentStates);
+    private void fillListCurrentState(String classe, String instance, String state) {
+        boolean classePresent = false;
+        boolean instancePresent = false;
+        for (JSONObject jsonClasse : listCurrentState) {
+            if (jsonClasse.getString("class").equals(classe)) {
+                classePresent = true;
+                for (Object obj : jsonClasse.getJSONArray("instance")) {
+                    JSONObject jsonInstance = (JSONObject) obj;
+                    if (jsonInstance.getString("name").equals(instance)) {
+                        instancePresent = true;
+                        jsonInstance.put("state", state);
+                    }
+                }
+                if (!instancePresent) {
+                    JSONArray list2 = jsonClasse.getJSONArray("instance");
+                    JSONObject jsonInstance = new JSONObject();
+                    jsonInstance.put("name", instance);
+                    jsonInstance.put("state", state);
+                    list2.put(jsonInstance);
+                }
+            }
+        }
+        if (!classePresent) {
+            JSONObject jsonClasse = new JSONObject();
+            jsonClasse.put("class", classe);
+            ArrayList<JSONObject> list2 = new ArrayList<JSONObject>();
+            JSONObject jsonInstance = new JSONObject();
+            jsonInstance.put("name", instance);
+            jsonInstance.put("state", state);
+            list2.add(jsonInstance);
+            jsonClasse.put("instance", list2);
+            listCurrentState.add(jsonClasse);
+        }
+    }
+
+    private void clearListCurrentState() {
+        listCurrentState.clear();
+        jsonOut.put("currentState", listCurrentState);
     }
 
     public void sendMessage(List<IFireableTransition> liste) throws IOException {
@@ -129,8 +166,7 @@ public class CommunicationSortantSimulateur extends Thread {
         json.put("transitions", t);
         json.put("error", false);
         json.put("error_message", "");
-        json.put("currentStates", currentStates);
+        json.put("currentState", listCurrentState);
         json.put("currentClass", "");
     }
-
 }
