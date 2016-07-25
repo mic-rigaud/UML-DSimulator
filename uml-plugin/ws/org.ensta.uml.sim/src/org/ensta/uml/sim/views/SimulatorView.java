@@ -29,6 +29,7 @@ import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -130,7 +131,7 @@ public class SimulatorView extends ViewPart implements Observateur {
         comm.ajouterObservateur(this);
         comm2 = new CommunicationSortantSimulateur(nouveauPath);
         comm2.start();
-        design = new DesignModificateur();
+        design = new DesignModificateur(session);
     }
 
     /**
@@ -320,8 +321,17 @@ public class SimulatorView extends ViewPart implements Observateur {
         tree.addListener(SWT.Selection, new Listener() {
             @Override
             public void handleEvent(Event event) {
-                String string = event.detail == SWT.CHECK ? "Checked" : "Selected";
-                System.out.println(((TreeItem) event.item).getText());
+                if (((TreeItem) event.item).getParentItem() != null) {
+                    String fils = ((TreeItem) event.item).getText();
+                    String pere = ((TreeItem) event.item).getParentItem().getText();
+                    if (fils.startsWith("Instance : ") && pere.startsWith("Class : ")) {
+                        design.putCurrentInstances(pere.replace("Class : ", ""), fils.replace("Instance : ", ""));
+                    }
+                    if (fils.startsWith("Class : ")) {
+                        design.putCurrentInstances(fils.replace("Class : ", ""), "all");
+                    }
+                    refreshTreeView();
+                }
             }
         });
     }
@@ -355,7 +365,7 @@ public class SimulatorView extends ViewPart implements Observateur {
             actions.add(new Action(path.segment(1)) {
                 @Override
                 public void run() {
-                    design.initialiser(session);
+                    design = new DesignModificateur(session);
                     String nouveauPath = ResourcesPlugin.getWorkspace().getRoot().getFile(new org.eclipse.core.runtime.Path(res.getURI().toPlatformString(true))).getLocation().toPortableString()
                             .replace(path.lastSegment(), "model.uml");
                     comm.putJson("reload", nouveauPath);
@@ -380,10 +390,19 @@ public class SimulatorView extends ViewPart implements Observateur {
             JSONObject jsonClass = (JSONObject) obj;
             TreeItem subitem = new TreeItem(item, SWT.NONE);
             subitem.setText("Class : " + jsonClass.getString("class"));
+            subitem.setExpanded(true);
+            design.putCurrentInstances(jsonClass.getString("class"));
             for (Object obj2 : jsonClass.getJSONArray("instance")) {
                 JSONObject jsonInstance = (JSONObject) obj2;
                 TreeItem subsubitem = new TreeItem(subitem, SWT.NONE);
                 subsubitem.setText("Instance : " + jsonInstance.getString("name"));
+                if (design.isCurrentInstancesContains(jsonClass.getString("class"), jsonInstance.getString("name"))) {
+                    Color newColor = new Color(subsubitem.getForeground().getDevice(), 255, 25, 25);
+                    subsubitem.setForeground(newColor);
+                } else if (design.isCurrentInstancesContains(jsonClass.getString("class"), "all")) {
+                    Color newColor = new Color(subitem.getForeground().getDevice(), 255, 25, 25);
+                    subitem.setForeground(newColor);
+                }
             }
         }
     }

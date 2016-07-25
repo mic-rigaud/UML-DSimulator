@@ -1,0 +1,20 @@
+* =UMLSimulator=: a UMLDesigner plugin to Simulate UML model
+
+** Description of the project
+
+UMLSimulator is a plugin for UMLDesigner. This plugin is a simulator of UML Model.
+The plugin use a simulator which was developed by [[https://github.com/teodorov][Ciprian Teodorov]].
+
+With this simulator it is possible to see the evolution of States in all State machine diagram.
+
+** This Repositories
+
+This repositories contain only the report of this project because the project is still on progress.
+
+** Version
+
+|---------+--------|
+| Version | Stable |
+|---------+--------|
+|     0.1 | Non    |
+|---------+--------|

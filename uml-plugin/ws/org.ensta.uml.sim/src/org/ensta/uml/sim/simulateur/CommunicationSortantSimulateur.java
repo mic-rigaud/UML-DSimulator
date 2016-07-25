@@ -113,14 +113,14 @@ public class CommunicationSortantSimulateur extends Thread {
                     JSONObject jsonInstance = (JSONObject) obj;
                     if (jsonInstance.getString("name").equals(instance)) {
                         instancePresent = true;
-                        jsonInstance.put("state", state);
+                        jsonInstance.put("state", new JSONArray().put(state));
                     }
                 }
                 if (!instancePresent) {
                     JSONArray list2 = jsonClasse.getJSONArray("instance");
                     JSONObject jsonInstance = new JSONObject();
                     jsonInstance.put("name", instance);
-                    jsonInstance.put("state", state);
+                    jsonInstance.put("state", new JSONArray().put(state));
                     list2.put(jsonInstance);
                 }
             }
@@ -131,7 +131,7 @@ public class CommunicationSortantSimulateur extends Thread {
             ArrayList<JSONObject> list2 = new ArrayList<JSONObject>();
             JSONObject jsonInstance = new JSONObject();
             jsonInstance.put("name", instance);
-            jsonInstance.put("state", state);
+            jsonInstance.put("state", new JSONArray().put(state));
             list2.add(jsonInstance);
             jsonClasse.put("instance", list2);
             listCurrentState.add(jsonClasse);

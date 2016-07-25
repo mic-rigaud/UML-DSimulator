@@ -7,7 +7,6 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import json.JSONArray;
@@ -125,33 +124,33 @@ public class CommunicationSimulateur extends Thread implements Observable {
         }
     }
 
-    public void initialiserJson() {
-        jsonOut.put("initialize", false);
-        jsonOut.put("play", false);
-        jsonOut.put("stop", false);
-        jsonOut.put("reload", false);
-        jsonOut.put("state", "");
-        jsonOut.put("restart", false);
-        jsonOut.put("random", false);
+    private void initialiserJson() {
+        this.jsonOut.put("initialize", false);
+        this.jsonOut.put("play", false);
+        this.jsonOut.put("stop", false);
+        this.jsonOut.put("reload", false);
+        this.jsonOut.put("state", "");
+        this.jsonOut.put("restart", false);
+        this.jsonOut.put("random", false);
     }
 
     public void putJson(String key, String valeur) {
-        for (String keys : keyOutput) {
+        for (String keys : this.keyOutput) {
             if (keys.equals(key)) {
                 if (key.equals("reload")) {
-                    jsonOut.put(key, true);
-                    jsonOut.put("reload_path", valeur);
+                    this.jsonOut.put(key, true);
+                    this.jsonOut.put("reload_path", valeur);
                 } else {
-                    jsonOut.put(key, valeur);
+                    this.jsonOut.put(key, valeur);
                 }
             }
         }
     }
 
     public void putJson(String key) {
-        for (String keys : keyOutput) {
+        for (String keys : this.keyOutput) {
             if (keys.equals(key)) {
-                jsonOut.put(key, true);
+                this.jsonOut.put(key, true);
             }
         }
 
@@ -160,14 +159,12 @@ public class CommunicationSimulateur extends Thread implements Observable {
     // TODO Il faudrait verifier qu'on a bien une liste de transition sous la
     // forme d une list<String>
     private boolean isMessageAcceptable() {
-        for (String key : keyInput) {
-            if (!jsonIn.has(key)) {
+        for (String key : this.keyInput) {
+            if (!this.jsonIn.has(key)) {
                 return false;
             }
             if (key.equals("currentState")) {
-                JSONArray list = jsonIn.getJSONArray("currentState");
-                if (list.length() == 0)
-                    break;
+                JSONArray list = this.jsonIn.getJSONArray("currentState");
                 for (Object obj : list) {
                     if (obj instanceof JSONObject) {
                         JSONObject json = (JSONObject) obj;
@@ -194,16 +191,6 @@ public class CommunicationSimulateur extends Thread implements Observable {
     }
 
     public String getCurrentClass() {
-        return jsonIn.getString("currentClass");
+        return this.jsonIn.getString("currentClass");
     }
-
-    public HashMap<String, String> getStates() {
-        JSONObject json = (JSONObject) jsonIn.get("currentStates");
-        HashMap<String, String> map = new HashMap<String, String>();
-        for (String key : json.toMap().keySet()) {
-            map.put(key, json.getString(key));
-        }
-        return map;
-    }
-
 }

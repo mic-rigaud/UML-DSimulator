@@ -1,6 +1,7 @@
 package org.ensta.uml.sim.views;
 
 import java.util.Collection;
+import java.util.HashMap;
 
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
@@ -9,7 +10,6 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.business.api.session.SessionManager;
 // import org.eclipse.sirius.business.internal.color.DefaultColorStyleDescription;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
@@ -37,16 +37,17 @@ public class DesignModificateur {
 
     private JSONArray currentState;
 
-    private String currentInstance = "1";
+    private HashMap<String, String> currentInstances;
 
     public DesignModificateur() {
-        initialiser(SessionManager.INSTANCE.getSessions().toArray(new Session[0])[0]);
-    }
-
-    public void initialiser(Session mysession) {
         elements = new BasicEList<DDiagramElement>();
         currentState = new JSONArray();
         currentClasse = "";
+        currentInstances = new HashMap<String, String>();
+    }
+
+    public DesignModificateur(Session mysession) {
+        this();
         if (mysession != null) {
             final Collection<DRepresentation> representations = DialectManager.INSTANCE.getAllRepresentations(mysession);
             for (final DRepresentation representation : representations) {
@@ -94,8 +95,13 @@ public class DesignModificateur {
                         if (jsonClasse.getString("class").equals(classe)) {
                             for (Object obj2 : jsonClasse.getJSONArray("instance")) {
                                 JSONObject jsonInstance = (JSONObject) obj2;
-                                if (jsonInstance.getString("name").equals(currentInstance) && jsonInstance.getString("state").equals(state)) {
-                                    return true;
+                                if (jsonInstance.getString("name").equals(currentInstances.get(classe)) || currentInstances.get(classe).equals("all")) {
+                                    for (Object obj3 : jsonInstance.getJSONArray("state")) {
+                                        if (obj3 instanceof String) {
+                                            if (((String) obj3).equalsIgnoreCase(state))
+                                                return true;
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -106,7 +112,7 @@ public class DesignModificateur {
         return false;
     }
 
-    protected void defaultColor(Style style) {
+    private void defaultColor(Style style) {
         RGBValues color = null;
         if (style instanceof FlatContainerStyle) {
             color = (RGBValues) ViewpointFactory.eINSTANCE.createFromString(ViewpointPackage.eINSTANCE.getRGBValues(), "209,209,209");
@@ -119,7 +125,7 @@ public class DesignModificateur {
 
     }
 
-    protected void changeColor(Style style, RGBValues newcolor) {
+    private void changeColor(Style style, RGBValues newcolor) {
         if (style instanceof FlatContainerStyle) {
             FlatContainerStyle sd = (FlatContainerStyle) style;
             TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(sd);
@@ -146,6 +152,23 @@ public class DesignModificateur {
 
     public JSONArray getCurrentState() {
         return this.currentState;
+    }
+
+    public void putCurrentInstances(String className, String instanceName) {
+        this.currentInstances.put(className, instanceName);
+    }
+
+    public void putCurrentInstances(String className) {
+        if (!this.currentInstances.containsKey(className))
+            this.currentInstances.put(className, "all");
+    }
+
+    public boolean isCurrentInstancesContains(String className, String instanceName) {
+        if (this.currentInstances.containsKey(className)) {
+            if (this.currentInstances.get(className).equalsIgnoreCase(instanceName))
+                return true;
+        }
+        return false;
     }
 
     /*****************************************************************************
