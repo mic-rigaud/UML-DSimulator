@@ -3,8 +3,11 @@
  */
 package org.ensta.uml.sim.views;
 
-import static org.junit.Assert.fail;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
+import org.ensta.uml.sim.simulateur.CommunicationSortantSimulateurMock;
+import org.ensta.uml.sim.simulateur.ObservateurMock;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -16,12 +19,17 @@ import org.junit.Test;
  *
  */
 public class CommunicationSimulateurTest {
+    private CommunicationSimulateur comm;
+
+    private static CommunicationSortantSimulateurMock comm2;
 
     /**
      * @throws java.lang.Exception
      */
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
+        comm2 = new CommunicationSortantSimulateurMock();
+        comm2.start();
     }
 
     /**
@@ -36,67 +44,90 @@ public class CommunicationSimulateurTest {
      */
     @Before
     public void setUp() throws Exception {
+        comm = new CommunicationSimulateur(5000);
     }
 
     /**
      * @throws java.lang.Exception
      */
+    @SuppressWarnings("deprecation")
     @After
     public void tearDown() throws Exception {
+        comm.stop();
+        comm.close();
+        comm = null;
     }
 
     /**
      * Test method for
      * {@link org.ensta.uml.sim.views.CommunicationSimulateur#run()}.
+     * 
+     * @throws InterruptedException
      */
     @Test
-    public void testRun() {
-        fail("Not yet implemented"); // TODO not implemented
-    }
-
-    /**
-     * Test method for
-     * {@link org.ensta.uml.sim.views.CommunicationSimulateur#CommunicationSimulateur(int)}.
-     */
-    @Test
-    public void testCommunicationSimulateur() {
-        fail("Not yet implemented"); // TODO not implemented
+    public void testRun() throws InterruptedException {
+        System.out.println("toto");
+        comm.start();
+        Thread.sleep(1000);
+        comm2.sendMessage();
+        Thread.sleep(1000);
+        comm2.sendMauvaisMessage();
     }
 
     /**
      * Test method for
      * {@link org.ensta.uml.sim.views.CommunicationSimulateur#sendMessage()}.
+     * 
+     * @throws InterruptedException
      */
     @Test
-    public void testSendMessage() {
-        fail("Not yet implemented"); // TODO not implemented
-    }
-
-    /**
-     * Test method for
-     * {@link org.ensta.uml.sim.views.CommunicationSimulateur#close()}.
-     */
-    @Test
-    public void testClose() {
-        fail("Not yet implemented"); // TODO not implemented
+    public void testSendMessage() throws InterruptedException {
+        assertEquals(false, comm.sendMessage());
+        comm.start();
+        Thread.sleep(1000);
+        assertEquals(true, comm.sendMessage());
+        comm2.waitSem();
+        assertNotNull(comm2.getJson());
+        assertEquals(true, comm2.isJsonCorrect());
+        assertEquals(false, comm2.getJson().getBoolean("initialize"));
+        assertEquals(false, comm2.getJson().getBoolean("play"));
+        assertEquals(false, comm2.getJson().getBoolean("stop"));
+        assertEquals(false, comm2.getJson().getBoolean("reload"));
+        assertEquals(false, comm2.getJson().getBoolean("restart"));
+        assertEquals(false, comm2.getJson().getBoolean("random"));
+        assertEquals("", comm2.getJson().getString("state"));
+        assertEquals("", comm2.getJson().getString("reload_path"));
     }
 
     /**
      * Test method for
      * {@link org.ensta.uml.sim.views.CommunicationSimulateur#getTransitions()}.
+     * 
+     * @throws InterruptedException
      */
     @Test
-    public void testGetTransitions() {
-        fail("Not yet implemented"); // TODO not implemented
+    public void testGetTransitions() throws InterruptedException {
+        comm.start();
+        Thread.sleep(1000);
+        comm2.sendMessage();
+        Thread.sleep(1000);
+        assertNotNull(comm.getTransitions());
+        assertEquals(1, comm.getTransitions().length);
     }
 
     /**
      * Test method for
      * {@link org.ensta.uml.sim.views.CommunicationSimulateur#getCurrentState()}.
+     * 
+     * @throws InterruptedException
      */
     @Test
-    public void testGetCurrentState() {
-        fail("Not yet implemented"); // TODO not implemented
+    public void testGetCurrentState() throws InterruptedException {
+        comm.start();
+        Thread.sleep(1000);
+        comm2.sendMessage();
+        Thread.sleep(1000);
+        assertNotNull(comm.getCurrentState());
     }
 
     /**
@@ -105,7 +136,8 @@ public class CommunicationSimulateurTest {
      */
     @Test
     public void testAjouterObservateur() {
-        fail("Not yet implemented"); // TODO not implemented
+        ObservateurMock o = new ObservateurMock();
+        assertEquals(true, comm.ajouterObservateur(o));
     }
 
     /**
@@ -114,7 +146,10 @@ public class CommunicationSimulateurTest {
      */
     @Test
     public void testSupprimerObservateur() {
-        fail("Not yet implemented"); // TODO not implemented
+        ObservateurMock o = new ObservateurMock();
+        comm.ajouterObservateur(o);
+        assertEquals(true, comm.supprimerObservateur(o));
+        assertEquals(false, comm.supprimerObservateur(o));
     }
 
     /**
@@ -123,7 +158,9 @@ public class CommunicationSimulateurTest {
      */
     @Test
     public void testNotifierObservateurs() {
-        fail("Not yet implemented"); // TODO not implemented
+        ObservateurMock o = new ObservateurMock();
+        comm.ajouterObservateur(o);
+        comm.notifierObservateurs();
     }
 
     /**
@@ -132,7 +169,9 @@ public class CommunicationSimulateurTest {
      */
     @Test
     public void testPutJsonStringString() {
-        fail("Not yet implemented"); // TODO not implemented
+        assertEquals(true, comm.putJson("state", "bonjour"));
+        assertEquals(false, comm.putJson("toto", "toto"));
+        assertEquals(true, comm.putJson("reload", "toto"));
     }
 
     /**
@@ -141,24 +180,23 @@ public class CommunicationSimulateurTest {
      */
     @Test
     public void testPutJsonString() {
-        fail("Not yet implemented"); // TODO not implemented
+        assertEquals(true, comm.putJson("play"));
+        assertEquals(false, comm.putJson("toto"));
     }
 
     /**
      * Test method for
      * {@link org.ensta.uml.sim.views.CommunicationSimulateur#getCurrentClass()}.
+     * 
+     * @throws InterruptedException
      */
     @Test
-    public void testGetCurrentClass() {
-        fail("Not yet implemented"); // TODO not implemented
+    public void testGetCurrentClass() throws InterruptedException {
+        comm.start();
+        Thread.sleep(1000);
+        comm2.sendMessage();
+        Thread.sleep(1000);
+        assertEquals("pinger", comm.getCurrentClass());
     }
 
-    /**
-     * Test method for
-     * {@link org.ensta.uml.sim.views.CommunicationSimulateur#getStates()}.
-     */
-    @Test
-    public void testGetStates() {
-        fail("Not yet implemented"); // TODO not implemented
-    }
 }

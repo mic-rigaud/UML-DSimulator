@@ -15,7 +15,7 @@ import json.JSONObject;
 public class CommunicationSimulateur extends Thread implements Observable {
     private ArrayList<Observateur> tabObservateur;
 
-    private String[] keyOutput = { "state", "initialize", "reload", "play", "stop", "restart", "random" };
+    private String[] keyOutput = { "state", "initialize", "reload", "reload_path", "play", "stop", "restart", "random" };
 
     private String[] keyInput = { "transitions", "error", "error_message", "currentClass", "currentState" };
 
@@ -65,31 +65,36 @@ public class CommunicationSimulateur extends Thread implements Observable {
     }
 
     // Cette methode ne sert qu'a catch l exception
-    public void sendMessage() {
+    public boolean sendMessage() {
         try {
-            send();
+            return send();
         } catch (IOException e) {
             e.printStackTrace();
+            return false;
         }
     }
 
-    private void send() throws IOException {
+    private boolean send() throws IOException {
         try {
             if (server == null) {
                 System.out.println("Connection incomplete");
-                return;
+                return false;
             }
             DataOutputStream out = new DataOutputStream(server.getOutputStream());
             out.writeUTF(jsonOut.toString());
             initialiserJson();
+            return true;
         } catch (IOException e) {
             e.printStackTrace();
+            return false;
         }
     }
 
     public void close() {
         try {
-            server.close();
+            if (server != null)
+                server.close();
+            serverSocket.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -106,14 +111,13 @@ public class CommunicationSimulateur extends Thread implements Observable {
     }
 
     @Override
-    public void ajouterObservateur(Observateur o) {
-        tabObservateur.add(o);
+    public boolean ajouterObservateur(Observateur o) {
+        return tabObservateur.add(o);
     }
 
     @Override
-    public void supprimerObservateur(Observateur o) {
-        tabObservateur.remove(o);
-
+    public boolean supprimerObservateur(Observateur o) {
+        return tabObservateur.remove(o);
     }
 
     @Override
@@ -134,7 +138,7 @@ public class CommunicationSimulateur extends Thread implements Observable {
         this.jsonOut.put("random", false);
     }
 
-    public void putJson(String key, String valeur) {
+    public boolean putJson(String key, String valeur) {
         for (String keys : this.keyOutput) {
             if (keys.equals(key)) {
                 if (key.equals("reload")) {
@@ -143,17 +147,20 @@ public class CommunicationSimulateur extends Thread implements Observable {
                 } else {
                     this.jsonOut.put(key, valeur);
                 }
+                return true;
             }
         }
+        return false;
     }
 
-    public void putJson(String key) {
+    public boolean putJson(String key) {
         for (String keys : this.keyOutput) {
             if (keys.equals(key)) {
                 this.jsonOut.put(key, true);
+                return true;
             }
         }
-
+        return false;
     }
 
     // TODO Il faudrait verifier qu'on a bien une liste de transition sous la

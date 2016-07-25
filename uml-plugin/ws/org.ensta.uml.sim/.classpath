@@ -8,6 +8,7 @@
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="test"/>
+	<classpathentry kind="src" path="mock"/>
 	<classpathentry kind="lib" path="libs/aopalliance-1.0.jar"/>
 	<classpathentry kind="lib" path="libs/asm-3.1.jar"/>
 	<classpathentry kind="lib" path="libs/cglib-2.2.1-v20090111.jar"/>
