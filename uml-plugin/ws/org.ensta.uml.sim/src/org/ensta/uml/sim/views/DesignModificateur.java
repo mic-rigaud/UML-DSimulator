@@ -159,7 +159,8 @@ public class DesignModificateur {
     }
 
     public void putCurrentInstances(String className) {
-        putCurrentInstances(className, "all");
+        if (!this.currentInstances.containsKey(className))
+            putCurrentInstances(className, "all");
     }
 
     public boolean isCurrentInstancesContains(String className, String instanceName) {
@@ -196,6 +197,10 @@ public class DesignModificateur {
             phrase += "element " + i + " : " + elements.get(i).getName() + "\n";
         }
         return phrase;
+    }
+
+    public void printCurrentInstance() {
+        System.out.println(this.currentInstances);
     }
 
 }

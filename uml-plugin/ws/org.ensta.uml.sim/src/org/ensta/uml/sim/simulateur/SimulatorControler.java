@@ -76,8 +76,7 @@ public class SimulatorControler implements Observateur {
                 return this.getTransition(i);
             }
         }
-        System.out.println("transition non trouve donc aleatoire...");
-        return this.getRandomTransition();
+        return null;
     }
 
     public IConfiguration getConf() {

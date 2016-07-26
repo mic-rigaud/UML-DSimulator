@@ -95,7 +95,7 @@ public class CommunicationPTest {
         assertEquals(false, comm2.getJson().getBoolean("restart"));
         assertEquals(false, comm2.getJson().getBoolean("random"));
         assertEquals("", comm2.getJson().getString("state"));
-        assertEquals("", comm2.getJson().getString("reload_path"));
+        assertEquals("", comm2.getJson().getString("reloadPath"));
     }
 
     /**

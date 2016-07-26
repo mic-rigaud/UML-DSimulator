@@ -76,13 +76,13 @@ public class CommunicationSTest {
     public void testReceivereReload() throws InterruptedException {
         // test reload sans erreur
         comm2.jsonOut.put("reload", true);
-        comm2.jsonOut.put("reload_path", "/home/michael/Documents/Ensta/Stage/2A/uml-plugin/ws/org.ensta.uml.sim/test/resources/model.uml");
+        comm2.jsonOut.put("reloadPath", "/home/michael/Documents/Ensta/Stage/2A/uml-plugin/ws/org.ensta.uml.sim/test/resources/model.uml");
         comm2.sendMessage();
         comm2.waitSem();
         assertEquals(true, comm2.isMessageAcceptable());
         // test reload avec mauvais fichier
         comm2.jsonOut.put("reload", true);
-        comm2.jsonOut.put("reload_path", "fichier_inexistant");
+        comm2.jsonOut.put("reloadPath", "fichier_inexistant");
         comm2.sendMessage();
         comm2.waitSem();
         assertEquals(true, comm2.isMessageAcceptable());

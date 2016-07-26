@@ -5,7 +5,6 @@ import java.io.DataOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.net.Socket;
-import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -36,7 +35,7 @@ public class CommunicationS extends Thread {
     private ArrayList<JSONObject> listCurrentState;
 
     public CommunicationS(String nomfichier, int port) {
-        this.port = port; 
+        this.port = port;
         model = new SimulationModel();
         controler = new SimulatorControler();
         model.ajouterObservateur(controler);
@@ -63,7 +62,7 @@ public class CommunicationS extends Thread {
 
                     if (json.getBoolean("reload")) {
                         clearListCurrentState();
-                        fichier = new File(json.getString("reload_path"));
+                        fichier = new File(json.getString("reloadPath"));
                         if (!fichier.exists()) {
                             this.sendMessage("Erreur recharger un fichier");
                             continue;
@@ -81,22 +80,24 @@ public class CommunicationS extends Thread {
                         model.loadModel(fichier);
                         clearListCurrentState();
                     } else if (json.getBoolean("random")) {
-                        this.fillJsonOutLastState(controler.getTransition(json.getString("state")));
-                        model.nextStep(controler.getRandomTransition());
+                        IFireableTransition fire = controler.getRandomTransition();
+                        this.fillJsonOutLastState(fire);
+                        model.nextStep(fire);
                     } else {
-                        this.fillJsonOutLastState(controler.getTransition(json.getString("state")));
-                        model.nextStep(controler.getTransition(json.getString("state")));
+                        IFireableTransition fire = controler.getTransition(json.getString("state"));
+                        if (fire != null) {
+                            this.fillJsonOutLastState(fire);
+                            model.nextStep(fire);
+                        } else {
+                            this.sendMessage("Erreur transition non trouve");
+                            continue;
+                        }
                     }
                     this.sendMessage(controler.getListTransition());
                 }
-            } catch (SocketTimeoutException s) {
-                System.out.println("Socket timed out!");
-                break;
-            } catch (IOException e) {
+            } catch (IOException | InterruptedException e) {
                 e.printStackTrace();
                 break;
-            } catch (InterruptedException e) {
-                e.printStackTrace();
             }
         }
     }
@@ -120,9 +121,9 @@ public class CommunicationS extends Thread {
         return;
     }
 
-    private void sendMessage(String error_message) throws IOException {
+    private void sendMessage(String errorMessage) throws IOException {
         jsonOut.put("error", true);
-        jsonOut.put("error_message", error_message);
+        jsonOut.put("errorMessage", errorMessage);
         sendMessage();
         return;
     }
@@ -189,7 +190,7 @@ public class CommunicationS extends Thread {
         t.add("");
         json.put("transitions", t);
         json.put("error", false);
-        json.put("error_message", "");
+        json.put("errorMessage", "");
         json.put("currentState", listCurrentState);
         json.put("currentClass", "");
     }

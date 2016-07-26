@@ -57,11 +57,21 @@ public class DesignModificateurTest {
     }
 
     @Test
-    public void testPutCurrentInstances() {
+    public void testPutCurrentInstancesString() {
         design.putCurrentInstances("coucou");
         assertEquals(true, design.isCurrentInstancesContains("coucou", "all"));
         design.putCurrentInstances("coucou", "bonjour");
         assertEquals(true, design.isCurrentInstancesContains("coucou", "bonjour"));
+        design.putCurrentInstances("coucou");
+        assertEquals(true, design.isCurrentInstancesContains("coucou", "bonjour"));
+    }
+
+    @Test
+    public void testPutCurrentInstancesStringString() {
+        design.putCurrentInstances("coucou", "bonjour");
+        assertEquals(true, design.isCurrentInstancesContains("coucou", "bonjour"));
+        design.putCurrentInstances("coucou", "tcho");
+        assertEquals(true, design.isCurrentInstancesContains("coucou", "tcho"));
     }
 
     @Test

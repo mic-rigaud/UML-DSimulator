@@ -13,7 +13,7 @@ public class CommunicationSMock extends Thread {
 
     private JSONObject json;
 
-    private String[] keyOutput = { "state", "initialize", "reload", "reload_path", "play", "stop", "restart", "random" };
+    private String[] keyOutput = { "state", "initialize", "reload", "reloadPath", "play", "stop", "restart", "random" };
 
     private Semaphore sem = new Semaphore(0);
 
@@ -54,7 +54,7 @@ public class CommunicationSMock extends Thread {
     public void sendMessage() {
         try {
             JSONObject jsonOut = new JSONObject(
-                    "{\"error_message\":\"\",\"currentClass\":\"pinger\",\"transitions\":[\"ponger:Ponger::(org.eclipse.uml2.uml.internal.impl.TransitionImpl@5159ca66 (name: <unset>, visibility: <unset>) (isLeaf: false, kind: external))\"],\"error\":false,\"currentState\":[{\"instance\":[{\"name\":\"1\",\"state\":[\"idle\"]}],\"class\":\"ponger\"},{\"instance\":[{\"name\":\"1\",\"state\":[\"idle\"]}],\"class\":\"pinger\"}]}");
+                    "{\"errorMessage\":\"\",\"currentClass\":\"pinger\",\"transitions\":[\"ponger:Ponger::(org.eclipse.uml2.uml.internal.impl.TransitionImpl@5159ca66 (name: <unset>, visibility: <unset>) (isLeaf: false, kind: external))\"],\"error\":false,\"currentState\":[{\"instance\":[{\"name\":\"1\",\"state\":[\"idle\"]}],\"class\":\"ponger\"},{\"instance\":[{\"name\":\"1\",\"state\":[\"idle\"]}],\"class\":\"pinger\"}]}");
             DataOutputStream out = new DataOutputStream(client.getOutputStream());
             out.writeUTF(jsonOut.toString());
         } catch (IOException e) {

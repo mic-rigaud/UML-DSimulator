@@ -18,7 +18,7 @@ public class CommunicationPMock extends Thread {
 
     public JSONObject json;
 
-    private String[] keyInput = { "transitions", "error", "error_message", "currentClass", "currentState" };
+    private String[] keyInput = { "transitions", "error", "errorMessage", "currentClass", "currentState" };
 
     public JSONObject jsonOut = new JSONObject();
 

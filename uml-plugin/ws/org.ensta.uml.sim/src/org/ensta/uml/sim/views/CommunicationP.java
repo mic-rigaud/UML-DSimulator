@@ -16,9 +16,9 @@ import json.JSONObject;
 public class CommunicationP extends Thread implements Observable {
     private ArrayList<Observateur> tabObservateur;
 
-    private String[] keyOutput = { "state", "initialize", "reload", "reload_path", "play", "stop", "restart", "random" };
+    private String[] keyOutput = { "state", "initialize", "reload", "reloadPath", "play", "stop", "restart", "random" };
 
-    private String[] keyInput = { "transitions", "error", "error_message", "currentClass", "currentState" };
+    private String[] keyInput = { "transitions", "error", "errorMessage", "currentClass", "currentState" };
 
     private JSONObject jsonIn;
 
@@ -40,7 +40,7 @@ public class CommunicationP extends Thread implements Observable {
         }
         jsonOut = new JSONObject();
         initialiserJson();
-        jsonOut.put("reload_path", "");
+        jsonOut.put("reloadPath", "");
         jsonIn = new JSONObject();
     }
 
@@ -155,7 +155,7 @@ public class CommunicationP extends Thread implements Observable {
             if (keys.equals(key)) {
                 if (key.equals("reload")) {
                     this.jsonOut.put(key, true);
-                    this.jsonOut.put("reload_path", valeur);
+                    this.jsonOut.put("reloadPath", valeur);
                 } else {
                     this.jsonOut.put(key, valeur);
                 }
@@ -218,6 +218,6 @@ public class CommunicationP extends Thread implements Observable {
     }
 
     public String getErrorMessage() {
-        return jsonIn.getString("error_message");
+        return jsonIn.getString("errorMessage");
     }
 }
