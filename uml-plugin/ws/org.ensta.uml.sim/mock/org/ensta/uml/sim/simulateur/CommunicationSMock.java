@@ -8,7 +8,7 @@ import java.util.concurrent.Semaphore;
 
 import json.JSONObject;
 
-public class CommunicationSortantSimulateurMock extends Thread {
+public class CommunicationSMock extends Thread {
     private Socket client;
 
     private JSONObject json;

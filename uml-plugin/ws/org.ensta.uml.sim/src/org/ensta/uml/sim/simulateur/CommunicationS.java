@@ -18,33 +18,36 @@ import plug.core.IFireableTransition;
 import plug.simulation.ui.SimulationModel;
 import tuml.interpreter.ActiveObject;
 
-public class CommunicationSortantSimulateur extends Thread {
-    SimulationModel model;
+public class CommunicationS extends Thread {
+    private SimulationModel model;
 
-    SimulatorControler controler;
+    private SimulatorControler controler;
 
     File fichier;
 
-    Socket client;
+    private Socket client;
 
-    private int port = 9000;
+    private int port;
 
     private String serverName = "localhost";
 
-    JSONObject jsonOut;
+    private JSONObject jsonOut;
 
-    ArrayList<JSONObject> listCurrentState;
+    private ArrayList<JSONObject> listCurrentState;
 
-    public CommunicationSortantSimulateur(String nomfichier) {
+    public CommunicationS(String nomfichier, int port) {
+        this.port = port; 
         model = new SimulationModel();
         controler = new SimulatorControler();
         model.ajouterObservateur(controler);
         fichier = new File(nomfichier);
-        model.loadModel(fichier);
-        model.initialize();
         jsonOut = new JSONObject();
         listCurrentState = new ArrayList<JSONObject>();
         initialiserJson(jsonOut);
+        if (fichier.exists()) {
+            model.loadModel(fichier);
+            model.initialize();
+        }
     }
 
     @Override
@@ -58,7 +61,18 @@ public class CommunicationSortantSimulateur extends Thread {
                     JSONObject json = new JSONObject(in.readUTF());
                     System.out.println("  ----   ");
 
-                    if (json.getBoolean("initialize")) {
+                    if (json.getBoolean("reload")) {
+                        clearListCurrentState();
+                        fichier = new File(json.getString("reload_path"));
+                        if (!fichier.exists()) {
+                            this.sendMessage("Erreur recharger un fichier");
+                            continue;
+                        } else
+                            model.loadModel(fichier);
+                    } else if (!fichier.exists()) {
+                        this.sendMessage("Erreur recharger un fichier");
+                        continue;
+                    } else if (json.getBoolean("initialize")) {
                         System.out.println("Init");
                         clearListCurrentState();
                         model.initialize();
@@ -66,12 +80,6 @@ public class CommunicationSortantSimulateur extends Thread {
                     } else if (json.getBoolean("restart")) {
                         model.loadModel(fichier);
                         clearListCurrentState();
-                    } else if (json.getBoolean("reload")) {
-                        clearListCurrentState();
-                        fichier = new File(json.getString("reload_path"));
-                        // TODO initialiser la hashmap
-                        model.loadModel(fichier); // TODO exception si fichier
-                                                  // incorrect a traiter
                     } else if (json.getBoolean("random")) {
                         this.fillJsonOutLastState(controler.getTransition(json.getString("state")));
                         model.nextStep(controler.getRandomTransition());
@@ -91,6 +99,43 @@ public class CommunicationSortantSimulateur extends Thread {
                 e.printStackTrace();
             }
         }
+    }
+
+    private void clearListCurrentState() {
+        listCurrentState.clear();
+        jsonOut.put("currentState", listCurrentState);
+    }
+
+    private void sendMessage(List<IFireableTransition> liste) throws IOException {
+        List<String> transitions = new ArrayList<String>();
+        for (IFireableTransition transition : liste) {
+            transitions.add(transition.toString());
+        }
+        if (transitions.isEmpty()) {
+            sendMessage("Il n'y a plus de transitions");
+            return;
+        }
+        jsonOut.put("transitions", transitions);
+        sendMessage();
+        return;
+    }
+
+    private void sendMessage(String error_message) throws IOException {
+        jsonOut.put("error", true);
+        jsonOut.put("error_message", error_message);
+        sendMessage();
+        return;
+    }
+
+    private void sendMessage() throws IOException {
+        try {
+            DataOutputStream out = new DataOutputStream(client.getOutputStream());
+            out.writeUTF(jsonOut.toString());
+            initialiserJson(jsonOut);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return;
     }
 
     @SuppressWarnings({ "rawtypes" })
@@ -138,28 +183,7 @@ public class CommunicationSortantSimulateur extends Thread {
         }
     }
 
-    private void clearListCurrentState() {
-        listCurrentState.clear();
-        jsonOut.put("currentState", listCurrentState);
-    }
-
-    public void sendMessage(List<IFireableTransition> liste) throws IOException {
-        try {
-            List<String> transitions = new ArrayList<String>();
-            for (IFireableTransition transition : liste) {
-                transitions.add(transition.toString());
-            }
-            jsonOut.put("transitions", transitions);
-            DataOutputStream out = new DataOutputStream(client.getOutputStream());
-            out.writeUTF(jsonOut.toString());
-            initialiserJson(jsonOut);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return;
-    }
-
-    public void initialiserJson(JSONObject json) {
+    private void initialiserJson(JSONObject json) {
         // TODO remplir currentState avec toutes les classes
         List<String> t = new LinkedList<String>();
         t.add("");

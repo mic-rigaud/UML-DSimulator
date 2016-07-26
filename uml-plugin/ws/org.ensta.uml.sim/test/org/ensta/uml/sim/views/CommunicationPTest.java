@@ -6,7 +6,7 @@ package org.ensta.uml.sim.views;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-import org.ensta.uml.sim.simulateur.CommunicationSortantSimulateurMock;
+import org.ensta.uml.sim.simulateur.CommunicationSMock;
 import org.ensta.uml.sim.simulateur.ObservateurMock;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -18,17 +18,17 @@ import org.junit.Test;
  * @author michael
  *
  */
-public class CommunicationSimulateurTest {
-    private CommunicationSimulateur comm;
+public class CommunicationPTest {
+    private CommunicationP comm;
 
-    private static CommunicationSortantSimulateurMock comm2;
+    private static CommunicationSMock comm2;
 
     /**
      * @throws java.lang.Exception
      */
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
-        comm2 = new CommunicationSortantSimulateurMock();
+        comm2 = new CommunicationSMock();
         comm2.start();
     }
 
@@ -44,7 +44,7 @@ public class CommunicationSimulateurTest {
      */
     @Before
     public void setUp() throws Exception {
-        comm = new CommunicationSimulateur(5000);
+        comm = new CommunicationP(5000);
     }
 
     /**
@@ -59,8 +59,7 @@ public class CommunicationSimulateurTest {
     }
 
     /**
-     * Test method for
-     * {@link org.ensta.uml.sim.views.CommunicationSimulateur#run()}.
+     * Test method for {@link org.ensta.uml.sim.views.CommunicationP#run()}.
      * 
      * @throws InterruptedException
      */
@@ -68,7 +67,7 @@ public class CommunicationSimulateurTest {
     public void testRun() throws InterruptedException {
         System.out.println("toto");
         comm.start();
-        Thread.sleep(1000);
+        comm.waitConnection();
         comm2.sendMessage();
         Thread.sleep(1000);
         comm2.sendMauvaisMessage();
@@ -76,7 +75,7 @@ public class CommunicationSimulateurTest {
 
     /**
      * Test method for
-     * {@link org.ensta.uml.sim.views.CommunicationSimulateur#sendMessage()}.
+     * {@link org.ensta.uml.sim.views.CommunicationP#sendMessage()}.
      * 
      * @throws InterruptedException
      */
@@ -84,7 +83,7 @@ public class CommunicationSimulateurTest {
     public void testSendMessage() throws InterruptedException {
         assertEquals(false, comm.sendMessage());
         comm.start();
-        Thread.sleep(1000);
+        comm.waitConnection();
         assertEquals(true, comm.sendMessage());
         comm2.waitSem();
         assertNotNull(comm2.getJson());
@@ -101,14 +100,14 @@ public class CommunicationSimulateurTest {
 
     /**
      * Test method for
-     * {@link org.ensta.uml.sim.views.CommunicationSimulateur#getTransitions()}.
+     * {@link org.ensta.uml.sim.views.CommunicationP#getTransitions()}.
      * 
      * @throws InterruptedException
      */
     @Test
     public void testGetTransitions() throws InterruptedException {
         comm.start();
-        Thread.sleep(1000);
+        comm.waitConnection();
         comm2.sendMessage();
         Thread.sleep(1000);
         assertNotNull(comm.getTransitions());
@@ -117,14 +116,14 @@ public class CommunicationSimulateurTest {
 
     /**
      * Test method for
-     * {@link org.ensta.uml.sim.views.CommunicationSimulateur#getCurrentState()}.
+     * {@link org.ensta.uml.sim.views.CommunicationP#getCurrentState()}.
      * 
      * @throws InterruptedException
      */
     @Test
     public void testGetCurrentState() throws InterruptedException {
         comm.start();
-        Thread.sleep(1000);
+        comm.waitConnection();
         comm2.sendMessage();
         Thread.sleep(1000);
         assertNotNull(comm.getCurrentState());
@@ -132,7 +131,7 @@ public class CommunicationSimulateurTest {
 
     /**
      * Test method for
-     * {@link org.ensta.uml.sim.views.CommunicationSimulateur#ajouterObservateur(org.ensta.uml.sim.views.Observateur)}.
+     * {@link org.ensta.uml.sim.views.CommunicationP#ajouterObservateur(org.ensta.uml.sim.views.Observateur)}.
      */
     @Test
     public void testAjouterObservateur() {
@@ -142,7 +141,7 @@ public class CommunicationSimulateurTest {
 
     /**
      * Test method for
-     * {@link org.ensta.uml.sim.views.CommunicationSimulateur#supprimerObservateur(org.ensta.uml.sim.views.Observateur)}.
+     * {@link org.ensta.uml.sim.views.CommunicationP#supprimerObservateur(org.ensta.uml.sim.views.Observateur)}.
      */
     @Test
     public void testSupprimerObservateur() {
@@ -154,7 +153,7 @@ public class CommunicationSimulateurTest {
 
     /**
      * Test method for
-     * {@link org.ensta.uml.sim.views.CommunicationSimulateur#notifierObservateurs()}.
+     * {@link org.ensta.uml.sim.views.CommunicationP#notifierObservateurs()}.
      */
     @Test
     public void testNotifierObservateurs() {
@@ -165,7 +164,7 @@ public class CommunicationSimulateurTest {
 
     /**
      * Test method for
-     * {@link org.ensta.uml.sim.views.CommunicationSimulateur#putJson(java.lang.String, java.lang.String)}.
+     * {@link org.ensta.uml.sim.views.CommunicationP#putJson(java.lang.String, java.lang.String)}.
      */
     @Test
     public void testPutJsonStringString() {
@@ -176,7 +175,7 @@ public class CommunicationSimulateurTest {
 
     /**
      * Test method for
-     * {@link org.ensta.uml.sim.views.CommunicationSimulateur#putJson(java.lang.String)}.
+     * {@link org.ensta.uml.sim.views.CommunicationP#putJson(java.lang.String)}.
      */
     @Test
     public void testPutJsonString() {
@@ -186,14 +185,14 @@ public class CommunicationSimulateurTest {
 
     /**
      * Test method for
-     * {@link org.ensta.uml.sim.views.CommunicationSimulateur#getCurrentClass()}.
+     * {@link org.ensta.uml.sim.views.CommunicationP#getCurrentClass()}.
      * 
      * @throws InterruptedException
      */
     @Test
     public void testGetCurrentClass() throws InterruptedException {
         comm.start();
-        Thread.sleep(1000);
+        comm.waitConnection();
         comm2.sendMessage();
         Thread.sleep(1000);
         assertEquals("pinger", comm.getCurrentClass());

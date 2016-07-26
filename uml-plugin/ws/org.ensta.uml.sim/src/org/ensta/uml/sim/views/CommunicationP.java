@@ -8,11 +8,12 @@ import java.net.Socket;
 import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Semaphore;
 
 import json.JSONArray;
 import json.JSONObject;
 
-public class CommunicationSimulateur extends Thread implements Observable {
+public class CommunicationP extends Thread implements Observable {
     private ArrayList<Observateur> tabObservateur;
 
     private String[] keyOutput = { "state", "initialize", "reload", "reload_path", "play", "stop", "restart", "random" };
@@ -27,7 +28,9 @@ public class CommunicationSimulateur extends Thread implements Observable {
 
     private JSONObject jsonOut;
 
-    public CommunicationSimulateur(int port) {
+    private Semaphore semConnection = new Semaphore(0);
+
+    public CommunicationP(int port) {
         tabObservateur = new ArrayList<Observateur>();
         try {
             serverSocket = new ServerSocket(port);
@@ -45,6 +48,7 @@ public class CommunicationSimulateur extends Thread implements Observable {
     public void run() {
         try {
             this.server = serverSocket.accept();
+            semConnection.release();
             System.out.println("Connexion accepte");
             while (true) {
                 DataInputStream in = new DataInputStream(server.getInputStream());
@@ -62,6 +66,14 @@ public class CommunicationSimulateur extends Thread implements Observable {
             e.printStackTrace();
         }
 
+    }
+
+    public void waitConnection() {
+        try {
+            semConnection.acquire();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     // Cette methode ne sert qu'a catch l exception
@@ -199,5 +211,13 @@ public class CommunicationSimulateur extends Thread implements Observable {
 
     public String getCurrentClass() {
         return this.jsonIn.getString("currentClass");
+    }
+
+    public boolean isError() {
+        return jsonIn.getBoolean("error");
+    }
+
+    public String getErrorMessage() {
+        return jsonIn.getString("error_message");
     }
 }

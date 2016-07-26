@@ -45,7 +45,7 @@ import org.eclipse.ui.IWorkbenchActionConstants;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.internal.util.BundleUtility;
 import org.eclipse.ui.part.ViewPart;
-import org.ensta.uml.sim.simulateur.CommunicationSortantSimulateur;
+import org.ensta.uml.sim.simulateur.CommunicationS;
 import org.osgi.framework.Bundle;
 
 import json.JSONArray;
@@ -87,9 +87,9 @@ public class SimulatorView extends ViewPart implements Observateur {
 
     private Action doubleClickAction;
 
-    private CommunicationSimulateur comm;
+    private CommunicationP communicationP;
 
-    private CommunicationSortantSimulateur comm2;
+    private CommunicationS communicationS;
 
     private String[] transitions;
 
@@ -126,11 +126,12 @@ public class SimulatorView extends ViewPart implements Observateur {
         currentProject = path.segment(1);
         String nouveauPath = ResourcesPlugin.getWorkspace().getRoot().getFile(new org.eclipse.core.runtime.Path(res.getURI().toPlatformString(true))).getLocation().toPortableString()
                 .replace(path.lastSegment(), "model.uml");
-        comm = new CommunicationSimulateur(9000);
-        comm.start();
-        comm.ajouterObservateur(this);
-        comm2 = new CommunicationSortantSimulateur(nouveauPath);
-        comm2.start();
+        communicationP = new CommunicationP(9000);
+        communicationP.start();
+        communicationP.ajouterObservateur(this);
+        communicationS = new CommunicationS(nouveauPath, 9000);
+        communicationS.start();
+        communicationP.waitConnection();
         design = new DesignModificateur(session);
     }
 
@@ -173,6 +174,8 @@ public class SimulatorView extends ViewPart implements Observateur {
     public void actualiserPartControl() {
         try {
             sem.acquire();
+            if (communicationP.isError())
+                showMessage(communicationP.getErrorMessage());
             viewer.setInput(transitions);
             refreshTreeView();
             design.refreshColor();
@@ -184,6 +187,8 @@ public class SimulatorView extends ViewPart implements Observateur {
     public void actualiserPartControl(String liste) {
         try {
             sem.acquire();
+            if (communicationP.isError())
+                showMessage(communicationP.getErrorMessage());
             viewer.setInput(liste.split("#"));
             refreshTreeView();
             design.refreshColor();
@@ -242,8 +247,8 @@ public class SimulatorView extends ViewPart implements Observateur {
         restart = new Action() {
             @Override
             public void run() {
-                comm.putJson("restart");
-                comm.sendMessage();
+                communicationP.putJson("restart");
+                communicationP.sendMessage();
                 actualiserPartControl("Initialize");
                 showMessage("Restart");
             }
@@ -298,11 +303,11 @@ public class SimulatorView extends ViewPart implements Observateur {
                     return;
                 }
                 if (obj.toString().equalsIgnoreCase("initialize")) {
-                    comm.putJson("initialize");
+                    communicationP.putJson("initialize");
                 } else {
-                    comm.putJson("state", obj.toString());
+                    communicationP.putJson("state", obj.toString());
                 }
-                comm.sendMessage();
+                communicationP.sendMessage();
                 actualiserPartControl();
             }
         };
@@ -368,12 +373,13 @@ public class SimulatorView extends ViewPart implements Observateur {
                     design = new DesignModificateur(session);
                     String nouveauPath = ResourcesPlugin.getWorkspace().getRoot().getFile(new org.eclipse.core.runtime.Path(res.getURI().toPlatformString(true))).getLocation().toPortableString()
                             .replace(path.lastSegment(), "model.uml");
-                    comm.putJson("reload", nouveauPath);
-                    comm.sendMessage();
+                    communicationP.putJson("reload", nouveauPath);
+                    communicationP.sendMessage();
                     actualiserPartControl("Initialize");
                     currentProject = path.segment(1);
                     refreshTreeView();
-                    showMessage("Vous avez bien basculer sur la session: " + path.segment(1));
+                    if (!communicationP.isError())
+                        showMessage("Vous avez bien basculer sur la session: " + path.segment(1));
                 }
             });
         }
@@ -409,8 +415,8 @@ public class SimulatorView extends ViewPart implements Observateur {
 
     @Override
     public void actualiser(Observable o) {
-        if (o instanceof CommunicationSimulateur) {
-            CommunicationSimulateur comm = (CommunicationSimulateur) o;
+        if (o instanceof CommunicationP) {
+            CommunicationP comm = (CommunicationP) o;
             transitions = comm.getTransitions();
             design.refreshElements(comm.getCurrentClass(), comm.getCurrentState());
         }
