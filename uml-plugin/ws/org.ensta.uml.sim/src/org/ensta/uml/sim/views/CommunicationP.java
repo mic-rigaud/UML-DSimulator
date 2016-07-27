@@ -114,6 +114,7 @@ public class CommunicationP extends Thread implements Observable {
 
     public String[] getTransitions() {
         List<Object> liste = jsonIn.getJSONArray("transitions").toList();
+        System.out.println(liste);
         String[] trans = liste.toArray(new String[liste.size()]);
         return trans;
     }
@@ -214,7 +215,9 @@ public class CommunicationP extends Thread implements Observable {
     }
 
     public boolean isError() {
-        return jsonIn.getBoolean("error");
+        if (jsonIn.has("error"))
+            return jsonIn.getBoolean("error");
+        return false;
     }
 
     public String getErrorMessage() {

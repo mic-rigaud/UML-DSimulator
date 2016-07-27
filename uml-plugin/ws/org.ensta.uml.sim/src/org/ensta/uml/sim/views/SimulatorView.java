@@ -1,12 +1,10 @@
 package org.ensta.uml.sim.views;
 
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Semaphore;
 
 import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.jface.action.Action;
@@ -17,20 +15,16 @@ import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.DoubleClickEvent;
 import org.eclipse.jface.viewers.IDoubleClickListener;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.viewers.ITableLabelProvider;
-import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
-import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Event;
@@ -43,10 +37,9 @@ import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.IWorkbenchActionConstants;
 import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.internal.util.BundleUtility;
 import org.eclipse.ui.part.ViewPart;
 import org.ensta.uml.sim.simulateur.CommunicationS;
-import org.osgi.framework.Bundle;
+import org.ensta.uml.sim.views.tools.Tools;
 
 import json.JSONArray;
 import json.JSONObject;
@@ -75,6 +68,8 @@ public class SimulatorView extends ViewPart implements Observateur {
 
     private TableViewer viewer;
 
+    private ViewLabelProvider viewLabel;
+
     private Tree tree;
 
     private Action play;
@@ -98,23 +93,6 @@ public class SimulatorView extends ViewPart implements Observateur {
     private Semaphore sem = new Semaphore(0);
 
     private DesignModificateur design;
-
-    class ViewLabelProvider extends LabelProvider implements ITableLabelProvider {
-        @Override
-        public String getColumnText(Object obj, int index) {
-            return getText(obj);
-        }
-
-        @Override
-        public Image getColumnImage(Object obj, int index) {
-            return getImage(obj);
-        }
-
-        @Override
-        public Image getImage(Object obj) {
-            return PlatformUI.getWorkbench().getSharedImages().getImage(ISharedImages.IMG_OBJ_ELEMENT);
-        }
-    }
 
     /**
      * The constructor.
@@ -146,52 +124,50 @@ public class SimulatorView extends ViewPart implements Observateur {
         parent.setLayout(grid);
         viewer = new TableViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
         viewer.setContentProvider(ArrayContentProvider.getInstance());
-        viewer.setInput(new String[] { "Initialize" });
-        viewer.setLabelProvider(new ViewLabelProvider());
+        viewLabel = new ViewLabelProvider();
+        viewer.setLabelProvider(viewLabel);
         tree = new Tree(parent, SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL);
         tree.setHeaderVisible(true);
-
         TreeColumn column1 = new TreeColumn(tree, SWT.LEFT);
         column1.setText("Overview of the project");
         column1.setWidth(200);
         TreeItem item = new TreeItem(tree, SWT.NONE);
         item.setText(SessionManager.INSTANCE.getSessions().toArray(new Session[0])[0].getSessionResource().getURI().segment(1));
-
-        // Create the help context id for the viewer's control
         PlatformUI.getWorkbench().getHelpSystem().setHelp(viewer.getControl(), "org.ensta.uml.sim.viewer");
         getSite().setSelectionProvider(viewer);
         makeActions();
         hookContextMenu();
         hookDoubleClickAction();
         contributeToActionBars();
-        selectedActionInstance();
+        treeSimpleClickAction();
+        sem.release();
+        refreshPartControl("Initialize");
     }
 
-    /*
-     * Code redondant... mais je vois pas comment le modifier. Attention: il
-     * faut appeler transition apres le sem.acquire sinon prob...
-     */
-    public void actualiserPartControl() {
+    public void refreshPartControl() {
         try {
             sem.acquire();
-            if (communicationP.isError())
+            if (communicationP.isError()) {
+                transitions = new String[] { "Error" };
                 showMessage(communicationP.getErrorMessage());
+                viewLabel.changeImage("icons/error.gif");
+            }
             viewer.setInput(transitions);
             refreshTreeView();
             design.refreshColor();
+            viewLabel.changeImage("icons/transition.gif");
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
 
-    public void actualiserPartControl(String liste) {
+    public void refreshPartControl(String liste) {
         try {
             sem.acquire();
-            if (communicationP.isError())
-                showMessage(communicationP.getErrorMessage());
-            viewer.setInput(liste.split("#"));
-            refreshTreeView();
-            design.refreshColor();
+            sem.release();
+            viewLabel.changeImage("icons/init.gif");
+            transitions = new String[] { liste };
+            refreshPartControl();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -249,13 +225,13 @@ public class SimulatorView extends ViewPart implements Observateur {
             public void run() {
                 communicationP.putJson("restart");
                 communicationP.sendMessage();
-                actualiserPartControl("Initialize");
+                refreshPartControl("Initialize");
                 showMessage("Restart");
             }
         };
         restart.setText("Restart");
         restart.setToolTipText("restart tooltip");
-        restart.setImageDescriptor(this.getImageDescriptor("icons/replay.gif"));
+        restart.setImageDescriptor(Tools.getImageDescriptor("icons/replay.gif"));
 
         play = new Action() {
             @Override
@@ -265,7 +241,7 @@ public class SimulatorView extends ViewPart implements Observateur {
         };
         play.setText("Play");
         play.setToolTipText("Play tooltip");
-        play.setImageDescriptor(this.getImageDescriptor("icons/play.gif"));
+        play.setImageDescriptor(Tools.getImageDescriptor("icons/play.gif"));
         stop = new Action() {
             @Override
             public void run() {
@@ -308,7 +284,7 @@ public class SimulatorView extends ViewPart implements Observateur {
                     communicationP.putJson("state", obj.toString());
                 }
                 communicationP.sendMessage();
-                actualiserPartControl();
+                refreshPartControl();
             }
         };
     }
@@ -322,7 +298,7 @@ public class SimulatorView extends ViewPart implements Observateur {
         });
     }
 
-    private void selectedActionInstance() {
+    private void treeSimpleClickAction() {
         tree.addListener(SWT.Selection, new Listener() {
             @Override
             public void handleEvent(Event event) {
@@ -336,6 +312,7 @@ public class SimulatorView extends ViewPart implements Observateur {
                         design.putCurrentInstances(fils.replace("Class : ", ""), "all");
                     }
                     refreshTreeView();
+                    design.refreshColor();
                 }
             }
         });
@@ -375,12 +352,12 @@ public class SimulatorView extends ViewPart implements Observateur {
                             .replace(path.lastSegment(), "model.uml");
                     communicationP.putJson("reload", nouveauPath);
                     communicationP.sendMessage();
-                    actualiserPartControl("Initialize");
                     currentProject = path.segment(1);
-                    refreshTreeView();
+                    refreshPartControl("Initialize");
                     if (!communicationP.isError())
                         showMessage("Vous avez bien basculer sur la session: " + path.segment(1));
                 }
+
             });
         }
         return actions;
@@ -421,13 +398,6 @@ public class SimulatorView extends ViewPart implements Observateur {
             design.refreshElements(comm.getCurrentClass(), comm.getCurrentState());
         }
         sem.release();
-    }
-
-    public ImageDescriptor getImageDescriptor(String path) {
-        String pluginId = "org.ensta.uml.sim";
-        Bundle bundle = Platform.getBundle(pluginId);
-        URL fullPathString = BundleUtility.find(bundle, path);
-        return ImageDescriptor.createFromURL(fullPathString);
     }
 
 }

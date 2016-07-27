@@ -28,13 +28,13 @@ public class SimulatorControler implements Observateur {
     public void actualiser(Observable o) {
         if (o instanceof SimulationModel) {
             SimulationModel sim = (SimulationModel) o;
-            this.actualiserListTransition(sim);
+            this.refreshListTransition(sim);
             conf = sim.currentState();
         }
     }
 
-    public void actualiserListTransition(SimulationModel sim) {
-        listTransition.clear();
+    public void refreshListTransition(SimulationModel sim) {
+        this.clearListTransition();
         Collection<IFireableTransition> transitions = sim.getTransition();
         if (transitions.size() == 0) {
             System.out.println("error pas de transitions");
@@ -42,6 +42,10 @@ public class SimulatorControler implements Observateur {
         for (IFireableTransition transition : transitions) {
             listTransition.add(transition);
         }
+    }
+
+    public void clearListTransition() {
+        listTransition.clear();
     }
 
     public List<IFireableTransition> getListTransition() {

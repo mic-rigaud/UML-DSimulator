@@ -34,6 +34,8 @@ public class CommunicationS extends Thread {
 
     private ArrayList<JSONObject> listCurrentState;
 
+    private boolean fileError;
+
     public CommunicationS(String nomfichier, int port) {
         this.port = port;
         model = new SimulationModel();
@@ -43,9 +45,35 @@ public class CommunicationS extends Thread {
         jsonOut = new JSONObject();
         listCurrentState = new ArrayList<JSONObject>();
         initialiserJson(jsonOut);
+        fileError = !initLoadModel();
+
+    }
+
+    private boolean initLoadModel() {
         if (fichier.exists()) {
-            model.loadModel(fichier);
-            model.initialize();
+            try {
+                model.loadModel(fichier);
+                model.initialize();
+                return true;
+            } catch (RuntimeException e) {
+            }
+        }
+        return false;
+    }
+
+    private boolean loadModel() throws IOException {
+        try {
+            if (fichier.exists()) {
+                model.loadModel(fichier);
+                model.initialize();
+                return true;
+            } else {
+                this.sendMessage("Erreur recharger un fichier");
+                return false;
+            }
+        } catch (RuntimeException e) {
+            this.sendMessage("Erreur fichier incompatible");
+            return false;
         }
     }
 
@@ -63,21 +91,17 @@ public class CommunicationS extends Thread {
                     if (json.getBoolean("reload")) {
                         clearListCurrentState();
                         fichier = new File(json.getString("reloadPath"));
-                        if (!fichier.exists()) {
-                            this.sendMessage("Erreur recharger un fichier");
+                        if (fileError = !loadModel())
                             continue;
-                        } else
-                            model.loadModel(fichier);
-                    } else if (!fichier.exists()) {
+                    } else if (fileError) {
                         this.sendMessage("Erreur recharger un fichier");
                         continue;
                     } else if (json.getBoolean("initialize")) {
                         System.out.println("Init");
                         clearListCurrentState();
-                        model.initialize();
                         model.nextStep(controler.getRandomTransition());
                     } else if (json.getBoolean("restart")) {
-                        model.loadModel(fichier);
+                        fileError = !loadModel();
                         clearListCurrentState();
                     } else if (json.getBoolean("random")) {
                         IFireableTransition fire = controler.getRandomTransition();
@@ -90,6 +114,7 @@ public class CommunicationS extends Thread {
                             model.nextStep(fire);
                         } else {
                             this.sendMessage("Erreur transition non trouve");
+                            fileError = true;
                             continue;
                         }
                     }
@@ -124,6 +149,7 @@ public class CommunicationS extends Thread {
     private void sendMessage(String errorMessage) throws IOException {
         jsonOut.put("error", true);
         jsonOut.put("errorMessage", errorMessage);
+        jsonOut.put("transitions", new String[] { "Error" });
         sendMessage();
         return;
     }
@@ -178,6 +204,12 @@ public class CommunicationS extends Thread {
             JSONObject jsonInstance = new JSONObject();
             jsonInstance.put("name", instance);
             jsonInstance.put("state", new JSONArray().put(state));
+            // // Code pour test double instance
+            // JSONObject jsonInstance2 = new JSONObject();
+            // jsonInstance2.put("name", "2");
+            // jsonInstance2.put("state", new JSONArray().put(state));
+            // list2.add(jsonInstance2);
+            // //////////////////////////////////
             list2.add(jsonInstance);
             jsonClasse.put("instance", list2);
             listCurrentState.add(jsonClasse);

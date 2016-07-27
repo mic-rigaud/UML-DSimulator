@@ -13,7 +13,8 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.gmf.runtime.common.core,
  org.eclipse.gmf.runtime.diagram.core,
  org.eclipse.sirius.diagram.ui,
- org.junit
+ org.junit,
+ org.eclipse.swt
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ClassPath: .,
  libs/aopalliance-1.0.jar,
