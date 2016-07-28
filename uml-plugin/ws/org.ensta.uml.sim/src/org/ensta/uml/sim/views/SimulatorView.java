@@ -1,48 +1,38 @@
 package org.ensta.uml.sim.views;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.Semaphore;
 
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.jface.action.Action;
-import org.eclipse.jface.action.IMenuCreator;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.DoubleClickEvent;
 import org.eclipse.jface.viewers.IDoubleClickListener;
-import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Event;
-import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Menu;
-import org.eclipse.swt.widgets.Tree;
-import org.eclipse.swt.widgets.TreeColumn;
-import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.ui.IActionBars;
-import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.IWorkbenchActionConstants;
-import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.ViewPart;
 import org.ensta.uml.sim.simulateur.CommunicationS;
-import org.ensta.uml.sim.views.tools.Tools;
-
-import json.JSONArray;
-import json.JSONObject;
+import org.ensta.uml.sim.views.communication.CommunicationP;
+import org.ensta.uml.sim.views.design.DesignModificateur;
+import org.ensta.uml.sim.views.features.ActionDoubleClick;
+import org.ensta.uml.sim.views.features.buttons.ActionPlay;
+import org.ensta.uml.sim.views.features.buttons.ActionRestart;
+import org.ensta.uml.sim.views.features.buttons.ActionStop;
+import org.ensta.uml.sim.views.features.menu.ActionMenuProject;
+import org.ensta.uml.sim.views.features.view.ViewProject;
+import org.ensta.uml.sim.views.features.view.ViewTransitions;
+import org.ensta.uml.sim.views.model.StateModel;
 
 /**
  * This sample class demonstrates how to plug-in a new workbench view. The view
@@ -66,50 +56,48 @@ public class SimulatorView extends ViewPart implements Observateur {
      */
     public static final String ID = "org.ensta.uml.sim.views.SimulatorView";
 
-    private TableViewer viewer;
+    private static ViewTransitions viewer;
 
-    private ViewLabelProvider viewLabel;
+    private static ViewProject tree;
 
-    private Tree tree;
+    private static ActionPlay play;
 
-    private Action play;
+    private static ActionStop stop;
 
-    private Action stop;
+    private static ActionRestart restart;
 
-    private Action restart;
+    private static ActionMenuProject choixVue;
 
-    private Action choixVue;
+    private static ActionDoubleClick doubleClickAction;
 
-    private Action doubleClickAction;
+    private static CommunicationP communicationP;
 
-    private CommunicationP communicationP;
+    private static CommunicationS communicationS;
 
-    private CommunicationS communicationS;
+    private static String[] transitions;
 
-    private String[] transitions;
+    private static Semaphore sem = new Semaphore(0);
 
-    private String currentProject;
-
-    private Semaphore sem = new Semaphore(0);
-
-    private DesignModificateur design;
+    private static DesignModificateur design;
 
     /**
      * The constructor.
      */
     public SimulatorView() {
+        StateModel.initialize();
         Session session = SessionManager.INSTANCE.getSessions().toArray(new Session[0])[0];
         Resource res = session.getSessionResource();
         URI path = res.getURI();
-        currentProject = path.segment(1);
+        StateModel.setCurrentProjectName(path.segment(1));
         String nouveauPath = ResourcesPlugin.getWorkspace().getRoot().getFile(new org.eclipse.core.runtime.Path(res.getURI().toPlatformString(true))).getLocation().toPortableString()
                 .replace(path.lastSegment(), "model.uml");
         communicationP = new CommunicationP(9000);
         communicationP.start();
         communicationP.ajouterObservateur(this);
-        communicationS = new CommunicationS(nouveauPath, 9000);
+        communicationS = new CommunicationS(9000);
         communicationS.start();
         communicationP.waitConnection();
+        communicationP.startCommunication(nouveauPath);
         design = new DesignModificateur(session);
     }
 
@@ -122,25 +110,14 @@ public class SimulatorView extends ViewPart implements Observateur {
         FillLayout grid = (FillLayout) parent.getLayout();
         grid.type = SWT.VERTICAL;
         parent.setLayout(grid);
-        viewer = new TableViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
-        viewer.setContentProvider(ArrayContentProvider.getInstance());
-        viewLabel = new ViewLabelProvider();
-        viewer.setLabelProvider(viewLabel);
-        tree = new Tree(parent, SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL);
-        tree.setHeaderVisible(true);
-        TreeColumn column1 = new TreeColumn(tree, SWT.LEFT);
-        column1.setText("Overview of the project");
-        column1.setWidth(200);
-        TreeItem item = new TreeItem(tree, SWT.NONE);
-        item.setText(SessionManager.INSTANCE.getSessions().toArray(new Session[0])[0].getSessionResource().getURI().segment(1));
-        PlatformUI.getWorkbench().getHelpSystem().setHelp(viewer.getControl(), "org.ensta.uml.sim.viewer");
+        viewer = new ViewTransitions(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
         getSite().setSelectionProvider(viewer);
+        tree = new ViewProject(parent, SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL);
+        tree.addClickAction(design);
         makeActions();
         hookContextMenu();
         hookDoubleClickAction();
         contributeToActionBars();
-        treeSimpleClickAction();
-        sem.release();
         refreshPartControl("Initialize");
     }
 
@@ -150,12 +127,12 @@ public class SimulatorView extends ViewPart implements Observateur {
             if (communicationP.isError()) {
                 transitions = new String[] { "Error" };
                 showMessage(communicationP.getErrorMessage());
-                viewLabel.changeImage("icons/error.gif");
+                viewer.changeViewLabel("icons/error.gif");
             }
             viewer.setInput(transitions);
-            refreshTreeView();
+            tree.refreshTreeView();
             design.refreshColor();
-            viewLabel.changeImage("icons/transition.gif");
+            viewer.changeViewLabel("icons/transition.gif");
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -165,7 +142,7 @@ public class SimulatorView extends ViewPart implements Observateur {
         try {
             sem.acquire();
             sem.release();
-            viewLabel.changeImage("icons/init.gif");
+            viewer.changeViewLabel("icons/init.gif");
             transitions = new String[] { liste };
             refreshPartControl();
         } catch (InterruptedException e) {
@@ -220,73 +197,11 @@ public class SimulatorView extends ViewPart implements Observateur {
     }
 
     private void makeActions() {
-        restart = new Action() {
-            @Override
-            public void run() {
-                communicationP.putJson("restart");
-                communicationP.sendMessage();
-                refreshPartControl("Initialize");
-                showMessage("Restart");
-            }
-        };
-        restart.setText("Restart");
-        restart.setToolTipText("restart tooltip");
-        restart.setImageDescriptor(Tools.getImageDescriptor("icons/replay.gif"));
-
-        play = new Action() {
-            @Override
-            public void run() {
-                showMessage("Play the simulateur");
-            }
-        };
-        play.setText("Play");
-        play.setToolTipText("Play tooltip");
-        play.setImageDescriptor(Tools.getImageDescriptor("icons/play.gif"));
-        stop = new Action() {
-            @Override
-            public void run() {
-                design.printInfo();
-                showMessage("Stop Simulation");
-            }
-        };
-        stop.setText("Stop");
-        stop.setToolTipText("Stop tooltip");
-        stop.setImageDescriptor(PlatformUI.getWorkbench().getSharedImages().getImageDescriptor(ISharedImages.IMG_ELCL_STOP));
-
-        choixVue = new Action("My action", Action.AS_DROP_DOWN_MENU) {
-            @Override
-            public void run() {
-                MyMenuCreator creator = new MyMenuCreator();
-                creator.setActions(createListActionsChoiceModel());
-                this.setMenuCreator(creator);
-                IMenuCreator imenu = this.getMenuCreator();
-                Menu menu = imenu.getMenu(viewer.getControl());
-                menu.setVisible(true);
-            }
-        };
-        choixVue.setText("Choix model");
-        choixVue.setToolTipText("Choix model");
-        choixVue.setChecked(true);
-        choixVue.setImageDescriptor(PlatformUI.getWorkbench().getSharedImages().getImageDescriptor(ISharedImages.IMG_ETOOL_HOME_NAV));
-
-        doubleClickAction = new Action() {
-            @Override
-            public void run() {
-                ISelection selection = viewer.getSelection();
-                Object obj = ((IStructuredSelection) selection).getFirstElement();
-                if (obj == null) {
-                    System.out.println("erreur: doubleClickAction: Null");
-                    return;
-                }
-                if (obj.toString().equalsIgnoreCase("initialize")) {
-                    communicationP.putJson("initialize");
-                } else {
-                    communicationP.putJson("state", obj.toString());
-                }
-                communicationP.sendMessage();
-                refreshPartControl();
-            }
-        };
+        restart = new ActionRestart(this);
+        play = new ActionPlay(this);
+        stop = new ActionStop(this);
+        choixVue = new ActionMenuProject(this);
+        doubleClickAction = new ActionDoubleClick(this, viewer);
     }
 
     private void hookDoubleClickAction() {
@@ -298,27 +213,7 @@ public class SimulatorView extends ViewPart implements Observateur {
         });
     }
 
-    private void treeSimpleClickAction() {
-        tree.addListener(SWT.Selection, new Listener() {
-            @Override
-            public void handleEvent(Event event) {
-                if (((TreeItem) event.item).getParentItem() != null) {
-                    String fils = ((TreeItem) event.item).getText();
-                    String pere = ((TreeItem) event.item).getParentItem().getText();
-                    if (fils.startsWith("Instance : ") && pere.startsWith("Class : ")) {
-                        design.putCurrentInstances(pere.replace("Class : ", ""), fils.replace("Instance : ", ""));
-                    }
-                    if (fils.startsWith("Class : ")) {
-                        design.putCurrentInstances(fils.replace("Class : ", ""), "all");
-                    }
-                    refreshTreeView();
-                    design.refreshColor();
-                }
-            }
-        });
-    }
-
-    private void showMessage(String message) {
+    public void showMessage(String message) {
         MessageDialog.openInformation(viewer.getControl().getShell(), "Simulation", message);
     }
 
@@ -336,68 +231,30 @@ public class SimulatorView extends ViewPart implements Observateur {
         return null;
     }
 
-    private List<Action> createListActionsChoiceModel() {
-        List<Action> actions = new ArrayList<Action>();
-        Session[] sessions = SessionManager.INSTANCE.getSessions().toArray(new Session[0]);
-        for (int i = 0; i < sessions.length; i++) {
-            final Session session = sessions[i];
-            final Resource res = session.getSessionResource();
-            final URI path = res.getURI();
-
-            actions.add(new Action(path.segment(1)) {
-                @Override
-                public void run() {
-                    design = new DesignModificateur(session);
-                    String nouveauPath = ResourcesPlugin.getWorkspace().getRoot().getFile(new org.eclipse.core.runtime.Path(res.getURI().toPlatformString(true))).getLocation().toPortableString()
-                            .replace(path.lastSegment(), "model.uml");
-                    communicationP.putJson("reload", nouveauPath);
-                    communicationP.sendMessage();
-                    currentProject = path.segment(1);
-                    refreshPartControl("Initialize");
-                    if (!communicationP.isError())
-                        showMessage("Vous avez bien basculer sur la session: " + path.segment(1));
-                }
-
-            });
-        }
-        return actions;
-    }
-
-    protected void refreshTreeView() {
-        tree.removeAll();
-        TreeItem item = new TreeItem(tree, SWT.NONE);
-        item.setText(currentProject);
-        item.setExpanded(true);
-        JSONArray currentState = design.getCurrentState();
-        for (Object obj : currentState) {
-            JSONObject jsonClass = (JSONObject) obj;
-            TreeItem subitem = new TreeItem(item, SWT.NONE);
-            subitem.setText("Class : " + jsonClass.getString("class"));
-            subitem.setExpanded(true);
-            design.putCurrentInstances(jsonClass.getString("class"));
-            for (Object obj2 : jsonClass.getJSONArray("instance")) {
-                JSONObject jsonInstance = (JSONObject) obj2;
-                TreeItem subsubitem = new TreeItem(subitem, SWT.NONE);
-                subsubitem.setText("Instance : " + jsonInstance.getString("name"));
-                if (design.isCurrentInstancesContains(jsonClass.getString("class"), jsonInstance.getString("name"))) {
-                    Color newColor = new Color(subsubitem.getForeground().getDevice(), 255, 25, 25);
-                    subsubitem.setForeground(newColor);
-                } else if (design.isCurrentInstancesContains(jsonClass.getString("class"), "all")) {
-                    Color newColor = new Color(subitem.getForeground().getDevice(), 255, 25, 25);
-                    subitem.setForeground(newColor);
-                }
-            }
-        }
-    }
-
     @Override
     public void actualiser(Observable o) {
         if (o instanceof CommunicationP) {
             CommunicationP comm = (CommunicationP) o;
             transitions = comm.getTransitions();
-            design.refreshElements(comm.getCurrentClass(), comm.getCurrentState());
+            StateModel.refreshElements(comm.getCurrentClass(), comm.getCurrentState());
         }
         sem.release();
+    }
+
+    public CommunicationP getCommunicationP() {
+        return communicationP;
+    }
+
+    public DesignModificateur getDesign() {
+        return design;
+    }
+
+    public void setDesign(DesignModificateur designModificateur) {
+        design = designModificateur;
+    }
+
+    public ViewTransitions getViewer() {
+        return viewer;
     }
 
 }

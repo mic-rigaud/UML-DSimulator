@@ -29,9 +29,10 @@ public class CommunicationSTest {
     public void setUp() throws Exception {
         comm2 = new CommunicationPMock();
         comm2.start();
-        communicationS = new CommunicationS("/home/michael/Documents/Ensta/Stage/2A/uml-plugin/ws/org.ensta.uml.sim/test/resources/model.uml", 5000);
+        communicationS = new CommunicationS(5000);
         communicationS.start();
         comm2.waitConnection();
+        comm2.startCommunication("/home/michael/Documents/Ensta/Stage/2A/uml-plugin/ws/org.ensta.uml.sim/test/resources/model.uml");
     }
 
     @SuppressWarnings("deprecation")
@@ -44,10 +45,10 @@ public class CommunicationSTest {
 
     @Test
     public void testCommunicationS() {
-        CommunicationS communicationS2 = new CommunicationS("/home/michael/Documents/Ensta/Stage/2A/uml-plugin/ws/org.ensta.uml.sim/test/resources/model.uml", 5000);
-        assertEquals(true, communicationS2.fichier.exists());
-        communicationS2 = new CommunicationS("fichier_inexistant", 5000);
-        assertEquals(false, communicationS2.fichier.exists());
+        CommunicationS communicationS2 = new CommunicationS(5000);
+        // assertEquals(true, communicationS2.fichier.exists());
+        // communicationS2 = new CommunicationS(5000);
+        // assertEquals(false, communicationS2.fichier.exists());
     }
 
     @Test

@@ -81,23 +81,82 @@ Easy to implement&Need to add code in the simulator\\
 
 \subsection{Our solution}
 
-The solution was not in this list of common way to communicate inter process. In fact, we use the \textit{Runtime} class which is in the java library.~\\
+For this project we chose to use socket enter the plugin and the simulator. So we need to create a layer of communication for the simulator and a layer of communication for the plugin. Both layer will listen on a thread.
 
-\noindent
-\begin{tabular}{|p{0.45\textwidth}||p{0.45\textwidth}|}
-\hline
-  \textbf{Advantages}&\textbf{Drawback}\\
-\hline
-It is possible to use the Simulator outside the graphical modeling tool & \\
-\hline
-Work with every type of simulator& \\
-\hline
-\end{tabular}
+% The solution was not in this list of common way to communicate inter process. In fact, we use the \textit{Runtime} class which is in the java library.~\\
+
+% \noindent
+% \begin{tabular}{|p{0.45\textwidth}||p{0.45\textwidth}|}
+% \hline
+%   \textbf{Advantages}&\textbf{Drawback}\\
+% \hline
+% It is possible to use the Simulator outside the graphical modeling tool & \\
+% \hline
+% Work with every type of simulator& \\
+% \hline
+% \end{tabular}
 
 
+\section{Type of message}
 
+Now we have chosen that we will use socket to communicate enter the plugin and the simulator, we have too choose which type of object we will send by this socket.
 
-%%% Local Variables: 
+In the same way, we list the type of message that we could send, and only three were relevant.
+
+\begin{itemize}
+\item String
+\item Java object
+\item Json message
+\end{itemize}
+
+Because String doesn't permit modularity and Java object require to use java for the simulator layer, we chose to use Json. Moreover, Json are send like String but with a formatted type.
+
+To do that we use a library which permit to manipulate Json object in Java. We found it on github \cite{json}.
+~\\
+
+Our json object are constructed like this:
+~\\
+
+plugin \overrightarrow{} simulator
+\begin{lstlisting}[style=json]
+  JsonPluginToSimulator = {
+    initialize : boolean
+    play : boolean
+    stop : boolean
+    restart : boolean
+    random : boolean
+    reload : boolean
+    reloadPath : string
+    state : string
+  }
+\end{lstlisting}
+
+~\\
+
+simulator \overrightarrow{} plugin
+\begin{lstlisting}[style=json]
+  JsonSimulatorToPlugin = {
+    transitions : ["transition1", ...]
+    error : boolean
+    errorMessage : string
+    currentClass : string
+    currentStates : [
+    {
+      class : string
+      instance : [
+      {
+        nom : string
+        state : ["state1",...]
+      }
+      ...
+      ]
+    }
+    ...
+    ]
+  }
+
+\end{lstlisting}
+%%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../rapport_de_base"
-%%% End: 
+%%% End:

@@ -22,7 +22,7 @@ public class CommunicationS extends Thread {
 
     private SimulatorControler controler;
 
-    File fichier;
+    private File fichier;
 
     private Socket client;
 
@@ -36,29 +36,15 @@ public class CommunicationS extends Thread {
 
     private boolean fileError;
 
-    public CommunicationS(String nomfichier, int port) {
+    public CommunicationS(int port) {
         this.port = port;
         model = new SimulationModel();
         controler = new SimulatorControler();
         model.ajouterObservateur(controler);
-        fichier = new File(nomfichier);
         jsonOut = new JSONObject();
         listCurrentState = new ArrayList<JSONObject>();
         initialiserJson(jsonOut);
-        fileError = !initLoadModel();
-
-    }
-
-    private boolean initLoadModel() {
-        if (fichier.exists()) {
-            try {
-                model.loadModel(fichier);
-                model.initialize();
-                return true;
-            } catch (RuntimeException e) {
-            }
-        }
-        return false;
+        fileError = true;
     }
 
     private boolean loadModel() throws IOException {
@@ -68,11 +54,11 @@ public class CommunicationS extends Thread {
                 model.initialize();
                 return true;
             } else {
-                this.sendMessage("Erreur recharger un fichier");
+                this.sendError("Erreur recharger un fichier");
                 return false;
             }
         } catch (RuntimeException e) {
-            this.sendMessage("Erreur fichier incompatible");
+            this.sendError("Erreur fichier incompatible");
             return false;
         }
     }
@@ -93,30 +79,24 @@ public class CommunicationS extends Thread {
                         fichier = new File(json.getString("reloadPath"));
                         if (fileError = !loadModel())
                             continue;
+                    } else if (json.getBoolean("restart")) {
+                        clearListCurrentState();
+                        if (fileError = !loadModel())
+                            continue;
                     } else if (fileError) {
-                        this.sendMessage("Erreur recharger un fichier");
+                        this.sendError("Erreur recharger un fichier");
                         continue;
                     } else if (json.getBoolean("initialize")) {
                         System.out.println("Init");
                         clearListCurrentState();
-                        model.nextStep(controler.getRandomTransition());
-                    } else if (json.getBoolean("restart")) {
-                        fileError = !loadModel();
-                        clearListCurrentState();
-                    } else if (json.getBoolean("random")) {
-                        IFireableTransition fire = controler.getRandomTransition();
-                        this.fillJsonOutLastState(fire);
-                        model.nextStep(fire);
-                    } else {
-                        IFireableTransition fire = controler.getTransition(json.getString("state"));
-                        if (fire != null) {
-                            this.fillJsonOutLastState(fire);
-                            model.nextStep(fire);
-                        } else {
-                            this.sendMessage("Erreur transition non trouve");
-                            fileError = true;
+                        if (!this.nextTransition(controler.getRandomTransition()))
                             continue;
-                        }
+                    } else if (json.getBoolean("random")) {
+                        if (!this.nextTransition(controler.getRandomTransition()))
+                            continue;
+                    } else {
+                        if (!this.nextTransition(controler.getTransition(json.getString("state"))))
+                            continue;
                     }
                     this.sendMessage(controler.getListTransition());
                 }
@@ -124,6 +104,18 @@ public class CommunicationS extends Thread {
                 e.printStackTrace();
                 break;
             }
+        }
+    }
+
+    private boolean nextTransition(IFireableTransition fire) throws IOException {
+        if (fire != null) {
+            this.fillJsonOutLastState(fire);
+            model.nextStep(fire);
+            return true;
+        } else {
+            this.sendError("Erreur transition non trouve");
+            fileError = true;
+            return false;
         }
     }
 
@@ -138,7 +130,7 @@ public class CommunicationS extends Thread {
             transitions.add(transition.toString());
         }
         if (transitions.isEmpty()) {
-            sendMessage("Il n'y a plus de transitions");
+            sendError("Il n'y a pas (ou plus) de transitions");
             return;
         }
         jsonOut.put("transitions", transitions);
@@ -146,7 +138,7 @@ public class CommunicationS extends Thread {
         return;
     }
 
-    private void sendMessage(String errorMessage) throws IOException {
+    private void sendError(String errorMessage) throws IOException {
         jsonOut.put("error", true);
         jsonOut.put("errorMessage", errorMessage);
         jsonOut.put("transitions", new String[] { "Error" });

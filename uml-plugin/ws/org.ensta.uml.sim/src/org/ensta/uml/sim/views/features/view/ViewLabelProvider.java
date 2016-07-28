@@ -1,4 +1,4 @@
-package org.ensta.uml.sim.views;
+package org.ensta.uml.sim.views.features.view;
 
 import org.eclipse.jface.viewers.ITableLabelProvider;
 import org.eclipse.jface.viewers.LabelProvider;

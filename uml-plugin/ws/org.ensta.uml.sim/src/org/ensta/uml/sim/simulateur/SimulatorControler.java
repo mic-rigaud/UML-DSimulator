@@ -70,8 +70,9 @@ public class SimulatorControler implements Observateur {
     }
 
     public IFireableTransition getRandomTransition() {
+        if (this.getListTransitionSize() == 0)
+            return null;
         return listTransition.get(random.nextInt(this.getListTransitionSize()));
-
     }
 
     public IFireableTransition getTransition(String objet) {

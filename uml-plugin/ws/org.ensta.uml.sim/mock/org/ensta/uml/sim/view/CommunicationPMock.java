@@ -57,6 +57,12 @@ public class CommunicationPMock extends Thread {
         }
     }
 
+    public void startCommunication(String nouveauPath) {
+        jsonOut.put("reload", true);
+        jsonOut.put("reloadPath", nouveauPath);
+        sendMessage();
+    }
+
     public void close() {
         try {
             if (server != null)

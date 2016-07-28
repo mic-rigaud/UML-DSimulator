@@ -1,4 +1,4 @@
-package org.ensta.uml.sim.views;
+package org.ensta.uml.sim.views.features.menu;
 
 import java.util.ArrayList;
 import java.util.List;

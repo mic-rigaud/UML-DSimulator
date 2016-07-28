@@ -1,6 +1,6 @@
 package org.ensta.uml.sim.simulateur;
 
-import org.ensta.uml.sim.views.CommunicationP;
+import org.ensta.uml.sim.views.communication.CommunicationP;
 
 public class ObservateurMock implements org.ensta.uml.sim.views.Observateur {
 

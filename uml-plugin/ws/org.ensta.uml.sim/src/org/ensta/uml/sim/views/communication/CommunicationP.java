@@ -1,4 +1,4 @@
-package org.ensta.uml.sim.views;
+package org.ensta.uml.sim.views.communication;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -9,6 +9,9 @@ import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Semaphore;
+
+import org.ensta.uml.sim.views.Observable;
+import org.ensta.uml.sim.views.Observateur;
 
 import json.JSONArray;
 import json.JSONObject;
@@ -42,6 +45,11 @@ public class CommunicationP extends Thread implements Observable {
         initialiserJson();
         jsonOut.put("reloadPath", "");
         jsonIn = new JSONObject();
+    }
+
+    public void startCommunication(String nouveauPath) {
+        putJson("reload", nouveauPath);
+        sendMessage();
     }
 
     @Override
@@ -114,7 +122,6 @@ public class CommunicationP extends Thread implements Observable {
 
     public String[] getTransitions() {
         List<Object> liste = jsonIn.getJSONArray("transitions").toList();
-        System.out.println(liste);
         String[] trans = liste.toArray(new String[liste.size()]);
         return trans;
     }
@@ -223,4 +230,5 @@ public class CommunicationP extends Thread implements Observable {
     public String getErrorMessage() {
         return jsonIn.getString("errorMessage");
     }
+
 }

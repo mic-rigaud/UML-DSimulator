@@ -8,6 +8,7 @@ import static org.junit.Assert.assertNotNull;
 
 import org.ensta.uml.sim.simulateur.CommunicationSMock;
 import org.ensta.uml.sim.simulateur.ObservateurMock;
+import org.ensta.uml.sim.views.communication.CommunicationP;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -59,7 +60,7 @@ public class CommunicationPTest {
     }
 
     /**
-     * Test method for {@link org.ensta.uml.sim.views.CommunicationP#run()}.
+     * Test method for {@link org.ensta.uml.sim.views.communication.CommunicationP#run()}.
      * 
      * @throws InterruptedException
      */
@@ -75,7 +76,7 @@ public class CommunicationPTest {
 
     /**
      * Test method for
-     * {@link org.ensta.uml.sim.views.CommunicationP#sendMessage()}.
+     * {@link org.ensta.uml.sim.views.communication.CommunicationP#sendMessage()}.
      * 
      * @throws InterruptedException
      */
@@ -100,7 +101,7 @@ public class CommunicationPTest {
 
     /**
      * Test method for
-     * {@link org.ensta.uml.sim.views.CommunicationP#getTransitions()}.
+     * {@link org.ensta.uml.sim.views.communication.CommunicationP#getTransitions()}.
      * 
      * @throws InterruptedException
      */
@@ -116,7 +117,7 @@ public class CommunicationPTest {
 
     /**
      * Test method for
-     * {@link org.ensta.uml.sim.views.CommunicationP#getCurrentState()}.
+     * {@link org.ensta.uml.sim.views.communication.CommunicationP#getCurrentState()}.
      * 
      * @throws InterruptedException
      */
@@ -131,7 +132,7 @@ public class CommunicationPTest {
 
     /**
      * Test method for
-     * {@link org.ensta.uml.sim.views.CommunicationP#ajouterObservateur(org.ensta.uml.sim.views.Observateur)}.
+     * {@link org.ensta.uml.sim.views.communication.CommunicationP#ajouterObservateur(org.ensta.uml.sim.views.Observateur)}.
      */
     @Test
     public void testAjouterObservateur() {
@@ -141,7 +142,7 @@ public class CommunicationPTest {
 
     /**
      * Test method for
-     * {@link org.ensta.uml.sim.views.CommunicationP#supprimerObservateur(org.ensta.uml.sim.views.Observateur)}.
+     * {@link org.ensta.uml.sim.views.communication.CommunicationP#supprimerObservateur(org.ensta.uml.sim.views.Observateur)}.
      */
     @Test
     public void testSupprimerObservateur() {
@@ -153,7 +154,7 @@ public class CommunicationPTest {
 
     /**
      * Test method for
-     * {@link org.ensta.uml.sim.views.CommunicationP#notifierObservateurs()}.
+     * {@link org.ensta.uml.sim.views.communication.CommunicationP#notifierObservateurs()}.
      */
     @Test
     public void testNotifierObservateurs() {
@@ -164,7 +165,7 @@ public class CommunicationPTest {
 
     /**
      * Test method for
-     * {@link org.ensta.uml.sim.views.CommunicationP#putJson(java.lang.String, java.lang.String)}.
+     * {@link org.ensta.uml.sim.views.communication.CommunicationP#putJson(java.lang.String, java.lang.String)}.
      */
     @Test
     public void testPutJsonStringString() {
@@ -175,7 +176,7 @@ public class CommunicationPTest {
 
     /**
      * Test method for
-     * {@link org.ensta.uml.sim.views.CommunicationP#putJson(java.lang.String)}.
+     * {@link org.ensta.uml.sim.views.communication.CommunicationP#putJson(java.lang.String)}.
      */
     @Test
     public void testPutJsonString() {
@@ -185,7 +186,7 @@ public class CommunicationPTest {
 
     /**
      * Test method for
-     * {@link org.ensta.uml.sim.views.CommunicationP#getCurrentClass()}.
+     * {@link org.ensta.uml.sim.views.communication.CommunicationP#getCurrentClass()}.
      * 
      * @throws InterruptedException
      */

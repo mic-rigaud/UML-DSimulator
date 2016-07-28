@@ -1,7 +1,6 @@
-package org.ensta.uml.sim.views;
+package org.ensta.uml.sim.views.design;
 
 import java.util.Collection;
-import java.util.HashMap;
 
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
@@ -14,7 +13,6 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.FlatContainerStyle;
-import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DNodeListSpec;
 import org.eclipse.sirius.diagram.business.internal.metamodel.spec.SquareSpec;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
@@ -25,25 +23,16 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.SystemColors;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.StateMachine;
+import org.ensta.uml.sim.views.model.StateModel;
 
-import json.JSONArray;
 import json.JSONObject;
 
 public class DesignModificateur {
 
-    public EList<DDiagramElement> elements;
-
-    private String currentClasse;
-
-    private JSONArray currentState;
-
-    private HashMap<String, String> currentInstances;
+    private EList<DDiagramElement> elements;
 
     public DesignModificateur() {
         elements = new BasicEList<DDiagramElement>();
-        currentState = new JSONArray();
-        currentClasse = "";
-        currentInstances = new HashMap<String, String>();
     }
 
     public DesignModificateur(Session mysession) {
@@ -62,15 +51,10 @@ public class DesignModificateur {
         }
     }
 
-    public void refreshElements(String currentClasse, JSONArray currentState) {
-        this.currentClasse = currentClasse.toLowerCase();
-        this.currentState = currentState;
-    }
-
     public void refreshColor() {
         for (int i = 0; i < this.elements.size(); i++) {
             RGBValues newcolor;
-            if (!currentClasse.isEmpty() && elements.get(i).getName().toLowerCase().startsWith(currentClasse)) {
+            if (!StateModel.getCurrentClasse().isEmpty() && elements.get(i).getName().toLowerCase().startsWith(StateModel.getCurrentClasse())) {
                 newcolor = VisualBindingManager.getDefault().getRGBValuesFor(SystemColors.DARK_RED_LITERAL);
                 changeColor(elements.get(i).getStyle(), newcolor);
             } else if (isInActiveState(elements.get(i))) {
@@ -90,12 +74,12 @@ public class DesignModificateur {
                 if (sm.eContainer() instanceof Class) {
                     String classe = ((Class) sm.eContainer()).getName().toLowerCase();
                     String state = dDiagramElement.getName().toLowerCase();
-                    for (Object obj : currentState) {
+                    for (Object obj : StateModel.getCurrentState()) {
                         JSONObject jsonClasse = (JSONObject) obj;
                         if (jsonClasse.getString("class").equals(classe)) {
                             for (Object obj2 : jsonClasse.getJSONArray("instance")) {
                                 JSONObject jsonInstance = (JSONObject) obj2;
-                                if (jsonInstance.getString("name").equals(currentInstances.get(classe)) || currentInstances.get(classe).equals("all")) {
+                                if (jsonInstance.getString("name").equals(StateModel.getCurrentInstances(classe)) || StateModel.getCurrentInstances(classe).equals("all")) {
                                     for (Object obj3 : jsonInstance.getJSONArray("state")) {
                                         if (obj3 instanceof String) {
                                             if (((String) obj3).equalsIgnoreCase(state))
@@ -148,59 +132,6 @@ public class DesignModificateur {
             });
 
         }
-    }
-
-    public JSONArray getCurrentState() {
-        return this.currentState;
-    }
-
-    public void putCurrentInstances(String className, String instanceName) {
-        this.currentInstances.put(className, instanceName);
-    }
-
-    public void putCurrentInstances(String className) {
-        if (!this.currentInstances.containsKey(className))
-            putCurrentInstances(className, "all");
-    }
-
-    public boolean isCurrentInstancesContains(String className, String instanceName) {
-        if (this.currentInstances.containsKey(className)) {
-            if (this.currentInstances.get(className).equalsIgnoreCase(instanceName))
-                return true;
-        }
-        return false;
-    }
-
-    /*****************************************************************************
-     * les fonctions suivantes servent a du debug
-     */
-    public void printInfo() {
-        System.out.println("-------");
-        for (int i = 0; i < this.elements.size(); i++) {
-            DDiagramElement element = elements.get(i);
-            if (element instanceof DNodeListSpec) {
-                DNodeListSpec dnode = (DNodeListSpec) element;
-                System.out.println(element.getName() + " : " + dnode.toString());
-            }
-        }
-    }
-
-    public void printElements() {
-        for (int i = 0; i < this.elements.size(); i++) {
-            System.out.println("element " + i + " : " + elements.get(i).getName());
-        }
-    }
-
-    public String elementsToString() {
-        String phrase = "";
-        for (int i = 0; i < this.elements.size(); i++) {
-            phrase += "element " + i + " : " + elements.get(i).getName() + "\n";
-        }
-        return phrase;
-    }
-
-    public void printCurrentInstance() {
-        System.out.println(this.currentInstances);
     }
 
 }

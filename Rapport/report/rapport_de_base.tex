@@ -37,7 +37,7 @@
 \usepackage{frbib}                      %permet d avoir une biblio francaise
 \usepackage[babel=true]{csquotes}
 \usepackage{colortbl}
-
+\usepackage{listings}
 
 %\usepackage{graphicx}
 \RequirePackage{pageGardeEnsta}	% permet d avoir la page de garde ensta
@@ -46,6 +46,90 @@
 %\setcounter{tocdepth}{2}		% permet d'augmenter la numerotation
 
 %%%%%%%%%%%%%%%%%%  DEFINITION DES BOITES
+% Definition de couleur supplementaire
+\definecolor{colString}{rgb}{0.6,0.1,0.1}
+
+% Definition du langage
+\lstdefinelanguage{LangageConsole}{%
+    morekeywords={%
+        time% mot-clé ``ligne''
+    },
+    morestring=[b]",
+    morecomment=[l]{//},
+    morecomment=[s]{/*}{*/},
+}
+
+% Definition du style
+\lstdefinestyle{styleLangage}{%
+    language        = LangageConsole,%
+    basicstyle      = \bf\footnotesize\ttfamily\color{white},% ecriture standard
+    identifierstyle = \color{white},%
+    commentstyle    = \color{green},%
+    keywordstyle    = \color{blue},%
+    stringstyle     = \color{colString},%
+    extendedchars   = true,% permet d'avoir des accents dans le code
+    tabsize         = 2,%
+    showspaces      = false,%
+    showstringspaces = false,%
+    numbers=left,%
+    numberstyle=\tiny\ttfamily\color{black},%
+    breaklines=true,%
+    breakautoindent=true,%
+        backgroundcolor=\color{black},%
+}
+
+\lstset{%
+    style = styleLangage%
+}
+
+%%% JSON Console
+\newcommand\JSONnumbervaluestyle{\color{blue}}
+\newcommand\JSONstringvaluestyle{\color{red}}
+
+% switch used as state variable
+\newif\ifcolonfoundonthisline
+
+\makeatletter
+
+\lstdefinestyle{json}
+{
+  showstringspaces    = false,
+  keywords            = {false,true},
+  alsoletter          = 0123456789.,
+  morestring          = [s]{"}{"},
+  stringstyle         = \ifcolonfoundonthisline\JSONstringvaluestyle\fi,
+  MoreSelectCharTable =%
+    \lst@DefSaveDef{`:}\colon@json{\processColon@json},
+  basicstyle          = \ttfamily,
+  keywordstyle        = \ttfamily\bfseries,
+  backgroundcolor     = \color{white},
+  identifierstyle     = \color{black},
+}
+
+% flip the switch if a colon is found in Pmode
+\newcommand\processColon@json{%
+  \colon@json%
+  \ifnum\lst@mode=\lst@Pmode%
+    \global\colonfoundonthislinetrue%
+  \fi
+}
+
+\lst@AddToHook{Output}{%
+  \ifcolonfoundonthisline%
+    \ifnum\lst@mode=\lst@Pmode%
+      \def\lst@thestyle{\JSONnumbervaluestyle}%
+    \fi
+  \fi
+  %override by keyword style if a keyword is detected!
+  \lsthk@DetectKeywords%
+}
+
+% reset the switch at the end of line
+\lst@AddToHook{EOL}%
+  {\global\colonfoundonthislinefalse}
+
+%%%%%%%%%%%%%%%%%%%%
+
 \newcounter{rem}[chapter]
 
 \newcommand{\remarque}[1]{\stepcounter{rem}\noindent\fcolorbox{OliveDrab}{white}{\parbox{\textwidth}{\textcolor{OliveDrab}{
