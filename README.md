@@ -31,7 +31,7 @@ The source of the plugin are on the subfolder *ws*
 
 ### Report
 
-In this folder there is a report here: [report](Rapport/report/logo_ENSTA_Bretagne_Vertical_CMJN.pdf)
+In this folder there is a report here: [report](Rapport/report/rapport_de_base.pdf)
 
 This report contains the explanation of every think about my work.
 
