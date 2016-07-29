@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_cTJD4NANEeWpK6pFHJ1hEg" name="ProducerConsumerDefer">
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_cTJD4NANEeWpK6pFHJ1hEg" name="ProducerConsumerDefer">
   <packagedElement xmi:type="uml:Class" xmi:id="_cTKSANANEeWpK6pFHJ1hEg" name="SUS">
     <ownedAttribute xmi:id="_cTK5ENANEeWpK6pFHJ1hEg" name="producer" visibility="public" type="_cTb-0NANEeWpK6pFHJ1hEg" isUnique="false" aggregation="composite">
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_cTMHMNANEeWpK6pFHJ1hEg" value="1"/>
@@ -65,12 +65,14 @@
     <ownedBehavior xmi:type="uml:StateMachine" xmi:id="_cUGGINANEeWpK6pFHJ1hEg" name="SM">
       <region xmi:id="_cUGGIdANEeWpK6pFHJ1hEg" name="R">
         <transition xmi:id="_cUGGItANEeWpK6pFHJ1hEg" source="_cUNa4NANEeWpK6pFHJ1hEg" target="_cUS6cNANEeWpK6pFHJ1hEg">
+          <name xsi:nil="true"/>
           <effect xmi:type="uml:OpaqueBehavior" xmi:id="_cUGGI9ANEeWpK6pFHJ1hEg">
             <language>ABCD</language>
             <body>guard := false;</body>
           </effect>
         </transition>
         <transition xmi:id="_cUGtMNANEeWpK6pFHJ1hEg" source="_cUS6cNANEeWpK6pFHJ1hEg" target="_cUS6cNANEeWpK6pFHJ1hEg">
+          <name xsi:nil="true"/>
           <effect xmi:type="uml:OpaqueBehavior" xmi:id="_cUGtMdANEeWpK6pFHJ1hEg">
             <language>ABCD</language>
             <body>guard := not guard;</body>

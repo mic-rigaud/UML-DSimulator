@@ -1,0 +1,25 @@
+#This is a generated file; do not edit.
+#Wed Jul 27 13:15:06 CEST 2016
+org.eclipse.amalgam.discovery.modeling=org.eclipse.amalgam.discovery.modeling\n1.7.0.201605311215
+org.eclipse.help.base=org.eclipse.help.base\n4.1.0.v20160525-2000
+org.eclipse.sirius.doc=org.eclipse.sirius.doc\n3.0.0.201506090807
+org.eclipse.emf.eef.doc=org.eclipse.emf.eef.doc\n1.5.1.201601141612
+org.eclipse.jdt=org.eclipse.jdt\n3.12.0.v20160525-2000
+org.eclipse.acceleo.query.doc=org.eclipse.acceleo.query.doc\n5.0.0.201605260729
+org.eclipse.jdt.doc.user=org.eclipse.jdt.doc.user\n3.12.0.v20160522-1413
+org.eclipse.sirius.eef.adapters=org.eclipse.sirius.eef.adapters\n4.0.0.201605311157
+org.eclipse.egit.doc=org.eclipse.egit.doc\n4.4.0.201606070830-r
+org.eclipse.oomph.setup.doc=org.eclipse.oomph.setup.doc\n1.4.0.v20160426-0423
+org.eclipse.ui.cheatsheets=org.eclipse.ui.cheatsheets\n3.5.0.v20160504-0839
+org.eclipse.acceleo.ide.ui=org.eclipse.acceleo.ide.ui\n3.6.4.201605040614
+org.eclipse.ui.intro=org.eclipse.ui.intro\n3.5.0.v20160509-1548
+org.eclipse.help=org.eclipse.help\n3.7.0.v20160407-1711
+org.eclipse.mylyn.wikitext.help.ui=org.eclipse.mylyn.wikitext.help.ui\n2.9.0.v20160524-0547
+org.eclipse.pde.doc.user=org.eclipse.pde.doc.user\n3.12.0.v20160525-1814
+org.eclipse.platform=org.eclipse.platform\n4.6.0.v20160525-2000
+org.eclipse.oomph.p2.doc=org.eclipse.oomph.p2.doc\n1.4.0.v20160426-0423
+com.mountainminds.eclemma.doc=com.mountainminds.eclemma.doc\n2.3.3.201602231923
+org.eclipse.pde=org.eclipse.pde\n3.12.0.v20160525-2000
+org.eclipse.oomph.targlets.doc=org.eclipse.oomph.targlets.doc\n1.4.0.v20160426-0423
+org.eclipse.platform.doc.user=org.eclipse.platform.doc.user\n4.6.0.v20160525-1451
+org.eclipse.ui.intro.universal=org.eclipse.ui.intro.universal\n3.3.0.v20160519-1604

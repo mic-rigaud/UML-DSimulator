@@ -7,6 +7,9 @@ uml-designer-master4/*
 Document_SCCD/*
 UML-Designer/*
 plug-simulation-ui-0.0.1/*
+uml-simulateur/*
+sirius/*
+README.org
 **~
 **.log
 **.toc
@@ -30,3 +33,4 @@ Rapport/.git
 **.cp
 Rapport/presentation
 uml-plugin/resource*
+test_projet
