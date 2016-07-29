@@ -11,6 +11,34 @@ With this simulator it is possible to see the evolution of States in all State m
 
 This repositories contain all my project
 
+## Requirement
+
+This plugin need Java 8
+
+Linux:
+
+    sudo apt-get install openjdk-8-jre openjdk-8-jdk openjdk-8-jre-headless
+
+## Contains
+
+### uml-plugin
+
+Folder with the eclipse development environment.
+
+    ./uml-plugin/eclipse/eclipse
+
+The source of the plugin are on the subfolder *ws*
+
+### Report
+
+In this folder there is a report here: [report](Rapport/report/logo_ENSTA_Bretagne_Vertical_CMJN.pdf)
+
+This report contains the explanation of every think about my work.
+
+### Deployment
+
+This folder contains what is needed to install the plugin on a computer.
+
 ## Version
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -31,7 +59,7 @@ This repositories contain all my project
 <tbody>
 <tr>
 <td class="org-right">0.1</td>
-<td class="org-left">Non</td>
+<td class="org-left">Yes</td>
 </tr>
 </tbody>
 </table>

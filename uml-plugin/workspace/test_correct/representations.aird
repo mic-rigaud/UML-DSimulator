@@ -711,7 +711,7 @@
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_BLSjc1P8Eeaa2b6wfTOikw" name="Dashboard" tooltipText="Dashboard" childrenPresentation="HorizontalStack">
         <target xmi:type="uml:Model" href="model.uml#_BGzFAFP8Eeaa2b6wfTOikw"/>
         <semanticElements xmi:type="uml:Model" href="model.uml#_BGzFAFP8Eeaa2b6wfTOikw"/>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_BLSjdFP8Eeaa2b6wfTOikw" labelSize="12" iconPath="/org.obeonetwork.dsl.uml2.design/icons/Dashboard.gif" labelColor="136,136,136" borderColor="110,132,132" backgroundStyle="Liquid" backgroundColor="238,249,244">
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_BLSjdFP8Eeaa2b6wfTOikw" labelSize="12" iconPath="/org.obeonetwork.dsl.uml2.design/icons/Dashboard.gif" labelColor="136,136,136" borderColor="110,132,132" backgroundStyle="Liquid" backgroundColor="238,249,244" foregroundColor="238,249,244">
           <labelFormat>bold</labelFormat>
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Dashboard']/@ownedRepresentations[name='Dashboard']/@defaultLayer/@containerMappings[name='DA_Dashboard']/@style"/>
         </ownedStyle>
@@ -719,7 +719,7 @@
         <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_BLSjdVP8Eeaa2b6wfTOikw" name="Create" tooltipText="Create new  diagrams" childrenPresentation="VerticalStack">
           <target xmi:type="uml:Model" href="model.uml#_BGzFAFP8Eeaa2b6wfTOikw"/>
           <semanticElements xmi:type="uml:Model" href="model.uml#_BGzFAFP8Eeaa2b6wfTOikw"/>
-          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_BLSjdlP8Eeaa2b6wfTOikw" labelSize="12" showIcon="false" labelColor="136,136,136" borderColor="110,132,132" backgroundStyle="Liquid" backgroundColor="238,249,244">
+          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_BLSjdlP8Eeaa2b6wfTOikw" labelSize="12" showIcon="false" labelColor="136,136,136" borderColor="110,132,132" backgroundStyle="Liquid" backgroundColor="238,249,244" foregroundColor="238,249,244">
             <labelFormat>bold</labelFormat>
             <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Dashboard']/@ownedRepresentations[name='Dashboard']/@defaultLayer/@containerMappings[name='DA_Dashboard']/@subContainerMappings[name='DA_Create']/@style"/>
           </ownedStyle>
@@ -727,7 +727,7 @@
           <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_BLSjd1P8Eeaa2b6wfTOikw" name="Capture" tooltipText="Create new overview structural diagrams" width="15" height="8">
             <target xmi:type="uml:Model" href="model.uml#_BGzFAFP8Eeaa2b6wfTOikw"/>
             <semanticElements xmi:type="uml:Model" href="model.uml#_BGzFAFP8Eeaa2b6wfTOikw"/>
-            <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_BLSjeFP8Eeaa2b6wfTOikw" labelSize="12" showIcon="false" labelColor="136,136,136" borderColor="110,132,132" backgroundStyle="Liquid" backgroundColor="238,249,244">
+            <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_BLSjeFP8Eeaa2b6wfTOikw" labelSize="12" showIcon="false" labelColor="136,136,136" borderColor="110,132,132" backgroundStyle="Liquid" backgroundColor="238,249,244" foregroundColor="238,249,244">
               <labelFormat>bold</labelFormat>
               <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Dashboard']/@ownedRepresentations[name='Dashboard']/@defaultLayer/@containerMappings[name='DA_Dashboard']/@subContainerMappings[name='DA_Create']/@subContainerMappings[name='DA_Capture']/@style"/>
             </ownedStyle>
@@ -752,7 +752,7 @@
           <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_BLSjfVP8Eeaa2b6wfTOikw" name="Design" tooltipText="Create new fine-grained structural diagrams and behavioral diagrams" width="15" height="18">
             <target xmi:type="uml:Model" href="model.uml#_BGzFAFP8Eeaa2b6wfTOikw"/>
             <semanticElements xmi:type="uml:Model" href="model.uml#_BGzFAFP8Eeaa2b6wfTOikw"/>
-            <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_BLSjflP8Eeaa2b6wfTOikw" labelSize="12" showIcon="false" labelColor="136,136,136" borderColor="110,132,132" backgroundStyle="Liquid" backgroundColor="238,249,244">
+            <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_BLSjflP8Eeaa2b6wfTOikw" labelSize="12" showIcon="false" labelColor="136,136,136" borderColor="110,132,132" backgroundStyle="Liquid" backgroundColor="238,249,244" foregroundColor="238,249,244">
               <labelFormat>bold</labelFormat>
               <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Dashboard']/@ownedRepresentations[name='Dashboard']/@defaultLayer/@containerMappings[name='DA_Dashboard']/@subContainerMappings[name='DA_Create']/@subContainerMappings[name='DA_Design']/@style"/>
             </ownedStyle>
@@ -817,7 +817,7 @@
           <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_BLSjjVP8Eeaa2b6wfTOikw" name="Review" tooltipText="Create new diagrams to document, to get some overview and metrics" width="15" height="13">
             <target xmi:type="uml:Model" href="model.uml#_BGzFAFP8Eeaa2b6wfTOikw"/>
             <semanticElements xmi:type="uml:Model" href="model.uml#_BGzFAFP8Eeaa2b6wfTOikw"/>
-            <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_BLSjjlP8Eeaa2b6wfTOikw" labelSize="12" showIcon="false" labelColor="136,136,136" borderColor="110,132,132" backgroundStyle="Liquid" backgroundColor="238,249,244">
+            <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_BLSjjlP8Eeaa2b6wfTOikw" labelSize="12" showIcon="false" labelColor="136,136,136" borderColor="110,132,132" backgroundStyle="Liquid" backgroundColor="238,249,244" foregroundColor="238,249,244">
               <labelFormat>bold</labelFormat>
               <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Dashboard']/@ownedRepresentations[name='Dashboard']/@defaultLayer/@containerMappings[name='DA_Dashboard']/@subContainerMappings[name='DA_Create']/@subContainerMappings[name='DA_Review']/@style"/>
             </ownedStyle>
@@ -850,7 +850,7 @@
           <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_BLSjlVP8Eeaa2b6wfTOikw" name="Extend" tooltipText="Create new diagrams to  extend the UML standard" width="15" height="6">
             <target xmi:type="uml:Model" href="model.uml#_BGzFAFP8Eeaa2b6wfTOikw"/>
             <semanticElements xmi:type="uml:Model" href="model.uml#_BGzFAFP8Eeaa2b6wfTOikw"/>
-            <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_BLSjllP8Eeaa2b6wfTOikw" labelSize="12" showIcon="false" labelColor="136,136,136" borderColor="110,132,132" backgroundStyle="Liquid" backgroundColor="238,249,244">
+            <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_BLSjllP8Eeaa2b6wfTOikw" labelSize="12" showIcon="false" labelColor="136,136,136" borderColor="110,132,132" backgroundStyle="Liquid" backgroundColor="238,249,244" foregroundColor="238,249,244">
               <labelFormat>bold</labelFormat>
               <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Dashboard']/@ownedRepresentations[name='Dashboard']/@defaultLayer/@containerMappings[name='DA_Dashboard']/@subContainerMappings[name='DA_Create']/@subContainerMappings[name='DA_Extend']/@style"/>
             </ownedStyle>
@@ -868,7 +868,7 @@
         <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_BLSjmVP8Eeaa2b6wfTOikw" name="Navigate" tooltipText="Open existing diagrams" width="15" height="17">
           <target xmi:type="uml:Model" href="model.uml#_BGzFAFP8Eeaa2b6wfTOikw"/>
           <semanticElements xmi:type="uml:Model" href="model.uml#_BGzFAFP8Eeaa2b6wfTOikw"/>
-          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_BLSjmlP8Eeaa2b6wfTOikw" labelSize="12" showIcon="false" labelColor="136,136,136" borderColor="110,132,132" backgroundStyle="Liquid" backgroundColor="238,249,244">
+          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_BLSjmlP8Eeaa2b6wfTOikw" labelSize="12" showIcon="false" labelColor="136,136,136" borderColor="110,132,132" backgroundStyle="Liquid" backgroundColor="238,249,244" foregroundColor="238,249,244">
             <labelFormat>bold</labelFormat>
             <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Dashboard']/@ownedRepresentations[name='Dashboard']/@defaultLayer/@containerMappings[name='DA_Dashboard']/@subContainerMappings[name='DA_Navigate']/@style"/>
           </ownedStyle>
@@ -895,7 +895,7 @@
         <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_BLSjm1P8Eeaa2b6wfTOikw" name="Help" tooltipText="Find help" width="15" height="13">
           <target xmi:type="uml:Model" href="model.uml#_BGzFAFP8Eeaa2b6wfTOikw"/>
           <semanticElements xmi:type="uml:Model" href="model.uml#_BGzFAFP8Eeaa2b6wfTOikw"/>
-          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_BLSjnFP8Eeaa2b6wfTOikw" labelSize="12" showIcon="false" labelColor="136,136,136" borderColor="110,132,132" backgroundStyle="Liquid" backgroundColor="238,249,244">
+          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_BLSjnFP8Eeaa2b6wfTOikw" labelSize="12" showIcon="false" labelColor="136,136,136" borderColor="110,132,132" backgroundStyle="Liquid" backgroundColor="238,249,244" foregroundColor="238,249,244">
             <labelFormat>bold</labelFormat>
             <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Dashboard']/@ownedRepresentations[name='Dashboard']/@defaultLayer/@containerMappings[name='DA_Dashboard']/@subContainerMappings[name='DA_Help']/@style"/>
           </ownedStyle>

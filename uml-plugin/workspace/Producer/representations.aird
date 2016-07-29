@@ -1663,7 +1663,7 @@
           <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_Iqmqp0QXEeao3_emoFUAnw" name="s0" outgoingEdges="_Iqmqs0QXEeao3_emoFUAnw _IqmqtkQXEeao3_emoFUAnw _IqmquUQXEeao3_emoFUAnw" incomingEdges="_IqmqsEQXEeao3_emoFUAnw _Iqmqs0QXEeao3_emoFUAnw _IqmqwkQXEeao3_emoFUAnw">
             <target xmi:type="uml:State" href="model.uml#_cUS6cNANEeWpK6pFHJ1hEg"/>
             <semanticElements xmi:type="uml:State" href="model.uml#_cUS6cNANEeWpK6pFHJ1hEg"/>
-            <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_IqmqqEQXEeao3_emoFUAnw" labelSize="9" showIcon="false" labelColor="39,76,114" borderSize="1" borderSizeComputationExpression="1" borderColor="39,76,114" backgroundStyle="Liquid">
+            <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_IqmqqEQXEeao3_emoFUAnw" labelSize="9" showIcon="false" labelColor="39,76,114" borderSize="1" borderSizeComputationExpression="1" borderColor="39,76,114" backgroundStyle="Liquid" foregroundColor="154,103,23">
               <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@subContainerMappings[name='SM_Region']/@subContainerMappings[name='SM_SimpleState']/@style"/>
             </ownedStyle>
             <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@subContainerMappings[name='SM_Region']/@subContainerMappings[name='SM_SimpleState']"/>
@@ -1682,7 +1682,7 @@
             <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
             <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
             <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-            <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_IqmqrEQXEeao3_emoFUAnw" labelSize="9" showIcon="false" labelColor="39,76,114" borderSize="1" borderSizeComputationExpression="1" borderColor="39,76,114" backgroundStyle="Liquid" foregroundColor="154,103,23">
+            <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_IqmqrEQXEeao3_emoFUAnw" labelSize="9" showIcon="false" labelColor="39,76,114" borderSize="1" borderSizeComputationExpression="1" borderColor="39,76,114" backgroundStyle="Liquid">
               <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@subContainerMappings[name='SM_Region']/@subContainerMappings[name='SM_SimpleState']/@style"/>
             </ownedStyle>
             <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@subContainerMappings[name='SM_Region']/@subContainerMappings[name='SM_SimpleState']"/>

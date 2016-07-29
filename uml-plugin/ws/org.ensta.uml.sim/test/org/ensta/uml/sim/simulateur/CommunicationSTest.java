@@ -33,6 +33,7 @@ public class CommunicationSTest {
         communicationS.start();
         comm2.waitConnection();
         comm2.startCommunication("/home/michael/Documents/Ensta/Stage/2A/uml-plugin/ws/org.ensta.uml.sim/test/resources/model.uml");
+        comm2.waitSem();
     }
 
     @SuppressWarnings("deprecation")
@@ -81,6 +82,7 @@ public class CommunicationSTest {
         comm2.sendMessage();
         comm2.waitSem();
         assertEquals(true, comm2.isMessageAcceptable());
+        assertEquals(false, comm2.json.getBoolean("error"));
         // test reload avec mauvais fichier
         comm2.jsonOut.put("reload", true);
         comm2.jsonOut.put("reloadPath", "fichier_inexistant");
