@@ -19,5 +19,6 @@ public class ActionStop extends Action implements IAction {
     @Override
     public void run() {
         view.showMessage("Stop Simulation");
+        Play.stopPlay();
     }
 }

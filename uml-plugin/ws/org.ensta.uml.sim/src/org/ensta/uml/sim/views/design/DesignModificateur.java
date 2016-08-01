@@ -18,8 +18,6 @@ import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.sirius.viewpoint.Style;
-import org.eclipse.sirius.viewpoint.ViewpointFactory;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.SystemColors;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.StateMachine;
@@ -53,13 +51,14 @@ public class DesignModificateur {
 
     public void refreshColor() {
         for (int i = 0; i < this.elements.size(); i++) {
-            RGBValues newcolor;
+            RGBValues backgroundColor, borderColor;
+            borderColor = VisualBindingManager.getDefault().getRGBValuesFor(SystemColors.RED_LITERAL);
             if (!StateModel.getCurrentClasse().isEmpty() && elements.get(i).getName().toLowerCase().startsWith(StateModel.getCurrentClasse())) {
-                newcolor = VisualBindingManager.getDefault().getRGBValuesFor(SystemColors.DARK_RED_LITERAL);
-                changeColor(elements.get(i).getStyle(), newcolor);
+                backgroundColor = VisualBindingManager.getDefault().getRGBValuesFor(SystemColors.DARK_RED_LITERAL);
+                changeColor(elements.get(i).getStyle(), backgroundColor, borderColor);
             } else if (isInActiveState(elements.get(i))) {
-                newcolor = VisualBindingManager.getDefault().getRGBValuesFor(SystemColors.DARK_CHOCOLATE_LITERAL);
-                changeColor(elements.get(i).getStyle(), newcolor);
+                backgroundColor = VisualBindingManager.getDefault().getRGBValuesFor(SystemColors.DARK_RED_LITERAL);
+                changeColor(elements.get(i).getStyle(), backgroundColor, borderColor);
             } else {
                 defaultColor(elements.get(i).getStyle());
             }
@@ -97,27 +96,28 @@ public class DesignModificateur {
     }
 
     private void defaultColor(Style style) {
-        RGBValues color = null;
+        RGBValues backgroundColor = null;
+        RGBValues borderColor = VisualBindingManager.getDefault().getRGBValuesFor(SystemColors.BLACK_LITERAL);
         if (style instanceof FlatContainerStyle) {
-            color = (RGBValues) ViewpointFactory.eINSTANCE.createFromString(ViewpointPackage.eINSTANCE.getRGBValues(), "209,209,209");
+            backgroundColor = VisualBindingManager.getDefault().getRGBValuesFor(SystemColors.WHITE_LITERAL);
         } else if (style instanceof SquareSpec) {
-            color = VisualBindingManager.getDefault().getRGBValuesFor(SystemColors.BLACK_LITERAL);
+            backgroundColor = VisualBindingManager.getDefault().getRGBValuesFor(SystemColors.BLACK_LITERAL);
         } else {
-            color = (RGBValues) ViewpointFactory.eINSTANCE.createFromString(ViewpointPackage.eINSTANCE.getRGBValues(), "209,209,209");
+            backgroundColor = VisualBindingManager.getDefault().getRGBValuesFor(SystemColors.WHITE_LITERAL);
         }
-        changeColor(style, color);
+        changeColor(style, backgroundColor, borderColor);
 
     }
 
-    private void changeColor(Style style, RGBValues newcolor) {
+    private void changeColor(Style style, RGBValues backgroundcolor, RGBValues borderColor) {
         if (style instanceof FlatContainerStyle) {
             FlatContainerStyle sd = (FlatContainerStyle) style;
             TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(sd);
             domain.getCommandStack().execute(new RecordingCommand(domain) {
                 @Override
                 protected void doExecute() {
-
-                    sd.setForegroundColor(newcolor);
+                    sd.setBackgroundColor(backgroundcolor);
+                    sd.setBorderColor(borderColor);
                 }
             });
 
@@ -127,7 +127,7 @@ public class DesignModificateur {
             domain.getCommandStack().execute(new RecordingCommand(domain) {
                 @Override
                 protected void doExecute() {
-                    sd.setLabelColor(newcolor);
+                    sd.setLabelColor(backgroundcolor);
                 }
             });
 

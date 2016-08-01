@@ -7,7 +7,9 @@ import org.ensta.uml.sim.views.tools.Tools;
 
 public class ActionPlay extends Action implements IAction {
 
-    SimulatorView view;
+    protected SimulatorView view;
+
+    protected static boolean protection = true;
 
     public ActionPlay(SimulatorView view) {
         this.view = view;
@@ -18,6 +20,18 @@ public class ActionPlay extends Action implements IAction {
 
     @Override
     public void run() {
-        view.showMessage("Play the simulateur");
+        if (protection) {
+            Play p = new Play(view);
+            protection = !protection;
+            view.showMessage("Play");
+            p.start();
+        } else {
+            view.showMessage("Error: une simulation est deja ne cour");
+        }
     }
+
+    public static void freeActionPlay() {
+        protection = true;
+    }
+
 }
