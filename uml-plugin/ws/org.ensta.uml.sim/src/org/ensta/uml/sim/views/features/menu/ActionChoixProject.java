@@ -26,9 +26,9 @@ public class ActionChoixProject extends Action {
         Resource res = session.getSessionResource();
         URI path = res.getURI();
         view.setDesign(new DesignModificateur(session));
-        String nouveauPath = ResourcesPlugin.getWorkspace().getRoot().getFile(new org.eclipse.core.runtime.Path(res.getURI().toPlatformString(true))).getLocation().toPortableString()
-                .replace(path.lastSegment(), "model.uml");
-        view.getCommunicationP().putJson("reload", nouveauPath);
+        StateModel.setCurrentProjectPath(ResourcesPlugin.getWorkspace().getRoot().getFile(new org.eclipse.core.runtime.Path(res.getURI().toPlatformString(true))).getLocation().toPortableString()
+                .replace(path.lastSegment(), "model.uml"));
+        view.getCommunicationP().putJson("reload");
         view.getCommunicationP().sendMessage();
         StateModel.setCurrentProjectName(path.segment(1));
         view.refreshPartControl("Initialize");

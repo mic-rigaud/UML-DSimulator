@@ -13,11 +13,14 @@ public class StateModel {
 
     private static JSONArray currentState;
 
+    private static String currentProjectPath;
+
     public static void initialize() {
         currentState = new JSONArray();
         currentClasse = new String();
         currentInstances = new HashMap<String, String>();
         currentProjectName = new String();
+        currentProjectPath = new String();
     }
 
     public static void refreshElements(String classe, JSONArray state) {
@@ -62,5 +65,13 @@ public class StateModel {
 
     public static void setCurrentProjectName(String currentProjectName) {
         StateModel.currentProjectName = currentProjectName;
+    }
+
+    public static String getCurrentProjectPath() {
+        return currentProjectPath;
+    }
+
+    public static void setCurrentProjectPath(String currentProjectPath) {
+        StateModel.currentProjectPath = currentProjectPath;
     }
 }

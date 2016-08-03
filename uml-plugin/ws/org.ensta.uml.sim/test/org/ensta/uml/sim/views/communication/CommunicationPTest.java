@@ -8,8 +8,6 @@ import static org.junit.Assert.assertNotNull;
 
 import org.ensta.uml.sim.simulateur.CommunicationSMock;
 import org.ensta.uml.sim.simulateur.ObservateurMock;
-import org.ensta.uml.sim.views.Observateur;
-import org.ensta.uml.sim.views.communication.CommunicationP;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -61,7 +59,8 @@ public class CommunicationPTest {
     }
 
     /**
-     * Test method for {@link org.ensta.uml.sim.views.communication.CommunicationP#run()}.
+     * Test method for
+     * {@link org.ensta.uml.sim.views.communication.CommunicationP#run()}.
      * 
      * @throws InterruptedException
      */
@@ -69,7 +68,7 @@ public class CommunicationPTest {
     public void testRun() throws InterruptedException {
         System.out.println("toto");
         comm.start();
-        comm.waitConnection();
+        comm.waitConnection(10);
         comm2.sendMessage();
         Thread.sleep(1000);
         comm2.sendMauvaisMessage();
@@ -85,7 +84,7 @@ public class CommunicationPTest {
     public void testSendMessage() throws InterruptedException {
         assertEquals(false, comm.sendMessage());
         comm.start();
-        comm.waitConnection();
+        comm.waitConnection(10);
         assertEquals(true, comm.sendMessage());
         comm2.waitSem();
         assertNotNull(comm2.getJson());
@@ -109,7 +108,7 @@ public class CommunicationPTest {
     @Test
     public void testGetTransitions() throws InterruptedException {
         comm.start();
-        comm.waitConnection();
+        comm.waitConnection(10);
         comm2.sendMessage();
         Thread.sleep(1000);
         assertNotNull(comm.getTransitions());
@@ -125,7 +124,7 @@ public class CommunicationPTest {
     @Test
     public void testGetCurrentState() throws InterruptedException {
         comm.start();
-        comm.waitConnection();
+        comm.waitConnection(10);
         comm2.sendMessage();
         Thread.sleep(1000);
         assertNotNull(comm.getCurrentState());
@@ -194,7 +193,7 @@ public class CommunicationPTest {
     @Test
     public void testGetCurrentClass() throws InterruptedException {
         comm.start();
-        comm.waitConnection();
+        comm.waitConnection(10);
         comm2.sendMessage();
         Thread.sleep(1000);
         assertEquals("pinger", comm.getCurrentClass());

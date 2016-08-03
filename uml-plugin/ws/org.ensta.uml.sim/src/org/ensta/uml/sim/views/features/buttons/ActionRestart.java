@@ -19,8 +19,12 @@ public class ActionRestart extends Action implements IAction {
     @Override
     public void run() {
         view.getCommunicationP().putJson("restart");
-        view.getCommunicationP().sendMessage();
-        view.refreshPartControl("Initialize");
-        view.showMessage("Restart");
+        if (view.getCommunicationP().sendMessage()) {
+            view.refreshPartControl("Initialize");
+            view.showMessage("Restart");
+        } else {
+            view.showMessage("Erreur de Connection au simulateur");
+        }
+
     }
 }

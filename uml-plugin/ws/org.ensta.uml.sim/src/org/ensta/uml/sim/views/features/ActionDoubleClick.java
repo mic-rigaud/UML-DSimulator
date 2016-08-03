@@ -27,8 +27,10 @@ public class ActionDoubleClick extends Action implements IAction {
             return;
         }
         fillJsonOutCommunication(obj.toString());
-        view.getCommunicationP().sendMessage();
-        view.refreshPartControl();
+        if (view.getCommunicationP().sendMessage())
+            view.refreshPartControl();
+        else
+            view.showMessage("Erreur de Connection au simulateur");
     }
 
     private void fillJsonOutCommunication(String selection) {

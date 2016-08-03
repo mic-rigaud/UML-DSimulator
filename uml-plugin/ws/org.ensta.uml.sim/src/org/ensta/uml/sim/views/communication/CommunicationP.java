@@ -9,9 +9,11 @@ import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Semaphore;
+import java.util.concurrent.TimeUnit;
 
 import org.ensta.uml.sim.views.Observable;
 import org.ensta.uml.sim.views.Observateur;
+import org.ensta.uml.sim.views.model.StateModel;
 
 import json.JSONArray;
 import json.JSONObject;
@@ -33,32 +35,34 @@ public class CommunicationP extends Thread implements Observable {
 
     private Semaphore semConnection = new Semaphore(0);
 
-    public CommunicationP(int port) {
-        tabObservateur = new ArrayList<Observateur>();
-        try {
-            serverSocket = new ServerSocket(port);
+    private boolean connected;
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    private int port;
+
+    public CommunicationP(int port) {
+        connected = false;
+        tabObservateur = new ArrayList<Observateur>();
+        this.port = port;
         jsonOut = new JSONObject();
         initialiserJson();
         jsonOut.put("reloadPath", "");
         jsonIn = new JSONObject();
     }
 
-    public void startCommunication(String nouveauPath) {
-        putJson("reload", nouveauPath);
+    public void startCommunication() {
+        putJson("reload");
         sendMessage();
     }
 
     @Override
     public void run() {
         try {
+            serverSocket = new ServerSocket(port);
             this.server = serverSocket.accept();
             semConnection.release();
             System.out.println("Connexion accepte");
-            while (true) {
+            connected = true;
+            while (connected) {
                 DataInputStream in = new DataInputStream(server.getInputStream());
                 jsonIn = new JSONObject(in.readUTF());
                 if (isMessageAcceptable()) {
@@ -71,16 +75,19 @@ public class CommunicationP extends Thread implements Observable {
         } catch (SocketTimeoutException s) {
             System.out.println("Socket timed out!");
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Fin de la communication");
         }
 
     }
 
-    public void waitConnection() {
+    public boolean waitConnection(int secondTime) {
         try {
-            semConnection.acquire();
+            if (semConnection.tryAcquire(secondTime, TimeUnit.SECONDS))
+                return false;
+            return true;
         } catch (InterruptedException e) {
             e.printStackTrace();
+            return false;
         }
     }
 
@@ -96,7 +103,7 @@ public class CommunicationP extends Thread implements Observable {
 
     private boolean send() throws IOException {
         try {
-            if (server == null) {
+            if (server == null || server.isClosed()) {
                 System.out.println("Connection incomplete");
                 return false;
             }
@@ -115,6 +122,7 @@ public class CommunicationP extends Thread implements Observable {
             if (server != null)
                 server.close();
             serverSocket.close();
+            connected = false;
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -161,12 +169,7 @@ public class CommunicationP extends Thread implements Observable {
     public boolean putJson(String key, String valeur) {
         for (String keys : this.keyOutput) {
             if (keys.equals(key)) {
-                if (key.equals("reload")) {
-                    this.jsonOut.put(key, true);
-                    this.jsonOut.put("reloadPath", valeur);
-                } else {
-                    this.jsonOut.put(key, valeur);
-                }
+                this.jsonOut.put(key, valeur);
                 return true;
             }
         }
@@ -177,6 +180,9 @@ public class CommunicationP extends Thread implements Observable {
         for (String keys : this.keyOutput) {
             if (keys.equals(key)) {
                 this.jsonOut.put(key, true);
+                if (key.equals("reload")) {
+                    this.jsonOut.put("reloadPath", StateModel.getCurrentProjectPath());
+                }
                 return true;
             }
         }

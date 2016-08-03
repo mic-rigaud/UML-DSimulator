@@ -23,8 +23,10 @@ public class Play extends Thread {
                     @Override
                     public void run() {
                         view.getCommunicationP().putJson("random");
-                        view.getCommunicationP().sendMessage();
-                        view.refreshPartControl();
+                        if (view.getCommunicationP().sendMessage())
+                            view.refreshPartControl();
+                        else
+                            view.showMessage("Erreur de Connection au simulateur");
                     }
                 });
                 Thread.sleep(timeSimulation);
