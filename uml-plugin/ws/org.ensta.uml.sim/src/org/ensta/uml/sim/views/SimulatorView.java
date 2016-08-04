@@ -28,6 +28,7 @@ import org.ensta.uml.sim.views.design.DesignModificateur;
 import org.ensta.uml.sim.views.features.ActionDoubleClick;
 import org.ensta.uml.sim.views.features.buttons.ActionPlay;
 import org.ensta.uml.sim.views.features.buttons.ActionRestart;
+import org.ensta.uml.sim.views.features.buttons.ActionRestartCommunication;
 import org.ensta.uml.sim.views.features.buttons.ActionStop;
 import org.ensta.uml.sim.views.features.buttons.ActionStopCommunication;
 import org.ensta.uml.sim.views.features.buttons.ActionWaitCommunication;
@@ -74,6 +75,8 @@ public class SimulatorView extends ViewPart implements Observateur {
 
     private static ActionWaitCommunication waitCommunication;
 
+    private static ActionRestartCommunication restartComminucation;
+
     private static ActionMenuProject choixVue;
 
     private static ActionDoubleClick doubleClickAction;
@@ -100,10 +103,7 @@ public class SimulatorView extends ViewPart implements Observateur {
         StateModel.setCurrentProjectPath(ResourcesPlugin.getWorkspace().getRoot().getFile(new org.eclipse.core.runtime.Path(res.getURI().toPlatformString(true))).getLocation().toPortableString()
                 .replace(path.lastSegment(), "model.uml"));
         newCommunicationP();
-        communicationS = new CommunicationS(9000);
-        communicationS.start();
-        communicationP.waitConnection(10);
-        communicationP.startCommunication();
+        newCommunicationS();
         design = new DesignModificateur(session);
     }
 
@@ -185,6 +185,7 @@ public class SimulatorView extends ViewPart implements Observateur {
         manager.add(new Separator());
         manager.add(stopCommunication);
         manager.add(waitCommunication);
+        manager.add(restartComminucation);
         // manager.add(tab);
 
     }
@@ -214,6 +215,7 @@ public class SimulatorView extends ViewPart implements Observateur {
         // tab = new ActionTab(this);
         stopCommunication = new ActionStopCommunication(this);
         waitCommunication = new ActionWaitCommunication(this);
+        restartComminucation = new ActionRestartCommunication(this);
         choixVue = new ActionMenuProject(this);
         doubleClickAction = new ActionDoubleClick(this, viewer);
     }
@@ -275,6 +277,13 @@ public class SimulatorView extends ViewPart implements Observateur {
         communicationP = new CommunicationP(9000);
         communicationP.start();
         communicationP.ajouterObservateur(this);
+    }
+
+    public void newCommunicationS() {
+        communicationS = new CommunicationS(9000);
+        communicationS.start();
+        communicationP.waitConnection(10);
+        communicationP.startCommunication();
     }
 
 }
