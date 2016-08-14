@@ -283,7 +283,6 @@ public class SimulatorView extends ViewPart implements Observateur {
         communicationS = new CommunicationS(9000);
         communicationS.start();
         communicationP.waitConnection(10);
-        communicationP.startCommunication();
     }
 
 }

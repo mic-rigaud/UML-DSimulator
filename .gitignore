@@ -10,7 +10,7 @@ plug-simulation-ui-0.0.1/*
 uml-simulateur/*
 sirius/*
 README.org
-**~
+*~
 **.log
 **.toc
 **.out
@@ -34,3 +34,4 @@ Rapport/.git
 Rapport/presentation
 uml-plugin/resource*
 test_projet
+Wiki

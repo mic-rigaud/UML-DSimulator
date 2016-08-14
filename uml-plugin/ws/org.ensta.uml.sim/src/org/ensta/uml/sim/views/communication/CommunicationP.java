@@ -18,50 +18,126 @@ import org.ensta.uml.sim.views.model.StateModel;
 import json.JSONArray;
 import json.JSONObject;
 
+/**
+ * <b>This class permit to communicate with the simulator </b>
+ * <p>
+ * This class use json object to communicate. It send and receive json object.
+ * If you want to send a message you need to had your message in a json object
+ * before send a message
+ * 
+ * @author michael
+ * @version 1.0
+ * 
+ */
 public class CommunicationP extends Thread implements Observable {
+    /**
+     * List of observer that the class notify when it receive a message
+     */
     private ArrayList<Observateur> tabObservateur;
 
+    /**
+     * Key possible for json object sent
+     */
     private String[] keyOutput = { "state", "initialize", "reload", "reloadPath", "play", "stop", "restart", "random" };
 
+    /**
+     * Key possible for the json object received
+     * 
+     * @see CommunicationP#isMessageAcceptable()
+     */
     private String[] keyInput = { "transitions", "error", "errorMessage", "currentClass", "currentState" };
 
+    /**
+     * The json object that it receive
+     * 
+     * @see CommunicationP#getCurrentClass()
+     * @see CommunicationP#getCurrentState()
+     * @see CommunicationP#getTransitions()
+     * @see CommunicationP#isError()
+     * @see CommunicationP#getErrorMessage()
+     */
     private JSONObject jsonIn;
 
+    /**
+     * The serverSocket object
+     */
     private ServerSocket serverSocket;
 
+    /**
+     * Our socket
+     */
     private Socket server;
 
+    /**
+     * The json object that it send
+     * 
+     * @see CommunicationP#putJson(String)
+     * @see CommunicationP#putJson(String, String)
+     * @see CommunicationP#initializeJson()
+     */
     private JSONObject jsonOut;
 
+    /**
+     * This semaphore object permit to wait for a new connection
+     * 
+     * @see CommunicationP#waitConnection(int)
+     */
     private Semaphore semConnection = new Semaphore(0);
 
+    /**
+     * This boolean is false if there is no socket connected and otherwise true
+     */
     private boolean connected;
 
+    /**
+     * The number of the port where the socket is initiate
+     * 
+     * @see CommunicationP#CommunicationP(int)
+     */
     private int port;
 
+    /**
+     * Constructor CommunicationP
+     * 
+     * @param port
+     *            The number of the port for the socket
+     */
     public CommunicationP(int port) {
         connected = false;
         tabObservateur = new ArrayList<Observateur>();
         this.port = port;
         jsonOut = new JSONObject();
-        initialiserJson();
+        initializeJson();
         jsonOut.put("reloadPath", "");
         jsonIn = new JSONObject();
     }
 
-    public void startCommunication() {
+    /**
+     * This function initiate the simulator after the connection. It send the
+     * path of the current project to the simulator.
+     */
+    private void initializeCommunication() {
+        semConnection.release();
+        System.out.println("Connexion accepte");
         putJson("reload");
         sendMessage();
+        connected = true;
     }
 
+    /**
+     * Start the thread and the communication
+     * 
+     * After the first connection it sent to the simulator the path of the
+     * project. After that the simulator will respond with a first empty
+     * message. If there is an error with the file, there will be written on his
+     * first message.
+     */
     @Override
     public void run() {
         try {
             serverSocket = new ServerSocket(port);
             this.server = serverSocket.accept();
-            semConnection.release();
-            System.out.println("Connexion accepte");
-            connected = true;
+            initializeCommunication();
             while (connected) {
                 DataInputStream in = new DataInputStream(server.getInputStream());
                 jsonIn = new JSONObject(in.readUTF());
@@ -80,6 +156,13 @@ public class CommunicationP extends Thread implements Observable {
 
     }
 
+    /**
+     * 
+     * @param secondTime
+     *            the time during we will wait the connection in second
+     * @return true if it well connected, false otherwise (time exceeeded or
+     *         InterruptedException)
+     */
     public boolean waitConnection(int secondTime) {
         try {
             if (semConnection.tryAcquire(secondTime, TimeUnit.SECONDS))
@@ -91,7 +174,12 @@ public class CommunicationP extends Thread implements Observable {
         }
     }
 
-    // Cette methode ne sert qu'a catch l exception
+    /**
+     * This function send the message and return a boolean to know if it send
+     * well
+     * 
+     * @return true if no problem during the sends, false otherwise
+     */
     public boolean sendMessage() {
         try {
             return send();
@@ -101,6 +189,13 @@ public class CommunicationP extends Thread implements Observable {
         }
     }
 
+    /**
+     * This function send the message and return a boolean to know if it send
+     * well
+     * 
+     * @return true if no problem during the sends, false otherwise
+     * @throws IOException
+     */
     private boolean send() throws IOException {
         try {
             if (server == null || server.isClosed()) {
@@ -109,7 +204,7 @@ public class CommunicationP extends Thread implements Observable {
             }
             DataOutputStream out = new DataOutputStream(server.getOutputStream());
             out.writeUTF(jsonOut.toString());
-            initialiserJson();
+            initializeJson();
             return true;
         } catch (IOException e) {
             e.printStackTrace();
@@ -117,6 +212,9 @@ public class CommunicationP extends Thread implements Observable {
         }
     }
 
+    /**
+     * Close the communication
+     */
     public void close() {
         try {
             if (server != null)
@@ -128,12 +226,22 @@ public class CommunicationP extends Thread implements Observable {
         }
     }
 
+    /**
+     * 
+     * @return transitions possible for the next step
+     */
     public String[] getTransitions() {
         List<Object> liste = jsonIn.getJSONArray("transitions").toList();
         String[] trans = liste.toArray(new String[liste.size()]);
         return trans;
     }
 
+    /**
+     * 
+     * @return the currentState of the project. It is a json object wich contain
+     *         the name of all class, there instances for each class, and the
+     *         state in the State Machine Diagram for each instances
+     */
     public JSONArray getCurrentState() {
         return jsonIn.getJSONArray("currentState");
     }
@@ -156,7 +264,10 @@ public class CommunicationP extends Thread implements Observable {
         }
     }
 
-    private void initialiserJson() {
+    /**
+     * Create the jsonOut object with all its attributes
+     */
+    private void initializeJson() {
         this.jsonOut.put("initialize", false);
         this.jsonOut.put("play", false);
         this.jsonOut.put("stop", false);
@@ -166,6 +277,15 @@ public class CommunicationP extends Thread implements Observable {
         this.jsonOut.put("random", false);
     }
 
+    /**
+     * Verify if the key exist and if it is put the value in the jsonOut Object
+     * 
+     * @param key
+     *            The name of the key
+     * @param valeur
+     *            The value for this key
+     * @return true if no problem, false otherwise
+     */
     public boolean putJson(String key, String valeur) {
         for (String keys : this.keyOutput) {
             if (keys.equals(key)) {
@@ -175,6 +295,15 @@ public class CommunicationP extends Thread implements Observable {
         }
         return false;
     }
+
+    /**
+     * Verify if the key exist and if it is put "true" for this key in the
+     * jsonOut Object If the key if "reload" it change the "reloadPath"
+     * 
+     * @param key
+     *            The name of the key
+     * @return true if no problem, false otherwise
+     */
 
     public boolean putJson(String key) {
         for (String keys : this.keyOutput) {
@@ -191,6 +320,12 @@ public class CommunicationP extends Thread implements Observable {
 
     // TODO Il faudrait verifier qu'on a bien une liste de transition sous la
     // forme d une list<String>
+    /**
+     * Verify if the message received is correct. If the jsonIn have every key
+     * with the good form
+     * 
+     * @return true if no problem, false otherwise
+     */
     private boolean isMessageAcceptable() {
         for (String key : this.keyInput) {
             if (!this.jsonIn.has(key)) {

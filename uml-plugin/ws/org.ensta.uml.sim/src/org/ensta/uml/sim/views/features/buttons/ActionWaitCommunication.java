@@ -24,7 +24,6 @@ public class ActionWaitCommunication extends Action implements IAction {
             view.showMessage("Wait for a new connection during 60s");
             if (!view.getCommunicationP().waitConnection(60)) {
                 view.showMessage("Connexion Establish");
-                view.getCommunicationP().startCommunication();
                 view.refreshPartControl("Initialize");
             } else {
                 view.showMessage("Waiting time elapses");

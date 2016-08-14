@@ -1864,7 +1864,7 @@
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_nJAt0EQXEeao3_emoFUAnw" name="SUS" width="12" height="10">
         <target xmi:type="uml:Class" href="model.uml#_cTKSANANEeWpK6pFHJ1hEg"/>
         <semanticElements xmi:type="uml:Class" href="model.uml#_cTKSANANEeWpK6pFHJ1hEg"/>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_nJAt0UQXEeao3_emoFUAnw" labelSize="9" backgroundStyle="Liquid">
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_nJAt0UQXEeao3_emoFUAnw" labelSize="9" backgroundStyle="Liquid" foregroundColor="232,239,247">
           <labelFormat>bold</labelFormat>
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class']/@style"/>
         </ownedStyle>
@@ -1892,7 +1892,7 @@
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_nSYsQUQXEeao3_emoFUAnw" labelSize="9" backgroundStyle="Liquid">
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_nSYsQUQXEeao3_emoFUAnw" labelSize="9" backgroundStyle="Liquid" foregroundColor="232,239,247">
           <labelFormat>bold</labelFormat>
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class']/@style"/>
         </ownedStyle>
@@ -1912,7 +1912,7 @@
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_niK0sEQXEeao3_emoFUAnw" labelSize="9" backgroundStyle="Liquid" foregroundColor="156,12,12">
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_niK0sEQXEeao3_emoFUAnw" labelSize="9" backgroundStyle="Liquid" foregroundColor="232,239,247">
           <labelFormat>bold</labelFormat>
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class']/@style"/>
         </ownedStyle>

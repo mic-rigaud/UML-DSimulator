@@ -1,9 +1,8 @@
-# UML Simulator
+# UML-DSimulator
 
 ## Description of the project
 
-UMLSimulator is a plugin for UMLDesigner. This plugin is a simulator of UML Model.
-The plugin use a simulator which was developed by [Ciprian Teodorov](https://github.com/teodorov).
+UML-DSimulator is a plugin for UMLDesigner. This plugin is a simulator of UML Model. The plugin use a simulator which was developed by [Ciprian Teodorov](https://github.com/teodorov).
 
 With this simulator it is possible to see the evolution of States in all State machine diagram.
 
@@ -19,15 +18,21 @@ Linux:
 
     sudo apt-get install openjdk-8-jre openjdk-8-jdk openjdk-8-jre-headless
 
+Windows and Mac, download on this page:
+
+[Java SE Development Kit 8 - Downloads](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+
 ## Contains
 
 ### uml-plugin
 
 Folder with the eclipse development environment.
 
+To run eclipse:
+
     ./uml-plugin/eclipse/eclipse
 
-The source of the plugin are on the subfolder *ws*
+Sources of the plugin are on the subfolder *ws*
 
 ### Report
 
