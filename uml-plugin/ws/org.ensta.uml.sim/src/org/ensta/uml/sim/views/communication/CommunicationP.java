@@ -358,16 +358,31 @@ public class CommunicationP extends Thread implements Observable {
         return true;
     }
 
+    /**
+     * Give the current class send by the simulator
+     * 
+     * @return the current class
+     */
     public String getCurrentClass() {
         return this.jsonIn.getString("currentClass");
     }
 
+    /**
+     * Verify is the simulator send an error
+     * 
+     * @return true if there is an error
+     */
     public boolean isError() {
         if (jsonIn.has("error"))
             return jsonIn.getBoolean("error");
         return false;
     }
 
+    /**
+     * Give the error message
+     * 
+     * @return error message
+     */
     public String getErrorMessage() {
         return jsonIn.getString("errorMessage");
     }

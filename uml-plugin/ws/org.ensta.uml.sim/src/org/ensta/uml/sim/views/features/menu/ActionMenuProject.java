@@ -13,6 +13,12 @@ import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
 import org.ensta.uml.sim.views.SimulatorView;
 
+/**
+ * This class is a menu which contain all button to switch to other session
+ * 
+ * @author michael
+ * @version 1.0
+ */
 public class ActionMenuProject extends Action implements IAction {
     SimulatorView view;
 

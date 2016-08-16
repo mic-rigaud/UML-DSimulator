@@ -6,6 +6,13 @@ import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
 import org.ensta.uml.sim.views.SimulatorView;
 
+/**
+ * This class is a button which permit to wait for a new communication with a
+ * new simulator
+ * 
+ * @author michael
+ * @version 1.0
+ */
 public class ActionWaitCommunication extends Action implements IAction {
 
     SimulatorView view;

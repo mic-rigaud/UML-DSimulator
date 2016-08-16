@@ -5,6 +5,12 @@ import org.eclipse.jface.action.IAction;
 import org.ensta.uml.sim.views.SimulatorView;
 import org.ensta.uml.sim.views.tools.Tools;
 
+/**
+ * This class is a button which permit to restart the simulation
+ * 
+ * @author michael
+ * @version 1.0
+ */
 public class ActionRestart extends Action implements IAction {
     SimulatorView view;
 

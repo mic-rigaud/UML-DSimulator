@@ -8,6 +8,12 @@ import org.eclipse.jface.viewers.StructuredViewer;
 import org.ensta.uml.sim.views.SimulatorView;
 import org.ensta.uml.sim.views.features.view.ViewTransitions;
 
+/**
+ * this class develop how to react to a double click action
+ * 
+ * @author michael
+ * @version 1.0
+ */
 public class ActionDoubleClick extends Action implements IAction {
     private SimulatorView view;
 

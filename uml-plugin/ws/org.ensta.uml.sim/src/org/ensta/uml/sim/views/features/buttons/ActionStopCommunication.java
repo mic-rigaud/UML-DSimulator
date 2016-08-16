@@ -6,6 +6,13 @@ import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
 import org.ensta.uml.sim.views.SimulatorView;
 
+/**
+ * This class is a button which permit to stop the communication with the
+ * simulator
+ * 
+ * @author michael
+ * @version 1.0
+ */
 public class ActionStopCommunication extends Action implements IAction {
 
     SimulatorView view;

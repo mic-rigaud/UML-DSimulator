@@ -4,15 +4,38 @@ import java.util.HashMap;
 
 import json.JSONArray;
 
+/**
+ * this class contain all object whiwh permit to know how is the simulation
+ * 
+ * @author michael
+ * @version 1.0
+ */
 public class StateModel {
+    /**
+     * is the current project name of the session
+     */
     private static String currentProjectName;
 
+    /**
+     * is the last class which the simulator change a state
+     */
     private static String currentClasse;
 
+    /**
+     * is the current instance that the user want to see for all class
+     * <p>
+     * className : insanceName
+     */
     private static HashMap<String, String> currentInstances;
 
+    /**
+     * is the states of the simulator with all class, instances and there states
+     */
     private static JSONArray currentState;
 
+    /**
+     * is the path of the project file "model.uml"
+     */
     private static String currentProjectPath;
 
     public static void initialize() {

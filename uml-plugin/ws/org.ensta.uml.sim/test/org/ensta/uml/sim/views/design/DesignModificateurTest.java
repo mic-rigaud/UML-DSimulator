@@ -9,7 +9,7 @@ import json.JSONArray;
 
 public class DesignModificateurTest {
 
-    private DesignModificateur design;
+    private DesignModify design;
 
     private static JSONArray currentState;
 
@@ -34,7 +34,7 @@ public class DesignModificateurTest {
 
     @Before
     public void setUp() throws Exception {
-        design = new DesignModificateur();
+        design = new DesignModify();
 
     }
 

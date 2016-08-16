@@ -3,6 +3,14 @@ package org.ensta.uml.sim.views.features.buttons;
 import org.eclipse.swt.widgets.Display;
 import org.ensta.uml.sim.views.SimulatorView;
 
+/**
+ * This class is the behavior of the play of the simulation
+ * 
+ * @see ActionPlay
+ * @author michael
+ * @version 1.0
+ *
+ */
 public class Play extends Thread {
 
     protected SimulatorView view;

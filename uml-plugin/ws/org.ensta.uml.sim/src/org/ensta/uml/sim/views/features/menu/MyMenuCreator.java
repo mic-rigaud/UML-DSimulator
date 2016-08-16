@@ -11,6 +11,13 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
 
+/**
+ * The type of menu
+ * 
+ * @see ActionMenuProject
+ * @author michael
+ * @version 1.0
+ */
 public class MyMenuCreator extends Action implements IMenuCreator {
 
     private Menu fMenu;

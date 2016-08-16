@@ -42,8 +42,9 @@
 %\usepackage{graphicx}
 \RequirePackage{pageGardeEnsta}	% permet d avoir la page de garde ensta
 
-%\setcounter{secnumdepth}{2}		% permet d'augmenter la numerotation
-%\setcounter{tocdepth}{2}		% permet d'augmenter la numerotation
+%\setsecnumdepth{subsection}
+\setcounter{secnumdepth}{3}		% permet d'augmenter la numerotation
+%\setcounter{tocdepth}{3}		% permet d'augmenter la numerotation
 
 %%%%%%%%%%%%%%%%%%  DEFINITION DES BOITES
 % Definition de couleur supplementaire
@@ -189,13 +190,18 @@
 \title{UML-DSimulator}
 \author{\textsc{IETA Michaël Rigaud }}
 \date{\today}
-\doctype{Internship report}
+\doctype{}
 \promo{promo 2017}
 \etablissement{\textsc{Ensta} Bretagne\\2, rue François Verny\\
   29806 \textsc{Brest} cedex\\\textsc{France}\\Tel +33 (0)2 98 34 88 00\\ \url{www.ensta-bretagne.fr}}
 \logoEcole{\includegraphics[height=4.2cm]{logo_ENSTA_Bretagne_Vertical_CMJN}}
 \respo{Prof. Hans Vangheluwe}
 \tuteur{Simon Van Mierlo}
+\addto\captionsenglish{% Replace "english" with the language you use
+  \renewcommand{\contentsname}%
+    {Table of contents}%
+}
+
 
 
 %%%%%%%%%%%%%%%%%% DEBUT DU DOCUMENT
@@ -205,13 +211,21 @@
 \thispagestyle{empty}
 \newpage
 
-\tableofcontents*
+\input{Partie/Abstract}
+\input{Partie/Acknowledgement}
+
+\tableofcontents
 
 
 %%%%%%%%%%%%%%%%% INTRODUCTION
 
 \chapter*{Introduction}
 \addcontentsline{toc}{chapter}{Introduction}
+
+UML-DSimulator is an open source\footnote{under GNU GPL license} plugin which add a simulator to \umld. This plugin has been entirely realize during this internship, but it is based on a simulator developed by Ciprian Teodorov.
+
+This report is going to present the aims, the problems and the solutions bring during this internship. In the beginning we will present the project and the tools at the disposal at the beginning of the internship, then we will show our solution, and to finish we are going to underline the objectives after the end of this project.
+
 \newpage
 %%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -227,13 +241,13 @@
 \input{Partie/Communication}
 
 
+\part{Objectives for the next intern}
 
 %%%% CONCLUSION %%%%%%%%%
 
 \chapter*{Conclusion}
 \addcontentsline{toc}{chapter}{Conclusion}
 \newpage
-
 %%%% ANNEXE %%%%%%%%%%%%
 
 \part*{Annexe}

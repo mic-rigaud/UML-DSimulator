@@ -10,16 +10,42 @@ import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeColumn;
 import org.eclipse.swt.widgets.TreeItem;
-import org.ensta.uml.sim.views.design.DesignModificateur;
+import org.ensta.uml.sim.views.design.DesignModify;
 import org.ensta.uml.sim.views.model.StateModel;
 
 import json.JSONArray;
 import json.JSONObject;
 
+/**
+ * This class create the view of the project
+ * <p>
+ * The project is view as a tree with:
+ * <ol>
+ * <li>as root the name of the project</li>
+ * <li>then the name of class</li>
+ * <li>to end the name of instances</li>
+ * </ol>
+ * <p>
+ * the name of class and instances are clickable to select the instance we want
+ * to see
+ * 
+ * @author michael
+ * @version 1.0
+ */
 public class ViewProject {
 
+    /**
+     * Contain the root node of the tree
+     */
     private Tree tree;
 
+    /**
+     * Constructor ViewProject
+     * 
+     * @param parent
+     * @param style
+     *            of tree
+     */
     public ViewProject(Composite parent, int style) {
         tree = new Tree(parent, style);
         tree.setHeaderVisible(true);
@@ -30,6 +56,11 @@ public class ViewProject {
         item.setText(SessionManager.INSTANCE.getSessions().toArray(new Session[0])[0].getSessionResource().getURI().segment(1));
     }
 
+    /**
+     * refresh the view of the tree
+     * <p>
+     * More precisely, refresh all elements of the tree
+     */
     public void refreshTreeView() {
         tree.removeAll();
         TreeItem item = new TreeItem(tree, SWT.NONE);
@@ -61,7 +92,12 @@ public class ViewProject {
         tree.addListener(selection, listener);
     }
 
-    public void addClickAction(DesignModificateur design) {
+    /**
+     * add a clickable action to switch instance view in the uml model
+     * 
+     * @param design
+     */
+    public void addClickAction(DesignModify design) {
         tree.addListener(SWT.Selection, new Listener() {
             @Override
             public void handleEvent(Event event) {

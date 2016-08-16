@@ -6,6 +6,13 @@ import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
 import org.ensta.uml.sim.views.SimulatorView;
 
+/**
+ * This class is a button which permit to restart the communication with the
+ * simulator
+ * 
+ * @author michael
+ * @version 1.0
+ */
 public class ActionRestartCommunication extends Action implements IAction {
 
     SimulatorView view;

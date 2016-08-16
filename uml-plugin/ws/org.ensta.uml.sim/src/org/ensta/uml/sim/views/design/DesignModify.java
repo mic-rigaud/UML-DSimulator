@@ -25,15 +25,37 @@ import org.ensta.uml.sim.views.model.StateModel;
 
 import json.JSONObject;
 
-public class DesignModificateur {
+/**
+ * <b>This class permit to change the aspect of the uml model </b>
+ * <p>
+ *
+ * @author michael
+ * @version 1.0
+ */
+public class DesignModify {
 
+    /**
+     * Contain all elements of uml models of an session
+     * 
+     * @see DesignModify#DesignModify(Session)
+     */
     private EList<DDiagramElement> elements;
 
-    public DesignModificateur() {
+    /**
+     * Constructor DesignModify
+     */
+    public DesignModify() {
         elements = new BasicEList<DDiagramElement>();
     }
 
-    public DesignModificateur(Session mysession) {
+    /**
+     * Constructor DesignModify
+     * <p>
+     * fill in elements.
+     * 
+     * @param mysession
+     */
+    public DesignModify(Session mysession) {
         this();
         if (mysession != null) {
             final Collection<DRepresentation> representations = DialectManager.INSTANCE.getAllRepresentations(mysession);
@@ -49,6 +71,12 @@ public class DesignModificateur {
         }
     }
 
+    /**
+     * refresh the color of the uml model
+     * <p>
+     * for all elements check if it is need to be highlight. If it is it change
+     * the color, otherwise put the default color.
+     */
     public void refreshColor() {
         for (int i = 0; i < this.elements.size(); i++) {
             RGBValues backgroundColor, borderColor;

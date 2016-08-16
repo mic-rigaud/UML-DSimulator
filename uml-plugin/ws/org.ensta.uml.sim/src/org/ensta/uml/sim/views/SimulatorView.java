@@ -24,7 +24,7 @@ import org.eclipse.ui.IWorkbenchActionConstants;
 import org.eclipse.ui.part.ViewPart;
 import org.ensta.uml.sim.simulateur.CommunicationS;
 import org.ensta.uml.sim.views.communication.CommunicationP;
-import org.ensta.uml.sim.views.design.DesignModificateur;
+import org.ensta.uml.sim.views.design.DesignModify;
 import org.ensta.uml.sim.views.features.ActionDoubleClick;
 import org.ensta.uml.sim.views.features.buttons.ActionPlay;
 import org.ensta.uml.sim.views.features.buttons.ActionRestart;
@@ -89,7 +89,7 @@ public class SimulatorView extends ViewPart implements Observateur {
 
     private static Semaphore sem = new Semaphore(0);
 
-    private static DesignModificateur design;
+    private static DesignModify design;
 
     /**
      * The constructor.
@@ -104,7 +104,7 @@ public class SimulatorView extends ViewPart implements Observateur {
                 .replace(path.lastSegment(), "model.uml"));
         newCommunicationP();
         newCommunicationS();
-        design = new DesignModificateur(session);
+        design = new DesignModify(session);
     }
 
     /**
@@ -261,11 +261,11 @@ public class SimulatorView extends ViewPart implements Observateur {
         return communicationP;
     }
 
-    public DesignModificateur getDesign() {
+    public DesignModify getDesign() {
         return design;
     }
 
-    public void setDesign(DesignModificateur designModificateur) {
+    public void setDesign(DesignModify designModificateur) {
         design = designModificateur;
     }
 
