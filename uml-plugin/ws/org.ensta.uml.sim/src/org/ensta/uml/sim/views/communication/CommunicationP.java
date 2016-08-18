@@ -8,12 +8,12 @@ import java.net.Socket;
 import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
 
 import org.ensta.uml.sim.views.Observable;
 import org.ensta.uml.sim.views.Observateur;
 import org.ensta.uml.sim.views.model.StateModel;
+import org.ensta.uml.sim.views.tools.MySemaphore;
 
 import json.JSONArray;
 import json.JSONObject;
@@ -82,7 +82,7 @@ public class CommunicationP extends Thread implements Observable {
      * 
      * @see CommunicationP#waitConnection(int)
      */
-    private Semaphore semConnection = new Semaphore(0);
+    private MySemaphore semConnection = new MySemaphore(0, 1);
 
     /**
      * This boolean is false if there is no socket connected and otherwise true
@@ -115,8 +115,10 @@ public class CommunicationP extends Thread implements Observable {
     /**
      * This function initiate the simulator after the connection. It send the
      * path of the current project to the simulator.
+     * 
+     * @throws Exception
      */
-    private void initializeCommunication() {
+    private void initializeCommunication() throws Exception {
         semConnection.release();
         System.out.println("Connexion accepte");
         putJson("reload");
@@ -152,6 +154,8 @@ public class CommunicationP extends Thread implements Observable {
             System.out.println("Socket timed out!");
         } catch (IOException e) {
             System.out.println("Fin de la communication");
+        } catch (Exception e) {
+            System.out.println("Error: initialisation");
         }
 
     }
@@ -165,9 +169,7 @@ public class CommunicationP extends Thread implements Observable {
      */
     public boolean waitConnection(int secondTime) {
         try {
-            if (semConnection.tryAcquire(secondTime, TimeUnit.SECONDS))
-                return false;
-            return true;
+            return semConnection.tryAcquire(secondTime, TimeUnit.SECONDS);
         } catch (InterruptedException e) {
             e.printStackTrace();
             return false;
@@ -179,37 +181,16 @@ public class CommunicationP extends Thread implements Observable {
      * well
      * 
      * @return true if no problem during the sends, false otherwise
+     * @throws Exception
      */
-    public boolean sendMessage() {
-        try {
-            return send();
-        } catch (IOException e) {
-            e.printStackTrace();
-            return false;
+    public void sendMessage() throws Exception {
+        if (server == null || server.isClosed()) {
+            System.out.println("Connection incomplete");
+            throw new Exception("Connection incomplete");
         }
-    }
-
-    /**
-     * This function send the message and return a boolean to know if it send
-     * well
-     * 
-     * @return true if no problem during the sends, false otherwise
-     * @throws IOException
-     */
-    private boolean send() throws IOException {
-        try {
-            if (server == null || server.isClosed()) {
-                System.out.println("Connection incomplete");
-                return false;
-            }
-            DataOutputStream out = new DataOutputStream(server.getOutputStream());
-            out.writeUTF(jsonOut.toString());
-            initializeJson();
-            return true;
-        } catch (IOException e) {
-            e.printStackTrace();
-            return false;
-        }
+        DataOutputStream out = new DataOutputStream(server.getOutputStream());
+        out.writeUTF(jsonOut.toString());
+        initializeJson();
     }
 
     /**
@@ -219,7 +200,8 @@ public class CommunicationP extends Thread implements Observable {
         try {
             if (server != null)
                 server.close();
-            serverSocket.close();
+            if (serverSocket != null)
+                serverSocket.close();
             connected = false;
         } catch (IOException e) {
             e.printStackTrace();

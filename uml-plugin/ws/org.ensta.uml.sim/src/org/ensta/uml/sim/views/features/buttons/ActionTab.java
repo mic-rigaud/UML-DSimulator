@@ -11,13 +11,13 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.internal.WorkbenchPage;
-import org.ensta.uml.sim.views.SimulatorView;
+import org.ensta.uml.sim.views.MainView;
 
 public class ActionTab extends Action implements IAction {
 
-    SimulatorView view;
+    MainView view;
 
-    public ActionTab(SimulatorView view) {
+    public ActionTab(MainView view) {
         this.view = view;
         this.setText("Link with simulation");
         this.setToolTipText("Link with simulation");

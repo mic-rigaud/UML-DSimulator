@@ -4,7 +4,7 @@ import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
-import org.ensta.uml.sim.views.SimulatorView;
+import org.ensta.uml.sim.views.MainView;
 
 /**
  * This class is a button which permit to stop the simulation if it has been
@@ -14,9 +14,9 @@ import org.ensta.uml.sim.views.SimulatorView;
  * @version 1.0
  */
 public class ActionStop extends Action implements IAction {
-    SimulatorView view;
+    MainView view;
 
-    public ActionStop(SimulatorView view) {
+    public ActionStop(MainView view) {
         this.view = view;
         this.setText("Stop");
         this.setToolTipText("Stop tooltip");

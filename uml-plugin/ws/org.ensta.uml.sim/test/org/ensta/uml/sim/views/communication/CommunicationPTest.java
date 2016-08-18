@@ -5,6 +5,7 @@ package org.ensta.uml.sim.views.communication;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.fail;
 
 import org.ensta.uml.sim.simulateur.CommunicationSMock;
 import org.ensta.uml.sim.simulateur.ObservateurMock;
@@ -82,17 +83,25 @@ public class CommunicationPTest {
      */
     @Test
     public void testSendMessage() throws InterruptedException {
-        assertEquals(false, comm.sendMessage());
+        try {
+            comm.sendMessage();
+            fail("Il devait y avoir une exception");
+        } catch (Exception e) {
+        }
         comm.start();
         comm.waitConnection(10);
-        assertEquals(true, comm.sendMessage());
+        try {
+            comm.sendMessage();
+        } catch (Exception e) {
+            fail("exception non voulu");
+        }
         comm2.waitSem();
         assertNotNull(comm2.getJson());
         assertEquals(true, comm2.isJsonCorrect());
         assertEquals(false, comm2.getJson().getBoolean("initialize"));
         assertEquals(false, comm2.getJson().getBoolean("play"));
         assertEquals(false, comm2.getJson().getBoolean("stop"));
-        assertEquals(false, comm2.getJson().getBoolean("reload"));
+        assertEquals(true, comm2.getJson().getBoolean("reload"));
         assertEquals(false, comm2.getJson().getBoolean("restart"));
         assertEquals(false, comm2.getJson().getBoolean("random"));
         assertEquals("", comm2.getJson().getString("state"));

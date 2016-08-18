@@ -1,7 +1,7 @@
 package org.ensta.uml.sim.views.features.buttons;
 
 import org.eclipse.swt.widgets.Display;
-import org.ensta.uml.sim.views.SimulatorView;
+import org.ensta.uml.sim.views.MainView;
 
 /**
  * This class is the behavior of the play of the simulation
@@ -13,13 +13,13 @@ import org.ensta.uml.sim.views.SimulatorView;
  */
 public class Play extends Thread {
 
-    protected SimulatorView view;
+    protected MainView view;
 
     protected static boolean cont = true;
 
     protected int timeSimulation = 1000;
 
-    public Play(SimulatorView view) {
+    public Play(MainView view) {
         this.view = view;
     }
 
@@ -30,11 +30,14 @@ public class Play extends Thread {
                 Display.getDefault().syncExec(new Runnable() {
                     @Override
                     public void run() {
-                        view.getCommunicationP().putJson("random");
-                        if (view.getCommunicationP().sendMessage())
+                        try {
+                            view.getCommunicationP().putJson("random");
+                            view.getCommunicationP().sendMessage();
                             view.refreshPartControl();
-                        else
+                        } catch (Exception e) {
+                            e.printStackTrace();
                             view.showMessage("Erreur de Connection au simulateur");
+                        }
                     }
                 });
                 Thread.sleep(timeSimulation);

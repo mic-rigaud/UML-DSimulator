@@ -4,7 +4,7 @@ import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
-import org.ensta.uml.sim.views.SimulatorView;
+import org.ensta.uml.sim.views.MainView;
 
 /**
  * This class is a button which permit to wait for a new communication with a
@@ -15,9 +15,9 @@ import org.ensta.uml.sim.views.SimulatorView;
  */
 public class ActionWaitCommunication extends Action implements IAction {
 
-    SimulatorView view;
+    MainView view;
 
-    public ActionWaitCommunication(SimulatorView view) {
+    public ActionWaitCommunication(MainView view) {
         this.view = view;
         this.setText("Wait for a new Simulator");
         this.setToolTipText("Wait for a new Simulator");

@@ -5,8 +5,8 @@ import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredViewer;
-import org.ensta.uml.sim.views.SimulatorView;
-import org.ensta.uml.sim.views.features.view.ViewTransitions;
+import org.ensta.uml.sim.views.MainView;
+import org.ensta.uml.sim.views.features.view.TransitionsView;
 
 /**
  * this class develop how to react to a double click action
@@ -15,28 +15,31 @@ import org.ensta.uml.sim.views.features.view.ViewTransitions;
  * @version 1.0
  */
 public class ActionDoubleClick extends Action implements IAction {
-    private SimulatorView view;
+    private MainView view;
 
     private StructuredViewer table;
 
-    public ActionDoubleClick(SimulatorView view, ViewTransitions table) {
+    public ActionDoubleClick(MainView view, TransitionsView table) {
         this.view = view;
         this.table = table;
     }
 
     @Override
     public void run() {
-        ISelection selection = table.getSelection();
-        Object obj = ((IStructuredSelection) selection).getFirstElement();
-        if (obj == null) {
-            System.out.println("erreur: doubleClickAction: Null");
-            return;
-        }
-        fillJsonOutCommunication(obj.toString());
-        if (view.getCommunicationP().sendMessage())
+        try {
+            ISelection selection = table.getSelection();
+            Object obj = ((IStructuredSelection) selection).getFirstElement();
+            if (obj == null) {
+                System.out.println("erreur: doubleClickAction: Null");
+                return;
+            }
+            fillJsonOutCommunication(obj.toString());
+            view.getCommunicationP().sendMessage();
             view.refreshPartControl();
-        else
+        } catch (Exception e) {
+            e.printStackTrace();
             view.showMessage("Erreur de Connection au simulateur");
+        }
     }
 
     private void fillJsonOutCommunication(String selection) {

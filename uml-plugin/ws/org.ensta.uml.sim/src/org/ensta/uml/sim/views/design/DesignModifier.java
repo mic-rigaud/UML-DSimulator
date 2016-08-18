@@ -31,20 +31,21 @@ import json.JSONObject;
  *
  * @author michael
  * @version 1.0
+ * 
  */
-public class DesignModify {
+public class DesignModifier {
 
     /**
      * Contain all elements of uml models of an session
      * 
-     * @see DesignModify#DesignModify(Session)
+     * @see DesignModifier#DesignModify(Session)
      */
     private EList<DDiagramElement> elements;
 
     /**
      * Constructor DesignModify
      */
-    public DesignModify() {
+    public DesignModifier() {
         elements = new BasicEList<DDiagramElement>();
     }
 
@@ -55,7 +56,7 @@ public class DesignModify {
      * 
      * @param mysession
      */
-    public DesignModify(Session mysession) {
+    public DesignModifier(Session mysession) {
         this();
         if (mysession != null) {
             final Collection<DRepresentation> representations = DialectManager.INSTANCE.getAllRepresentations(mysession);

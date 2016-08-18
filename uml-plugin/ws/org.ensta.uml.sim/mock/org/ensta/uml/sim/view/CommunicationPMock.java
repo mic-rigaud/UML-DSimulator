@@ -7,6 +7,8 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.concurrent.Semaphore;
 
+import org.ensta.uml.sim.views.tools.MySemaphore;
+
 import json.JSONArray;
 import json.JSONObject;
 
@@ -24,7 +26,7 @@ public class CommunicationPMock extends Thread {
 
     Semaphore sem = new Semaphore(0);
 
-    private Semaphore semConnection = new Semaphore(0);
+    private MySemaphore semConnection = new MySemaphore(0, 1);
 
     public CommunicationPMock() {
         this.initialiserJson();
@@ -44,7 +46,8 @@ public class CommunicationPMock extends Thread {
                     sem.release();
                 }
             } catch (IOException s) {
-                System.out.println("Socket timed out! 2");
+                close();
+                System.out.println("Socket timed out! 1");
             }
         }
     }
@@ -67,7 +70,8 @@ public class CommunicationPMock extends Thread {
         try {
             if (server != null)
                 server.close();
-            serverSocket.close();
+            if (serverSocket != null)
+                serverSocket.close();
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

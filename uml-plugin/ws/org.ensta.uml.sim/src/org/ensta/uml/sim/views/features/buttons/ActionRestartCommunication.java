@@ -4,7 +4,7 @@ import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
-import org.ensta.uml.sim.views.SimulatorView;
+import org.ensta.uml.sim.views.MainView;
 
 /**
  * This class is a button which permit to restart the communication with the
@@ -15,9 +15,9 @@ import org.ensta.uml.sim.views.SimulatorView;
  */
 public class ActionRestartCommunication extends Action implements IAction {
 
-    SimulatorView view;
+    MainView view;
 
-    public ActionRestartCommunication(SimulatorView view) {
+    public ActionRestartCommunication(MainView view) {
         this.view = view;
         this.setText("Restart default Simulator");
         this.setToolTipText("Restart default Simulator");
@@ -34,6 +34,5 @@ public class ActionRestartCommunication extends Action implements IAction {
         } else {
             view.showMessage("You could first stop the simulator");
         }
-
     }
 }

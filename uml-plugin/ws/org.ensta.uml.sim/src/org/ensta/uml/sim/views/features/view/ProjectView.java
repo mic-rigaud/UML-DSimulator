@@ -10,7 +10,7 @@ import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeColumn;
 import org.eclipse.swt.widgets.TreeItem;
-import org.ensta.uml.sim.views.design.DesignModify;
+import org.ensta.uml.sim.views.design.DesignModifier;
 import org.ensta.uml.sim.views.model.StateModel;
 
 import json.JSONArray;
@@ -32,7 +32,7 @@ import json.JSONObject;
  * @author michael
  * @version 1.0
  */
-public class ViewProject {
+public class ProjectView {
 
     /**
      * Contain the root node of the tree
@@ -46,7 +46,7 @@ public class ViewProject {
      * @param style
      *            of tree
      */
-    public ViewProject(Composite parent, int style) {
+    public ProjectView(Composite parent, int style) {
         tree = new Tree(parent, style);
         tree.setHeaderVisible(true);
         TreeColumn column1 = new TreeColumn(tree, SWT.LEFT);
@@ -97,7 +97,7 @@ public class ViewProject {
      * 
      * @param design
      */
-    public void addClickAction(DesignModify design) {
+    public void addClickAction(DesignModifier design) {
         tree.addListener(SWT.Selection, new Listener() {
             @Override
             public void handleEvent(Event event) {

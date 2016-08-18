@@ -4,21 +4,21 @@ import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.PlatformUI;
-import org.ensta.uml.sim.views.SimulatorView;
+import org.ensta.uml.sim.views.MainView;
 
 /**
  * This class create the view with all possible transitions
  * <p>
  * This transition are clickable
  * 
- * @see SimulatorView
+ * @see MainView
  * @author michael
  * @version 1.0
  */
-public class ViewTransitions extends TableViewer {
+public class TransitionsView extends TableViewer {
     ViewLabelProvider viewLabel;
 
-    public ViewTransitions(Composite parent, int i) {
+    public TransitionsView(Composite parent, int i) {
         super(parent, i);
         this.setContentProvider(ArrayContentProvider.getInstance());
         viewLabel = new ViewLabelProvider();

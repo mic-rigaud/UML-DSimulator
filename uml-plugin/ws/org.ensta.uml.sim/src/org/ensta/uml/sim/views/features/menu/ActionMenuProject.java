@@ -11,7 +11,7 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
-import org.ensta.uml.sim.views.SimulatorView;
+import org.ensta.uml.sim.views.MainView;
 
 /**
  * This class is a menu which contain all button to switch to other session
@@ -20,9 +20,9 @@ import org.ensta.uml.sim.views.SimulatorView;
  * @version 1.0
  */
 public class ActionMenuProject extends Action implements IAction {
-    SimulatorView view;
+    MainView view;
 
-    public ActionMenuProject(SimulatorView view) {
+    public ActionMenuProject(MainView view) {
         super("My action", Action.AS_DROP_DOWN_MENU);
         this.view = view;
         this.setText("Choix model");

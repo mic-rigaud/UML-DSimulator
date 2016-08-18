@@ -2,7 +2,7 @@ package org.ensta.uml.sim.views.features.buttons;
 
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
-import org.ensta.uml.sim.views.SimulatorView;
+import org.ensta.uml.sim.views.MainView;
 import org.ensta.uml.sim.views.tools.Tools;
 
 /**
@@ -13,11 +13,11 @@ import org.ensta.uml.sim.views.tools.Tools;
  */
 public class ActionPlay extends Action implements IAction {
 
-    protected SimulatorView view;
+    protected MainView view;
 
     protected static boolean protection = true;
 
-    public ActionPlay(SimulatorView view) {
+    public ActionPlay(MainView view) {
         this.view = view;
         this.setText("Play");
         this.setToolTipText("Play tooltip");

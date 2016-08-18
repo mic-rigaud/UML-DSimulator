@@ -4,7 +4,8 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
-import java.util.concurrent.Semaphore;
+
+import org.ensta.uml.sim.views.tools.MySemaphore;
 
 import json.JSONObject;
 
@@ -15,7 +16,7 @@ public class CommunicationSMock extends Thread {
 
     private String[] keyOutput = { "state", "initialize", "reload", "reloadPath", "play", "stop", "restart", "random" };
 
-    private Semaphore sem = new Semaphore(0);
+    private MySemaphore sem = new MySemaphore(0, 1);
 
     @Override
     public void run() {

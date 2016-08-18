@@ -4,7 +4,7 @@ import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
-import org.ensta.uml.sim.views.SimulatorView;
+import org.ensta.uml.sim.views.MainView;
 
 /**
  * This class is a button which permit to stop the communication with the
@@ -15,9 +15,9 @@ import org.ensta.uml.sim.views.SimulatorView;
  */
 public class ActionStopCommunication extends Action implements IAction {
 
-    SimulatorView view;
+    MainView view;
 
-    public ActionStopCommunication(SimulatorView view) {
+    public ActionStopCommunication(MainView view) {
         this.view = view;
         this.setText("Stop Simulator");
         this.setToolTipText("Stop Simulator");

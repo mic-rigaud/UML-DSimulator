@@ -2,7 +2,7 @@ package org.ensta.uml.sim.views.features.buttons;
 
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
-import org.ensta.uml.sim.views.SimulatorView;
+import org.ensta.uml.sim.views.MainView;
 import org.ensta.uml.sim.views.tools.Tools;
 
 /**
@@ -12,9 +12,9 @@ import org.ensta.uml.sim.views.tools.Tools;
  * @version 1.0
  */
 public class ActionRestart extends Action implements IAction {
-    SimulatorView view;
+    MainView view;
 
-    public ActionRestart(SimulatorView view) {
+    public ActionRestart(MainView view) {
         this.view = view;
         this.setText("Restart");
         this.setToolTipText("restart tooltip");
@@ -24,12 +24,14 @@ public class ActionRestart extends Action implements IAction {
 
     @Override
     public void run() {
-        view.getCommunicationP().putJson("restart");
-        if (view.getCommunicationP().sendMessage()) {
+        try {
+            view.getCommunicationP().putJson("restart");
+            view.getCommunicationP().sendMessage();
             view.refreshPartControl("Initialize");
             view.showMessage("Restart");
-        } else {
+        } catch (Exception e) {
             view.showMessage("Erreur de Connection au simulateur");
+            e.printStackTrace();
         }
 
     }
