@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<config date="1469437976504" transient="false">
+<config date="1471612712176" transient="false">
 	<site updateable="true" url="file:/home/michael/.p2/pool/" enabled="true" policy="MANAGED-ONLY">
 		<feature id="org.eclipse.ecf.filetransfer.feature" version="3.13.1.v20160405-1820" url="features/org.eclipse.ecf.filetransfer.feature_3.13.1.v20160405-1820/">
 		</feature>

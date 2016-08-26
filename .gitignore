@@ -1,8 +1,4 @@
 Administratif/*
-**.jar
-**.zip
-**.class
-**.tar.gz
 uml-designer-master4/*
 Document_SCCD/*
 UML-Designer/*
@@ -10,19 +6,8 @@ plug-simulation-ui-0.0.1/*
 uml-simulateur/*
 sirius/*
 README.org
-*~
-**.log
-**.toc
-**.out
-**.idx
-**.blg
-**.bbl
-**.aux
-**.lof
-**auto
-**.xcf
-**.md5
-**.sha1
+*.md5
+*.sha1
 bin
 eclipse-installer
 sirius
@@ -31,8 +16,12 @@ Rapport/.git
 **.settings
 **.content
 **.cp
+images_resource
 Rapport/presentation
 uml-plugin/resource*
 test_projet
 Wiki
 Deployment/README.md
+
+# Inclure les jar pour le deployment
+!Deployment/*.jar

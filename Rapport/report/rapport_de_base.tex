@@ -7,7 +7,6 @@
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 
-
 %%%%%%%%%%%%%%%%%%%%  PACKAGE SECONDAIRE
 
 %\usepackage{amstext,amsmath,amssymb,amsfonts} % package math
@@ -32,12 +31,13 @@
 %\usepackage{framed}				% permet de faire des environnement cadre
 %\usepackage{fancybox}			% permet de realiser les cadres
 \usepackage{titletoc}			% permet de modifier les titres
-%\usepackage{caption}
+\usepackage{caption}
 \usepackage[a4paper, top=2cm, bottom=2cm]{geometry}
 \usepackage{frbib}                      %permet d avoir une biblio francaise
 \usepackage[babel=true]{csquotes}
 \usepackage{colortbl}
 \usepackage{listings}
+\usepackage{xspace}
 
 %\usepackage{graphicx}
 \RequirePackage{pageGardeEnsta}	% permet d avoir la page de garde ensta
@@ -154,9 +154,9 @@
 \newcommand{\etc}{\latinloc{etc}}
 \newcommand{\eg}{\latinloc{e.g.}}
 \newcommand{\ie}{\latinloc{i.e.}}
-\newcommand{\cad}{c'est-à-dire }
+\newcommand{\cad}{c'est-à-dire\xspace}
 \newcommand{\st}{\ensuremath{\text{\xspace s.t.\xspace}}}
-\newcommand{\umld}{UML Designer }
+\newcommand{\umld}{UML Designer\xspace}
 
 %%%% Definition des couleur %%%%
 
@@ -190,7 +190,7 @@
 \title{UML-DSimulator}
 \author{\textsc{IETA Michaël Rigaud }}
 \date{\today}
-\doctype{}
+\doctype{SPID TSe}
 \promo{promo 2017}
 \etablissement{\textsc{Ensta} Bretagne\\2, rue François Verny\\
   29806 \textsc{Brest} cedex\\\textsc{France}\\Tel +33 (0)2 98 34 88 00\\ \url{www.ensta-bretagne.fr}}
@@ -222,26 +222,38 @@
 \chapter*{Introduction}
 \addcontentsline{toc}{chapter}{Introduction}
 
-UML-DSimulator is an open source\footnote{under GNU GPL license} plugin which add a simulator to \umld. This plugin has been entirely realize during this internship, but it is based on a simulator developed by Ciprian Teodorov.
+During my second year school at ENSTA Bretagne, Mr Champeau taught us UML Diagrams. During this lesson, He shown us the possibility to create Codes from UML Diagram and the possibility to simulate UML Diagrams such as an overview of the running. But to do that, He needed a tool to create UML Model and simulate them. The two more user-friendly tools which permit that are: Rhapsody and Papyrus.
+
+Papyrus use Moka to simulate UML Model and it was not well adapted for his lesson, so he choose Rhapsody. However, problems are that Rhapsody is not an open source software, it is only for Windows OS, and it is not free. That is why many student said that you won't use this software outside the lesson.
+
+Mr Champeau has proposed this internship to fill in the lack of simulator in open source UML Modelers.
 
 This report is going to present the aims, the problems and the solutions bring during this internship. In the beginning we will present the project and the tools at the disposal at the beginning of the internship, then we will show our solution, and to finish we are going to underline the objectives after the end of this project.
 
 \newpage
 %%%%%%%%%%%%%%%%%%%%%%%%
 
-\part{Presentation}
-
+\part{Presentation of the context}
 
 \input{Partie/Presentation}
-\input{Partie/UMLDesigner}
-\input{Partie/Simulator}
 
-\part{Study of the subject}
+
+\part{Presentation of the project}
+
+\input{Partie/Issues}
+\input{Partie/Goals}
+
+
+\part{Results of the internship}
 
 \input{Partie/Communication}
+\input{Partie/Results}
+\input{Partie/Test}
+% \input{Partie/UI}
 
 
-\part{Objectives for the next intern}
+\part{Contribution of this internship for my professional project}
+\input{Partie/Contribution}
 
 %%%% CONCLUSION %%%%%%%%%
 
@@ -250,11 +262,13 @@ This report is going to present the aims, the problems and the solutions bring d
 \newpage
 %%%% ANNEXE %%%%%%%%%%%%
 
-\part*{Annexe}
+\part*{Annex}
 \addcontentsline{toc}{part}{Annexe}
 \appendix
+\input{Partie/UMLDesigner}
+\input{Partie/Simulator}
 \input{Partie/Organisation}
-
+% \input{Partie/SCCD}
 
 \nocite{*}
 %\input{annexe_}
