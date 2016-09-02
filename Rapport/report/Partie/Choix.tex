@@ -1,0 +1,74 @@
+
+\chapter{Communication enter process}
+\label{annex:choice}
+
+
+\section{File}
+
+\begin{tabular}{|p{0.45\textwidth}||p{0.45\textwidth}|}
+\hline
+  \textbf{Advantages}&\textbf{Drawback}\\
+\hline
+Problem when two software want to change the same file at the same moment& Communication asynchronous\\
+\hline
+\end{tabular}
+
+\section{Named pipe}
+
+\begin{tabular}{|p{0.45\textwidth}||p{0.45\textwidth}|}
+\hline
+  \textbf{Advantages}&\textbf{Drawback}\\
+\hline
+It is possible to use the Simulator outside the graphical modeling tool & Only available on POSIX systems, Windows, AmigaOS 2.0+\\
+\hline
+\end{tabular}
+
+\section{Socket}
+
+Details on the chapter \ref{chap:choice}.
+
+\section{Signal}
+
+\begin{tabular}{|p{0.45\textwidth}||p{0.45\textwidth}|}
+\hline
+  \textbf{Advantages}&\textbf{Drawback}\\
+\hline
+ & not usually used to transfer data\\
+\hline
+\end{tabular}
+
+
+\section{Shared Memory}
+
+\begin{tabular}{|p{0.45\textwidth}||p{0.45\textwidth}|}
+\hline
+  \textbf{Advantages}&\textbf{Drawback}\\
+\hline
+It is possible to use the Simulator outside the graphical modeling tool & \\
+\hline
+\end{tabular}
+
+
+
+
+% \section{Our solution}
+
+% For this project we chose to use socket enter the plugin and the simulator. So we need to create a layer of communication for the simulator and a layer of communication for the plugin. Both layer will listen on a thread.
+
+% The solution was not in this list of common way to communicate inter process. In fact, we use the \textit{Runtime} class which is in the java library.~\\
+
+% \noindent
+% \begin{tabular}{|p{0.45\textwidth}||p{0.45\textwidth}|}
+% \hline
+%   \textbf{Advantages}&\textbf{Drawback}\\
+% \hline
+% It is possible to use the Simulator outside the graphical modeling tool & \\
+% \hline
+% Work with every type of simulator& \\
+% \hline
+% \end{tabular}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../rapport_de_base"
+%%% End:

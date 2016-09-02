@@ -24,6 +24,7 @@ import org.eclipse.ui.IWorkbenchActionConstants;
 import org.eclipse.ui.part.ViewPart;
 import org.ensta.uml.sim.simulateur.CommunicationS;
 import org.ensta.uml.sim.views.communication.CommunicationP;
+import org.ensta.uml.sim.views.communication.Observable;
 import org.ensta.uml.sim.views.design.DesignModifier;
 import org.ensta.uml.sim.views.features.ActionDoubleClick;
 import org.ensta.uml.sim.views.features.buttons.ActionPlay;

@@ -1,113 +1,42 @@
 
 \chapter{Technical choice }
-
-During this project we made a lot of technical choice. We will explain which choice we take and why.
+\label{chap:choice}
+During this project I made some technical choice. I will explain in this chapter which choice I take and why.
 
 \section{Type of communication}
 
-First of all, we had to find the best way to integrate the simulator in \umld. Because we want to keep the possibility to change the simulator we have decided to put it outside. In this way, we had the possibility to change the simulator without changing everything in the plugin.
+First of all, I had to find the best way to integrate the simulator in \umld. Because I want to keep the possibility to change the simulator I have decided to put the simulator in a separate thread with a communication by socket. In this way, I had the possibility to change the simulator without changing everything in the plugin, and even start the simulator outside the plugin.
 
-Moreover, we have to find the best way to realize the communication enter the simulator and the plugin. We decided to chose a socket communication, and send message only formatted as json object.
+Afterwards, I have to find the best way to realize the communication enter the simulator and the plugin. After list all type of communication enter process with their advantages and their drawback, I decided to chose a socket communication.%, and send message only formatted as json object.
 
-% A lot of type of communication inter process were suggested to create a discussion enter the plugin and the simulator. But we will present only the most consistent with their advantages and their drawbacks.
+% A lot of type of communication inter process Ire suggested to create a discussion enter the plugin and the simulator. But I will present only the most consistent with their advantages and their drawbacks.
 
 % The communication is the most important part of this project, because that will implement the interface between the two software.
 
 
 \subsection{Socket}
 
-This next table explain advantages and drawback of socket. We chose socket instead of other type of communication because it have a better ratio of Advantages/Drawback.
+This next table exhibit advantages and drawback of socket. You can find on annex \ref{annex:choice} the list of all other type of communication consider. I chose socket instead of other type of communication because it has a better ratio of Advantages/Drawback for this work.
 ~\\
 
 \begin{tabular}{|p{0.45\textwidth}||p{0.45\textwidth}|}
-\hline
+  \hline
   \textbf{Advantages}&\textbf{Drawback}\\
-\hline
-Work with every simulator type (python, java, ...) & Message need to be formatted\\
-\hline
-& Not very fast\\
-\hline
+  \hline
+  Work with every language (python, java, ...) & Message need to be formatted\\
+  \hline
+  Allow communications enter process which don't use the same language& Not very fast\\
+  \hline
+  Work on all platform (Windows, Linux, OSX)&\\
+  \hline
 \end{tabular}
-
-% \subsection{File}
-
-% \begin{tabular}{|p{0.45\textwidth}||p{0.45\textwidth}|}
-% \hline
-%   \textbf{Advantages}&\textbf{Drawback}\\
-% \hline
-% Problem when two software want to change the same file at the same moment& Communication asynchronous\\
-% \hline
-% \end{tabular}
-
-% \subsection{Named pipe}
-
-% \begin{tabular}{|p{0.45\textwidth}||p{0.45\textwidth}|}
-% \hline
-%   \textbf{Advantages}&\textbf{Drawback}\\
-% \hline
-% It is possible to use the Simulator outside the graphical modeling tool & \\
-% \hline
-% \end{tabular}
-
-
-% \subsection{Shared Memory}
-
-% \begin{tabular}{|p{0.45\textwidth}||p{0.45\textwidth}|}
-% \hline
-%   \textbf{Advantages}&\textbf{Drawback}\\
-% \hline
-% It is possible to use the Simulator outside the graphical modeling tool & \\
-% \hline
-% \end{tabular}
-
-
-% \subsection{Thread}
-
-% \begin{tabular}{|p{0.45\textwidth}||p{0.45\textwidth}|}
-% \hline
-%   \textbf{Advantages}&\textbf{Drawback}\\
-% \hline
-% &problem if the thread don't avance at the good speed\\
-% \hline
-% \end{tabular}
-
-% \subsection{Heritage}
-
-% \begin{tabular}{|p{0.45\textwidth}||p{0.45\textwidth}|}
-% \hline
-%   \textbf{Advantages}&\textbf{Drawback}\\
-% \hline
-% Easy to implement&Need to add code in the simulator\\
-% \hline
-% &We can only use simulator in Java\\
-% \hline
-% \end{tabular}
-
-
-
-% \subsection{Our solution}
-
-% For this project we chose to use socket enter the plugin and the simulator. So we need to create a layer of communication for the simulator and a layer of communication for the plugin. Both layer will listen on a thread.
-
-% The solution was not in this list of common way to communicate inter process. In fact, we use the \textit{Runtime} class which is in the java library.~\\
-
-% \noindent
-% \begin{tabular}{|p{0.45\textwidth}||p{0.45\textwidth}|}
-% \hline
-%   \textbf{Advantages}&\textbf{Drawback}\\
-% \hline
-% It is possible to use the Simulator outside the graphical modeling tool & \\
-% \hline
-% Work with every type of simulator& \\
-% \hline
-% \end{tabular}
 
 
 \section{Type of message}
 
-Now we have chosen that we will use socket to communicate enter the plugin and the simulator, we have too choose which type of object we will send by this socket.
+Now I have chosen socket to communicate enter the plugin and the simulator, I have to choose which type of object I will send by this socket. In fact, socket message need to be formatted and it exist many way to do that.
 
-In the same way, we list the type of message that we could send, and only three were relevant.
+In the same way, I list the type of message that I could send, and only three were relevant.
 
 \begin{itemize}
 \item String
@@ -115,9 +44,9 @@ In the same way, we list the type of message that we could send, and only three 
 \item Json message
 \end{itemize}
 
-Because String doesn't permit modularity and Java object require to use java for the simulator layer, we chose to use Json. Moreover, Json are send like String but with a formatted type.
+Because String doesn't permit modularity and Java object require to use java for the simulator layer, I chose Json. Moreover, Json are send like String but with a formatted type.
 
-To do that we use a library which permit to manipulate Json object in Java. We found it on Github \cite{json}.
+To do that I use a library which permit to manipulate Json object in Java. I found it on Github \cite{json}.
 ~\\
 
 Our json object are constructed like this:
@@ -168,7 +97,7 @@ simulator \overrightarrow{} plugin
 
 With this choice, it is possible to better understand how the project is construct. There is a plugin incorporate in \umld and a communication layer for the simulator. The plugin communicate to the communication layer with socket and json. The plugin receive the data send from the simulator, analyze them, display them, and send instruction to the simulator.
 
-The figure \ref{fig:project} resume its.
+The figure \ref{fig:project} resume its. However, by default the simulator and the communication layer are in started by the plugin. So by default the simulator and the communication layer are in \umld but it is possible to put them outside because after the start of their thread they communicate only by socket.
 
 \begin{figure}[h]
   \centering

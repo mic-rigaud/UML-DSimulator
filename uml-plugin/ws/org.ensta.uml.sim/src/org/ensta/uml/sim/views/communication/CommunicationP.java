@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import org.ensta.uml.sim.views.Observable;
 import org.ensta.uml.sim.views.Observateur;
 import org.ensta.uml.sim.views.model.StateModel;
 import org.ensta.uml.sim.views.tools.MySemaphore;

@@ -7,6 +7,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 
+
 %%%%%%%%%%%%%%%%%%%%  PACKAGE SECONDAIRE
 
 %\usepackage{amstext,amsmath,amssymb,amsfonts} % package math
@@ -38,6 +39,7 @@
 \usepackage{colortbl}
 \usepackage{listings}
 \usepackage{xspace}
+\usepackage{itemsep}
 
 %\usepackage{graphicx}
 \RequirePackage{pageGardeEnsta}	% permet d avoir la page de garde ensta
@@ -228,7 +230,7 @@ Papyrus use Moka to simulate UML Model and it was not well adapted for his lesso
 
 Mr Champeau has proposed this internship to fill in the lack of simulator in open source UML Modelers.
 
-This report is going to present the aims, the problems and the solutions bring during this internship. In the beginning we will present the project and the tools at the disposal at the beginning of the internship, then we will show our solution, and to finish we are going to underline the objectives after the end of this project.
+This report is going to present the evolution of the project during this internship. To begin, I will present the host structure. Then, I will explain the situation before the beginning of the project, so issues, aims, and the tools choice for preserve the organization of the project. After, I will show the technical choice given and the result of the technical part. To finish, I will highlight the contribution of this internship for my professional project.
 
 \newpage
 %%%%%%%%%%%%%%%%%%%%%%%%
@@ -242,12 +244,14 @@ This report is going to present the aims, the problems and the solutions bring d
 
 \input{Partie/Issues}
 \input{Partie/Goals}
-
+\input{Partie/Organisation}
 
 \part{Results of the internship}
 
 \input{Partie/Communication}
-\input{Partie/Results}
+\input{Partie/Layer}
+\input{Partie/Plugin}
+\input{Partie/SCCD}
 \input{Partie/Test}
 % \input{Partie/UI}
 
@@ -267,7 +271,7 @@ This report is going to present the aims, the problems and the solutions bring d
 \appendix
 \input{Partie/UMLDesigner}
 \input{Partie/Simulator}
-\input{Partie/Organisation}
+\input{Partie/Choix}
 % \input{Partie/SCCD}
 
 \nocite{*}

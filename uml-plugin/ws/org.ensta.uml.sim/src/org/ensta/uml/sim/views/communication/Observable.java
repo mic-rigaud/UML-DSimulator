@@ -1,4 +1,6 @@
-package org.ensta.uml.sim.views;
+package org.ensta.uml.sim.views.communication;
+
+import org.ensta.uml.sim.views.Observateur;
 
 public interface Observable {
     // Méthode permettant d'ajouter (abonner) un observateur.

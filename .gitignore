@@ -22,6 +22,7 @@ uml-plugin/resource*
 test_projet
 Wiki
 Deployment/README.md
+todo.org
 
 # Inclure les jar pour le deployment
 !Deployment/*.jar
