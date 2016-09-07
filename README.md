@@ -1,11 +1,5 @@
 # UML-DSimulator
 
-## Description of the project
-
-UML-DSimulator is a plugin for UMLDesigner. This plugin is a simulator of UML Model. The plugin use a simulator which was developed by [Ciprian Teodorov](https://github.com/teodorov).
-
-With this simulator it is possible to see the evolution of States in all State machine diagram.
-
 ## This Repositories
 
 This repositories contain all my project
@@ -22,7 +16,21 @@ Windows and Mac, download on this page:
 
 [Java SE Development Kit 8 - Downloads](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 
-## Contains
+## Description of the project
+
+UML-DSimulator is a plugin for UML Designer. This plugin is a simulator of UML Model. The plugin use a simulator which was developed by [Ciprian Teodorov](https://github.com/teodorov).
+
+With this simulator it is possible to see the evolution of States in all State machine diagram.
+
+## Installation in UML Designer
+
+After installing the Java 8, Copy Paste the jar files in the UML Designer folder name plugins.
+
+Then restart UML Designer.
+
+To add the view go on Windows/Show View/Other/Simulator/UML-DSimulator
+
+## Folder contain
 
 ### uml-plugin
 
@@ -34,15 +42,22 @@ To run eclipse:
 
 Sources of the plugin are on the subfolder *ws*
 
-### Report
+### Documentation
 
-In this folder there is a report here: [report](Rapport/report/rapport_de_base.pdf)
+In this folder there is a report here: [report](Documentation/report/rapport_de_base.pdf)
 
 This report contains the explanation of every think about my work.
+
+There is also the final presentation of my work
 
 ### Deployment
 
 This folder contains what is needed to install the plugin on a computer.
+
+### SCCD
+
+This folder contains the transformer for SCCD. The SCCD software can be found on the MSDL git server
+[simon/SCCD: The SCCD (Statecharts + Class Diagrams) compiler and runtime. - MSDL Git server](https://msdl.uantwerpen.be/git/simon/SCCD)
 
 ## Version
 
@@ -50,21 +65,21 @@ This folder contains what is needed to install the plugin on a computer.
 
 
 <colgroup>
-<col  class="org-right" />
+<col  class="right" />
 
-<col  class="org-left" />
+<col  class="left" />
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="org-right">Version</th>
-<th scope="col" class="org-left">Stable</th>
+<th scope="col" class="right">Version</th>
+<th scope="col" class="left">Stable</th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
-<td class="org-right">0.1</td>
-<td class="org-left">Yes</td>
+<td class="right">1.0</td>
+<td class="left">Yes</td>
 </tr>
 </tbody>
 </table>
