@@ -11,13 +11,13 @@ README.org
 bin
 eclipse-installer
 sirius
-Rapport/.git
+Documentation/.git
 **.metadata
 **.settings
 **.content
 **.cp
 images_resource
-Rapport/oral/*
+Documentation/oral/*
 uml-plugin/resource*
 test_projet
 Wiki
@@ -27,4 +27,4 @@ todo.org
 # Inclure les jar pour le deployment
 !Deployment/*.jar
 !SCCD/xmitoscxml.xsl
-!Rapport/oral/6*
+!Documentation/oral/6*
