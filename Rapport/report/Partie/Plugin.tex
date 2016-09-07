@@ -26,16 +26,16 @@ Then, I use the fact that \umld is based on Eclipse to create the plugin. The cr
 
 \noitemsep
 \begin{itemize}
-\item The directory \textit{JRE System Library} contains all library used to run the plugin
-\item The directory \textit{src} contains the source of the plugin
+\item The directory \textit{JRE System Library} contains all libraries used to run the plugin
+\item The directory \textit{src} contains sources of the plugin
 \item The file \textit{MANIFEST.MF} contains addition information for the integration of the plugin
-\item The file \textit{build.properties} contains information to export of the project
+\item The file \textit{build.properties} contains information to export the project
 \end{itemize}
 \doitemsep
 
 \section{General presentation}
 
-During the development of the plugin, I tried to separate the elements of the \umld API, the elements of the UI, and the communication Layer.
+During the development of the plugin, I tried to separate elements of the \umld API, the elements of the UI, and the communication Layer.
 
 The architecture of my plugin follow the UML class diagram presented on the figure \ref{fig:classDiagram}. However, all link enter classes are not represented on it to not overloaded the model. A short description of all sub package:
 
@@ -45,12 +45,12 @@ The architecture of my plugin follow the UML class diagram presented on the figu
 \item[features] This package contains all graphical elements of the plugins
 \item[communication] This package contains the layer of communication of the plugin
 \item[tools] This package contains some tools for all class
-\item[design] This package contains the all classes to change the appearance of the UML Model
+\item[design] This package contains all classes to change the appearance of the UML Model
 \item[model] This package contain a class with all information of the status of the model during the simulation
 \end{description}
 \doitemsep
 
-Then, it is possible to underline that I use a \textit{Observer} pattern enter classes \textit{MainView} and \textit{CommunicationP} as with the Simulator. This pattern permit to actualize the view of the model when a new communication is receive.
+Then, it is possible to underline that I use a \textit{Observer} pattern enter classes \textit{MainView} and \textit{CommunicationP} as with the Simulator. This pattern permit to actualize the view of the model when a new communication is received.
 
 \begin{figure}[h]
   \centering
@@ -75,7 +75,7 @@ On the figure \ref{fig:result}, you can see the result of my project. It is an E
   \label{fig:result}
 \end{figure}
 
-If the user click on a transition this transition is selected as the next transition, and if he click on an instance of a class it is chosen as the visible instance of the model (useful only if there is multiple instance for a same class).
+On the top, if the user click on a transition this transition is selected as the next transition, On the bottom, if he click on an instance of a class it is chosen as the visible instance of the model, and if he click on the class name all instances of this class are visible (useful only if there is multiple instance for a same class). Current instances visible are in red.
 ~\\
 
 On the top, it is possible to see that there is many button. These buttons create some action:
@@ -106,7 +106,7 @@ To finish, I implemented the possibility to see the current state of all state m
 \end{figure}
 
 
-% I am going to present the result of my work. If you want a better description of the problems and the choice taken you can read the annex ???.
+% I am going to present the result of my work. If you want a better description of the problems and the choice taken you can read the appendix ???.
 
 
 % \section{Plugin}

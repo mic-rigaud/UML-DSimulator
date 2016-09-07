@@ -1,6 +1,6 @@
 Administratif/*
 uml-designer-master4/*
-Document_SCCD/*
+SCCD/*
 UML-Designer/*
 plug-simulation-ui-0.0.1/*
 uml-simulateur/*
@@ -17,7 +17,7 @@ Rapport/.git
 **.content
 **.cp
 images_resource
-Rapport/presentation
+Rapport/oral/*
 uml-plugin/resource*
 test_projet
 Wiki
@@ -26,3 +26,5 @@ todo.org
 
 # Inclure les jar pour le deployment
 !Deployment/*.jar
+!SCCD/xmitoscxml.xsl
+!Rapport/oral/6*

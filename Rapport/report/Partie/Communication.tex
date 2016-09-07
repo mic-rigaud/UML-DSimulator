@@ -16,7 +16,7 @@ Afterwards, I have to find the best way to realize the communication enter the s
 
 \subsection{Socket}
 
-This next table exhibit advantages and drawback of socket. You can find on annex \ref{annex:choice} the list of all other type of communication consider. I chose socket instead of other type of communication because it has a better ratio of Advantages/Drawback for this work.
+This next table exhibit advantages and drawback of socket. You can find on appendix \ref{annex:choice} the list of all other type of communication consider. I chose socket instead of other type of communication because it has a better ratio of Advantages/Drawback for this work.
 ~\\
 
 \begin{tabular}{|p{0.45\textwidth}||p{0.45\textwidth}|}
@@ -95,9 +95,9 @@ simulator \overrightarrow{} plugin
 
 \section{Overview of the project}
 
-With this choice, it is possible to better understand how the project is construct. There is a plugin incorporate in \umld and a communication layer for the simulator. The plugin communicate to the communication layer with socket and json. The plugin receive the data send from the simulator, analyze them, display them, and send instruction to the simulator.
+With this choice, it is possible to better understand how the project is construct. The project consist in create a plugin for \umld and a communication layer for the simulator. The plugin communicate to the communication layer with socket and json. The plugin receive the data send from the simulator, analyze them, display them, and send instruction to the simulator.
 
-The figure \ref{fig:project} resume its. However, by default the simulator and the communication layer are in started by the plugin. So by default the simulator and the communication layer are in \umld but it is possible to put them outside because after the start of their thread they communicate only by socket.
+The figure \ref{fig:project} resume its. By default, the simulator and the communication layer are started by the plugin. So, they are inside \umld but it is possible to put them outside because after the start of their thread they communicate only by socket. In this way, We have a default comportment which is user-friendly because the user don't have to launch an other software, but we can consider that the simulator is outside the plugin. That is why on the figure \ref{fig:project} the simulator is represented outside.
 
 \begin{figure}[h]
   \centering

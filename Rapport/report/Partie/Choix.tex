@@ -3,50 +3,93 @@
 \label{annex:choice}
 
 
-\section{File}
+We are only interesting in communication which permit to exchange data and synchronize them. There is a short presentation of all other communication considered.
+
+\section{Message queue}
 
 \begin{tabular}{|p{0.45\textwidth}||p{0.45\textwidth}|}
 \hline
   \textbf{Advantages}&\textbf{Drawback}\\
 \hline
-Problem when two software want to change the same file at the same moment& Communication asynchronous\\
+  Work on Most operating systems&The implementation depends on the OS\\
+  \hline
+  One part don't need to know the other&One part can't know if the other is out\\
 \hline
 \end{tabular}
+~\\
 
-\section{Named pipe}
+The problem is, it is
+
+\section{Pipe}
 
 \begin{tabular}{|p{0.45\textwidth}||p{0.45\textwidth}|}
 \hline
   \textbf{Advantages}&\textbf{Drawback}\\
 \hline
-It is possible to use the Simulator outside the graphical modeling tool & Only available on POSIX systems, Windows, AmigaOS 2.0+\\
+&All POSIX systems, Windows (so it is not available on all Linux system)\\
 \hline
 \end{tabular}
+~\\
 
-\section{Socket}
+This drawback is to penalizing, for the multiplatform constraint.
 
-Details on the chapter \ref{chap:choice}.
-
-\section{Signal}
+\section{Message parsing}
 
 \begin{tabular}{|p{0.45\textwidth}||p{0.45\textwidth}|}
 \hline
   \textbf{Advantages}&\textbf{Drawback}\\
 \hline
- & not usually used to transfer data\\
+&Used only in RPC, RMI, and MPI paradigms, Java RMI, CORBA, DDS, MSMQ, MailSlots, QNX, others\\
 \hline
 \end{tabular}
+~\\
+
+This drawback is to penalizing, for the multiplatform constraint.
+
+% \section{File}
+
+% \begin{tabular}{|p{0.45\textwidth}||p{0.45\textwidth}|}
+% \hline
+%   \textbf{Advantages}&\textbf{Drawback}\\
+% \hline
+% Problem when two software want to change the same file at the same moment& Communication asynchronous\\
+% \hline
+% \end{tabular}
+
+% \section{Named pipe}
+
+% \begin{tabular}{|p{0.45\textwidth}||p{0.45\textwidth}|}
+% \hline
+%   \textbf{Advantages}&\textbf{Drawback}\\
+% \hline
+% It is possible to use the Simulator outside the graphical modeling tool & Only available on POSIX systems, Windows, AmigaOS 2.0+\\
+% \hline
+% \end{tabular}
+
+% \section{Socket}
+
+% Details on the chapter \ref{chap:choice}.
+
+% \section{Signal}
+
+% \begin{tabular}{|p{0.45\textwidth}||p{0.45\textwidth}|}
+% \hline
+%   \textbf{Advantages}&\textbf{Drawback}\\
+% \hline
+%  & not usually used to transfer data\\
+% \hline
+% \end{tabular}
 
 
-\section{Shared Memory}
+% \section{Shared Memory}
 
-\begin{tabular}{|p{0.45\textwidth}||p{0.45\textwidth}|}
-\hline
-  \textbf{Advantages}&\textbf{Drawback}\\
-\hline
-It is possible to use the Simulator outside the graphical modeling tool & \\
-\hline
-\end{tabular}
+% \begin{tabular}{|p{0.45\textwidth}||p{0.45\textwidth}|}
+% \hline
+%   \textbf{Advantages}&\textbf{Drawback}\\
+% \hline
+% It is possible to use the Simulator outside the graphical modeling tool & \\
+% \hline
+% \end{tabular}
 
 
 

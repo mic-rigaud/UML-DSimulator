@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_cTJD4NANEeWpK6pFHJ1hEg" name="ProducerConsumerDefer">
+  <packagedElement xmi:type="uml:Class" xmi:id="_cTKSANANEeWpK6pFHJ1hEg" name="SUS">
+    <ownedAttribute xmi:id="_cTK5ENANEeWpK6pFHJ1hEg" name="producer" visibility="public" type="_cTb-0NANEeWpK6pFHJ1hEg" isUnique="false" aggregation="composite">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_cTMHMNANEeWpK6pFHJ1hEg" value="1"/>
+      <upperValue xmi:type="uml:LiteralInteger" xmi:id="_cTOjcNANEeWpK6pFHJ1hEg" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_cTQYoNANEeWpK6pFHJ1hEg" name="consumer" visibility="public" type="_cUE4ANANEeWpK6pFHJ1hEg" isUnique="false" aggregation="composite">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_cTQYodANEeWpK6pFHJ1hEg" value="1"/>
+      <upperValue xmi:type="uml:LiteralInteger" xmi:id="_cTQ_sNANEeWpK6pFHJ1hEg" value="1"/>
+    </ownedAttribute>
+    <ownedConnector xmi:id="_cTTb8NANEeWpK6pFHJ1hEg" name="" type="_cUo4sNANEeWpK6pFHJ1hEg">
+      <end xmi:id="_cTY7gNANEeWpK6pFHJ1hEg" role="_cTK5ENANEeWpK6pFHJ1hEg"/>
+      <end xmi:id="_cTZikNANEeWpK6pFHJ1hEg" role="_cTQYoNANEeWpK6pFHJ1hEg"/>
+    </ownedConnector>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_cTb-0NANEeWpK6pFHJ1hEg" name="Producer" classifierBehavior="_cTsdgNANEeWpK6pFHJ1hEg" isActive="true">
+    <ownedAttribute xmi:id="_cTheYNANEeWpK6pFHJ1hEg" name="itsConsumer" type="_cUE4ANANEeWpK6pFHJ1hEg" isUnique="false" association="_cUo4sNANEeWpK6pFHJ1hEg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_cTiFcNANEeWpK6pFHJ1hEg" value="1"/>
+      <upperValue xmi:type="uml:LiteralInteger" xmi:id="_cTiFcdANEeWpK6pFHJ1hEg" value="1"/>
+    </ownedAttribute>
+    <interfaceRealization xmi:id="_cTgQQNANEeWpK6pFHJ1hEg" client="_cTb-0NANEeWpK6pFHJ1hEg" supplier="_cUknQNANEeWpK6pFHJ1hEg" contract="_cUknQNANEeWpK6pFHJ1hEg"/>
+    <ownedBehavior xmi:type="uml:StateMachine" xmi:id="_cTsdgNANEeWpK6pFHJ1hEg" name="SM">
+      <ownedBehavior xmi:type="uml:StateMachine" xmi:id="__BzkYEQWEeao3_emoFUAnw" name="SM">
+        <region xmi:id="__BzkYUQWEeao3_emoFUAnw" name="R">
+          <transition xmi:id="__BzkYkQWEeao3_emoFUAnw" source="__BzkZ0QWEeao3_emoFUAnw" target="__BzkaEQWEeao3_emoFUAnw"/>
+          <transition xmi:id="__BzkY0QWEeao3_emoFUAnw" source="__BzkaEQWEeao3_emoFUAnw" target="__BzkaEQWEeao3_emoFUAnw">
+            <effect xmi:type="uml:OpaqueBehavior" xmi:id="__BzkZEQWEeao3_emoFUAnw">
+              <language>ABCD</language>
+              <body>send evtA to itsConsumer;</body>
+            </effect>
+          </transition>
+          <transition xmi:id="__BzkZUQWEeao3_emoFUAnw" source="__BzkaEQWEeao3_emoFUAnw" target="__BzkaEQWEeao3_emoFUAnw">
+            <effect xmi:type="uml:OpaqueBehavior" xmi:id="__BzkZkQWEeao3_emoFUAnw">
+              <language>ABCD</language>
+              <body>send evtB to itsConsumer;</body>
+            </effect>
+          </transition>
+          <subvertex xmi:type="uml:Pseudostate" xmi:id="__BzkZ0QWEeao3_emoFUAnw" name="Initial"/>
+          <subvertex xmi:type="uml:State" xmi:id="__BzkaEQWEeao3_emoFUAnw" name="s0"/>
+        </region>
+      </ownedBehavior>
+      <region xmi:id="_cTwH4NANEeWpK6pFHJ1hEg" name="R">
+        <transition xmi:id="_cT1AYNANEeWpK6pFHJ1hEg" source="_cUAmkNANEeWpK6pFHJ1hEg" target="_cUwNcNANEeWpK6pFHJ1hEg"/>
+        <transition xmi:id="_cT2OgNANEeWpK6pFHJ1hEg" source="_cUwNcNANEeWpK6pFHJ1hEg" target="_cUwNcNANEeWpK6pFHJ1hEg">
+          <effect xmi:type="uml:OpaqueBehavior" xmi:id="_cT4qwNANEeWpK6pFHJ1hEg">
+            <language>ABCD</language>
+            <body>send evtA to itsConsumer;</body>
+          </effect>
+        </transition>
+        <transition xmi:id="_cT6f8NANEeWpK6pFHJ1hEg" source="_cUwNcNANEeWpK6pFHJ1hEg" target="_cUwNcNANEeWpK6pFHJ1hEg">
+          <effect xmi:type="uml:OpaqueBehavior" xmi:id="_cT6f8dANEeWpK6pFHJ1hEg">
+            <language>ABCD</language>
+            <body>send evtB to itsConsumer;</body>
+          </effect>
+        </transition>
+        <subvertex xmi:type="uml:Pseudostate" xmi:id="_cUAmkNANEeWpK6pFHJ1hEg" name="Initial"/>
+        <subvertex xmi:type="uml:State" xmi:id="_cUwNcNANEeWpK6pFHJ1hEg" name="s0"/>
+      </region>
+    </ownedBehavior>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_cUE4ANANEeWpK6pFHJ1hEg" name="Consumer" classifierBehavior="_cUGGINANEeWpK6pFHJ1hEg" isActive="true">
+    <ownedAttribute xmi:id="_cUFfENANEeWpK6pFHJ1hEg" name="guard" visibility="private" type="_cUqt4dANEeWpK6pFHJ1hEg"/>
+    <interfaceRealization xmi:id="_cUE4AdANEeWpK6pFHJ1hEg" client="_cUE4ANANEeWpK6pFHJ1hEg" supplier="_cUnqkNANEeWpK6pFHJ1hEg" contract="_cUnqkNANEeWpK6pFHJ1hEg"/>
+    <ownedBehavior xmi:type="uml:StateMachine" xmi:id="_cUGGINANEeWpK6pFHJ1hEg" name="SM">
+      <region xmi:id="_cUGGIdANEeWpK6pFHJ1hEg" name="R">
+        <transition xmi:id="_cUGGItANEeWpK6pFHJ1hEg" source="_cUNa4NANEeWpK6pFHJ1hEg" target="_cUS6cNANEeWpK6pFHJ1hEg">
+          <name xsi:nil="true"/>
+          <effect xmi:type="uml:OpaqueBehavior" xmi:id="_cUGGI9ANEeWpK6pFHJ1hEg">
+            <language>ABCD</language>
+            <body>guard := false;</body>
+          </effect>
+        </transition>
+        <transition xmi:id="_cUGtMNANEeWpK6pFHJ1hEg" source="_cUS6cNANEeWpK6pFHJ1hEg" target="_cUS6cNANEeWpK6pFHJ1hEg">
+          <name xsi:nil="true"/>
+          <effect xmi:type="uml:OpaqueBehavior" xmi:id="_cUGtMdANEeWpK6pFHJ1hEg">
+            <language>ABCD</language>
+            <body>guard := not guard;</body>
+          </effect>
+        </transition>
+        <transition xmi:id="_cUHUQNANEeWpK6pFHJ1hEg" source="_cUS6cNANEeWpK6pFHJ1hEg" target="_cUUIkNANEeWpK6pFHJ1hEg">
+          <ownedRule xmi:id="_cUJJcNANEeWpK6pFHJ1hEg" name="">
+            <specification xmi:type="uml:OpaqueExpression" xmi:id="_cUJwgNANEeWpK6pFHJ1hEg">
+              <language>ABCD</language>
+              <body>guard</body>
+            </specification>
+          </ownedRule>
+          <trigger xmi:id="_cUIiYNANEeWpK6pFHJ1hEg" event="_cUegoNANEeWpK6pFHJ1hEg"/>
+        </transition>
+        <transition xmi:id="_cUK-oNANEeWpK6pFHJ1hEg" source="_cUS6cNANEeWpK6pFHJ1hEg" target="_cUUIkNANEeWpK6pFHJ1hEg">
+          <trigger xmi:id="_cUK-odANEeWpK6pFHJ1hEg" event="_cUfuwdANEeWpK6pFHJ1hEg"/>
+        </transition>
+        <transition xmi:id="_cULlsNANEeWpK6pFHJ1hEg" source="_cUUIkNANEeWpK6pFHJ1hEg" target="_cUUvoNANEeWpK6pFHJ1hEg">
+          <trigger xmi:id="_cULlsdANEeWpK6pFHJ1hEg" event="_cUegoNANEeWpK6pFHJ1hEg"/>
+        </transition>
+        <transition xmi:id="_cULlstANEeWpK6pFHJ1hEg" source="_cUUIkNANEeWpK6pFHJ1hEg" target="_cUUvoNANEeWpK6pFHJ1hEg">
+          <ownedRule xmi:id="_cUMMwdANEeWpK6pFHJ1hEg" name="">
+            <specification xmi:type="uml:OpaqueExpression" xmi:id="_cUMMwtANEeWpK6pFHJ1hEg">
+              <language>ABCD</language>
+              <body>guard</body>
+            </specification>
+          </ownedRule>
+          <trigger xmi:id="_cUMMwNANEeWpK6pFHJ1hEg" event="_cUfuwdANEeWpK6pFHJ1hEg"/>
+        </transition>
+        <transition xmi:id="_cUMz0NANEeWpK6pFHJ1hEg" source="_cUUvoNANEeWpK6pFHJ1hEg" target="_cUS6cNANEeWpK6pFHJ1hEg">
+          <trigger xmi:id="_cUMz0dANEeWpK6pFHJ1hEg" event="_cUfuwdANEeWpK6pFHJ1hEg"/>
+        </transition>
+        <subvertex xmi:type="uml:Pseudostate" xmi:id="_cUNa4NANEeWpK6pFHJ1hEg" name="Initial"/>
+        <subvertex xmi:type="uml:State" xmi:id="_cUS6cNANEeWpK6pFHJ1hEg" name="s0">
+          <deferrableTrigger xmi:id="_cUS6cdANEeWpK6pFHJ1hEg" event="_cUegoNANEeWpK6pFHJ1hEg"/>
+        </subvertex>
+        <subvertex xmi:type="uml:State" xmi:id="_cUUIkNANEeWpK6pFHJ1hEg" name="s1">
+          <deferrableTrigger xmi:id="_cUUIkdANEeWpK6pFHJ1hEg" event="_cUegoNANEeWpK6pFHJ1hEg"/>
+        </subvertex>
+        <subvertex xmi:type="uml:State" xmi:id="_cUUvoNANEeWpK6pFHJ1hEg" name="s2">
+          <deferrableTrigger xmi:id="_cUUvodANEeWpK6pFHJ1hEg" event="_cUegoNANEeWpK6pFHJ1hEg"/>
+        </subvertex>
+      </region>
+    </ownedBehavior>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Signal" xmi:id="_cUbdUNANEeWpK6pFHJ1hEg" name="evtA"/>
+  <packagedElement xmi:type="uml:SignalEvent" xmi:id="_cUegoNANEeWpK6pFHJ1hEg" name="evtASE" signal="_cUbdUNANEeWpK6pFHJ1hEg"/>
+  <packagedElement xmi:type="uml:Signal" xmi:id="_cUfuwNANEeWpK6pFHJ1hEg" name="evtB"/>
+  <packagedElement xmi:type="uml:SignalEvent" xmi:id="_cUfuwdANEeWpK6pFHJ1hEg" name="evtBSE" signal="_cUfuwNANEeWpK6pFHJ1hEg"/>
+  <packagedElement xmi:type="uml:Signal" xmi:id="_cUgV0NANEeWpK6pFHJ1hEg" name="evtX"/>
+  <packagedElement xmi:type="uml:SignalEvent" xmi:id="_cUgV0dANEeWpK6pFHJ1hEg" name="evtXSE" signal="_cUgV0NANEeWpK6pFHJ1hEg"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_cUknQNANEeWpK6pFHJ1hEg" name="IProducer">
+    <ownedReception xmi:id="_cUmccNANEeWpK6pFHJ1hEg" name="evtX" signal="_cUgV0NANEeWpK6pFHJ1hEg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_cUnqkNANEeWpK6pFHJ1hEg" name="IConsumer">
+    <ownedReception xmi:id="_cUoRoNANEeWpK6pFHJ1hEg" name="evtA" signal="_cUbdUNANEeWpK6pFHJ1hEg"/>
+    <ownedReception xmi:id="_cUoRodANEeWpK6pFHJ1hEg" name="evtB" signal="_cUfuwNANEeWpK6pFHJ1hEg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_cUo4sNANEeWpK6pFHJ1hEg" name="Producer_Consumer" memberEnd="_cUo4sdANEeWpK6pFHJ1hEg _cTheYNANEeWpK6pFHJ1hEg">
+    <ownedEnd xmi:id="_cUo4sdANEeWpK6pFHJ1hEg" name="producer" type="_cTb-0NANEeWpK6pFHJ1hEg" isUnique="false" association="_cUo4sNANEeWpK6pFHJ1hEg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_cUpfwNANEeWpK6pFHJ1hEg" value="1"/>
+      <upperValue xmi:type="uml:LiteralInteger" xmi:id="_cUpfwdANEeWpK6pFHJ1hEg" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="_cUqt4NANEeWpK6pFHJ1hEg" name="PredefinedTypesJava">
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_cUqt4dANEeWpK6pFHJ1hEg" name="boolean"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_cUrU8NANEeWpK6pFHJ1hEg" name="byte"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_cUrU8dANEeWpK6pFHJ1hEg" name="short"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_cUr8ANANEeWpK6pFHJ1hEg" name="void"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_cUr8AdANEeWpK6pFHJ1hEg" name="int"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_cUr8AtANEeWpK6pFHJ1hEg" name="long"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_cUsjENANEeWpK6pFHJ1hEg" name="char"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_cUsjEdANEeWpK6pFHJ1hEg" name="float"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_cUtKINANEeWpK6pFHJ1hEg" name="double"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_cUtKIdANEeWpK6pFHJ1hEg" name="Object"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_cUtKItANEeWpK6pFHJ1hEg" name="String"/>
+  </packagedElement>
+</uml:Model>

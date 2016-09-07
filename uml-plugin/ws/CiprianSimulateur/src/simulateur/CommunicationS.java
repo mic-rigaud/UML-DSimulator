@@ -69,10 +69,11 @@ public class CommunicationS extends Thread {
             try {
                 Thread.sleep(1000);
                 client = new Socket(serverName, port);
+                System.out.println("hello");
                 while (true) {
                     DataInputStream in = new DataInputStream(client.getInputStream());
                     JSONObject json = new JSONObject(in.readUTF());
-                    System.out.println("  ----   ");
+                    System.out.println("  ----   " + json.toString());
 
                     if (json.getBoolean("reload")) {
                         clearListCurrentState();
