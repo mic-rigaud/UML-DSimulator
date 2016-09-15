@@ -9,25 +9,35 @@ We are only interesting in communication which permit to exchange data and synch
 
 \begin{tabular}{|p{0.45\textwidth}||p{0.45\textwidth}|}
 \hline
-  \textbf{Advantages}&\textbf{Drawback}\\
-\hline
-  Work on Most operating systems&The implementation depends on the OS\\
+  \textbf{Advantages} & \textbf{Drawback}\\
   \hline
-  One part don't need to know the other&One part can't know if the other is out\\
-\hline
+  Work on most operating systems & The implementation depends on the OS\\
+  \hline
+  One part don't need to know the other &\\
+  \hline
+  No serialization/deserialization & \\
+  \hline
+  Very fast&\\
+  \hline
 \end{tabular}
 ~\\
 
-The problem is, it is
+The main problem is that the implementation depends on the OS, that is why we don't chose this communication.
+
+
 
 \section{Pipe}
 
 \begin{tabular}{|p{0.45\textwidth}||p{0.45\textwidth}|}
-\hline
+  \hline
   \textbf{Advantages}&\textbf{Drawback}\\
-\hline
-&All POSIX systems, Windows (so it is not available on all Linux system)\\
-\hline
+  \hline
+                     &All POSIX systems, Windows\\
+  \hline
+                     &The implementation depends on the OS\\
+  \hline
+                     & Windows: Only one-way pipes (Anonymous pipe and Named pipe\cite{windows})\\
+  \hline
 \end{tabular}
 ~\\
 

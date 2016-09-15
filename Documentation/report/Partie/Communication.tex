@@ -7,7 +7,7 @@ During this project I made some technical choice. I will explain in this chapter
 
 First of all, I had to find the best way to integrate the simulator in \umld. Because I want to keep the possibility to change the simulator I have decided to put the simulator in a separate thread with a communication by socket. In this way, I had the possibility to change the simulator without changing everything in the plugin, and even start the simulator outside the plugin.
 
-Afterwards, I have to find the best way to realize the communication enter the simulator and the plugin. After list all type of communication enter process with their advantages and their drawback, I decided to chose a socket communication.%, and send message only formatted as json object.
+Afterwards, I have to find the best way to realize the communication enter the simulator and the plugin. After list all type of communication enter process with their advantages and their drawbacks, I decided to chose a socket communication.%, and send message only formatted as json object.
 
 % A lot of type of communication inter process Ire suggested to create a discussion enter the plugin and the simulator. But I will present only the most consistent with their advantages and their drawbacks.
 
@@ -16,7 +16,7 @@ Afterwards, I have to find the best way to realize the communication enter the s
 
 \subsection{Socket}
 
-This next table exhibit advantages and drawback of socket. You can find on appendix \ref{annex:choice} the list of all other type of communication consider. I chose socket instead of other type of communication because it has a better ratio of Advantages/Drawback for this work.
+This next table exhibit advantages and drawbacks of socket. You can find on appendix \ref{annex:choice} the list of all other type of communication consider. I chose socket instead of other type of communication because it has a better ratio of Advantages/Drawbacks for this work.
 ~\\
 
 \begin{tabular}{|p{0.45\textwidth}||p{0.45\textwidth}|}
@@ -34,7 +34,7 @@ This next table exhibit advantages and drawback of socket. You can find on appen
 
 \section{Type of message}
 
-Now I have chosen socket to communicate enter the plugin and the simulator, I have to choose which type of object I will send by this socket. In fact, socket message need to be formatted and it exist many way to do that.
+Now I have chosen socket to communicate enter the plugin and the simulator, I have to choose which type of object I will send by this socket. In fact, socket message need to be formatted and it exists many way to do that.
 
 In the same way, I list the type of message that I could send, and only three were relevant.
 

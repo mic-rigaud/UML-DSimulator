@@ -40,7 +40,7 @@
 \usepackage{listings}
 \usepackage{xspace}
 \usepackage{itemsep}
-
+\usepackage{pifont}
 %\usepackage{graphicx}
 \RequirePackage{pageGardeEnsta}	% permet d avoir la page de garde ensta
 
@@ -61,6 +61,11 @@
     morecomment=[l]{//},
     morecomment=[s]{/*}{*/},
 }
+
+% Definition Check box
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+\newcommand{\mytilde}{\Large\textbf{\textasciitilde}}
 
 % Definition du style
 \lstdefinestyle{styleLangage}{%
@@ -287,7 +292,8 @@ Despite this, I am very happy because this internship give me the possibility to
 \newpage
 ~\\
 \newpage
- \listoffigures
+\listoffigures
+\listoftables
  \printindex
  \bibliographystyle{plain}
   \bibliography{biblio}

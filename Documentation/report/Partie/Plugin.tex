@@ -105,6 +105,49 @@ To finish, I implemented the possibility to see the current state of all state m
   \label{fig:result2}
 \end{figure}
 
+~\\
+
+The table \ref{tab:synthese} resume all functionality implemented and also present some functionality suggested during the project but not implemented.
+
+\begin{table}[h]
+  \centering
+  \begin{tabular}{|p{0.02\textwidth}|p{0.45\textwidth}|p{0.45\textwidth}|}
+    \hline
+    &Functionality&if not implemented why\\
+    \hline
+    \hline
+    \cmark&Visualization of the simulation in State Machine Diagrams and Class Diagrams&\\
+    \hline
+    \cmark&Possibility to select the next transition&\\
+    \hline
+    \cmark&Possibility to change the simulator&\\
+    \hline
+    \cmark&Possibility to start the simulator outside \umld&\\
+    \hline
+    \cmark&Possibility to change the current project simulated&\\
+    \hline
+    \cmark&Possibility to restart the simulation for the current project&\\
+    \hline
+    \cmark&Play mode (choose a random step every 1s)&\\
+    \hline
+    \mytilde&Multiple instances for a unique class&The plugin interface take care about multiple instances but the simulator not\\
+    \hline
+    \mytilde&Parallel state&The plugin interface can show parallel state but it is not implemented on the simulator\\
+    \hline
+    \xmark&Historical state&It is not yet implemented on the simulator\\
+    \hline
+    \xmark&Generation of the sequence diagram automatically&Not enough time\\
+    \hline
+    \xmark&Select the next transition on the UML Model&Not enough time\\
+    \hline
+    \xmark&Show multiple instances in multiple tabs&Make the project too heavy\\
+    \hline
+    \xmark&Choose a state for debugging&Not enough time\\
+    \hline
+  \end{tabular}
+  \caption{Functionality implemented}
+  \label{tab:synthese}
+\end{table}
 
 % I am going to present the result of my work. If you want a better description of the problems and the choice taken you can read the appendix ???.
 
