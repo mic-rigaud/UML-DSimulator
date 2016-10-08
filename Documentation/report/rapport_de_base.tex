@@ -229,18 +229,21 @@
 \chapter*{Introduction}
 \addcontentsline{toc}{chapter}{Introduction}
 
-During my second year school at ENSTA Bretagne, Mr Champeau taught us UML Diagrams. During this lesson, He shown us the possibility to create Codes from UML Diagram and the possibility to simulate UML Diagrams such as an overview of the running. But to do that, He needed a tool to create UML Model and simulate them. The two more user-friendly tools which permit that are: Rhapsody and Papyrus.
+%% Introduire pk la modelisation!!
 
-Papyrus use Moka to simulate UML Model and it was not well adapted for his lesson, so he choose Rhapsody. However, problems are that Rhapsody is not an open source software, it is only for Windows OS, and it is not free. That is why many student said that they won't use this software outside the lesson.
+During my second year school at ENSTA Bretagne, Mr Champeau taught us UML Diagrams. During this lesson, he shown us the possibility to create Codes from UML Diagram and the possibility to simulate UML Diagrams such as an overview of the running. But to do that, he needed a tool to create UML Models and simulate them. The two more user-friendly tools which permit that are: Rhapsody and Papyrus.
+
+Papyrus uses Moka to simulate UML Model and it was not well adapted for his lesson, so he chose Rhapsody. However, problems are that Rhapsody is not an open source software, it is only for Windows OS, and it is not free. That is why many students said that they would not use this software outside the lesson.
 
 Therefore, Mr Champeau has proposed this internship to fill in the lack of simulator in open source UML Modelers.
 
-This report is going to present the evolution of the project during this internship. To begin, I will present the host structure. Then, I will explain the situation before the beginning of the project so issues, aims, and the tools choices for preserve the organization of the project. Afterwards, I will exhibit technical choices given and the result of the technical part. To finish, I will highlight the contribution of this internship for my professional project.
+%% Bref sommaire des resultats
+This report is going to present the evolution of the project during this internship. To begin, I will present the host structure. Then, I will explain the situation before the beginning of the project so issues, aims, and the tools choices to preserve the organization of the project. Afterwards, I will exhibit technical choices given and the result of the technical part. To finish, I will highlight the contribution of this internship for my professional project.
 
 \newpage
 %%%%%%%%%%%%%%%%%%%%%%%%
 
-\part{Presentation of the context}
+\part{Context}
 
 \input{Partie/Presentation}
 
@@ -270,11 +273,11 @@ This report is going to present the evolution of the project during this interns
 \addcontentsline{toc}{chapter}{Conclusion}
 
 I made my project called UML-DSimulator. This project is a plugin for \umld to simulate UML Models.
-This project was written to work with the Ciprian Simulator. Currently, the plugin show on the UML Model a visualization of the simulation, give some debugger tools, and have the ability to take an other simulator. However, this plugin was only tested with the Ciprian Simulator which is not finished, and this simulator impose many constraints. %For example, a project need to have a \textit{SUS} class which contains all other classes. This is not an optimal operating.
+This project was written to work with the Ciprian Simulator. Currently, the plugin show on the UML Model a visualization of the simulation, give some debugger tools, and have the ability to take an other simulator. However, this plugin was only tested with the Ciprian Simulator which is not finished, and this simulator imposes many constraints. %For example, a project need to have a \textit{SUS} class which contains all other classes. This is not an optimal operating.
 
-So, I did a plugin stable and modular which do what Mr Champeau expected, but this plugin is not adapted for the UML community because of the constraints of the simulator. Furthermore, It is possible to notice that this plugin need some improvement especially in the field of debugging.
+So, I did a plugin stable and modular which full fill the initial requirements, but is not adapted for the UML community because of the constraints of the simulator. Furthermore, It is possible to notice that this plugin need some improvement especially in the field of debugging.
 
-Despite this, I am very happy because this internship give me the possibility to learn new technical skills, to overwhelm myself, and to use in a real project managing tools that I learn during my scholarship. Then, I am very proud of my works, because at the end of this internship Mr Champeau seems to be satisfied.
+Despite this, I am very happy because this internship give me the possibility to learn new technical skills, to overwhelm myself, to overcome many challenges, and to use in a real project managing tools that I learn during my scholarship. %Then, I am very proud of my works, because at the end of this internship Mr Champeau seems to be satisfied.
 \newpage
 %%%% ANNEXE %%%%%%%%%%%%
 
@@ -284,7 +287,8 @@ Despite this, I am very happy because this internship give me the possibility to
 \input{Partie/UMLDesigner}
 \input{Partie/Simulator}
 \input{Partie/Choix}
-%\input{Partie/SCCD_complement}
+\input{Partie/Notation}
+% \input{Partie/SCCD_complement}
 % \input{Partie/SCCD}
 
 \nocite{*}

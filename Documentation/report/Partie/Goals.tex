@@ -3,7 +3,7 @@
 
 \section{Definition of my project}
 
-After some interview with Mr. Champeau, I define the table of requirements (tabular \ref{tab:requirements}). This table contains all requirements define by the client to respect the issues of this project define before.
+After some interviews with Mr. Champeau, I wrote the table of requirements (Table \ref{tab:requirements}). This table contains all requirements that satisfy the goals of this project define before.
 
 \textit{FS} means service function and \textit{C} means constraints.
 
@@ -18,9 +18,9 @@ After some interview with Mr. Champeau, I define the table of requirements (tabu
     \hline
     FS1&UI&Represent the visualization in the UML Model with graphical tools\\
     \hline
-    FS2&UML Designer&Works by default this the Ciprian simulator\\
+    FS2&UML Designer&Works by default with the the Ciprian simulator\\
     \hline
-    FS3&Simulator&Have the possibility to change the simulator with an other simulator, for example SCCD\\
+    FS3&Simulator&Have the possibility to change the simulator with other simulator, for example SCCD\\
     \hline
     FS4&Simulation&Give some debugging tools, for example play, stop, \etc...\\
     \hline
@@ -37,7 +37,7 @@ After some interview with Mr. Champeau, I define the table of requirements (tabu
   \label{tab:requirements}
 \end{table}
 
-Then, it is also possible to represent the project with a octopus diagram (figure \ref{fig:octopus}). This diagram permit to show the interaction with the outside world that the client expected.
+Then, it is also possible to represent the project with a octopus diagram (Figure \ref{fig:octopus}). This diagram permit to show the interaction of the simulator with the outside world that the client expected.
 
 \begin{figure}[!h]
   \centering
@@ -52,12 +52,12 @@ Then, it is also possible to represent the project with a octopus diagram (figur
 As it was explain in the introduction, the main goal of this project is integrate a simulator in UML Designer. To do that Mr. Ciprian put at my disposal his own Simulator. So it is possible to describe my goals in this order:
 
 \begin{enumerate}
-\item Find the way to add plugin in \umld, and understand how it is possible to add some feature.
-\item Understand how work the Ciprian simulator.
-\item Find a way to integrate the simulator but keep the possibility to change it. Moreover it should be kept in mind that the simulator was not finish so the integration of the simulator need to preserve modularity.
+\item Find the way to add plugin in \umld, and understand how it is possible to add more features.
+\item Understand how the Ciprian simulator works.
+\item Find a way to integrate the simulator but keep the possibility to change it. Moreover it should be kept in mind that the simulator was not finished so the integration of the simulator need to preserve modularity.
 \item Propose some debugger tools. For example: a play button, a stop button, \etc.
-\item Write documentation and comment in the code to be reusable. Mr Champeau wanted to keep the choice to do some improvement after the end of this internship.
-\item Try an other simulator and compare its performance with the Ciprian simulator.
+\item Write documentation and comment in the code to be reusable. Mr Champeau wanted to keep the choice to make some improvements after the end of this internship.
+\item Try other simulator and compare its performance with the Ciprian simulator.
 \end{enumerate}
 
 
@@ -88,7 +88,7 @@ As it was explain in the introduction, the main goal of this project is integrat
 
 \section{Tools at my disposal}
 
-It is a short description of \umld and the Ciprian Simulator. A further description can be found in the appendix \ref{chap:UMLDesigner} and \ref{chap:simulator}.
+This section presents a short description of \umld and the Ciprian Simulator. More details can be found in the appendix \ref{chap:UMLDesigner} and \ref{chap:simulator}.
 \newpage
 \subsection{\umld}
 \begin{figure}[!h]
@@ -100,7 +100,7 @@ It is a short description of \umld and the Ciprian Simulator. A further descript
   \end{minipage}\hfill
   \begin{minipage}[h]{0.45\linewidth}
 
-    At the beginning of this project, some tools were at my disposal. First of all, it was \umld created by the french company \textit{Obeo}. It is an open source software documented so I could download the source and work on it. It is a UML modeler with a user interface. It is based on Eclipse and Sirius. It follows the UML2 standard which is know and documented.
+    At the beginning of this project, some tools were at my disposal. First of all, it was \umld created by the french company \textit{Obeo}. It is an open source software documented so I could download the source and work on it. It is a UML modeler with a user interface. It is based on Eclipse and Sirius. It follows the UML2 standard which is well known and documented.
 
   \end{minipage}
 \end{figure}
@@ -110,7 +110,7 @@ It is a short description of \umld and the Ciprian Simulator. A further descript
 \begin{figure}[!h]
   \begin{minipage}[h]{0.45\linewidth}
 
-    Then, Mr Ciprian Teodorov, one of my professor, has developed a simulator for UML Model. This simulator needed to be improved, but it composed a good beginning for this project.
+    Then, Mr Ciprian Teodorov, one of my professors, has developed a simulator for UML Model. This simulator needed some improvements, but it was a good starting point for this project.
 
   \end{minipage}\hfill
   \begin{minipage}[h]{0.45\linewidth}
